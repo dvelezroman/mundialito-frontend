@@ -1,0 +1,28 @@
+<section class="section">
+  <div class="container">
+    <div class="box">
+      <h1 class="title">Register</h1>
+      <form (ngSubmit)="register()">
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control">
+            <input class="input" type="email" [(ngModel)]="user.email" name="email" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Password</label>
+          <div class="control">
+            <input class="input" type="password" [(ngModel)]="user.password" name="password" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <button class="button is-primary" type="submit">Register</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
