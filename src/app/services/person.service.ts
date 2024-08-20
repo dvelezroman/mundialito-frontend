@@ -42,5 +42,10 @@ export class PersonService {
   getPerson(id: number): Observable<any> {
     return this.http.get(`${this.apiUrl}/${id}`, { headers: this.getHeaders() });
   }
+
+  // Get players by team ID
+  getPlayersByTeam(teamId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}?teamId=${teamId}`, { headers: this.getHeaders() });
+  }
 }
 

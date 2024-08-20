@@ -81,12 +81,22 @@
     <div class="field">
       <label class="label" for="type">Type</label>
       <div class="control">
-        <input
-          class="input"
-          id="type"
-          name="type"
-          [(ngModel)]="person.type"
-        />
+        <div class="select">
+          <select
+            id="type"
+            name="type"
+            [(ngModel)]="person.type"
+            required
+            #type="ngModel"
+          >
+            <option *ngFor="let type of types" [value]="type.value">
+              {{ type.label }}
+            </option>
+          </select>
+        </div>
+        <p class="help is-danger" *ngIf="type.invalid && (type.dirty || type.touched)">
+          Type is required.
+        </p>
       </div>
     </div>
 

@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from "@angular/router";
 import { PersonService } from "../../services/person.service";
 import {FormsModule} from "@angular/forms";
-import {NgIf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
+import {TeamService} from "../../services/team.service";
 
 @Component({
   selector: 'app-person',
@@ -10,6 +11,7 @@ import {NgIf} from "@angular/common";
   imports: [
     FormsModule,
     NgIf,
+    NgForOf,
   ],
   templateUrl: './person.component.html',
   styleUrl: './person.component.scss'
@@ -21,10 +23,36 @@ export class PersonComponent {
     birthdate: '',
     profilePhoto: null as File | null,
     teamId: null as number | null,
-    type: ''
+    type: 'PLAYER' as 'MANAGER' | 'PLAYER',
   };
 
-  constructor(private personService: PersonService, private router: Router) {}
+  teams = [] as any[];
+
+  types = [
+    { value: 'PLAYER', label: 'Player' },
+    { value: 'MANAGER', label: 'Manager' }
+  ];
+
+  constructor(
+    private personService: PersonService,
+    private teamService: TeamService,
+    private router: Router,
+  ) {}
+
+  ngOnInit() {
+    this.loadTeams();
+  }
+
+  loadTeams() {
+    this.teamService.getTeams().subscribe({
+      next: (data) => {
+        this.teams = data;
+      },
+      error: (error) => {
+        console.error('Error loading teams', error);
+      }
+    });
+  }
 
   onSubmit() {
     const formData = new FormData();
