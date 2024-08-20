@@ -38,6 +38,8 @@ export class LoginComponent {
     this.userService.login(this.loginForm.value).subscribe({
       next: (response) => {
         console.log('User logged in successfully', response);
+        const token = response.token; // Adjust according to your API response structure
+        localStorage.setItem('authToken', token);
         this.router.navigate(['/dashboard']);
       },
       error: (error) => {
