@@ -1,0 +1,101 @@
+<div class="container">
+  <h1 class="title">Manage Person</h1>
+  <form (ngSubmit)="onSubmit()" #personForm="ngForm">
+    <div class="field">
+      <label class="label" for="firstname">First Name</label>
+      <div class="control">
+        <input
+          class="input"
+          id="firstname"
+          name="firstname"
+          [(ngModel)]="person.firstname"
+          required
+          #firstname="ngModel"
+        />
+        <p class="help is-danger" *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
+          First name is required.
+        </p>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label" for="lastname">Last Name</label>
+      <div class="control">
+        <input
+          class="input"
+          id="lastname"
+          name="lastname"
+          [(ngModel)]="person.lastname"
+          required
+          #lastname="ngModel"
+        />
+        <p class="help is-danger" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+          Last name is required.
+        </p>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label" for="birthdate">Birthdate</label>
+      <div class="control">
+        <input
+          class="input"
+          type="date"
+          id="birthdate"
+          name="birthdate"
+          [(ngModel)]="person.birthdate"
+          required
+          #birthdate="ngModel"
+        />
+        <p class="help is-danger" *ngIf="birthdate.invalid && (birthdate.dirty || birthdate.touched)">
+          Birthdate is required.
+        </p>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label" for="profilePhoto">Profile Photo</label>
+      <div class="control">
+        <input
+          class="input"
+          type="file"
+          id="profilePhoto"
+          (change)="onFileChange($event)"
+        />
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label" for="teamId">Team ID</label>
+      <div class="control">
+        <input
+          class="input"
+          id="teamId"
+          name="teamId"
+          type="number"
+          [(ngModel)]="person.teamId"
+        />
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label" for="type">Type</label>
+      <div class="control">
+        <input
+          class="input"
+          id="type"
+          name="type"
+          [(ngModel)]="person.type"
+        />
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <button class="button is-primary" type="submit" [disabled]="personForm.invalid">
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
