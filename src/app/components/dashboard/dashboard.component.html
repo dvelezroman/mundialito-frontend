@@ -1,0 +1,16 @@
+<div class="container">
+  <h1 class="title">Dashboard</h1>
+  <div class="field">
+    <label class="label" for="team">Select Team</label>
+    <div class="control">
+      <div class="select">
+        <select id="team" (change)="onTeamChange($event)">
+          <option *ngFor="let team of teams" [value]="team.id">{{ team.name }}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Include PlayerCardsComponent here -->
+  <app-player-cards [teamId]="selectedTeamId"></app-player-cards>
+</div>

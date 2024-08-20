@@ -1,0 +1,99 @@
+<div class="container">
+  <h1 class="title">Manage Team</h1>
+  <form (ngSubmit)="onSubmit()" #teamForm="ngForm">
+    <div class="field">
+      <label class="label" for="name">Name</label>
+      <div class="control">
+        <input
+          class="input"
+          id="name"
+          name="name"
+          [(ngModel)]="team.name"
+          required
+          #name="ngModel"
+        />
+        <p class="help is-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+          Name is required.
+        </p>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label" for="logoImage">Logo Image URL</label>
+      <div class="control">
+        <input
+          class="input"
+          id="logoImage"
+          name="logoImage"
+          [(ngModel)]="team.logoImage"
+        />
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label" for="country">Country</label>
+      <div class="control">
+        <input
+          class="input"
+          id="country"
+          name="country"
+          [(ngModel)]="team.country"
+          required
+          #country="ngModel"
+        />
+        <p class="help is-danger" *ngIf="country.invalid && (country.dirty || country.touched)">
+          Country is required.
+        </p>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label" for="city">City</label>
+      <div class="control">
+        <input
+          class="input"
+          id="city"
+          name="city"
+          [(ngModel)]="team.city"
+          required
+          #city="ngModel"
+        />
+        <p class="help is-danger" *ngIf="city.invalid && (city.dirty || city.touched)">
+          City is required.
+        </p>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label" for="managerId">Manager</label>
+      <div class="control">
+        <div class="select">
+          <select
+            id="managerId"
+            name="managerId"
+            [(ngModel)]="team.managerId"
+            required
+            #managerId="ngModel"
+          >
+            <option value="" disabled>Select a manager</option>
+            <option *ngFor="let person of people" [value]="person.id">
+              {{ person.firstname }} {{ person.lastname }}
+            </option>
+          </select>
+        </div>
+        <p class="help is-danger" *ngIf="managerId.invalid && (managerId.dirty || managerId.touched)">
+          Manager is required.
+        </p>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control">
+        <button class="button is-primary" type="submit" [disabled]="teamForm.invalid">
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
