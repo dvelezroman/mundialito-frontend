@@ -25,7 +25,9 @@ export class LoginComponent {
       next: (response) => {
         console.log('User logged in successfully', response);
         // Handle successful login (e.g., store token, redirect to dashboard)
-        this.router.navigate(['/dashboard']);
+        const token = response.token; // Adjust according to your API response structure
+        localStorage.setItem('authToken', token);
+        this.router.navigate(['/dashboard']); // Redirect after login
       },
       error: (error) => {
         console.error('Error logging in', error);
