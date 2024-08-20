@@ -29,19 +29,20 @@ export class RegisterComponent {
                 });
               }
 
-                register() {
-                  if (this.registerForm.valid) {
-                    this.userService.register(this.registerForm.value).subscribe({
-                      next: (response) => {
-                        console.log('User registered successfully', response);
-                        this.router.navigate(['/']);
-                      },
-                      error: (error) => {
-                        console.error('Error registering user', error);
-                      }
-                    });
-                  } else {
-                    this.registerForm.markAllAsTouched();
-                  }
+              register() {
+                if (this.registerForm.invalid) {
+                  this.registerForm.markAllAsTouched(); 
+                  return;
                 }
+              
+                this.userService.register(this.registerForm.value).subscribe({
+                  next: (response) => {
+                    console.log('User registered successfully', response);
+                    this.router.navigate(['/']);
+                  },
+                  error: (error) => {
+                    console.error('Error registering user', error);
+                  }
+                });
+              }
 }

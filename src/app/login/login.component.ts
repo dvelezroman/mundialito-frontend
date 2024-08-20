@@ -32,7 +32,7 @@ export class LoginComponent {
 
   login() {
     if (this.loginForm.invalid) {
-      console.log('hola')
+      this.loginForm.markAllAsTouched(); 
       return;
     }
     this.userService.login(this.loginForm.value).subscribe({
