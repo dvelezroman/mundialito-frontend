@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-import {NgIf} from "@angular/common";
+import {Router, RouterModule} from "@angular/router";
+import {CommonModule, NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [
-    NgIf
+    CommonModule,
+    RouterModule
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'

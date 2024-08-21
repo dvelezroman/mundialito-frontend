@@ -1,0 +1,381 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  background: url('/assets/fondo dashboard pantalla big 3.png'); // Agrega la imagen como fondo
+  background-size: cover; // Asegura que la imagen cubra toda el área
+  background-position: center; // Centra la imagen de fondo
+  background-repeat: no-repeat; // Evita que la imagen se repita
+}
+  
+  .title {
+    color: #2f51b7;
+    font-size: 3em;
+    margin-top: 1rem;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .dashboard-container {
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .team-select-card {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    width: 100%;
+    height: 200px; 
+    max-width: 1000px; // Aumenta el ancho máximo para la tarjeta
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: auto; // Centra la tarjeta horizontalmente
+    margin-right: auto; // Centra la tarjeta horizontalmente
+  }
+  
+  .content {
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap;
+  }
+  
+  .select-block {
+    width: 100%; 
+    padding-top: 10px;
+    display: flex; // Utiliza Flexbox para organizar el contenido
+    flex-direction: column;
+    justify-content: center; // Centra verticalmente el contenido dentro del bloque
+    align-items: center;
+    height: 70%; // Asegura que el bloque ocupe toda la altura de la tarjeta
+  }
+  
+  .label, .select select {
+    margin: 0 auto; // Centra horizontalmente si es necesario
+  }
+
+  .label {
+    color: #000000; // Color negro para el texto del label
+    font-weight: 500; // Grosor del texto
+    font-size: 1.5rem; // Mantiene el tamaño de la fuente
+    margin-bottom: 10px;
+    text-align: center; // Centra el texto del label
+    display: block; // Asegura que el label se comporte como un bloque completo
+    width: 100%; // Asegura que ocupe todo el ancho de la tarjeta
+  }
+
+  .select select {
+    background-color: #dfe0e0;
+    border: none;
+    color: #727272;
+    padding: 3px 12px; // Asegura espacio interno suficiente
+    padding-right: 40px; // Añade espacio a la derecha para la flecha
+    border-radius: 4px;
+    width: 500px;
+    font-size: 1.2em;
+    height: 40px;
+    line-height: 20px; // Alinea el texto verticalmente
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  .select {
+    position: relative; // Necesario para posicionar la flecha con respecto al select
+    width: 100%;
+  }
+
+  .select::after {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 50%; // Centra la flecha verticalmente
+    transform: translateY(-50%); // Asegura que la flecha esté centrada
+    pointer-events: none;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #ffffff; // Flecha blanca generada con CSS
+    width: 0;
+    height: 0;
+  }
+  
+  .button-block {
+    width: 50%;
+    display: flex;
+    margin-top: .5rem;
+    margin-right: 1.5rem;
+    flex-direction: column; // Cambia la dirección a fila
+    margin: auto; // Distribuye el espacio entre los botones
+    align-items: center; // Centra verticalmente los botones dentro del contenedor
+    gap: 15px;
+}
+  
+  .button-block .btn {
+    padding: 12px 25px; // Aumenta el padding para dar más espacio a los botones
+    background-color: #1e6bbd;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 5px; // Reduce la separación entre los botones
+  }
+  
+  
+  .button-block .btn:hover {
+    background-color: #286b34;
+  }
+  
+  @media (max-width: 992px) {
+
+    
+    .hero {
+      padding: 15px; // Reduce el padding general
+    }
+  
+    .title {
+      font-size: 2.2em; // Reduce el tamaño de la fuente del título
+      margin-bottom: 15px; // Reduce el espacio inferior del título
+    }
+  
+    .dashboard-container {
+      width: 100%;
+      margin-top: 15px; // Reduce el espacio superior
+    }
+  
+    .team-select-card {
+      height: 180px; // Reduce la altura de la tarjeta
+      max-width: 90%; // Reduce el ancho máximo de la tarjeta
+      padding: 15px; // Reduce el padding interno
+    }
+  
+    .select-block {
+      width: 70%; // Reduce el ancho del bloque de selección
+      height: 65%; // Ajusta la altura del bloque de selección
+    }
+
+    .select {
+        width: 100%;
+        margin: auto;
+      }
+  
+    .select select {
+      width: 480px; // Reduce el ancho del select
+      font-size: 1.1em; // Reduce el tamaño de la fuente del select
+      height: 35px; // Reduce la altura del select
+      padding: 5px 10px; // Ajusta el padding del select
+      margin-left: 35px;
+    }
+  
+    .button-block {
+        width: 65%; // Mantiene el tamaño del bloque de botones
+        margin: auto;
+        margin-left: 55px;
+        flex-direction: column;
+      
+        .btn {
+ // Reduce ligeramente el padding de los botones
+          font-size: 0.9em; // Reduce el tamaño de la fuente en los botones
+        }
+      
+        .add-person {
+          padding: 10px 15px;
+          font-size: .9em; // Ajusta el tamaño de la fuente del botón "Agregar Jugador"
+        }
+        
+        .view-players {
+          padding: 10px 15px;
+          font-size: 0.9em; // Mantiene el tamaño de la fuente en "Ver Jugadores"
+          margin-bottom: 0; // Elimina el margen inferior del último botón
+        }
+      }
+
+    
+  }
+
+  @media (max-width: 768px) {
+
+    .dashboard-container {
+        width: 100%;
+        margin-top: 30px; // Reduce el espacio superior
+      }
+
+    .team-select-card {
+        height: auto; // Permite que la tarjeta ajuste su altura automáticamente
+        padding: 20px; // Aumenta el padding para que haya más espacio alrededor del contenido
+        max-width: 90%; // Ajusta el ancho máximo de la tarjeta para pantallas pequeñas
+        box-sizing: border-box; // Asegura que el padding se incluya en el ancho y la altura
+      }
+    
+    .content {
+      display: flex;
+      flex-direction: column; // Coloca el select y los botones en columna
+      align-items: center; // Centra el contenido horizontalmente
+
+    }
+
+    .label {
+        font-size: 1.2rem; // Mantiene el tamaño de la fuente
+        margin-bottom: 15px;
+      }
+  
+    .select-block, .button-block {
+      width: 100%; // Ocupa todo el ancho disponible
+      margin-bottom: 20px; // Añade margen inferior para separar los elementos
+      padding: 7px;
+    }
+  
+    .button-block {
+      display: flex;
+      flex-direction: row; // Coloca los botones en columna
+      align-items: center; // Centra los botones horizontalmente
+      margin-right: 0; // Elimina el margen derecho
+      margin: auto;
+      margin-left: 6%;
+    }
+  
+    .button-block .btn {
+      width: 40%; // Ajusta el ancho de los botones para que no ocupen todo el ancho
+      margin-bottom: 10px; // Añade un poco de espacio entre los botones
+    }
+  
+    .select select {
+      width: 350px; // Ajusta el ancho del select para que no ocupe todo el ancho
+      font-size: 1em; // Ajusta el tamaño de la fuente del select
+      margin: auto;
+      padding: 0px 15px; // Aumenta el padding para mejor usabilidad en pantallas pequeñas
+    }
+  }
+  
+  @media (max-width: 490px) {
+
+    .hero {
+
+      background: url('/assets/fondo dashboard movil.png'); // Agrega la imagen como fondo
+      background-size: cover; // Asegura que la imagen cubra toda el área
+      background-position: center; // Centra la imagen de fondo
+      background-repeat: no-repeat; // Evita que la imagen se repita
+    }
+    
+
+    .team-select-card {
+      height: auto; // Permite que la tarjeta ajuste su altura automáticamente
+      padding: 15px; // Reduce el padding para ahorrar espacio
+      max-width: 95%; // Ajusta el ancho máximo de la tarjeta para pantallas pequeñas
+      box-sizing: border-box; // Asegura que el padding se incluya en el ancho y la altura
+    }
+    
+    .content {
+      display: flex;
+      flex-direction: column; // Coloca el select y los botones en columna
+      align-items: center; // Centra el contenido horizontalmente
+    }
+  
+    .label {
+      font-size: 1rem; // Reduce el tamaño de la fuente para móviles
+      margin-bottom: 15px; // Reduce el margen inferior
+    }
+  
+    .select-block, .button-block {
+      width: 60%; // Ocupa todo el ancho disponible
+      margin-bottom: 15px; // Reduce el margen inferior para ahorrar espacio
+      padding: 10px; // Reduce el padding para ahorrar espacio
+    }
+  
+    .button-block {
+      flex-direction: column; // Coloca los botones en columna
+      align-items: center; // Centra los botones horizontalmente
+      margin-right: 0; // Elimina el margen derecho
+      margin: auto;
+    }
+  
+    .button-block .btn {
+      width: 90%; // Ajusta el ancho de los botones para que se adapten al móvil
+      font-size: 0.9em; // Reduce el tamaño de la fuente en los botones
+      margin-bottom: 8px; // Reduce el espacio entre los botones
+    }
+  
+    .select select {
+      width: 280px; // Reduce el ancho del select para que se adapte al móvil
+      font-size: 0.9em; // Reduce el tamaño de la fuente del select
+      padding: 5px 10px; // Reduce el padding para mejor usabilidad en pantallas pequeñas
+    }
+  }
+
+
+
+  /*MODAL STILOS*/
+  .modal.is-active {
+    display: block;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: transparent; /* Aumenta la transparencia para ver más detrás */
+    z-index: 1000;
+  
+    .modal-card {
+      max-width: 500px;
+      margin: 50px auto;
+      background: #ffffff; /* Fondo blanco para la tarjeta del modal */
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(224, 224, 224, 0.2); /* Sombra sutil para darle profundidad */
+    }
+  
+    .modal-card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .delete {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  
+    .label {
+      color: #1976d2; /* Color azul para las etiquetas */
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: left; /* Alinea el label a la izquierda */
+      display: block; /* Asegura que el label ocupe toda la línea */
+    }
+  
+    .button.is-primary {
+      background-color: #00b8d4;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 20px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #0288d1; /* Azul más oscuro en hover */
+      }
+    }
+  }
+  
+  
+  
+  
+  
+  

@@ -1,16 +1,88 @@
-<div class="container">
-  <h1 class="title">Dashboard</h1>
-  <div class="field">
-    <label class="label" for="team">Select Team</label>
-    <div class="control">
-      <div class="select">
-        <select id="team" (change)="onTeamChange($event)">
-          <option *ngFor="let team of teams" [value]="team.id">{{ team.name }}</option>
-        </select>
+<div class="hero">
+  <h1 class="title">Equipos</h1>
+
+  <div class="dashboard-container">
+    <div class="team-select-card">
+      <div class="content">
+        <!-- Primer bloque: Input Select con su Label -->
+        <div class="select-block">
+          <div class="field">
+            <label class="label" for="team">Equipos Registrados</label>
+            <div class="control">
+              <div class="select">
+                <select id="team" (change)="onTeamChange($event)">
+                  <option value="" disabled selected>Seleccionar Equipo</option> <!-- Mensaje por defecto -->
+                  <option *ngFor="let team of teams" [value]="team.id">{{ team.name }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Segundo bloque: Botones -->
+        <div class="button-block">
+          <button class="btn add-person" (click)="openModal()">Agregar Jugador</button>
+          <button class="btn view-players">Ver Jugadores</button>
+        </div>
       </div>
     </div>
   </div>
-
-  <!-- Include PlayerCardsComponent here -->
-  <app-player-cards [teamId]="selectedTeamId"></app-player-cards>
 </div>
+
+
+<!-- Modal para agregar un jugador -->
+
+<div class="modal" [ngClass]="{'is-active': isModalOpen}">
+  <div class="modal-background" (click)="closeModal()"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Agregar Jugador</p>
+      <button class="delete" aria-label="close" (click)="closeModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      <form (submit)="submitForm()">
+        <div class="field">
+          <label class="label">Nombres</label>
+          <div class="control">
+            <input class="input" type="text" [(ngModel)]="personData.firstName" name="firstName" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Apellidos</label>
+          <div class="control">
+            <input class="input" type="text" [(ngModel)]="personData.lastName" name="lastName" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Cédula</label>
+          <div class="control">
+            <input class="input" type="text" [(ngModel)]="personData.cedula" name="cedula" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Edad</label>
+          <div class="control">
+            <input class="input" type="number" [(ngModel)]="personData.age" name="age" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Foto</label>
+          <div class="control">
+            <input class="input" type="file" (change)="onFileSelected($event)" name="photo" required>
+          </div>
+          <div class="image-preview" *ngIf="previewImageUrl">
+            <button type="button" class="button is-danger" (click)="removeSelectedImage()" style="margin-top: 10px;">Eliminar</button>
+            <img [src]="previewImageUrl" alt="Previsualización de la foto" style="max-width: 100%; margin-top: 10px;">
+          </div>
+        </div>
+
+        <button class="button is-primary" type="submit">Agregar</button>
+      </form>
+    </section>
+  </div>
+</div>
+
