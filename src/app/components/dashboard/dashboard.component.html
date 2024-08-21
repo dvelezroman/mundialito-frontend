@@ -4,14 +4,14 @@
   <div class="dashboard-container">
     <div class="team-select-card">
       <div class="content">
-        <!-- Primer bloque: Input Select con su Label -->
+
         <div class="select-block">
           <div class="field">
             <label class="label" for="team">Equipos Registrados</label>
             <div class="control">
               <div class="select">
                 <select id="team" (change)="onTeamChange($event)">
-                  <option value="" disabled selected>Seleccionar Equipo</option> <!-- Mensaje por defecto -->
+                  <option value="" disabled selected>Seleccionar Equipo</option> 
                   <option *ngFor="let team of teams" [value]="team.id">{{ team.name }}</option>
                 </select>
               </div>
