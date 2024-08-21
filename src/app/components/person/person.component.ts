@@ -19,6 +19,7 @@ import {TeamService} from "../../services/team.service";
 export class PersonComponent {
   person = {
     firstname: '',
+    personalId: '',
     lastname: '',
     birthdate: '',
     profilePhoto: null as File | null,

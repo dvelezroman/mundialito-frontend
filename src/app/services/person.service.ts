@@ -20,17 +20,17 @@ export class PersonService {
 
   // Create a new person
   createPerson(formData: FormData): Observable<any> {
-    return this.http.post(`${this.apiUrl}/create`, formData, { headers: this.getHeaders() });
+    return this.http.post(`${this.apiUrl}`, formData, { headers: this.getHeaders() });
   }
 
   // Update an existing person
   updatePerson(id: number, formData: FormData): Observable<any> {
-    return this.http.put(`${this.apiUrl}/update/${id}`, formData, { headers: this.getHeaders() });
+    return this.http.put(`${this.apiUrl}/${id}`, formData, { headers: this.getHeaders() });
   }
 
   // Delete a person
   deletePerson(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/delete/${id}`, { headers: this.getHeaders() });
+    return this.http.delete(`${this.apiUrl}/${id}`, { headers: this.getHeaders() });
   }
 
   // Get a list of people
