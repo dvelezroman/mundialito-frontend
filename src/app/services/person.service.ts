@@ -45,7 +45,7 @@ export class PersonService {
 
   // Get players by team ID
   getPlayersByTeam(teamId: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}?teamId=${teamId}`, { headers: this.getHeaders() });
+    return this.http.get<any[]>(`${this.apiUrl}/team/${teamId}`, { headers: this.getHeaders() });
   }
 }
 
