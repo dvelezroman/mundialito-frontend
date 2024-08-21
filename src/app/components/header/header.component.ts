@@ -7,7 +7,7 @@ import {CommonModule} from "@angular/common";
   standalone: true,
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'

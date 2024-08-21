@@ -33,7 +33,7 @@
 <!-- Modal para agregar un jugador -->
 
 <div class="modal" [ngClass]="{'is-active': isModalOpen}">
-  <div class="modal-background" (click)="closeModal()"></div>
+  <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">Agregar Jugador</p>
@@ -72,15 +72,21 @@
         <div class="field">
           <label class="label">Foto</label>
           <div class="control">
-            <input class="input" type="file" (change)="onFileSelected($event)" name="photo" required>
+            <div class="custom-file-input-wrapper">
+              <input class="input custom-file-input" type="file" (change)="onFileSelected($event)" name="photo" required>
+              <div class="overlay-text">Buscar Foto en el dispositivo</div>
+            </div>
           </div>
           <div class="image-preview" *ngIf="previewImageUrl">
-            <button type="button" class="button is-danger" (click)="removeSelectedImage()" style="margin-top: 10px;">Eliminar</button>
             <img [src]="previewImageUrl" alt="Previsualización de la foto" style="max-width: 100%; margin-top: 10px;">
+            <button type="button" class="button is-danger remove-button" (click)="removeSelectedImage()">Eliminar</button>
           </div>
         </div>
 
-        <button class="button is-primary" type="submit">Agregar</button>
+        <div class="buttons">
+          <button class="button is-primary" type="submit">Agregar</button>
+          <button type="button" class="button is-light" (click)="closeModal()">Cancelar</button>
+        </div>
       </form>
     </section>
   </div>

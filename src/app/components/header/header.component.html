@@ -1,10 +1,10 @@
 <header class="header">
   <div class="container">
-    <div [routerLink]="['/dashboard']" class="header-content">
-      <img src="/assets/logo mango 2.png" alt="Logo" class="header-logo">
+    <div  class="header-content">
+      <img src="/assets/logo mango 2.png" [routerLink]="['/dashboard']" alt="Logo" class="header-logo">
       <div class="header-buttons">
         <button *ngIf="!isLoggedIn" class="button is-primary" (click)="onLogin()">Iniciar Sesión</button>
-        <button *ngIf="isLoggedIn" class="button is-primary" (click)="onRegister()">Registrar</button>
+        <button *ngIf="!isLoggedIn" class="button is-primary" (click)="onRegister()">Registrar</button>
         <button *ngIf="isLoggedIn" class="button is-danger" (click)="onLogout()">Salir</button>
       </div>
     </div>

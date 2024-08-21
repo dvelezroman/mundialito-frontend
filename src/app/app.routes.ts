@@ -9,7 +9,6 @@ import {PlayerCardsComponent} from "./components/player-cards/player-cards.compo
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
