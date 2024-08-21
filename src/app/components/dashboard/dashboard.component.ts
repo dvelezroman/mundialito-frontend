@@ -92,6 +92,7 @@ export class DashboardComponent implements OnInit {
     this.personData.photo = null; 
   }
 
+
   submitForm() {
     if (this.selectedTeamId === null) {
       console.error('No se ha seleccionado un equipo.');
