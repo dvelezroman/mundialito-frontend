@@ -7,10 +7,9 @@ import {CommonModule, NgForOf, NgIf} from "@angular/common";
 
 export interface Team {
   name: string;
+  logoImage?: string;  // Opcional
   country: string;
   city: string;
-  managerId?: number | null;  
-  logoImage?: File | null;  
 }
 
 @Component({
@@ -28,8 +27,7 @@ export class TeamComponent implements OnInit {
     name: '',
     country: '',
     city: '',
-    managerId: null,  // Inicializado como null
-    logoImage: null   // Inicializado como null
+    logoImage: ''  // Inicializado como null
   };
 
   people = [] as any[];
@@ -65,44 +63,37 @@ export class TeamComponent implements OnInit {
       const reader = new FileReader();
       reader.onload = () => {
         this.previewLogoUrl = reader.result;
+        this.team.logoImage = reader.result as string;  // Convertimos la imagen a base64
       };
       reader.readAsDataURL(this.selectedLogoFile);
     }
   }
 
+
   removeLogo() {
     this.previewLogoUrl = null;
-    this.selectedLogoFile = null;  // Limpiamos el archivo seleccionado
+    this.selectedLogoFile = null;
+    this.team.logoImage = '';  // Limpiamos la imagen seleccionada
   }
 
 
-
   onSubmit() {
-    const formData = new FormData();
-    formData.append('name', this.team.name);
-    formData.append('country', this.team.country);
-    formData.append('city', this.team.city);
-  
-    // No incluimos managerId si es null o undefined
-    if (this.team.managerId !== null && this.team.managerId !== undefined) {
-      formData.append('managerId', this.team.managerId.toString());
+    // Como logoImage es opcional, lo enviamos solo si no está vacío
+    if (!this.team.logoImage) {
+      delete this.team.logoImage;
     }
-  
-    // No incluimos logoImage si no se seleccionó una imagen
-    if (this.selectedLogoFile) {
-      formData.append('logoImage', this.selectedLogoFile);
-    }
-  
-    this.teamService.createTeam(formData).subscribe({
+
+    this.teamService.createTeam(this.team).subscribe({
       next: () => {
         this.router.navigate(['/home']);
       },
       error: (error) => {
         console.error('Error creating team', error);
-        console.log('Server response:', error.error);  // Verifica qué información se está enviando
       }
     });
   }
+
+
 
   onCancel() {
     this.router.navigate(['/home']);

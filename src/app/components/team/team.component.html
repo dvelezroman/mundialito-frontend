@@ -56,27 +56,7 @@
             </div>
           </div>
   
-          <div class="field">
-            <label class="label" for="managerId">Capitán</label>
-            <div class="control">
-              <div class="select">
-                <select
-                  id="managerId"
-                  name="managerId"
-                  [(ngModel)]="team.managerId"
-                  #managerId="ngModel"
-                  >
-                  <option value="" disabled>Selecciona un capitán de equipo</option>
-                  <option *ngFor="let person of people" [value]="person.id">
-                    {{ person.firstname }} {{ person.lastname }}
-                  </option>
-                </select>
-              </div>
-              <p class="help is-danger" *ngIf="managerId.invalid && (managerId.dirty || managerId.touched)">
-                Capitán es requerido.
-              </p>
-            </div>
-          </div>
+          
         </div>
   
         <div class="logo-section">
