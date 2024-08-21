@@ -64,14 +64,6 @@
   visibility: hidden; 
 }
 
-.password-error {
-  font-size: 0.975rem;
-  margin-top: .1rem; 
-  position: absolute; 
-  color: #e74c3c;
-  left: 10px;
-}
-
 .help.is-danger.active {
   visibility: visible; 
 }
@@ -153,7 +145,6 @@
 }
 
 
-
 /*MEDIA QUERIES*/
 
 @media (max-width: 492px) {
@@ -174,7 +165,7 @@
   }
 
   .field {
-    margin-bottom: 2.2rem;
+    margin-bottom: 2rem;
   }
 
   .label {
@@ -185,13 +176,6 @@
 
   .help.is-danger {
     font-size: 0.875rem;
-    margin-top: 0.1rem;
-  }
-
-  .password-error {
-    font-size: 0.875rem;
-    margin-top: .3rem; 
-    line-height: 1.2;
   }
 
   .button.is-primary {

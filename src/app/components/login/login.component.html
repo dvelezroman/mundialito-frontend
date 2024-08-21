@@ -6,8 +6,8 @@
   </div>
   <div class="container">
     <div class="box">
-      <h1 class="title">Registrarse</h1>
-      <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <h1 class="title">Iniciar Sesión</h1>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
        
         <div class="field">
           <label class="label">Correo</label>
@@ -17,7 +17,7 @@
               <i class="fas fa-envelope"></i>
             </span>
           </div>
-          <p *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" 
+          <p *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" 
           class="help is-danger active">
          Correo es requerido.
        </p>
@@ -31,15 +31,15 @@
               <i class="fas fa-lock"></i>
             </span>
           </div>
-          <p *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" 
-             class=" password-error">
-            Contraseña es requerida y debe tener al menos 6 caracteres.
-          </p>
+          <p *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" 
+          class="help is-danger active">
+         Contraseña es requerida.
+       </p>
         </div>
 
         <div class="field">
           <div class="control">
-            <button class="button is-primary is-fullwidth" type="submit">Registrar</button>
+            <button class="button is-primary is-fullwidth" type="submit">Login</button>
           </div>
         </div>
       </form>
