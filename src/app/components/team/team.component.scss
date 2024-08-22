@@ -6,7 +6,6 @@ html, body {
     overflow-x: hidden; 
   }
   
-  /* El contenedor principal ocupa toda la pantalla */
 
   .full-screen-container {
     display: flex;
@@ -147,24 +146,24 @@ html, body {
 }
 
 .input:focus {
-    border-color: #00b8d4; /* Borde azul cuando el input está en foco */
-    outline: none; /* Elimina el borde predeterminado del navegador */
+    border-color: #00b8d4; 
+    outline: none; 
 }
 
   .input,
 .select select {
-    width: 100%; /* Hace que el select y los inputs ocupen todo el ancho disponible */
-    background-color: #e2e4e4;  /* Fondo gris claro para el select e inputs */
-    border: 1px solid #ccc; /* Añade un borde gris */
-    padding: 5px 10px; /* Espaciado interno para asegurar una apariencia consistente */
-    border-radius: 4px; /* Bordes redondeados para una apariencia suave */
-    box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+    width: 100%; 
+    background-color: #e2e4e4;  
+    border: 1px solid #ccc; 
+    padding: 5px 10px;
+    border-radius: 4px; 
+    box-sizing: border-box; 
     font-size: 1rem; /* Ajusta el tamaño de la fuente */
 }
 
 .select {
     position: relative;
-    width: 100%; /* Asegura que el contenedor del select ocupe todo el ancho disponible */
+    width: 100%;
 
     select {
         -webkit-appearance: none; /* Elimina la apariencia predeterminada del navegador en WebKit */
@@ -172,7 +171,7 @@ html, body {
         appearance: none; /* Elimina la apariencia predeterminada en navegadores modernos */
         background-color: #e2e4e4;  /* Fondo gris claro para el select */
         color: #6c6c6c; /* Asegura que el texto del select sea visible */
-        border: 1px solid #ccc; /* Añade un borde gris claro */
+        border: 1px solid #ccc; 
         padding: 5px 10px;
         border-radius: 4px;
         width: 100%;
@@ -181,33 +180,34 @@ html, body {
 
     select.ng-invalid.ng-touched {
         border-color: #e74c3c; /* Rojo para indicar error */
-        background-color: #fce4e4; /* Fondo ligeramente rojo */
+        background-color: #fce4e4; 
+
     }
 
     select option[value=""][disabled] {
-        color: #888; /* Color gris claro para la opción predeterminada */
+        color: #888; 
     }
 }
 
 
 .field {
-    position: relative; /* Permite que los elementos internos utilicen position: absolute; */
-    margin-bottom: 20px; /* Espacio entre los campos de entrada */
+    position: relative; 
+    margin-bottom: 20px; 
   }
   
   .help.is-danger {
-    position: absolute; /* Coloca el mensaje de error sobre los demás elementos */
-    bottom: -10px; /* Ajusta la posición del mensaje de error, debajo del input */
+    position: absolute; 
+    bottom: -10px; 
     left: 5px;
-    font-size: 0.9rem; /* Tamaño más pequeño para el texto de error */
-    color: #ff3860; /* Color rojo para el mensaje de error */
-    visibility: hidden; /* Oculta el mensaje de error por defecto */
+    font-size: 0.9rem; 
+    color: #ff3860; 
+    visibility: hidden; 
   }
   
   .input:invalid + .help.is-danger,
   .input:focus:invalid + .help.is-danger,
   .select select:invalid + .help.is-danger {
-    visibility: visible; /* Muestra el mensaje de error cuando el input es inválido */
+    visibility: visible; 
   }
   
   .button-section {

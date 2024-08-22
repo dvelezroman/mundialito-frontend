@@ -22,6 +22,7 @@
   
   .dashboard-container {
     width: 100%;
+    height: 600px;
     margin-top: 20px;
   }
   
@@ -491,6 +492,124 @@
 
 
 
+  /*estilos para la tarjeta del equipo*/
+
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido horizontalmente */
+    gap: 20px;
+    
+  }
+  
+  .team-info-card {
+
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(15px);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 25px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente el contenido */
+    align-items: center; /* Centra horizontalmente el contenido */
+    min-height: 250px; /* Altura mínima de la tarjeta */
+  }
+  .team-info-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .team-info-left {
+    flex: 1;
+    padding-right: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Asegura que el contenido y el botón estén separados */
+  }
+  
+  .team-info-right {
+    flex:1; /* Aumenta el espacio para la imagen */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 300px; /* Ajusta este valor para darle más espacio al logo */
+  }
+  
+  .team-info-card h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1b1717;
+    margin-bottom: 15px;
+  }
+  
+  .team-info-card p {
+    margin: 5px 0;
+    padding: 0;
+    text-align: left;
+    color: #000000;
+    font-size: 1.4rem; /* Aumenta el tamaño del texto general del párrafo */
+  }
+  
+  .team-info-card p strong {
+    font-size: 1.5rem;
+    margin-right: 5px;
+    color: #36393c; /* Cambia esto al color que prefieras */
+    font-weight: bold; /* Asegura que el texto esté en negrita */
+  }
+  
+  
+  .team-logo {
+    max-width: 70%;
+    height: 250px; /* Ajusta el tamaño del logo */
+    object-fit: contain; /* Asegura que el logo mantenga su proporción */
+  }
+
+  .edit-button-container {
+    margin-top: 20px; /* Aumenta el margen superior para bajar más el botón */
+    align-self: center;
+  }
+  
+  .button.is-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    font-size: 14px;
+   
+    transition: background-color 0.3s ease;
+  }
+  
+  .button.is-primary:hover {
+    background-color: #0056b3;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+  }
+  
+  .close-button:hover {
+    color: #160c0c;
+  }
+  
   
   
   

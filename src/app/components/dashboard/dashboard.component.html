@@ -11,7 +11,7 @@
             <div class="control">
               <div class="select">
                 <select id="team" (change)="onTeamChange($event)">
-                  <option value="" disabled selected>Seleccionar Equipo</option>
+                  <option value="" disabled selected>Seleccionar Equipo</option> 
                   <option *ngFor="let team of teams" [value]="team.id">{{ team.name }}</option>
                 </select>
               </div>
@@ -22,12 +22,37 @@
         <!-- Segundo bloque: Botones -->
         <div class="button-block">
           <button class="btn add-person" (click)="openModal()">Agregar Jugador</button>
-          <button class="btn view-players">Ver Jugadores</button>
+          <button class="btn view-players" (click)="cardsPlayers()">Ver Jugadores</button>
         </div>
       </div>
     </div>
+    
+    <!-- Nueva tarjeta para la información del equipo -->
+    <div class="team-info-card" *ngIf="selectedTeamData">
+      <button class="close-button" (click)="closeTeamCard()">×</button>
+      <div class="team-info-content">
+        <!-- Sección izquierda con nombre y datos -->
+        <div class="team-info-left">
+          <h2>{{ selectedTeamData.name }}</h2>
+          <p><strong>País:</strong> {{ selectedTeamData.country }}</p>
+          <p><strong>Ciudad:</strong> {{ selectedTeamData.city }}</p>
+        </div>
+        <!-- Sección derecha para el logo -->
+        <div class="team-info-right">
+          <!-- Aquí iría el logo del equipo -->
+          <img *ngIf="selectedTeamData.logoImage" [src]="selectedTeamData.logoImage" alt="Logo del equipo" class="team-logo">
+        </div>
+      </div>
+      <!-- Botón para editar información o cambiar la imagen -->
+      <div class="edit-button-container">
+        <button class="button is-primary">Editar Información</button>
+      </div>
+    </div>
+    
+    
   </div>
 </div>
+
 
 
 <!-- Modal para agregar un jugador -->
@@ -56,9 +81,9 @@
         </div>
 
         <div class="field">
-          <label class="label">Documento de Identificacion</label>
+          <label class="label">Documento de identificación</label>
           <div class="control">
-            <input class="input" type="text" [(ngModel)]="personData.personalId" name="personalId" required>
+            <input class="input" type="text" [(ngModel)]="personData.cedula" name="cedula" required>
           </div>
         </div>
 
@@ -70,7 +95,7 @@
         </div>
 
         <div class="field">
-          <label class="label" for="type">Type</label>
+          <label class="label" for="type">Tipo</label>
           <div class="control">
             <div class="select">
               <select
@@ -86,23 +111,21 @@
               </select>
             </div>
             <p class="help is-danger" *ngIf="type.invalid && (type.dirty || type.touched)">
-              Type is required.
+              Tipo es requerido.
             </p>
           </div>
         </div>
-
-
+        
         <div class="field">
           <label class="label">Foto</label>
           <div class="control">
             <div class="custom-file-input-wrapper">
-              <input class="input custom-file-input" type="file" (change)="onFileSelected($event)" name="profilePhoto" required>
+              <input class="input custom-file-input" type="file" (change)="onFileSelected($event)" name="photo" required>
               <div class="overlay-text">Buscar Foto en el dispositivo</div>
             </div>
           </div>
           <div class="image-preview" *ngIf="previewImageUrl">
-            <label>Preview:</label>
-            <img [src]="previewImageUrl" alt="Previsualización de la foto">
+            <img [src]="previewImageUrl" alt="Previsualización de la foto" style="max-width: 100%; margin-top: 10px;">
             <button type="button" class="button is-danger remove-button" (click)="removeSelectedImage()">Eliminar</button>
           </div>
         </div>

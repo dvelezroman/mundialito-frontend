@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {PlayerCardsComponent} from "../player-cards/player-cards.component";
 import {TeamService} from "../../services/team.service";
-import {CommonModule, NgForOf, NgOptimizedImage} from "@angular/common";
+import {CommonModule, NgForOf} from "@angular/common";
 import { PersonService } from '../../services/person.service';
 import { FormsModule } from '@angular/forms';
-import {Router} from "@angular/router";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,34 +13,39 @@ import {Router} from "@angular/router";
     PlayerCardsComponent,
     NgForOf,
     FormsModule,
-    CommonModule,
-    NgOptimizedImage
+    CommonModule
   ],
+  
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent implements OnInit {
-  teams = [] as any[];
-  selectedTeamId: string | null = null;
 
-  isModalOpen = false;
+  teams = [] as any[];
+  selectedTeamId: number | null = null;
+  selectedTeamData: any = null;
+
+  isModalOpen = false; 
   personData = {
     firstName: '',
     lastName: '',
-    personalId: '',
-    birthdate: '',
-    profilePhoto: undefined,
-    type: 'PLAYER' as 'MANAGER' | 'PLAYER',
+    cedula: '',
+    birthdate: '', 
+    photo: null,
+    type: 'PLAYER'
   };
-  types = [
-    { value: 'PLAYER', label: 'Player' },
-    { value: 'MANAGER', label: 'Manager' }
-  ];
   previewImageUrl: string | ArrayBuffer | null = null;
+
+  types = [
+    { label: 'Jugador', value: 'PLAYER' },
+    { label: 'Manager', value: 'MANAGER' }
+  ];
+
+  
 
   constructor(private teamService: TeamService,
               private personService: PersonService,
-              private router: Router,
+              private router: Router
   ) {}
 
   ngOnInit() {
@@ -60,7 +65,8 @@ export class DashboardComponent implements OnInit {
 
   onTeamChange(event: Event) {
     const target = event.target as HTMLSelectElement;
-    this.selectedTeamId = target.value;
+    this.selectedTeamId = parseInt(target.value, 10);
+
   }
 
   openModal() {
@@ -70,34 +76,44 @@ export class DashboardComponent implements OnInit {
   closeModal(fileInput?: HTMLInputElement) {
     this.isModalOpen = false;
     this.previewImageUrl = null;
-    this.personData.profilePhoto = undefined;
+    this.personData.photo = null; 
 
     this.personData.firstName = '';
     this.personData.lastName = '';
-    this.personData.personalId = '';
+    this.personData.cedula = '';
     this.personData.birthdate = '';
-
+    this.personData.type = 'PLAYER';
+  
     if (fileInput) {
-      fileInput.value = '';
+      fileInput.value = ''; 
     }
   }
 
   onFileSelected(event: any) {
     const file = event.target.files[0];
-    this.personData.profilePhoto = file;
+    this.personData.photo = file;
 
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
-        this.previewImageUrl = reader.result;
+        this.previewImageUrl = reader.result; 
       };
       reader.readAsDataURL(file);
     }
   }
 
+  closeTeamCard() {
+    this.selectedTeamData = null; 
+    this.selectedTeamId = null; 
+    const selectElement = document.getElementById('team') as HTMLSelectElement;
+    if (selectElement) {
+      selectElement.value = ''; 
+    }
+  }
+
   removeSelectedImage() {
-    this.previewImageUrl = null;
-    this.personData.profilePhoto = undefined;
+    this.previewImageUrl = null; 
+    this.personData.photo = null; 
   }
 
 
@@ -106,45 +122,37 @@ export class DashboardComponent implements OnInit {
       console.error('No se ha seleccionado un equipo.');
       return;
     }
+  
 
-    const formData = {
+    const personData = {
       firstname: this.personData.firstName,
       lastname: this.personData.lastName,
+      personalId: this.personData.cedula,
       birthdate: this.personData.birthdate,
-      teamId: +this.selectedTeamId,
-      type: this.personData.type,
-      personalId: this.personData.personalId,
-      profilePhoto: this.personData.profilePhoto,
+      teamId: this.selectedTeamId,
+      type: this.personData.type,  
+      profilePhoto: null  
     };
+  
 
-    // Handle file upload separately if needed
-    if (this.personData.profilePhoto) {
-      // Convert file to base64 or handle upload in a different way
-      const reader = new FileReader();
-      reader.onload = () => {
-        const base64ProfilePhoto = reader.result as string;
-        this.personService.createPerson({
-          ...formData,
-          profilePhoto: base64ProfilePhoto
-        }).subscribe({
-          next: () => this.router.navigate(['/home']),
-          error: (error) => {
-            console.error('Error creating person', error);
-            // Display user-friendly error message
-          }
-        });
-      };
-      reader.readAsDataURL(this.personData.profilePhoto);
-    } else {
-      this.personService.createPerson(formData).subscribe({
-        next: () => this.router.navigate(['/home']),
-        error: (error) => {
-          console.error('Error creating person', error);
-          // Display user-friendly error message
-        }
-      });
-    }
+    this.personService.createPerson(personData).subscribe({
+      next: (response) => {
+        console.log('Jugador agregado exitosamente', response);
+        this.closeModal();
+      },
+      error: (error) => {
+        console.error('Error al agregar jugador', error);
+      }
+    });
   }
+
+cardsPlayers() {
+  if (this.selectedTeamId !== null) {
+    this.router.navigate(['/player-cards', this.selectedTeamId]);
+  } else {
+    console.error('No team selected');
+  }
+}
   
 
 }

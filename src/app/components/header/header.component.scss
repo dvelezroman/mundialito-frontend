@@ -1,10 +1,10 @@
 .header {
-  position: relative; /* Elimina el fijado en la parte superior */
+  position: relative; 
   width: 100%;
-  background: linear-gradient(135deg,#2f5aa6, #3560b0, #2f5aa6); /* Fondo blanco semi-transparente */
-  backdrop-filter: blur(12px); /* Efecto de desenfoque en el fondo */
-  z-index: 1000; /* Asegura que el header esté por encima del contenido inmediato */
-  padding: 10px 0; /* Incrementa la altura del header */
+  background: linear-gradient(135deg,#2f5aa6, #3560b0, #2f5aa6); 
+  backdrop-filter: blur(12px); 
+  z-index: 1000; 
+  padding: 10px 0; 
   box-shadow: inset 0 -2px 5px rgba(255, 255, 255, 0.2), 0 1px 1px rgba(200, 200, 200, 0.25);
   .container {
     max-width: 100%;
@@ -13,13 +13,13 @@
 
   .header-content {
     display: flex;
-    justify-content: space-between; // Espacia entre el logo y los botones
+    justify-content: space-between; 
     align-items: center;
     gap: 10px;
   }
 
   .header-logo {
-    max-height: 80px; // Ajusta la altura máxima del logo
+    max-height: 80px; 
     margin-left: 2rem;
     margin-bottom: .4rem;
     margin-top: -1rem;
@@ -28,32 +28,32 @@
   .header-buttons {
     display: flex;
     gap: 10px;
-    margin-right: 40px; /* Espaciado con el margen derecho */
+    margin-right: 40px; 
   
     .button.is-primary {
-     background-color: rgb(93, 182, 93); // Azul cielo brillante
-      color: white; // Color del texto
-      border: none; // Sin bordes
-      border-radius: 7px; // Bordes ligeramente redondeados
-      padding: 0.75rem 1.5rem; // Espaciado interno aumentado
-      font-size: 16px; // Tamaño de fuente
-      transition: background 0.3s ease; // Transición suave
+     background-color: rgb(93, 182, 93); 
+     color: rgb(47, 46, 46); 
+      border: none; 
+      border-radius: 7px; 
+      padding: 0.75rem 1.5rem; 
+      font-size: 16px; 
+      transition: background 0.3s ease; 
   
       &:hover {
-        background-color: rgb(33, 156, 33); // Azul más oscuro en hover
+        background-color: rgb(33, 156, 33); 
       }
     }
     .button.is-danger {
-      background: linear-gradient(135deg,#ee6008, #f61418, #f3650c); // Rojo intenso
-      color: white; // Color de la letra blanco
-      border: none; // Sin bordes
-      border-radius: 7px; // Bordes ligeramente redondeados
-      padding: 0.75rem 1.5rem; // Espaciado interno aumentado
-      font-size: 16px; // Tamaño de fuente
-      transition: background 0.3s ease; // Transición suave
+      background: linear-gradient(135deg,#ee6008, #f61418, #f3650c); 
+      color: rgb(47, 46, 46); 
+      border: none; 
+      border-radius: 7px;
+      padding: 0.75rem 1.5rem;
+      font-size: 16px; 
+      transition: background 0.3s ease; 
   
       &:hover {
-        background: linear-gradient(135deg, #fa0b0f, #f46f1d); // Rojo más oscuro en hover
+        background: linear-gradient(135deg, #fa0b0f, #f46f1d); 
       }
     }
   }
@@ -61,25 +61,24 @@
 
 @media (max-width: 768px) {
   .header {
-    padding: 10px 0; // Reduce un poco el padding vertical
+    padding: 10px 0; 
     .header-content {
-      justify-content: space-between; // Mantiene la disposición en fila
-      align-items: center; // Asegura que los elementos se mantengan centrados verticalmente
+      justify-content: space-between; 
+      align-items: center; 
     }
 
     .header-logo {
-      max-height: 60px; // Reduce la altura máxima del logo para pantallas medianas
-      margin-left: .1rem; // Reduce un poco el margen izquierdo para ahorrar espacio
+      max-height: 60px; 
+      margin-left: .1rem; 
     }
 
     .header-buttons {
-      gap: 8px; // Reduce el espacio entre los botones
-      margin-right: 5px; // Reduce el margen derecho para centrar mejor los botones
+      gap: 8px; 
+      margin-right: 5px; 
 
       .button.is-primary,
       .button.is-danger {
-        padding: 0.6rem 1rem; // Reduce el padding interno de los botones
-        font-size: 12px; // Disminuye el tamaño de la fuente de los botones
+        padding: 0.6rem 1rem; 
       }
     }
   }
@@ -87,10 +86,10 @@
 
 @media (max-width: 490px) {
   .header {
-    padding: 15px 0; // Reduce aún más el padding vertical
+    padding: 15px 0; 
     .header-content {
-      justify-content: flex-end; // Alinea el contenido hacia el margen derecho
-      align-items: center; // Asegura que los elementos se mantengan centrados verticalmente
+      justify-content: flex-end; 
+      align-items: center; 
     }
 
     .header-logo {
@@ -98,13 +97,13 @@
     }
 
     .header-buttons {
-      gap: 12px; // Reduce más el espacio entre los botones
-      margin-right: 3px; // Reduce más el margen derecho para centrar mejor los botones
+      gap: 12px; 
+      margin-right: 3px; 
 
       .button.is-primary,
       .button.is-danger {
-        padding: 0.5rem 0.8rem; // Reduce más el padding interno de los botones
-        font-size: 12px; // Disminuye aún más el tamaño de la fuente de los botones
+        padding: 0.5rem 0.8rem; 
+        font-size: 12px;
       }
     }
   }

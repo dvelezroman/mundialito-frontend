@@ -3,6 +3,7 @@
     <div  class="header-content">
       <img src="/assets/logo mango 2.png" [routerLink]="['/dashboard']" alt="Logo" class="header-logo">
       <div class="header-buttons">
+        <button *ngIf="isLoggedIn" class="button is-light" [routerLink]="['/teams']">Registrar Equipo</button>
         <button *ngIf="!isLoggedIn" class="button is-primary" (click)="onLogin()">Iniciar Sesión</button>
         <button *ngIf="isLoggedIn" class="button is-primary" (click)="onRegister()">Registrar</button>
         <button *ngIf="isLoggedIn" class="button is-danger" (click)="onLogout()">Salir</button>
