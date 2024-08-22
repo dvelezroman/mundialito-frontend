@@ -11,7 +11,7 @@
             <div class="control">
               <div class="select">
                 <select id="team" (change)="onTeamChange($event)">
-                  <option value="" disabled selected>Seleccionar Equipo</option> 
+                  <option value="" disabled selected>Seleccionar Equipo</option>
                   <option *ngFor="let team of teams" [value]="team.id">{{ team.name }}</option>
                 </select>
               </div>
@@ -26,7 +26,7 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Nueva tarjeta para la información del equipo -->
     <div class="team-info-card" *ngIf="selectedTeamData">
       <button class="close-button" (click)="closeTeamCard()">×</button>
@@ -48,11 +48,10 @@
         <button class="button is-primary">Editar Información</button>
       </div>
     </div>
-    
-    
+
+
   </div>
 </div>
-
 
 
 <!-- Modal para agregar un jugador -->
@@ -69,21 +68,21 @@
         <div class="field">
           <label class="label">Nombres</label>
           <div class="control">
-            <input class="input" type="text" [(ngModel)]="personData.firstName" name="firstName" required>
+            <input class="input" type="text" [(ngModel)]="personData.firstname" name="firstName" required>
           </div>
         </div>
 
         <div class="field">
           <label class="label">Apellidos</label>
           <div class="control">
-            <input class="input" type="text" [(ngModel)]="personData.lastName" name="lastName" required>
+            <input class="input" type="text" [(ngModel)]="personData.lastname" name="lastName" required>
           </div>
         </div>
 
         <div class="field">
-          <label class="label">Documento de identificación</label>
+          <label class="label">Documento de Identificacion</label>
           <div class="control">
-            <input class="input" type="text" [(ngModel)]="personData.cedula" name="cedula" required>
+            <input class="input" type="text" [(ngModel)]="personData.personalId" name="personalId" required>
           </div>
         </div>
 
@@ -115,17 +114,18 @@
             </p>
           </div>
         </div>
-        
+
         <div class="field">
           <label class="label">Foto</label>
           <div class="control">
             <div class="custom-file-input-wrapper">
-              <input class="input custom-file-input" type="file" (change)="onFileSelected($event)" name="photo" required>
+              <input class="input custom-file-input" type="file" (change)="onFileSelected($event)" name="profilePhotoFile" required>
               <div class="overlay-text">Buscar Foto en el dispositivo</div>
             </div>
           </div>
           <div class="image-preview" *ngIf="previewImageUrl">
-            <img [src]="previewImageUrl" alt="Previsualización de la foto" style="max-width: 100%; margin-top: 10px;">
+            <label>Preview:</label>
+            <img [src]="previewImageUrl" alt="Previsualización de la foto">
             <button type="button" class="button is-danger remove-button" (click)="removeSelectedImage()">Eliminar</button>
           </div>
         </div>

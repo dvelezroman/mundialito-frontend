@@ -19,10 +19,9 @@ export class PersonService {
   }
 
   // Create a new person
-  createPerson(personData: any): Observable<any> {
-  const headers = this.getHeaders().set('Content-Type', 'application/json');
-  return this.http.post(`${this.apiUrl}/create`, personData, { headers });
-}
+  createPerson(formData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}`, formData, { headers: this.getHeaders() });
+  }
 
   // Update an existing person
   updatePerson(id: number, formData: FormData): Observable<any> {
