@@ -11,7 +11,7 @@
             <div class="control">
               <div class="select">
                 <select id="team" (change)="onTeamChange($event)">
-                  <option value="" disabled selected>Seleccionar Equipo</option> 
+                  <option value="" disabled selected>Seleccionar Equipo</option>
                   <option *ngFor="let team of teams" [value]="team.id">{{ team.name }}</option>
                 </select>
               </div>
@@ -58,14 +58,36 @@
         <div class="field">
           <label class="label">Cédula</label>
           <div class="control">
-            <input class="input" type="text" [(ngModel)]="personData.cedula" name="cedula" required>
+            <input class="input" type="text" [(ngModel)]="personData.personalId" name="cedula" required>
           </div>
         </div>
 
         <div class="field">
-          <label class="label">Edad</label>
+          <label class="label">Fecha de Nacimiento</label>
           <div class="control">
-            <input class="input" type="number" [(ngModel)]="personData.age" name="age" required>
+            <input class="input" type="date" [(ngModel)]="personData.birthdate" name="birthdate" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label" for="type">Type</label>
+          <div class="control">
+            <div class="select">
+              <select
+                id="type"
+                name="type"
+                [(ngModel)]="personData.type"
+                required
+                #type="ngModel"
+              >
+                <option *ngFor="let type of types" [value]="type.value">
+                  {{ type.label }}
+                </option>
+              </select>
+            </div>
+            <p class="help is-danger" *ngIf="type.invalid && (type.dirty || type.touched)">
+              Type is required.
+            </p>
           </div>
         </div>
 
@@ -73,12 +95,13 @@
           <label class="label">Foto</label>
           <div class="control">
             <div class="custom-file-input-wrapper">
-              <input class="input custom-file-input" type="file" (change)="onFileSelected($event)" name="photo" required>
+              <input class="input custom-file-input" type="file" (change)="onFileSelected($event)" name="profilePhoto" required>
               <div class="overlay-text">Buscar Foto en el dispositivo</div>
             </div>
           </div>
           <div class="image-preview" *ngIf="previewImageUrl">
-            <img [src]="previewImageUrl" alt="Previsualización de la foto" style="max-width: 100%; margin-top: 10px;">
+            <label>Preview:</label>
+            <img [src]="previewImageUrl" alt="Previsualización de la foto">
             <button type="button" class="button is-danger remove-button" (click)="removeSelectedImage()">Eliminar</button>
           </div>
         </div>

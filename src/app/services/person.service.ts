@@ -19,7 +19,14 @@ export class PersonService {
   }
 
   // Create a new person
-  createPerson(formData: FormData): Observable<any> {
+  createPerson(formData: {
+    firstname: string;
+    birthdate: string;
+    profilePhoto?: string;
+    teamId: string;
+    type: "MANAGER" | "PLAYER";
+    lastname: string
+  }): Observable<any> {
     return this.http.post(`${this.apiUrl}`, formData, { headers: this.getHeaders() });
   }
 

@@ -67,14 +67,14 @@ export class PersonComponent {
       formData.append('profilePhoto', this.person.profilePhoto);
     }
 
-    this.personService.createPerson(formData).subscribe({
-      next: () => {
-        this.router.navigate(['/home']);
-      },
-      error: (error) => {
-        console.error('Error creating person', error);
-      }
-    });
+    // this.personService.createPerson(formData).subscribe({
+    //   next: () => {
+    //     this.router.navigate(['/home']);
+    //   },
+    //   error: (error) => {
+    //     console.error('Error creating person', error);
+    //   }
+    // });
   }
 
   onFileChange(event: Event) {
