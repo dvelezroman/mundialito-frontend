@@ -12,10 +12,11 @@ export class AuthGuard implements CanActivate {
 
   canActivate(): boolean {
     const token = typeof window !== 'undefined' ? localStorage.getItem('authToken') : '';
+
     if (token) {
-      return true;
+      return true
     } else {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/home']); // Redirect to home if no token
       return false;
     }
   }

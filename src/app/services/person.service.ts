@@ -19,18 +19,18 @@ export class PersonService {
   }
 
   // Create a new person
-  createPerson(formData: FormData): Observable<any> {
-    return this.http.post(`${this.apiUrl}/create`, formData, { headers: this.getHeaders() });
+  createPerson(formData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}`, formData, { headers: this.getHeaders() });
   }
 
   // Update an existing person
   updatePerson(id: number, formData: FormData): Observable<any> {
-    return this.http.put(`${this.apiUrl}/update/${id}`, formData, { headers: this.getHeaders() });
+    return this.http.put(`${this.apiUrl}/${id}`, formData, { headers: this.getHeaders() });
   }
 
   // Delete a person
   deletePerson(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/delete/${id}`, { headers: this.getHeaders() });
+    return this.http.delete(`${this.apiUrl}/${id}`, { headers: this.getHeaders() });
   }
 
   // Get a list of people
@@ -45,7 +45,7 @@ export class PersonService {
 
   // Get players by team ID
   getPlayersByTeam(teamId: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}?teamId=${teamId}`, { headers: this.getHeaders() });
+    return this.http.get<any[]>(`${this.apiUrl}/team/${teamId}`, { headers: this.getHeaders() });
   }
 }
 

@@ -1,13 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, RouterModule} from "@angular/router";
-import {CommonModule, NgIf} from "@angular/common";
+import {CommonModule} from "@angular/common";
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
@@ -15,14 +16,22 @@ import {CommonModule, NgIf} from "@angular/common";
 export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+              private userService: UserService
+  ) {}
 
   ngOnInit() {
+    
+    this.userService.isLoggedIn$.subscribe(isLoggedIn => {
+      this.isLoggedIn = isLoggedIn;
+    });
+    
     this.checkLoginStatus();
+
   }
 
   checkLoginStatus() {
-    const token = typeof window !== 'undefined' ? localStorage.getItem('authToken') : '';
+    const token = this.userService['getToken']();
     this.isLoggedIn = !!token;
   }
 
@@ -35,10 +44,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogout() {
-    // Clear the token from localStorage
-    localStorage.removeItem('authToken');
-
-    // Redirect to login page or home
-    this.router.navigate(['/home']); // Adjust the route as needed
+    this.userService.logout(); // Llamamos al método logout del UserService
+    this.router.navigate(['/home']);
   }
 }
