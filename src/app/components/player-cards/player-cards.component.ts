@@ -19,7 +19,8 @@ export class PlayerCardsComponent implements OnInit {
   players = [] as any[];
 
   constructor(private peopleService: PersonService, 
-              private route: ActivatedRoute) {}
+              private route: ActivatedRoute,
+              private router: Router) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -42,4 +43,9 @@ export class PlayerCardsComponent implements OnInit {
       });
     }
   }
+
+  navigateToDashboard() {
+    this.router.navigate(['/dashboard']);
+  }
+
 }
