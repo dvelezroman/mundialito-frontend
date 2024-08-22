@@ -5,6 +5,8 @@ import {CommonModule, NgForOf, NgOptimizedImage} from "@angular/common";
 import { PersonService } from '../../services/person.service';
 import { FormsModule } from '@angular/forms';
 import {Router} from "@angular/router";
+import {environment} from "../../../environments/environment";
+import {S3Service} from "../../services/s3.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -25,11 +27,12 @@ export class DashboardComponent implements OnInit {
 
   isModalOpen = false;
   personData = {
-    firstName: '',
-    lastName: '',
+    firstname: '',
     personalId: '',
+    lastname: '',
     birthdate: '',
-    profilePhoto: undefined,
+    profilePhoto: null as File | null,
+    teamId: null as number | null,
     type: 'PLAYER' as 'MANAGER' | 'PLAYER',
   };
   types = [
@@ -38,9 +41,11 @@ export class DashboardComponent implements OnInit {
   ];
   previewImageUrl: string | ArrayBuffer | null = null;
 
-  constructor(private teamService: TeamService,
-              private personService: PersonService,
-              private router: Router,
+  constructor(
+    private s3Service: S3Service,
+    private teamService: TeamService,
+    private personService: PersonService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -70,12 +75,12 @@ export class DashboardComponent implements OnInit {
   closeModal(fileInput?: HTMLInputElement) {
     this.isModalOpen = false;
     this.previewImageUrl = null;
-    this.personData.profilePhoto = undefined;
-
-    this.personData.firstName = '';
-    this.personData.lastName = '';
+    this.personData.profilePhoto = null;
+    this.personData.firstname = '';
+    this.personData.lastname = '';
     this.personData.personalId = '';
     this.personData.birthdate = '';
+    this.selectedTeamId = null;
 
     if (fileInput) {
       fileInput.value = '';
@@ -97,7 +102,7 @@ export class DashboardComponent implements OnInit {
 
   removeSelectedImage() {
     this.previewImageUrl = null;
-    this.personData.profilePhoto = undefined;
+    this.personData.profilePhoto = null;
   }
 
 
@@ -108,39 +113,37 @@ export class DashboardComponent implements OnInit {
     }
 
     const formData = {
-      firstname: this.personData.firstName,
-      lastname: this.personData.lastName,
-      birthdate: this.personData.birthdate,
+      firstname: this.personData.firstname,
+      lastname: this.personData.lastname,
+      birthdate: new Date(this.personData.birthdate),
       teamId: +this.selectedTeamId,
       type: this.personData.type,
       personalId: this.personData.personalId,
-      profilePhoto: this.personData.profilePhoto,
-    };
+      profilePhoto: null as null | string,
+    }
 
-    // Handle file upload separately if needed
     if (this.personData.profilePhoto) {
-      // Convert file to base64 or handle upload in a different way
-      const reader = new FileReader();
-      reader.onload = () => {
-        const base64ProfilePhoto = reader.result as string;
-        this.personService.createPerson({
-          ...formData,
-          profilePhoto: base64ProfilePhoto
-        }).subscribe({
-          next: () => this.router.navigate(['/home']),
-          error: (error) => {
-            console.error('Error creating person', error);
-            // Display user-friendly error message
-          }
-        });
-      };
-      reader.readAsDataURL(this.personData.profilePhoto);
-    } else {
-      this.personService.createPerson(formData).subscribe({
-        next: () => this.router.navigate(['/home']),
-        error: (error) => {
-          console.error('Error creating person', error);
-          // Display user-friendly error message
+      const bucketName = environment.s3BucketName; // Ensure this is defined in your environment
+      const key = `players/${this.personData.profilePhoto.name}`;
+
+      this.s3Service.uploadFile(this.personData.profilePhoto, bucketName, key).subscribe({
+        next: () => {
+          const fileUrl = `https://${bucketName}.s3.${environment.aws_region}.amazonaws.com/${key}`;
+          formData.profilePhoto = fileUrl;
+          this.personService.createPerson(formData).subscribe({
+            next: () => {
+              console.log('Success: creating person');
+              this.isModalOpen = false;
+              this.router.navigate(['/dashboard']);
+            },
+            error: (error) => {
+              console.error('Error creating person', error);
+            }
+          });
+        },
+        error: (err) => {
+          console.error('Upload failed:', err);
+          // Handle upload failure (e.g., show an error message)
         }
       });
     }

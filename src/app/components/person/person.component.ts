@@ -4,6 +4,8 @@ import { PersonService } from "../../services/person.service";
 import {FormsModule} from "@angular/forms";
 import {NgForOf, NgIf} from "@angular/common";
 import {TeamService} from "../../services/team.service";
+import {environment} from "../../../environments/environment";
+import {S3Service} from "../../services/s3.service";
 
 @Component({
   selector: 'app-person',
@@ -35,6 +37,7 @@ export class PersonComponent {
   ];
 
   constructor(
+    private s3Service: S3Service,
     private personService: PersonService,
     private teamService: TeamService,
     private router: Router,
@@ -64,17 +67,29 @@ export class PersonComponent {
     formData.append('type', this.person.type);
 
     if (this.person.profilePhoto) {
-      formData.append('profilePhoto', this.person.profilePhoto);
-    }
+      const bucketName = environment.s3BucketName; // Ensure this is defined in your environment
+      const key = `players/${this.person.profilePhoto.name}`;
 
-    // this.personService.createPerson(formData).subscribe({
-    //   next: () => {
-    //     this.router.navigate(['/home']);
-    //   },
-    //   error: (error) => {
-    //     console.error('Error creating person', error);
-    //   }
-    // });
+      this.s3Service.uploadFile(this.person.profilePhoto, bucketName, key).subscribe({
+        next: (response) => {
+          const fileUrl = `https://${bucketName}.s3.${environment.aws_region}.amazonaws.com/${key}`;
+          formData.append('profilePhoto', fileUrl);
+          this.personService.createPerson(formData).subscribe({
+            next: () => {
+              console.error('Success: creating person');
+              this.router.navigate(['/dashboard']);
+            },
+            error: (error) => {
+              console.error('Error creating person', error);
+            }
+          });
+        },
+        error: (err) => {
+          console.error('Upload failed:', err);
+          // Handle upload failure (e.g., show an error message)
+        }
+      });
+    }
   }
 
   onFileChange(event: Event) {
