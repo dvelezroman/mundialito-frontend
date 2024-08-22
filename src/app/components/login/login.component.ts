@@ -37,15 +37,14 @@ export class LoginComponent {
     }
     this.userService.login(this.loginForm.value).subscribe({
       next: (response) => {
-        console.log('User logged in successfully', response);
-        // Handle successful login (e.g., store token, redirect to dashboard)
-        const token = response.token; // Adjust according to your API response structure
+        const token = response.token; 
         localStorage.setItem('authToken', token);
-        this.router.navigate(['/dashboard']); // Redirect after login
+        this.router.navigate(['/dashboard']); 
       },
       error: (error) => {
         console.error('Error logging in', error);
       }
     });
   }
+  
 }

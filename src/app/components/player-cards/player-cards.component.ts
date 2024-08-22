@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PersonService} from "../../services/person.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {DatePipe, NgForOf, NgOptimizedImage} from "@angular/common";
 
 @Component({
@@ -15,27 +15,37 @@ import {DatePipe, NgForOf, NgOptimizedImage} from "@angular/common";
   styleUrl: './player-cards.component.scss'
 })
 export class PlayerCardsComponent implements OnInit {
-  @Input() teamId: number | null = null;
+  teamId: number | null = null;
   players = [] as any[];
 
-  constructor(private peopleService: PersonService, private router: Router) {}
+  constructor(private peopleService: PersonService, 
+              private route: ActivatedRoute,
+              private router: Router) {}
 
   ngOnInit() {
-    if (this.teamId !== null) {
-      this.loadPlayers();
-    }
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('teamId');
+      this.teamId = id ? +id : null; 
+      this.loadPlayers(); 
+    });
   }
+  
 
   loadPlayers() {
-    if (this.teamId) {
+    if (this.teamId !== null) {
       this.peopleService.getPlayersByTeam(this.teamId).subscribe({
         next: (data) => {
-          this.players = data;
+          this.players = data; 
         },
         error: (error) => {
-          console.error('Error loading players', error);
+          console.error('Error loading players', error); 
         }
       });
     }
   }
+
+  navigateToDashboard() {
+    this.router.navigate(['/dashboard']);
+  }
+
 }

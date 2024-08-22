@@ -1,23 +1,28 @@
 <div class="container">
-  <h2 class="title">Players</h2>
+  <div class="back-button-container">
+    <button class="button is-primary back-button" (click)="navigateToDashboard()">
+      Volver a inicio
+    </button>
+  </div>
+
+  <h2 class="title">Jugadores Inscritos</h2>
   <div class="columns is-multiline">
     <div *ngFor="let player of players" class="column is-one-quarter">
       <div class="card">
+
+        <div class="image-container">
+          <img [src]="player.profilePhoto ? player.profilePhoto : 'assets/imagen player2.png'" alt="Profile Photo">
+        </div>
+
         <div class="card-content">
-          <div class="media">
-            <div class="media-left">
-              <figure class="image is-64x64">
-                <img ngSrc="player.profilePhoto || 'default-profile.jpg'" alt="Profile Photo" fill>
-              </figure>
-            </div>
-            <div class="media-content">
-              <p class="title is-4">{{ player.firstname }} {{ player.lastname }}</p>
-              <p class="subtitle is-6">{{ player.personalId }}</p>
-              <p class="subtitle is-6">{{ player.birthdate | date }}</p>
-              <p class="subtitle is-6">Type: {{ player.type }}</p>
-            </div>
+          <div class="media-content">
+            <p class="title is-4">{{ player.firstname }} {{ player.lastname }}</p>
+            <p class="subtitle is-6">{{ player.personalId }}</p>
+            <p class="subtitle is-6">{{ player.birthdate | date }}</p>
+            <p class="subtitle is-6">{{ player.type }}</p>
           </div>
         </div>
+
       </div>
     </div>
   </div>

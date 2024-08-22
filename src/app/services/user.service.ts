@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import {environment} from "../../environments/environment";
 
 @Injectable({
@@ -8,6 +8,9 @@ import {environment} from "../../environments/environment";
 })
 export class UserService {
   private apiUrl = `${environment.apiUrl}/users`;
+  
+  private isLoggedInSubject = new BehaviorSubject<boolean>(this.hasToken());
+  isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
   constructor(private http: HttpClient) {}
 
@@ -18,12 +21,38 @@ export class UserService {
     });
   }
 
+  private hasToken(): boolean {
+    return !!this.getToken();
+  }
+
+  private getToken(): string | null {
+    if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
+      return localStorage.getItem('authToken');
+    }
+    return null;
+  }
+
   register(user: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, user, { headers: this.getHeaders() });
   }
 
   login(credentials: any): Observable<{ token: string }> {
-    return this.http.post<{ token: string }>(`${this.apiUrl}/login`, credentials);
+    return this.http.post<{ token: string }>(`${this.apiUrl}/login`, credentials)
+      .pipe(
+        tap(response => {
+          if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
+            localStorage.setItem('authToken', response.token);
+            this.isLoggedInSubject.next(true); 
+          }
+        })
+      );
+  }
+
+  logout(): void {
+    if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
+      localStorage.removeItem('authToken');
+      this.isLoggedInSubject.next(false); 
+    }
   }
 
   update(id: number, user: any): Observable<any> {

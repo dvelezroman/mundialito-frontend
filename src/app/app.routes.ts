@@ -9,13 +9,12 @@ import {PlayerCardsComponent} from "./components/player-cards/player-cards.compo
 import {DashboardComponent} from "./components/dashboard/dashboard.component";
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'people', component: PersonComponent, canActivate: [AuthGuard] },
   { path: 'teams', component: TeamComponent, canActivate: [AuthGuard] },
-  { path: 'player-cards', component: PlayerCardsComponent, canActivate: [AuthGuard] },
+  { path: 'player-cards/:teamId', component: PlayerCardsComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '/home' } // Handle unknown routes
 ];
