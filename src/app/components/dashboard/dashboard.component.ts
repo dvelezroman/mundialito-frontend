@@ -111,8 +111,9 @@ export class DashboardComponent implements OnInit {
       firstname: this.personData.firstName,
       lastname: this.personData.lastName,
       birthdate: this.personData.birthdate,
-      teamId: this.selectedTeamId,
+      teamId: +this.selectedTeamId,
       type: this.personData.type,
+      personalId: this.personData.personalId,
       profilePhoto: this.personData.profilePhoto,
     };
 

@@ -23,7 +23,7 @@ export class PersonService {
     firstname: string;
     birthdate: string;
     profilePhoto?: string;
-    teamId: string;
+    teamId: number;
     type: "MANAGER" | "PLAYER";
     lastname: string
   }): Observable<any> {
