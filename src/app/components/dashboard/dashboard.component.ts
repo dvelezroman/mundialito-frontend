@@ -131,6 +131,7 @@ export class DashboardComponent implements OnInit {
 
 
   submitForm() {
+    console.log('hola');
     if (this.selectedTeamId === null) {
       console.error('No se ha seleccionado un equipo.');
       return;
