@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import {environment} from "../../environments/environment";
+import {Store} from "@ngrx/store";
+import {setAdminStatus, setLoggedInStatus} from "../store/user.action";
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +15,10 @@ export class UserService {
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
   isAdmin$ = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private store: Store,
+  ) {}
 
   private getHeaders() {
     const token = typeof window !== 'undefined' ? localStorage.getItem('authToken') : '';
@@ -37,14 +42,16 @@ export class UserService {
     return this.http.post(`${this.apiUrl}/register`, user, { headers: this.getHeaders() });
   }
 
-  login(credentials: any): Observable<{ token: string }> {
-    return this.http.post<{ token: string }>(`${this.apiUrl}/login`, credentials)
+  login(credentials: any): Observable<{ token: string, isAdmin: boolean }> {
+    return this.http.post<{ token: string, isAdmin: boolean }>(`${this.apiUrl}/login`, credentials)
       .pipe(
         tap(response => {
           if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
             localStorage.setItem('authToken', response.token);
             this.isLoggedInSubject.next(true);
             this.isAdmin$.next(true);
+            this.store.dispatch(setAdminStatus({ isAdmin: response.isAdmin }));
+            this.store.dispatch(setLoggedInStatus({ isLoggedIn: !!response.token }));
           }
         })
       );
