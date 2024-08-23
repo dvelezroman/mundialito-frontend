@@ -25,6 +25,10 @@ export interface Team {
   styleUrl: './team.component.scss'
 })
 export class TeamComponent implements OnInit {
+  toastMessage: string = '';
+  showSuccessToast: boolean = false;
+  showErrorToast: boolean = false;
+
   team: Team = {
     name: '',
     country: '',
@@ -94,6 +98,7 @@ export class TeamComponent implements OnInit {
           this.teamService.createTeam(formData).subscribe({
             next: () => {
               this.router.navigate(['/home']);
+
             },
             error: (error) => {
               console.error('Error creating team', error);
@@ -120,6 +125,22 @@ export class TeamComponent implements OnInit {
 
 
   onCancel() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/dashboard']);
+  }
+
+  howSuccessToast(message: string) {
+    this.toastMessage = message;
+    this.showSuccessToast = true;
+    setTimeout(() => {
+      this.showSuccessToast = false;
+    }, 2500); 
+  }
+  
+  howErrorToast(message: string) {
+    this.toastMessage = message;
+    this.showErrorToast = true;
+    setTimeout(() => {
+      this.showErrorToast = false;
+    }, 2500);
   }
 }

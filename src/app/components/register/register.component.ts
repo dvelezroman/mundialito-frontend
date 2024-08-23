@@ -17,7 +17,14 @@ import { CommonModule } from "@angular/common";
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
+
+
   registerForm: FormGroup;
+
+  toastMessage: string = '';
+  showSuccessToast: boolean = false;
+  showErrorToast: boolean = false;
+  
   constructor(private userService: UserService, 
               private router: Router,
               private formBuilder: FormBuilder) {
@@ -29,20 +36,37 @@ export class RegisterComponent {
                 });
               }
 
-              register() {
-                if (this.registerForm.invalid) {
-                  this.registerForm.markAllAsTouched(); 
-                  return;
-                }
+   register() {
+     if (this.registerForm.invalid) {
+        this.registerForm.markAllAsTouched(); 
+       return;
+      }
               
-                this.userService.register(this.registerForm.value).subscribe({
-                  next: (response) => {
-                    console.log('User registered successfully', response);
-                    this.router.navigate(['/']);
-                  },
-                  error: (error) => {
-                    console.error('Error registering user', error);
-                  }
-                });
-              }
+    this.userService.register(this.registerForm.value).subscribe({
+     next: (response) => {
+     this.howSuccessToast(' Registro exitoso.');
+     this.router.navigate(['/']);
+     },
+    error: (error) => {
+      this.howErrorToast('Hubo un error al momento de registrarse');
+     }
+   });
+             
+ }
+
+ howSuccessToast(message: string) {
+  this.toastMessage = message;
+  this.showSuccessToast = true;
+  setTimeout(() => {
+    this.showSuccessToast = false;
+  }, 1800); 
+}
+
+howErrorToast(message: string) {
+  this.toastMessage = message;
+  this.showErrorToast = true;
+  setTimeout(() => {
+    this.showErrorToast = false;
+  }, 1800);
+}
 }
