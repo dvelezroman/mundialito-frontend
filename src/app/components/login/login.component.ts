@@ -8,9 +8,9 @@ import { UserService } from '../../services/user.service';
   selector: 'app-login',
   standalone: true,
   imports: [
-    CommonModule, 
-    FormsModule, 
-    ReactiveFormsModule, 
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule
   ],
   templateUrl: './login.component.html',
@@ -18,9 +18,9 @@ import { UserService } from '../../services/user.service';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  
 
-  constructor(private userService: UserService, 
+
+  constructor(private userService: UserService,
               private router: Router,
               private formBuilder: FormBuilder) {
 
@@ -32,19 +32,19 @@ export class LoginComponent {
 
   login() {
     if (this.loginForm.invalid) {
-      this.loginForm.markAllAsTouched(); 
+      this.loginForm.markAllAsTouched();
       return;
     }
     this.userService.login(this.loginForm.value).subscribe({
       next: (response) => {
-        const token = response.token; 
-        localStorage.setItem('authToken', token);
-        this.router.navigate(['/dashboard']); 
+        // const token = response.token;
+        // localStorage.setItem('authToken', token);
+        this.router.navigate(['/dashboard']);
       },
       error: (error) => {
         console.error('Error logging in', error);
       }
     });
   }
-  
+
 }

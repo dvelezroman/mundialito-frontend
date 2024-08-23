@@ -15,17 +15,20 @@ import { UserService } from '../../services/user.service';
 })
 export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false;
+  isAdmin: boolean = false;
 
   constructor(private router: Router,
               private userService: UserService
   ) {}
 
   ngOnInit() {
-    
     this.userService.isLoggedIn$.subscribe(isLoggedIn => {
       this.isLoggedIn = isLoggedIn;
     });
-    
+    this.userService.isAdmin$.subscribe(isAdmin => {
+      this.isAdmin = isAdmin;
+    })
+
     this.checkLoginStatus();
 
   }
