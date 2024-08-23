@@ -91,4 +91,20 @@
     </form>
   </div>
 
+   <!--Toast-->
+   <div class="toast-container">
+    <div *ngIf="showSuccessToast" class="notification is-success toast">
+      <div class="toast-content">
+        <img src="/assets/pulgar arriba1.png" alt="Éxito" class="toast-icon">
+        <div class="toast-message">{{ toastMessage }}</div>
+      </div>
+    </div>
+    <div *ngIf="showErrorToast" class="notification is-danger toast">
+      <div class="toast-content">
+        <img src="/assets/pulgar abajo.png" alt="Error" class="toast-icon">
+        <div class="toast-message">{{ toastMessage }}</div>
+      </div>
+    </div>
+  </div>
+  
 </div>

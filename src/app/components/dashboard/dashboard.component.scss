@@ -5,11 +5,47 @@
   align-items: center;
   justify-content: flex-start;
   padding: 20px;
-  background: url('/assets/estadio fondo dashboard.png'); // Agrega la imagen como fondo
-  background-size: cover; // Asegura que la imagen cubra toda el área
-  background-position: center; // Centra la imagen de fondo
-  background-repeat: no-repeat; // Evita que la imagen se repita
+  background: url('/assets/estadio fondo dashboard.png'); 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
 }
+
+.toast-container {
+  position: fixed;
+  top: 30%; /* Ajusta este valor para mover hacia abajo el contenedor */
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centra horizontalmente y ajusta la posición vertical */
+  width: 100%;
+  max-width: 600px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* Espacio entre toasts si ambos se muestran */
+}
+
+.toast {
+  width: 90%; /* Aumenta el ancho del toast */
+  text-align: center;
+  opacity: 0.9;
+  color: white;
+  font-size: 1.55em; /* Aumenta el tamaño del texto */
+  padding: 15px; /* Aumenta el padding para un toast más grande */
+  border-radius: 8px; /* Agrega un poco de redondeo a las esquinas */
+}
+
+.toast-icon {
+  width: 70px; /* Ajusta el tamaño de la imagen según sea necesario */
+  height: auto;
+  margin-bottom: 0px; /* Espacio entre la imagen y el texto */
+}
+
+.toast-message {
+  margin-top: 10px;
+}
+
+
   
   .title {
     color: #2f51b7;

@@ -16,5 +16,5 @@ export const routes: Routes = [
   { path: 'teams', component: TeamComponent, canActivate: [AuthGuard] },
   { path: 'player-cards/:teamId', component: PlayerCardsComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: '/home' } // Handle unknown routes
+  { path: '**', redirectTo: '/dashboard' } // Handle unknown routes
 ];
