@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import { Store } from '@ngrx/store';
 import { RouterOutlet } from '@angular/router';
-import {HeaderComponent} from "./components/header/header.component";
+import { HeaderComponent } from "./components/header/header.component";
 
 @Component({
   selector: 'app-root',
@@ -10,5 +11,5 @@ import {HeaderComponent} from "./components/header/header.component";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'mundialito-frontend';
+  constructor(private store: Store) {}
 }
