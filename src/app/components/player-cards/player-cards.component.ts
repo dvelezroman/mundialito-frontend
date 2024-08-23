@@ -51,10 +51,9 @@ export class PlayerCardsComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       const id = params.get('teamId');
       this.teamId = id ? +id : null; 
+      
       this.loadPlayers(); 
-      if (this.playerToEdit) {
-        this.setPlayerToEdit(this.playerToEdit.id);
-      }
+
     });
   }
   
@@ -64,9 +63,7 @@ export class PlayerCardsComponent implements OnInit {
       this.peopleService.getPlayersByTeam(this.teamId).subscribe({
         next: (data) => {
           this.players = data; 
-          if (this.playerToEdit) {
-            this.setPlayerToEdit(this.playerToEdit.id);
-          }
+
         },
         error: (error) => {
           console.error('Error loading players', error); 

@@ -9,7 +9,13 @@
   }
 
 .container{
-  padding-top: 2rem;
+  padding-top: 1.75rem;
+}
+
+.back-button {
+  margin-top: -1rem;
+  font-size: 1rem; 
+  padding: 7px 8px; 
 }
   
 
@@ -20,6 +26,13 @@
     font-size: 4rem;
     margin-bottom: 4.5rem; 
 
+  }
+
+  .columns {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en nuevas filas */
+    margin: auto;
+    justify-content: center;
   }
 
   .card {
@@ -33,9 +46,11 @@
     align-items: center; 
     justify-content: flex-start; 
     height: auto;
+    min-width: 200px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2); 
   }
+
 
   .image-container {
     flex: 2; 
@@ -148,7 +163,7 @@
   .buttons {
     margin-top: 15px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     width: 100%;
   }
   
@@ -190,6 +205,7 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  padding: 20px;
 }
 
 /* Estilo para la tarjeta del modal */
@@ -240,7 +256,7 @@
   font-weight: 500;
   color: #333;
   margin-bottom: 0.2rem;
-  margin-left: 5px;
+  margin-left: 8px;
   display: block;
 }
 
@@ -259,30 +275,31 @@
 }
 
 /* Estilo para los campos del formulario */
+
 .field {
   margin-bottom: 1rem;
 }
 
 .input {
-  background-color: #f0f0f0; /* Gris claro */
-  border: 1px solid #ddd;
+  background-color: #f0f0f0; 
+  border: 1px solid #bcbbbb;
   border-radius: 4px;
   padding: 0.5rem;
   font-size: 1.2rem;
-  color: #000; /* Color negro para el texto dentro del input */
+  color: #000; 
 }
 
 .input:focus {
-  background-color: #e0e0e0; /* Un gris ligeramente más oscuro cuando está en foco */
+  background-color: #e0e0e0; 
   border-color: #3273dc;
   box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
-  color: #000; /* Asegura que el texto sea negro incluso cuando el input está enfocado */
+  color: #000; 
 }
 
 .input::placeholder {
-  color: #747474; /* Color gris para el placeholder */
-  font-style: italic; /* Estilo en cursiva para el placeholder */
-  opacity: 1; /* Asegura que el placeholder sea completamente visible */
+  color: #747474; 
+  font-style: italic; 
+  opacity: 1; 
 }
 
 /* Estilo específico para el input de fecha (birthdate) */
@@ -340,20 +357,20 @@ button.cancelar{
   transform: translate(-50%, -50%);
   width: 100%;
   max-width: 500px;
-  z-index: 1000; /* Asegura que los toasts estén por encima de otros elementos */
+  z-index: 1000; 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px; /* Espacio entre toasts si ambos se muestran */
+  gap: 15px; 
 }
 
 .toast {
   width: 90%;
   text-align: center;
   opacity: 0.9;
-  font-size: 1.25em; /* Aumenta el tamaño del texto */
-  padding: 20px; /* Aumenta el padding para un toast más grande */
-  border-radius: 8px; /* Agrega un poco de redondeo a las esquinas */
+  font-size: 1.25em; 
+  padding: 20px; 
+  border-radius: 8px; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -366,13 +383,163 @@ button.cancelar{
 }
 
 .toast-icon {
-  width: 50px; /* Ajusta el tamaño de la imagen según sea necesario */
+  width: 50px; 
   height: auto;
-  margin-bottom: 10px; /* Espacio entre la imagen y el texto */
+  margin-bottom: 10px; 
 }
 
 .toast-message {
   margin-top: 10px;
+}
+
+
+@media screen and (max-width: 992px) {
+
+  .columns {
+    padding: 0 25px; 
+    gap: 15px;
+  }
+
+  .back-button {
+    margin-top: -1rem;
+    font-size: 0.8rem; 
+    padding: 7px 8px; 
+    margin-left: 15px;
+  }
+
+ .title {
+  padding-top: 3rem;
+  font-size: 3rem;
+}
+
+  .card {
+    padding: 15px; 
+    gap: 0px;
+  }
+
+  .image-container img {
+    width: 100px; 
+    height: 100px; 
+  }
+
+  .media-content .title {
+    font-size: 1.2rem; 
+  }
+
+  .media-content .subtitle {
+    font-size: 0.9rem; 
+  }
+
+  .delete-button i,
+  .edit-button i {
+    font-size: 1.2em; 
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .columns {
+    padding: 0 25px; 
+  }
+
+  .back-button {
+    font-size: 0.75rem; /* Reduce un poco más el tamaño de la fuente en pantallas pequeñas */
+    padding: 6px 10px; /* Reduce aún más el padding interno del botón */
+  }
+
+  .card {
+    padding: 15px; 
+    margin: 0 auto;
+  }
+
+  .image-container img {
+    width: 100px; 
+    height: 100px; 
+  }
+
+  .media-content .title {
+    font-size: 1.2rem; 
+  }
+
+  .media-content .subtitle {
+    font-size: 0.9rem; 
+  }
+
+  .delete-button i,
+  .edit-button i {
+    font-size: 1.2em; 
+  }
+
+  .toast-container {
+    max-width: 90%; /* Reduce el ancho del toast en pantallas más pequeñas */
+  }
+
+  .toast {
+    padding: 15px;
+    border-radius: 6px;
+  }
+
+  .toast-message {
+    font-size: 1.1em; /* Reduce el tamaño del mensaje */
+  }
+
+  .buttons.is-centered {
+    flex-direction: column;
+    width: 100%; /* Hace que los botones ocupen todo el ancho disponible */
+  }
+
+  .button.is-success,
+  .button.is-info {
+    width: 50%; /* Los botones se expanden para ocupar todo el ancho */
+    padding: 10px; /* Ajusta el padding para pantallas más pequeñas */
+  }
+}
+
+
+@media screen and (max-width: 526px) {
+  .card {
+    max-width: 60%; 
+    margin: 0 auto;
+    padding: 10px; 
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+ .title {
+    padding-top: 3rem;
+    font-size: 2.5rem;
+  }
+
+  .back-button {
+    margin-top: -1rem;
+    font-size: 0.8rem; 
+    padding: 7px 8px; 
+    margin-left: 5px;
+  }
+
+  .card {
+    max-width: 85%; 
+    margin: 0 auto;
+    padding: 8px; 
+  }
+
+  .image-container img {
+    width: 90px; 
+    height: 90px;
+  }
+
+  .media-content .title {
+    font-size: 1.1rem; 
+  }
+
+  .media-content .subtitle {
+    font-size: 0.85rem; 
+  }
+
+  .delete-button i,
+  .edit-button i {
+    font-size: 1.1em; 
+  }
 }
 
   
