@@ -31,11 +31,15 @@ export class UserService {
     return !!this.getToken();
   }
 
-  private getToken(): string | null {
+  public getToken(): string | null {
     if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
       return localStorage.getItem('authToken');
     }
     return null;
+  }
+
+  public refreshLogin() {
+    return this.http.get(`${this.apiUrl}/refresh/login`, { headers: this.getHeaders() })
   }
 
   register(user: any): Observable<any> {
@@ -48,8 +52,8 @@ export class UserService {
         tap(response => {
           if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
             localStorage.setItem('authToken', response.token);
-            this.isLoggedInSubject.next(true);
-            this.isAdmin$.next(true);
+            this.isLoggedInSubject.next(!!response.token);
+            this.isAdmin$.next(response.isAdmin);
             this.store.dispatch(setAdminStatus({ isAdmin: response.isAdmin }));
             this.store.dispatch(setLoggedInStatus({ isLoggedIn: !!response.token }));
           }
@@ -61,6 +65,9 @@ export class UserService {
     if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
       localStorage.removeItem('authToken');
       this.isLoggedInSubject.next(false);
+      this.isAdmin$.next(false);
+      this.store.dispatch(setLoggedInStatus({ isLoggedIn: false }));
+      this.store.dispatch(setAdminStatus({ isAdmin: false }));
     }
   }
 

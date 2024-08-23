@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router, RouterModule} from "@angular/router";
 import {CommonModule} from "@angular/common";
 import { UserService } from '../../services/user.service';
+import {Store} from "@ngrx/store";
 
 @Component({
   selector: 'app-header',
@@ -18,8 +19,10 @@ export class HeaderComponent implements OnInit {
   isAdmin: boolean = false;
 
   constructor(private router: Router,
-              private userService: UserService
-  ) {}
+              private userService: UserService,
+              private store: Store,
+  ) {
+  }
 
   ngOnInit() {
     this.userService.isLoggedIn$.subscribe(isLoggedIn => {
@@ -30,11 +33,13 @@ export class HeaderComponent implements OnInit {
     })
 
     this.checkLoginStatus();
-
   }
 
   checkLoginStatus() {
-    const token = this.userService['getToken']();
+    const token = this.userService.getToken();
+    this.userService.refreshLogin().subscribe((response: any) => {
+      this.isAdmin = response.isAdmin;
+    })
     this.isLoggedIn = !!token;
   }
 
