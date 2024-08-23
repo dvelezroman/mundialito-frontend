@@ -70,7 +70,7 @@ export class DashboardComponent implements OnInit {
   onTeamChange(event: Event) {
     const target = event.target as HTMLSelectElement;
     this.selectedTeamId = +target.value;
-  
+
     if (this.selectedTeamId) {
       this.teamService.getTeam(this.selectedTeamId).subscribe({
         next: (data) => {
@@ -185,7 +185,7 @@ export class DashboardComponent implements OnInit {
     this.showToast = true;
     setTimeout(() => {
       this.showToast = false;
-    }, 3000); 
+    }, 3000);
   }
   closeToast() {
     this.showToast = false;
