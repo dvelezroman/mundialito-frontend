@@ -4,10 +4,12 @@ import {TeamService} from "../../services/team.service";
 import {Router} from "@angular/router";
 import {PersonService} from "../../services/person.service";
 import {CommonModule, NgForOf, NgIf} from "@angular/common";
+import {environment} from "../../../environments/environment";
+import {S3Service} from "../../services/s3.service";
 
 export interface Team {
   name: string;
-  logoImage?: string;  // Opcional
+  logoImage?: File | null,
   country: string;
   city: string;
 }
@@ -27,14 +29,14 @@ export class TeamComponent implements OnInit {
     name: '',
     country: '',
     city: '',
-    logoImage: ''  // Inicializado como null
+    logoImage: null,
   };
 
   people = [] as any[];
   previewLogoUrl: string | ArrayBuffer | null = null;
-  selectedLogoFile: File | null = null;
 
   constructor(
+    private s3Service: S3Service,
     private teamService: TeamService,
     private personService: PersonService,
     private router: Router
@@ -56,41 +58,63 @@ export class TeamComponent implements OnInit {
   }
 
 
-  onLogoSelected(event: Event) {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files[0]) {
-      this.selectedLogoFile = input.files[0];  // Guardamos el archivo seleccionado
+  onLogoSelected(event: any) {
+    const file = event.target.files[0];
+
+    if (file) {
+      this.team.logoImage = file;
       const reader = new FileReader();
       reader.onload = () => {
         this.previewLogoUrl = reader.result;
-        this.team.logoImage = reader.result as string;  // Convertimos la imagen a base64
       };
-      reader.readAsDataURL(this.selectedLogoFile);
+      reader.readAsDataURL(file);
     }
   }
 
-
   removeLogo() {
     this.previewLogoUrl = null;
-    this.selectedLogoFile = null;
-    this.team.logoImage = '';  // Limpiamos la imagen seleccionada
+    this.team.logoImage = null;
   }
 
 
   onSubmit() {
-    // Como logoImage es opcional, lo enviamos solo si no está vacío
-    if (!this.team.logoImage) {
-      delete this.team.logoImage;
-    }
+    if (this.team.logoImage) {
+      const bucketName = environment.s3BucketName; // Ensure this is defined in your environment
+      const key = `teams/${this.team.logoImage.name}`;
 
-    this.teamService.createTeam(this.team).subscribe({
-      next: () => {
-        this.router.navigate(['/home']);
-      },
-      error: (error) => {
-        console.error('Error creating team', error);
-      }
-    });
+      this.s3Service.uploadFile(this.team.logoImage, bucketName, key).subscribe({
+        next: () => {
+          const fileUrl = `https://${bucketName}.s3.${environment.aws_region}.amazonaws.com/${key}`;
+          const formData = {
+            name: this.team.name,
+            country: this.team.country,
+            city: this.team.city,
+            logoImage: fileUrl
+          }
+          this.teamService.createTeam(formData).subscribe({
+            next: () => {
+              this.router.navigate(['/home']);
+            },
+            error: (error) => {
+              console.error('Error creating team', error);
+            }
+          });
+        },
+        error: (err) => {
+          console.error('Upload failed:', err);
+          // Handle upload failure (e.g., show an error message)
+        }
+      });
+    } else {
+      this.teamService.createTeam(this.team).subscribe({
+        next: () => {
+          this.router.navigate(['/home']);
+        },
+        error: (error) => {
+          console.error('Error creating team', error);
+        }
+      });
+    }
   }
 
 

@@ -1,7 +1,7 @@
 <div class="full-screen-container">
   <div class="form-container">
     <h1 class="title">Manage Team</h1>
-    
+
     <form (ngSubmit)="onSubmit()" #teamForm="ngForm">
       <div class="form-content">
         <div class="input-section">
@@ -17,11 +17,11 @@
                 #name="ngModel"
               />
               <p class="help is-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
-                Nombre es requerido.
+                El nombre es requerido.
               </p>
             </div>
           </div>
-  
+
           <div class="field">
             <label class="label" for="country">País</label>
             <div class="control">
@@ -34,11 +34,11 @@
                 #country="ngModel"
               />
               <p class="help is-danger" *ngIf="country.invalid && (country.dirty || country.touched)">
-                País es requerido.
+                El país es requerido.
               </p>
             </div>
           </div>
-  
+
           <div class="field">
             <label class="label" for="city">Ciudad</label>
             <div class="control">
@@ -51,34 +51,38 @@
                 #city="ngModel"
               />
               <p class="help is-danger" *ngIf="city.invalid && (city.dirty || city.touched)">
-                Ciudad es requerido.
+                La ciudad es requerida.
               </p>
             </div>
           </div>
-  
-          
         </div>
-  
-        <div class="logo-section">
+
+        <div class="field">
           <label class="label" for="logoImage">Logo del Equipo</label>
           <div class="control">
-            <input
-              class="input"
-              placeholder="Agregar logo"
-              type="file"
-              id="logoImage"
-              name="logoImage"
-              (change)="onLogoSelected($event)"
-              accept="image/*"
-            />
+            <div class="custom-file-input-wrapper">
+              <input
+                class="input custom-file-input"
+                placeholder="Agregar logo"
+                type="file"
+                id="logoImage"
+                name="logoImage"
+                (change)="onLogoSelected($event)"
+                name="profilePhotoFile"
+                accept="image/*"
+                required
+              >
+              <div class="overlay-text">Buscar Imagen en el dispositivo</div>
+            </div>
           </div>
           <div class="image-preview" *ngIf="previewLogoUrl">
+            <label>Preview:</label>
             <img [src]="previewLogoUrl" alt="Logo Preview" />
             <button type="button" class="button is-danger is-small" (click)="removeLogo()">Eliminar</button>
           </div>
         </div>
       </div>
-  
+
       <!-- Button section (bottom of form) -->
       <div class="button-section">
         <button class="button is-primary" type="submit" [disabled]="teamForm.invalid">Agregar</button>
@@ -86,5 +90,5 @@
       </div>
     </form>
   </div>
-  
+
 </div>
