@@ -4,6 +4,7 @@
       <i class="fas fa-arrow-left"></i>
     </a>
   </div>
+
   <div class="container">
     <div class="box">
       <h1 class="title">Iniciar Sesión</h1>
@@ -48,4 +49,22 @@
       <img src="/assets/logo portoviejo 2.png" alt="Logo Portoviejo" class="logo-image">
     </div>
   </div>
+
+<!--Toast-->
+  <div class="toast-container">
+    <div *ngIf="showSuccessToast" class="notification is-success toast">
+      <div class="toast-content">
+        <img src="/assets/pulgar arriba1.png" alt="Éxito" class="toast-icon">
+        <div class="toast-message">{{ toastMessage }}</div>
+      </div>
+    </div>
+    <div *ngIf="showErrorToast" class="notification is-danger toast">
+      <div class="toast-content">
+        <img src="/assets/pulgar abajo.png" alt="Error" class="toast-icon">
+        <div class="toast-message">{{ toastMessage }}</div>
+      </div>
+    </div>
+  </div>
+
 </section>
+

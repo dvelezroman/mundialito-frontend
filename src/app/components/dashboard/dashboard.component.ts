@@ -23,14 +23,15 @@ import {S3Service} from "../../services/s3.service";
 })
 export class DashboardComponent implements OnInit {
 
-  showToast: boolean = false;
-  toastMessage: string = '';
-  teams = [] as any[];
+    toastMessage: string = '';
+    showSuccessToast: boolean = false;
+    showErrorToast: boolean = false;
+    teams = [] as any[];
 
-  selectedTeamId: number | null = null;
-  selectedTeamData: any = null;
-  isModalOpen = false;
-  personData = {
+    selectedTeamId: number | null = null;
+    selectedTeamData: any = null;
+    isModalOpen = false;
+    personData = {
     firstname: '',
     personalId: '',
     lastname: '',
@@ -63,6 +64,7 @@ export class DashboardComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error loading teams', error);
+        this.howErrorToast('Error al cargar información del equipo.')
       }
     });
   }
@@ -78,6 +80,7 @@ export class DashboardComponent implements OnInit {
         },
         error: (error) => {
           console.error('Error al cargar información del equipo', error);
+          this.howErrorToast('Error al cargar información del equipo.')
         }
       });
     }
@@ -134,6 +137,7 @@ export class DashboardComponent implements OnInit {
     console.log('hola');
     if (this.selectedTeamId === null) {
       console.error('No se ha seleccionado un equipo.');
+      this.howErrorToast('No se ha seleccionado un equipo.')
       return;
     }
 
@@ -157,17 +161,19 @@ export class DashboardComponent implements OnInit {
           formData.profilePhoto = fileUrl;
           this.personService.createPerson(formData).subscribe({
             next: () => {
-              console.log('Success: creating person');
+              this.howSuccessToast('Jugador agregado al equipo!!.');
               this.isModalOpen = false;
               this.router.navigate(['/dashboard']);
             },
             error: (error) => {
               console.error('Error creating person', error);
+              this.howErrorToast('No se puedo crear al jugador.')
             }
           });
         },
         error: (err) => {
           console.error('Upload failed:', err);
+          this.howErrorToast('Hubo un error al crear al jugador.');
           // Handle upload failure (e.g., show an error message)
         }
       });
@@ -178,16 +184,24 @@ export class DashboardComponent implements OnInit {
       this.router.navigate(['/player-cards', this.selectedTeamId]);
     } else {
       console.error('No team selected');
+      this.howErrorToast('No se ha seleccionado un equipo.');
+      
     }
   }
   howSuccessToast(message: string) {
     this.toastMessage = message;
-    this.showToast = true;
+    this.showSuccessToast = true;
     setTimeout(() => {
-      this.showToast = false;
-    }, 3000);
+      this.showSuccessToast = false;
+    }, 2000); 
   }
-  closeToast() {
-    this.showToast = false;
+
+  howErrorToast(message: string) {
+    this.toastMessage = message;
+    this.showErrorToast = true;
+    setTimeout(() => {
+      this.showErrorToast = false;
+    }, 2000);
   }
+
 }

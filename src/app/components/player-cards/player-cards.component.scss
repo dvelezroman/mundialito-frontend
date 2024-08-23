@@ -9,7 +9,13 @@
   }
 
 .container{
-  padding-top: 2rem;
+  padding-top: 1.75rem;
+}
+
+.back-button {
+  margin-top: -1rem;
+  font-size: 1rem; 
+  padding: 7px 8px; 
 }
   
 
@@ -20,6 +26,13 @@
     font-size: 4rem;
     margin-bottom: 4.5rem; 
 
+  }
+
+  .columns {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en nuevas filas */
+    margin: auto;
+    justify-content: center;
   }
 
   .card {
@@ -33,9 +46,11 @@
     align-items: center; 
     justify-content: flex-start; 
     height: auto;
+    min-width: 200px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2); 
   }
+
 
   .image-container {
     flex: 2; 
@@ -78,5 +93,454 @@
   .media-content .subtitle:last-child {
     margin-bottom: 0; 
   }
+
+  .delete-container {
+    display: flex;
+    justify-content: center; 
+    margin-top: 10px;
+    gap: 20px;
+  }
+  
+  .delete-button,
+  .edit-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .delete-button i {
+    color: red;
+    font-size: 1.5em; 
+  }
+  
+  .edit-button i {
+    color: green;
+    font-size: 1.5em; 
+  }
+  
+  .delete-button:hover i {
+    color: darkred;
+  }
+  
+  .edit-button:hover i {
+    color: rgb(1, 104, 1); 
+  }
+  
+  .toast-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 500px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .toast {
+    width: 90%;
+    background-color: #dcdada; /* Color gris claro para el fondo del toast */
+    text-align: center;
+    opacity: 0.95;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .toast-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .button.is-success {
+    background-color: #28a745; /* Color verde para el botón de Aceptar */
+    color: white;
+    border: none;
+  }
+  
+  .button.is-success:hover {
+    background-color: #218838; /* Color verde más oscuro en hover */
+  }
+  
+  .button.is-info {
+    background-color: #007bff; /* Color azul para el botón de Cancelar */
+    color: white;
+    border: none;
+  }
+  
+  .button.is-info:hover {
+    background-color: #0056b3; /* Color azul más oscuro en hover */
+  }
+  
+  .toast-message {
+    font-size: 1.25em;
+    color: #333; /* Color del texto dentro del toast */
+  }
+
+
+
+  /* modal editar jugador */
+  .modal-background {
+    background-color: rgba(33, 32, 32, 0.7); /* Blanco medio transparente */
+  }
+  
+  /* Estilo general para el modal */
+.modal.is-active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+/* Estilo para la tarjeta del modal */
+.modal-card {
+  max-width: 600px;
+  width: 100%;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 30px 20px 30px 20px;
+}
+
+/* Estilo para la cabeza del modal */
+.modal-card-head {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.modal-card-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+  color: black;
+}
+
+.modal-card-head .delete {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.modal-card-head .delete:hover {
+  color: #e74c3c;
+}
+
+/* Estilo para el cuerpo del modal */
+.modal-card-body {
+  padding: 1.5rem;
+  background-color: white;
+}
+
+.label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.2rem;
+  margin-left: 8px;
+  display: block;
+}
+
+/* Estilo para el pie del modal */
+.modal-card-foot {
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.modal-card-foot .button {
+  margin-left: 10px;
+}
+
+/* Estilo para los campos del formulario */
+
+.field {
+  margin-bottom: 1rem;
+}
+
+.input {
+  background-color: #f0f0f0; 
+  border: 1px solid #bcbbbb;
+  border-radius: 4px;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  color: #000; 
+}
+
+.input:focus {
+  background-color: #e0e0e0; 
+  border-color: #3273dc;
+  box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
+  color: #000; 
+}
+
+.input::placeholder {
+  color: #747474; 
+  font-style: italic; 
+  opacity: 1; 
+}
+
+/* Estilo específico para el input de fecha (birthdate) */
+.input[type="date"]::-webkit-datetime-edit-text,
+.input[type="date"]::-webkit-datetime-edit-month-field,
+.input[type="date"]::-webkit-datetime-edit-day-field,
+.input[type="date"]::-webkit-datetime-edit-year-field {
+  color: #656464; /* Mismo color gris para el texto de la fecha */
+}
+
+.input[type="date"]:focus::-webkit-datetime-edit-text,
+.input[type="date"]:focus::-webkit-datetime-edit-month-field,
+.input[type="date"]:focus::-webkit-datetime-edit-day-field,
+.input[type="date"]:focus::-webkit-datetime-edit-year-field {
+  color: #3d3e43; /* Color más oscuro cuando está en foco */
+}
+
+/* Estilo para los botones */
+.button.is-success {
+  background-color: #28a745;
+  border-color: #28a745;
+  color: white;
+}
+
+.button.is-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.button.is-info {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+  color: white;
+}
+
+.button.is-info:hover {
+  background-color: #138496;
+  border-color: #117a8b;
+}
+
+button.cancelar{
+  background: grey;
+}
+
+.button.cancelar:hover{
+  background-color: rgb(76, 76, 76);
+}
+
+/* toast estilos */
+
+.toast-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 500px;
+  z-index: 1000; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; 
+}
+
+.toast {
+  width: 90%;
+  text-align: center;
+  opacity: 0.9;
+  font-size: 1.25em; 
+  padding: 20px; 
+  border-radius: 8px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.toast-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.toast-icon {
+  width: 50px; 
+  height: auto;
+  margin-bottom: 10px; 
+}
+
+.toast-message {
+  margin-top: 10px;
+}
+
+
+@media screen and (max-width: 992px) {
+
+  .columns {
+    padding: 0 25px; 
+    gap: 15px;
+  }
+
+  .back-button {
+    margin-top: -1rem;
+    font-size: 0.8rem; 
+    padding: 7px 8px; 
+    margin-left: 15px;
+  }
+
+ .title {
+  padding-top: 3rem;
+  font-size: 3rem;
+}
+
+  .card {
+    padding: 15px; 
+    gap: 0px;
+  }
+
+  .image-container img {
+    width: 100px; 
+    height: 100px; 
+  }
+
+  .media-content .title {
+    font-size: 1.2rem; 
+  }
+
+  .media-content .subtitle {
+    font-size: 0.9rem; 
+  }
+
+  .delete-button i,
+  .edit-button i {
+    font-size: 1.2em; 
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .columns {
+    padding: 0 25px; 
+  }
+
+  .back-button {
+    font-size: 0.75rem; /* Reduce un poco más el tamaño de la fuente en pantallas pequeñas */
+    padding: 6px 10px; /* Reduce aún más el padding interno del botón */
+  }
+
+  .card {
+    padding: 15px; 
+    margin: 0 auto;
+  }
+
+  .image-container img {
+    width: 100px; 
+    height: 100px; 
+  }
+
+  .media-content .title {
+    font-size: 1.2rem; 
+  }
+
+  .media-content .subtitle {
+    font-size: 0.9rem; 
+  }
+
+  .delete-button i,
+  .edit-button i {
+    font-size: 1.2em; 
+  }
+
+  .toast-container {
+    max-width: 90%; /* Reduce el ancho del toast en pantallas más pequeñas */
+  }
+
+  .toast {
+    padding: 15px;
+    border-radius: 6px;
+  }
+
+  .toast-message {
+    font-size: 1.1em; /* Reduce el tamaño del mensaje */
+  }
+
+  .buttons.is-centered {
+    flex-direction: column;
+    width: 100%; /* Hace que los botones ocupen todo el ancho disponible */
+  }
+
+  .button.is-success,
+  .button.is-info {
+    width: 50%; /* Los botones se expanden para ocupar todo el ancho */
+    padding: 10px; /* Ajusta el padding para pantallas más pequeñas */
+  }
+}
+
+
+@media screen and (max-width: 526px) {
+  .card {
+    max-width: 60%; 
+    margin: 0 auto;
+    padding: 10px; 
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+ .title {
+    padding-top: 3rem;
+    font-size: 2.5rem;
+  }
+
+  .back-button {
+    margin-top: -1rem;
+    font-size: 0.8rem; 
+    padding: 7px 8px; 
+    margin-left: 5px;
+  }
+
+  .card {
+    max-width: 85%; 
+    margin: 0 auto;
+    padding: 8px; 
+  }
+
+  .image-container img {
+    width: 90px; 
+    height: 90px;
+  }
+
+  .media-content .title {
+    font-size: 1.1rem; 
+  }
+
+  .media-content .subtitle {
+    font-size: 0.85rem; 
+  }
+
+  .delete-button i,
+  .edit-button i {
+    font-size: 1.1em; 
+  }
+}
+
   
   

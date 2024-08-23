@@ -18,6 +18,10 @@ import { UserService } from '../../services/user.service';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  
+  toastMessage: string = '';
+  showSuccessToast: boolean = false;
+  showErrorToast: boolean = false;
 
 
   constructor(private userService: UserService,
@@ -37,12 +41,33 @@ export class LoginComponent {
     }
     this.userService.login(this.loginForm.value).subscribe({
       next: (response) => {
-        this.router.navigate(['/dashboard']);
+        const token = response.token; 
+        this.howSuccessToast(' Exito.');
+        localStorage.setItem('authToken', token);
+        this.router.navigate(['/dashboard']); 
       },
       error: (error) => {
         console.error('Error logging in', error);
+        this.howErrorToast('Hubo un error al iniciar sesión')
       }
     });
+  }
+  
+
+  howSuccessToast(message: string) {
+    this.toastMessage = message;
+    this.showSuccessToast = true;
+    setTimeout(() => {
+      this.showSuccessToast = false;
+    }, 1800); 
+  }
+
+  howErrorToast(message: string) {
+    this.toastMessage = message;
+    this.showErrorToast = true;
+    setTimeout(() => {
+      this.showErrorToast = false;
+    }, 1800);
   }
 
 }

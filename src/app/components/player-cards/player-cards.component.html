@@ -1,9 +1,10 @@
 <div class="container">
   <div class="back-button-container">
     <button class="button is-primary back-button" (click)="navigateToDashboard()">
-      Volver a inicio
+      Ir a dashboard
     </button>
   </div>
+
 
   <h2 class="title">Jugadores Inscritos</h2>
   <div class="columns is-multiline">
@@ -21,8 +22,105 @@
             <p class="subtitle is-6">{{ player.birthdate | date }}</p>
             <p class="subtitle is-6">{{ player.type }}</p>
           </div>
+
+          <!--botones para editar o eliminar jugador-->
+
+          <div class="delete-container">
+            <button class="edit-button" (click)="openEditModal(player)">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button class="delete-button" (click)="confirmDeletePlayer(player.id)">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
         </div>
 
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- modal para editar el jugador -->
+
+<div *ngIf="showEditModal" class="modal is-active">
+  <div class="modal-background" (click)="closeEditModal()"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Editar Jugador</p>
+      <button class="delete" aria-label="close" (click)="closeEditModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      <form [formGroup]="editPlayerForm">
+        <div class="field">
+          <label class="label">Nombre</label>
+          <div class="control">
+            <input class="input" type="text" formControlName="firstname">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Apellido</label>
+          <div class="control">
+            <input class="input" type="text" formControlName="lastname">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">ID Personal</label>
+          <div class="control">
+            <input class="input" type="text" formControlName="personalId">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Fecha de Nacimiento</label>
+          <div class="control">
+            <input class="input" type="date" formControlName="birthdate">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Tipo</label>
+          <div class="control">
+            <input class="input" type="text" formControlName="type">
+          </div>
+        </div>
+      </form>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success" (click)="submitEdit()">Agregar cambios</button>
+      <button class="button cancelar" (click)="closeEditModal()">Cancelar</button>
+    </footer>
+  </div>
+</div>
+
+
+
+  <div class="toast-container" *ngIf="showDeleteConfirmToast">
+    <div class="notification is-grey toast">
+      <div class="toast-content">
+        <p class="toast-message">¿Deseas eliminar al jugador?</p>
+        <div class="buttons is-centered">
+          <button class="button is-success" (click)="confirmDeletion()">Aceptar</button>
+          <button class="button is-info" (click)="cancelDelete()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!--Toast-->
+   <div class="toast-container">
+    <div *ngIf="showSuccessToast" class="notification is-success toast">
+      <div class="toast-content">
+        <img src="/assets/pulgar arriba1.png" alt="Éxito" class="toast-icon">
+        <div class="toast-message">{{ toastMessage }}</div>
+      </div>
+    </div>
+    <div *ngIf="showErrorToast" class="notification is-danger toast">
+      <div class="toast-content">
+        <img src="/assets/pulgar abajo.png" alt="Error" class="toast-icon">
+        <div class="toast-message">{{ toastMessage }}</div>
       </div>
     </div>
   </div>
