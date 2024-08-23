@@ -22,8 +22,12 @@ import {S3Service} from "../../services/s3.service";
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent implements OnInit {
+
+  showToast: boolean = false;
+  toastMessage: string = '';
   teams = [] as any[];
-  selectedTeamId: string | null = null;
+
+  selectedTeamId: number | null = null;
   selectedTeamData: any = null;
   isModalOpen = false;
   personData = {
@@ -65,7 +69,18 @@ export class DashboardComponent implements OnInit {
 
   onTeamChange(event: Event) {
     const target = event.target as HTMLSelectElement;
-    this.selectedTeamId = target.value;
+    this.selectedTeamId = +target.value;
+
+    if (this.selectedTeamId) {
+      this.teamService.getTeam(this.selectedTeamId).subscribe({
+        next: (data) => {
+          this.selectedTeamData = data;
+        },
+        error: (error) => {
+          console.error('Error al cargar información del equipo', error);
+        }
+      });
+    }
   }
 
   openModal() {
@@ -116,6 +131,7 @@ export class DashboardComponent implements OnInit {
 
 
   submitForm() {
+    console.log('hola');
     if (this.selectedTeamId === null) {
       console.error('No se ha seleccionado un equipo.');
       return;
@@ -163,5 +179,15 @@ export class DashboardComponent implements OnInit {
     } else {
       console.error('No team selected');
     }
+  }
+  howSuccessToast(message: string) {
+    this.toastMessage = message;
+    this.showToast = true;
+    setTimeout(() => {
+      this.showToast = false;
+    }, 3000);
+  }
+  closeToast() {
+    this.showToast = false;
   }
 }

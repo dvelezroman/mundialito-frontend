@@ -21,10 +21,15 @@
 
         <!-- Segundo bloque: Botones -->
         <div class="button-block">
-          <button class="btn add-person" (click)="openModal()">Agregar Jugador</button>
-          <button class="btn view-players" (click)="cardsPlayers()">Ver Jugadores</button>
+          <button class="btn add-person" [disabled]="!selectedTeamId" (click)="openModal()">Agregar Jugador</button>
+          <button class="btn view-players" [disabled]="!selectedTeamId" (click)="cardsPlayers()">Ver Jugadores</button>
         </div>
       </div>
+    </div>
+
+    <div *ngIf="showToast" class="notification is-success toast">
+      <button class="delete" (click)="closeToast()"></button>
+      {{ toastMessage }}
     </div>
 
     <!-- Nueva tarjeta para la información del equipo -->

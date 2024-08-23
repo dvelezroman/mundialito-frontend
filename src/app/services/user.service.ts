@@ -8,9 +8,10 @@ import {environment} from "../../environments/environment";
 })
 export class UserService {
   private apiUrl = `${environment.apiUrl}/users`;
-  
+
   private isLoggedInSubject = new BehaviorSubject<boolean>(this.hasToken());
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
+  isAdmin$ = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {}
 
@@ -42,7 +43,8 @@ export class UserService {
         tap(response => {
           if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
             localStorage.setItem('authToken', response.token);
-            this.isLoggedInSubject.next(true); 
+            this.isLoggedInSubject.next(true);
+            this.isAdmin$.next(true);
           }
         })
       );
@@ -51,7 +53,7 @@ export class UserService {
   logout(): void {
     if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
       localStorage.removeItem('authToken');
-      this.isLoggedInSubject.next(false); 
+      this.isLoggedInSubject.next(false);
     }
   }
 
