@@ -25,7 +25,7 @@ export class PersonService {
   }
 
   // Update an existing person
-  updatePerson(id: number, formData: FormData): Observable<any> {
+  updatePerson(id: number, formData: any): Observable<any> {
     return this.http.put(`${this.apiUrl}/${id}`, formData, { headers: this.getHeaders() });
   }
 

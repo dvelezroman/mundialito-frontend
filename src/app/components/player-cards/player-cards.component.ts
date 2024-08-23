@@ -33,40 +33,41 @@ export class PlayerCardsComponent implements OnInit {
   playerToEdit: any = null;
   editPlayerForm: FormGroup;
 
-  constructor(private peopleService: PersonService, 
+  constructor(private peopleService: PersonService,
               private route: ActivatedRoute,
               private router: Router,
               private fb: FormBuilder) {
 
     this.editPlayerForm = this.fb.group({
-         firstname: [''],
-         lastname: [''],
-         personalId: [''],
-         birthdate: [''],
-         type: ['']
-       });
-     }
+       firstname: [''],
+       lastname: [''],
+       personalId: [''],
+       birthdate: [''],
+       type: [''],
+        teamId: null as number | null,
+     });
+   }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       const id = params.get('teamId');
-      this.teamId = id ? +id : null; 
-      
-      this.loadPlayers(); 
+      this.teamId = id ? +id : null;
+
+      this.loadPlayers();
 
     });
   }
-  
+
 
   loadPlayers() {
     if (this.teamId !== null) {
       this.peopleService.getPlayersByTeam(this.teamId).subscribe({
         next: (data) => {
-          this.players = data; 
+          this.players = data;
 
         },
         error: (error) => {
-          console.error('Error loading players', error); 
+          console.error('Error loading players', error);
         }
       });
     }
@@ -80,31 +81,31 @@ export class PlayerCardsComponent implements OnInit {
         firstname: player.firstname,
         lastname: player.lastname,
         personalId: player.personalId,
-        birthdate: new Date(player.birthdate).toISOString().split('T')[0], 
+        birthdate: new Date(player.birthdate).toISOString().split('T')[0],
         type: player.type
       });
       this.showEditModal = true;
     }
   }
-  
+
 
 
   confirmDeletePlayer(playerId: number) {
     this.playerToDelete = playerId;
-    this.showDeleteConfirmToast = true; 
+    this.showDeleteConfirmToast = true;
   }
 
 
   confirmDeletion() {
     if (this.playerToDelete !== null) {
-        this.deletePlayer(this.playerToDelete); 
+        this.deletePlayer(this.playerToDelete);
     }
 }
 
 
    cancelDelete() {
-    this.showDeleteConfirmToast = false; 
-    this.playerToDelete = null; 
+    this.showDeleteConfirmToast = false;
+    this.playerToDelete = null;
   }
 
 
@@ -114,7 +115,7 @@ export class PlayerCardsComponent implements OnInit {
       this.peopleService.deletePerson(idToDelete).subscribe({
         next: () => {
           this.players = this.players.filter(player => player.id !== idToDelete);
-          this.showDeleteConfirmToast = false; 
+          this.showDeleteConfirmToast = false;
           this.playerToDelete = null;
           this.howSuccessToast('Jugador eliminado exitosamente');
           console.log('Jugador eliminado exitosamente');
@@ -128,7 +129,7 @@ export class PlayerCardsComponent implements OnInit {
     }
   }
 
-  
+
 
   navigateToDashboard() {
     this.router.navigate(['/dashboard']);
@@ -137,7 +138,7 @@ export class PlayerCardsComponent implements OnInit {
 
   openEditModal(player: any) {
     if (this.showDeleteConfirmToast) {
-      return; 
+      return;
     }
     this.playerToEdit = player;
     this.editPlayerForm.patchValue({
@@ -157,12 +158,14 @@ export class PlayerCardsComponent implements OnInit {
 
   submitEdit() {
     if (this.playerToEdit) {
-      const formData = new FormData();
-      formData.append('firstname', this.editPlayerForm.get('firstname')?.value);
-      formData.append('lastname', this.editPlayerForm.get('lastname')?.value);
-      formData.append('personalId', this.editPlayerForm.get('personalId')?.value);
-      formData.append('birthdate', this.editPlayerForm.get('birthdate')?.value);
-      formData.append('type', this.editPlayerForm.get('type')?.value);
+      const formData = {
+        firstname: this.editPlayerForm.get('firstname')?.value,
+        lastname: this.editPlayerForm.get('lastname')?.value,
+        personalId: this.editPlayerForm.get('personalId')?.value,
+        birthdate: new Date(this.editPlayerForm.get('birthdate')?.value),
+        type: this.editPlayerForm.get('type')?.value,
+        teamId: this.teamId,
+      }
 
       this.peopleService.updatePerson(this.playerToEdit.id, formData).subscribe({
         next: () => {
@@ -183,9 +186,9 @@ export class PlayerCardsComponent implements OnInit {
     this.showSuccessToast = true;
     setTimeout(() => {
       this.showSuccessToast = false;
-    }, 2500); 
+    }, 2500);
   }
-  
+
   howErrorToast(message: string) {
     this.toastMessage = message;
     this.showErrorToast = true;
