@@ -1,7 +1,6 @@
 <div class="full-screen-container">
   <div class="form-container">
     <h1 class="title">Manage Team</h1>
-
     <form (ngSubmit)="onSubmit()" #teamForm="ngForm">
       <div class="form-content">
         <div class="input-section">
@@ -21,7 +20,6 @@
               </p>
             </div>
           </div>
-
           <div class="field">
             <label class="label" for="country">País</label>
             <div class="control">
@@ -41,7 +39,6 @@
               </p>
             </div>
           </div>
-
           <div class="field">
             <label class="label" for="city">Ciudad</label>
             <div class="control">
@@ -62,7 +59,6 @@
               </p>
             </div>
           </div>
-
           <div class="field">
             <label class="label" for="category">Categoría</label>
             <div class="control">
@@ -83,7 +79,6 @@
             </div>
           </div>
         </div>
-
         <div class="field">
           <label class="label" for="logoImage">Logo del Equipo</label>
           <div class="control">
@@ -105,11 +100,34 @@
           <div class="image-preview" *ngIf="previewLogoUrl">
             <label>Preview:</label>
             <img [src]="previewLogoUrl" alt="Logo Preview" />
-            <button type="button" class="button is-danger is-small" (click)="removeLogo()">Eliminar</button>
+            <button type="button" class="button is-danger is-small" (click)="removeLogo()">Eliminar Logo</button>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label" for="logoImage">RECIBO DE PAGO INSCRIPCION</label>
+          <div class="control">
+            <div class="custom-file-input-wrapper">
+              <input
+                class="input custom-file-input"
+                placeholder="Agregar recibo de pago"
+                type="file"
+                id="receiptImage"
+                name="receiptImage"
+                (change)="onReceiptSelected($event)"
+                name="receiptPhotoFile"
+                accept="image/*"
+                required
+              >
+              <div class="overlay-text">Buscar Imagen en el dispositivo</div>
+            </div>
+          </div>
+          <div class="image-preview" *ngIf="previewReceiptUrl">
+            <label>Preview:</label>
+            <img [src]="previewReceiptUrl" alt="Recibo Subido" />
+            <button type="button" class="button is-danger is-small" (click)="removeReceipt()">Eliminar Recibo</button>
           </div>
         </div>
       </div>
-
       <!-- Button section (bottom of form) -->
       <div class="button-section">
         <button class="button is-primary" type="submit" [disabled]="teamForm.invalid">Agregar</button>
@@ -117,7 +135,6 @@
       </div>
     </form>
   </div>
-
    <!--Toast-->
    <div class="toast-container">
     <div *ngIf="showSuccessToast" class="notification is-success toast">
@@ -133,5 +150,4 @@
       </div>
     </div>
   </div>
-
 </div>
