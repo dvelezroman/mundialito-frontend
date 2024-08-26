@@ -108,7 +108,7 @@ export class TeamComponent implements OnInit {
           }
           this.teamService.createTeam(formData).subscribe({
             next: () => {
-              this.router.navigate(['/home']);
+              this.router.navigate(['/dashboard']);
 
             },
             error: (error) => {
@@ -124,7 +124,7 @@ export class TeamComponent implements OnInit {
     } else {
       this.teamService.createTeam(this.team).subscribe({
         next: () => {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/dashboard']);
         },
         error: (error) => {
           console.error('Error creating team', error);
