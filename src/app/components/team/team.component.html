@@ -25,14 +25,17 @@
           <div class="field">
             <label class="label" for="country">País</label>
             <div class="control">
-              <input
-                class="input"
-                id="country"
-                name="country"
-                [(ngModel)]="team.country"
-                required
-                #country="ngModel"
-              />
+              <div class="select">
+                <select
+                  id="country"
+                  name="country"
+                  [(ngModel)]="team.country"
+                  required
+                  #country="ngModel">
+                  <option value="" disabled selected>Seleccione un país</option>
+                  <option *ngFor="let country of countriesList | keyvalue" [value]="country.key">{{ country.key }}</option>
+                </select>
+              </div>
               <p class="help is-danger" *ngIf="country.invalid && (country.dirty || country.touched)">
                 El país es requerido.
               </p>
@@ -42,16 +45,40 @@
           <div class="field">
             <label class="label" for="city">Ciudad</label>
             <div class="control">
-              <input
-                class="input"
-                id="city"
-                name="city"
-                [(ngModel)]="team.city"
-                required
-                #city="ngModel"
-              />
+              <div class="select">
+                <select
+                  id="city"
+                  name="city"
+                  [(ngModel)]="team.city"
+                  required
+                  #city="ngModel"
+                  [disabled]="!team.country">
+                  <option value="" disabled selected>Seleccione una ciudad</option>
+                  <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+                </select>
+              </div>
               <p class="help is-danger" *ngIf="city.invalid && (city.dirty || city.touched)">
                 La ciudad es requerida.
+              </p>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label" for="category">Categoría</label>
+            <div class="control">
+              <div class="select">
+                <select
+                  id="category"
+                  name="category"
+                  [(ngModel)]="team.category"
+                  required
+                  #category="ngModel">
+                  <option value="" disabled selected>Seleccione una categoría</option>
+                  <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+                </select>
+              </div>
+              <p class="help is-danger" *ngIf="category.invalid && (category.dirty || category.touched)">
+                La categoría es requerida.
               </p>
             </div>
           </div>
@@ -106,5 +133,5 @@
       </div>
     </div>
   </div>
-  
+
 </div>

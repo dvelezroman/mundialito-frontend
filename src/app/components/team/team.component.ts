@@ -6,12 +6,14 @@ import {PersonService} from "../../services/person.service";
 import {CommonModule, NgForOf, NgIf} from "@angular/common";
 import {environment} from "../../../environments/environment";
 import {S3Service} from "../../services/s3.service";
+import {countries} from "./countries";
 
 export interface Team {
   name: string;
   logoImage?: File | null,
   country: string;
   city: string;
+  category: 'INFANTO' | 'PRE' | 'JUVENIL';
 }
 
 @Component({
@@ -28,12 +30,14 @@ export class TeamComponent implements OnInit {
   toastMessage: string = '';
   showSuccessToast: boolean = false;
   showErrorToast: boolean = false;
+  countriesList = countries;
 
   team: Team = {
     name: '',
-    country: '',
+    country: 'Ecuador',
     city: '',
     logoImage: null,
+    category: 'INFANTO',
   };
 
   people = [] as any[];
@@ -48,6 +52,12 @@ export class TeamComponent implements OnInit {
 
   ngOnInit() {
     this.loadPeople();
+  }
+
+  categories = ['INFANTO', 'PRE', 'JUVENIL'];
+
+  get cities() {
+    return this.countriesList[this.team.country] || [];
   }
 
   loadPeople() {
@@ -93,7 +103,8 @@ export class TeamComponent implements OnInit {
             name: this.team.name,
             country: this.team.country,
             city: this.team.city,
-            logoImage: fileUrl
+            logoImage: fileUrl,
+            category: this.team.category,
           }
           this.teamService.createTeam(formData).subscribe({
             next: () => {
@@ -133,9 +144,9 @@ export class TeamComponent implements OnInit {
     this.showSuccessToast = true;
     setTimeout(() => {
       this.showSuccessToast = false;
-    }, 2500); 
+    }, 2500);
   }
-  
+
   howErrorToast(message: string) {
     this.toastMessage = message;
     this.showErrorToast = true;
