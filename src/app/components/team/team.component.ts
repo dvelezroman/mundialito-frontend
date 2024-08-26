@@ -11,6 +11,7 @@ import {countries} from "./countries";
 export interface Team {
   name: string;
   logoImage?: File | null,
+  receiptImage?: File | null,
   country: string;
   city: string;
   category: 'INFANTO' | 'PRE' | 'JUVENIL';
@@ -37,11 +38,14 @@ export class TeamComponent implements OnInit {
     country: 'Ecuador',
     city: '',
     logoImage: null,
+    receiptImage: null,
     category: 'INFANTO',
   };
 
   people = [] as any[];
   previewLogoUrl: string | ArrayBuffer | null = null;
+  previewReceiptUrl: string | ArrayBuffer | null = null;
+  uploadedReceiptImage: string | null = null;
 
   constructor(
     private s3Service: S3Service,
@@ -85,13 +89,47 @@ export class TeamComponent implements OnInit {
     }
   }
 
+  onReceiptSelected(event: any) {
+    const file = event.target.files[0];
+
+    if (file) {
+      this.team.receiptImage = file;
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.previewReceiptUrl = reader.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
   removeLogo() {
     this.previewLogoUrl = null;
     this.team.logoImage = null;
   }
 
+  removeReceipt() {
+    this.previewReceiptUrl = null;
+    this.team.receiptImage = null;
+  }
+
+
 
   onSubmit() {
+    if (this.team.receiptImage) {
+      const bucketName = environment.s3BucketName; // Ensure this is defined in your environment
+      const key = `receipts/${this.team.receiptImage.name}`;
+
+      this.s3Service.uploadFile(this.team.receiptImage, bucketName, key).subscribe({
+        next: () => {
+          const fileUrl = `https://${bucketName}.s3.${environment.aws_region}.amazonaws.com/${key}`;
+          this.uploadedReceiptImage = fileUrl;
+        },
+        error: (err) => {
+          console.error('Upload Receipt failed:', err);
+          // Handle upload failure (e.g., show an error message)
+        }
+      });
+    }
     if (this.team.logoImage) {
       const bucketName = environment.s3BucketName; // Ensure this is defined in your environment
       const key = `teams/${this.team.logoImage.name}`;
@@ -104,6 +142,7 @@ export class TeamComponent implements OnInit {
             country: this.team.country,
             city: this.team.city,
             logoImage: fileUrl,
+            receiptImage: this.uploadedReceiptImage,
             category: this.team.category,
           }
           this.teamService.createTeam(formData).subscribe({
@@ -117,7 +156,7 @@ export class TeamComponent implements OnInit {
           });
         },
         error: (err) => {
-          console.error('Upload failed:', err);
+          console.error('Upload Logo failed:', err);
           // Handle upload failure (e.g., show an error message)
         }
       });

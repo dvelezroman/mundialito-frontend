@@ -108,6 +108,31 @@
             <button type="button" class="button is-danger is-small" (click)="removeLogo()">Eliminar</button>
           </div>
         </div>
+
+        <div class="field">
+          <label class="label" for="logoImage">RECIBO DE PAGO INSCRIPCION</label>
+          <div class="control">
+            <div class="custom-file-input-wrapper">
+              <input
+                class="input custom-file-input"
+                placeholder="Agregar recibo de pago"
+                type="file"
+                id="receiptImage"
+                name="receiptImage"
+                (change)="onReceiptSelected($event)"
+                name="receiptPhotoFile"
+                accept="image/*"
+                required
+              >
+              <div class="overlay-text">Buscar Imagen en el dispositivo</div>
+            </div>
+          </div>
+          <div class="image-preview" *ngIf="previewLogoUrl">
+            <label>Preview:</label>
+            <img [src]="previewReceiptUrl" alt="Recibo Subido" />
+            <button type="button" class="button is-danger is-small" (click)="removeReceipt()">Eliminar Recibo</button>
+          </div>
+        </div>
       </div>
 
       <!-- Button section (bottom of form) -->
