@@ -98,7 +98,7 @@ export class DashboardComponent implements OnInit {
     this.personData.lastname = '';
     this.personData.personalId = '';
     this.personData.birthdate = '';
-    this.selectedTeamId = null;
+
 
     if (fileInput) {
       fileInput.value = '';

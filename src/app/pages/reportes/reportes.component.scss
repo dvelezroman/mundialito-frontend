@@ -1,0 +1,96 @@
+.reportes-page-container {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to right, #00c853, #00b8d4); 
+  
+    .title-section {
+      text-align: center;
+      padding-top: 40px;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: rgb(10, 10, 95);
+    }
+  
+    .reportes-container {
+        width: 90%;
+        margin: 0 auto;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.7); 
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        backdrop-filter: blur(10px); 
+        -webkit-backdrop-filter: blur(10px); 
+        border: 1px solid rgba(255, 255, 255, 0.3);
+  
+      .button-section {
+        display: flex;
+        justify-content: flex-start;
+        margin-bottom: 5rem;
+      }
+  
+      .filter-section {
+        margin-bottom: 30px;
+
+        h2{
+            color: black;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+  
+        .field {
+          margin-bottom: 25px;
+  
+          label {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            color: black;
+          }
+  
+          select {
+            width: 40%;
+            padding: 8px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f2f2f2;
+            color: #6e6e6e;
+          }
+        }
+      }
+  
+      .teams-list-section {
+        h3 {
+          margin-top: 3rem;
+          font-size: 2rem;
+          text-align: center;
+          margin-bottom: 1.6rem;
+          font-weight: bold;
+          color: black;
+        }
+  
+        ul {
+          text-align: left;
+          margin-left: 3rem;
+          list-style-type: decimal;
+          padding-left: 0;
+        }
+  
+        li {
+          padding: 5px;
+          color: black;
+          font-size: 1.2rem;
+          border-bottom: none;
+        }
+
+        .no-found{
+            color: black;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+      }
+    }
+  }
+  

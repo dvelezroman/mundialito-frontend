@@ -1,0 +1,50 @@
+<div class="reportes-page-container">
+  
+
+    <div class="title-section">
+      <h1>Reportes de Equipos</h1>
+    </div>
+  
+    <div class="reportes-container">
+  
+
+      <div class="button-section">
+        <button class="button is-primary" (click)="navigateToDashboard()">Ir a Dashboard</button>
+      </div>
+  
+
+      <div class="filter-section">
+        <h2>Buscar Equipo</h2>
+        <div class="field">
+          <label for="country-select">Seleccionar País</label>
+          <select id="country-select" [(ngModel)]="selectedCountry" (change)="onCountryChange()">
+            <option value="">Todos los Países</option>
+            <option *ngFor="let country of countriesList | keyvalue" [value]="country.key">{{ country.key }}</option>
+          </select>
+        </div>
+  
+
+        <div class="field">
+          <label for="category-select">Seleccionar Categoría</label>
+          <select id="category-select" [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
+            <option value="">Todas las Categorías</option>
+            <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+          </select>
+        </div>
+      </div>
+  
+      <!-- Lista de equipos filtrados -->
+      <div class="teams-list-section">
+        <h3>Resultados de la busqueda</h3>
+        <ul>
+          <li *ngFor="let team of filteredTeams">
+            {{ team.name }} - {{ team.category }} - {{ team.country }} - {{ team.city }}
+          </li>
+        </ul>
+        <div class="no-found" *ngIf="filteredTeams.length === 0">
+          <p>No se encontraron equipos que coincidan con los criterios seleccionados.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
