@@ -11,7 +11,7 @@ import { ReportesComponent } from './pages/reportes/reportes.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
+  { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'people', component: PersonComponent, canActivate: [AuthGuard] },
   { path: 'teams', component: TeamComponent, canActivate: [AuthGuard] },
