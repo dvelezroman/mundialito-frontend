@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import {Router} from "@angular/router";
 import {environment} from "../../../environments/environment";
 import {S3Service} from "../../services/s3.service";
+import {countries} from "../team/countries";
 
 @Component({
   selector: 'app-dashboard',
@@ -22,7 +23,7 @@ import {S3Service} from "../../services/s3.service";
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent implements OnInit {
-
+    protected  readonly  countriesList = countries;
     toastMessage: string = '';
     showSuccessToast: boolean = false;
     showErrorToast: boolean = false;
@@ -36,13 +37,14 @@ export class DashboardComponent implements OnInit {
     personalId: '',
     lastname: '',
     birthdate: '',
+      country: null as string | null,
     profilePhoto: null as File | null,
     teamId: null as number | null,
     type: 'PLAYER' as 'MANAGER' | 'PLAYER',
   };
   types = [
-    { value: 'PLAYER', label: 'Player' },
-    { value: 'MANAGER', label: 'Manager' }
+    { value: 'PLAYER', label: 'Jugador' },
+    { value: 'MANAGER', label: 'Entrenador' }
   ];
   previewImageUrl: string | ArrayBuffer | null = null;
 
@@ -98,6 +100,7 @@ export class DashboardComponent implements OnInit {
     this.personData.lastname = '';
     this.personData.personalId = '';
     this.personData.birthdate = '';
+    this.personData.country = null;
 
 
     if (fileInput) {
@@ -149,6 +152,7 @@ export class DashboardComponent implements OnInit {
       type: this.personData.type,
       personalId: this.personData.personalId,
       profilePhoto: null as null | string,
+      country: this.personData.country,
     }
 
     if (this.personData.profilePhoto) {
@@ -185,7 +189,7 @@ export class DashboardComponent implements OnInit {
     } else {
       console.error('No team selected');
       this.howErrorToast('No se ha seleccionado un equipo.');
-      
+
     }
   }
   howSuccessToast(message: string) {
@@ -193,7 +197,7 @@ export class DashboardComponent implements OnInit {
     this.showSuccessToast = true;
     setTimeout(() => {
       this.showSuccessToast = false;
-    }, 2000); 
+    }, 2000);
   }
 
   howErrorToast(message: string) {
@@ -203,5 +207,4 @@ export class DashboardComponent implements OnInit {
       this.showErrorToast = false;
     }, 2000);
   }
-
 }

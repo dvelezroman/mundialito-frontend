@@ -81,6 +81,13 @@
     <section class="modal-card-body">
       <form (submit)="submitForm()">
         <div class="field">
+          <label class="label">Documento de Identificacion</label>
+          <div class="control">
+            <input class="input" type="text" [(ngModel)]="personData.personalId" name="personalId" required>
+          </div>
+        </div>
+
+        <div class="field">
           <label class="label">Nombres</label>
           <div class="control">
             <input class="input" type="text" [(ngModel)]="personData.firstname" name="firstName" required>
@@ -95,16 +102,30 @@
         </div>
 
         <div class="field">
-          <label class="label">Documento de Identificacion</label>
-          <div class="control">
-            <input class="input" type="text" [(ngModel)]="personData.personalId" name="personalId" required>
-          </div>
-        </div>
-
-        <div class="field">
           <label class="label">Fecha de Nacimiento</label>
           <div class="control">
             <input class="input" type="date" [(ngModel)]="personData.birthdate" name="birthdate" required>
+          </div>
+        </div>
+
+
+        <div class="field field-center-label">
+          <label class="label" for="country">País</label>
+          <div class="control">
+            <div class="select">
+              <select
+                id="country"
+                name="country"
+                [(ngModel)]="personData.country"
+                required
+                #country="ngModel">
+                <option value="" disabled selected>Seleccione país de nacionalidad</option>
+                <option *ngFor="let country of countriesList | keyvalue" [value]="country.key">{{ country.key }}</option>
+              </select>
+            </div>
+            <p class="help is-danger" *ngIf="country.invalid && (country.dirty || country.touched)">
+              El país es requerido.
+            </p>
           </div>
         </div>
 
