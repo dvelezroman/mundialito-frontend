@@ -3,8 +3,9 @@
     <h1 class="title">Manage Team</h1>
     <form (ngSubmit)="onSubmit()" #teamForm="ngForm">
       <div class="form-content">
-        <div class="input-section">
-          <div class="field">
+        <!-- Fila 1: Nombre -->
+        <div class="input-section-row">
+          <div class="field field-name">
             <label class="label" for="name">Nombre</label>
             <div class="control">
               <input
@@ -20,7 +21,11 @@
               </p>
             </div>
           </div>
-          <div class="field">
+        </div>
+
+        <!-- Fila 2: País y Ciudad -->
+        <div class="input-section-row">
+          <div class="field field-center-label">
             <label class="label" for="country">País</label>
             <div class="control">
               <div class="select">
@@ -39,7 +44,8 @@
               </p>
             </div>
           </div>
-          <div class="field">
+
+          <div class="field field-center-label field-city">
             <label class="label" for="city">Ciudad</label>
             <div class="control">
               <div class="select">
@@ -50,7 +56,7 @@
                   required
                   #city="ngModel"
                   [disabled]="!team.country">
-                  <option value="" disabled selected>Seleccione una ciudad</option>
+                  <option value="" disabled selected>Seleccione una ciudad          </option>
                   <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
                 </select>
               </div>
@@ -59,7 +65,11 @@
               </p>
             </div>
           </div>
-          <div class="field">
+        </div>
+
+        <!-- Fila 3: Categoría -->
+        <div class="input-section-row">
+          <div class="field field-center-label">
             <label class="label" for="category">Categoría</label>
             <div class="control">
               <div class="select">
@@ -79,64 +89,65 @@
             </div>
           </div>
         </div>
-        <div class="field">
-          <label class="label" for="logoImage">Logo del Equipo</label>
-          <div class="control">
-            <div class="custom-file-input-wrapper">
-              <input
-                class="input custom-file-input"
-                placeholder="Agregar logo"
-                type="file"
-                id="logoImage"
-                name="logoImage"
-                (change)="onLogoSelected($event)"
-                name="profilePhotoFile"
-                accept="image/*"
-                required
-              >
-              <div class="overlay-text">Buscar Imagen en el dispositivo</div>
+
+        <!-- Sección de Logo del Equipo y Recibo de Pago -->
+        <div class="input-section-row">
+          <div class="field">
+            <label class="label" for="logoImage">Logo del Equipo</label>
+            <div class="control">
+              <div class="custom-file-input-wrapper">
+                <input
+                  class="custom-file-input"
+                  type="file"
+                  id="logoImage"
+                  name="logoImage"
+                  (change)="onLogoSelected($event)"
+                  accept="image/*"
+                  required>
+                <label class="custom-file-label" for="logoImage"></label>
+              </div>
+            </div>
+            <div class="image-preview" *ngIf="previewLogoUrl">
+              <label>Preview:</label>
+              <img [src]="previewLogoUrl" alt="Logo Preview" />
+              <button type="button" class="button is-danger is-small" (click)="removeLogo()">Eliminar Logo</button>
             </div>
           </div>
-          <div class="image-preview" *ngIf="previewLogoUrl">
-            <label>Preview:</label>
-            <img [src]="previewLogoUrl" alt="Logo Preview" />
-            <button type="button" class="button is-danger is-small" (click)="removeLogo()">Eliminar Logo</button>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label" for="logoImage">RECIBO DE PAGO INSCRIPCION</label>
-          <div class="control">
-            <div class="custom-file-input-wrapper">
-              <input
-                class="input custom-file-input"
-                placeholder="Agregar recibo de pago"
-                type="file"
-                id="receiptImage"
-                name="receiptImage"
-                (change)="onReceiptSelected($event)"
-                name="receiptPhotoFile"
-                accept="image/*"
-                required
-              >
-              <div class="overlay-text">Buscar Imagen en el dispositivo</div>
+
+          <div class="field">
+            <label class="label" for="receiptImage">Recibo de Pago Inscripción</label>
+            <div class="control">
+              <div class="custom-file-input-wrapper">
+                <input
+                  class="custom-file-input"
+                  type="file"
+                  id="receiptImage"
+                  name="receiptImage"
+                  (change)="onReceiptSelected($event)"
+                  accept="image/*"
+                  required>
+                <label class="custom-file-label" for="receiptImage"></label>
+              </div>
             </div>
-          </div>
-          <div class="image-preview" *ngIf="previewReceiptUrl">
-            <label>Preview:</label>
-            <img [src]="previewReceiptUrl" alt="Recibo Subido" />
-            <button type="button" class="button is-danger is-small" (click)="removeReceipt()">Eliminar Recibo</button>
+            <div class="image-preview" *ngIf="previewReceiptUrl">
+              <label>Preview:</label>
+              <img [src]="previewReceiptUrl" alt="Recibo Subido" />
+              <button type="button" class="button is-danger is-small" (click)="removeReceipt()">Eliminar Recibo</button>
+            </div>
           </div>
         </div>
       </div>
-      <!-- Button section (bottom of form) -->
+
+      <!-- Sección de Botones -->
       <div class="button-section">
         <button class="button is-primary" type="submit" [disabled]="teamForm.invalid">Agregar</button>
         <button class="button is-light" type="button" (click)="onCancel()">Cancelar</button>
       </div>
     </form>
   </div>
-   <!--Toast-->
-   <div class="toast-container">
+
+  <!-- Toast Notifications -->
+  <div class="toast-container">
     <div *ngIf="showSuccessToast" class="notification is-success toast">
       <div class="toast-content">
         <img src="/assets/pulgar arriba1.png" alt="Éxito" class="toast-icon">

@@ -6,7 +6,14 @@
   </div>
 
 
-  <h2 class="title">Jugadores Inscritos</h2>
+  <div class="title-section">
+    <h2 class="title">Jugadores Inscritos</h2>
+    <button *ngIf="players.length > 0" class="button is-primary is-align-right" (click)="printPlayers()">
+      <i  class="fa fa-print" style="margin-right: 8px;"></i> Imprimir
+    </button>
+  </div>
+
+
   <div class="columns is-multiline">
     <div *ngFor="let player of players" class="column is-one-quarter">
       <div class="card">

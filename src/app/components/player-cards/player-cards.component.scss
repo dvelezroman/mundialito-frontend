@@ -19,18 +19,28 @@
 }
   
 
-  .title {
-    text-align: center; 
-    color: #2c2a2a; 
-    padding-top: 3rem;
-    font-size: 4rem;
-    margin-bottom: 4.5rem; 
+.title-section {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 20px;
+}
 
-  }
+.title-section h2 {
+  margin: auto;
+  color: black; 
+}
+
+.title-section .button {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
 
   .columns {
     display: flex;
-    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en nuevas filas */
+    flex-wrap: wrap; 
     margin: auto;
     justify-content: center;
   }
