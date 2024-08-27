@@ -11,6 +11,7 @@ import {countries} from "./countries";
 export interface Team {
   name: string;
   logoImage?: File | null,
+  receiptImage?: File | null,
   country: string;
   city: string;
   category: 'INFANTO' | 'PRE' | 'JUVENIL';
@@ -31,17 +32,21 @@ export class TeamComponent implements OnInit {
   showSuccessToast: boolean = false;
   showErrorToast: boolean = false;
   countriesList = countries;
+  maxFileSize = 16000; // 15 KB in bytes
 
   team: Team = {
     name: '',
     country: 'Ecuador',
     city: '',
     logoImage: null,
+    receiptImage: null,
     category: 'INFANTO',
   };
 
   people = [] as any[];
   previewLogoUrl: string | ArrayBuffer | null = null;
+  previewReceiptUrl: string | ArrayBuffer | null = null;
+  uploadedReceiptImage: string | null = null;
 
   constructor(
     private s3Service: S3Service,
@@ -75,11 +80,44 @@ export class TeamComponent implements OnInit {
   onLogoSelected(event: any) {
     const file = event.target.files[0];
 
-    if (file) {
+    // Check file size
+    if (file.size > this.maxFileSize) {
+      this.resizeImage(file, 1024, 1024).then(resizedFile => {
+        this.team.logoImage = resizedFile;
+      }).catch(() => {
+        alert('The image is too large and could not be resized.');
+      });
+    } else {
       this.team.logoImage = file;
+    }
+
+    if (this.team.logoImage) {
       const reader = new FileReader();
       reader.onload = () => {
         this.previewLogoUrl = reader.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  onReceiptSelected(event: any) {
+    const file = event.target.files[0];
+
+    // Check file size
+    if (file.size > this.maxFileSize) {
+      this.resizeImage(file, 1024, 1024).then(resizedFile => {
+        this.team.receiptImage = resizedFile;
+      }).catch(() => {
+        alert('The image is too large and could not be resized.');
+      });
+    } else {
+      this.team.receiptImage = file;
+    }
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.previewReceiptUrl = reader.result;
       };
       reader.readAsDataURL(file);
     }
@@ -90,8 +128,29 @@ export class TeamComponent implements OnInit {
     this.team.logoImage = null;
   }
 
+  removeReceipt() {
+    this.previewReceiptUrl = null;
+    this.team.receiptImage = null;
+  }
+
+
 
   onSubmit() {
+    if (this.team.receiptImage) {
+      const bucketName = environment.s3BucketName; // Ensure this is defined in your environment
+      const key = `receipts/${this.team.receiptImage.name}`;
+
+      this.s3Service.uploadFile(this.team.receiptImage, bucketName, key).subscribe({
+        next: () => {
+          const fileUrl = `https://${bucketName}.s3.${environment.aws_region}.amazonaws.com/${key}`;
+          this.uploadedReceiptImage = fileUrl;
+        },
+        error: (err) => {
+          console.error('Upload Receipt failed:', err);
+          // Handle upload failure (e.g., show an error message)
+        }
+      });
+    }
     if (this.team.logoImage) {
       const bucketName = environment.s3BucketName; // Ensure this is defined in your environment
       const key = `teams/${this.team.logoImage.name}`;
@@ -104,11 +163,12 @@ export class TeamComponent implements OnInit {
             country: this.team.country,
             city: this.team.city,
             logoImage: fileUrl,
+            receiptImage: this.uploadedReceiptImage,
             category: this.team.category,
           }
           this.teamService.createTeam(formData).subscribe({
             next: () => {
-              this.router.navigate(['/home']);
+              this.router.navigate(['/dashboard']);
 
             },
             error: (error) => {
@@ -117,14 +177,14 @@ export class TeamComponent implements OnInit {
           });
         },
         error: (err) => {
-          console.error('Upload failed:', err);
+          console.error('Upload Logo failed:', err);
           // Handle upload failure (e.g., show an error message)
         }
       });
     } else {
       this.teamService.createTeam(this.team).subscribe({
         next: () => {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/dashboard']);
         },
         error: (error) => {
           console.error('Error creating team', error);
@@ -133,7 +193,44 @@ export class TeamComponent implements OnInit {
     }
   }
 
+  resizeImage(file: File, maxWidth: number, maxHeight: number): Promise<File> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = event => {
+        const img = new Image();
+        img.src = event.target?.result as string;
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          let width = img.width;
+          let height = img.height;
 
+          if (width > maxWidth || height > maxHeight) {
+            if (width > height) {
+              height = Math.round((height *= maxWidth / width));
+              width = maxWidth;
+            } else {
+              width = Math.round((width *= maxHeight / height));
+              height = maxHeight;
+            }
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx?.drawImage(img, 0, 0, width, height);
+
+          canvas.toBlob(blob => {
+            if (blob) {
+              resolve(new File([blob], file.name, { type: file.type }));
+            } else {
+              reject(new Error('Canvas is empty'));
+            }
+          }, file.type, 0.7);
+        };
+      };
+      reader.readAsDataURL(file);
+    });
+  }
 
   onCancel() {
     this.router.navigate(['/dashboard']);
