@@ -34,6 +34,11 @@
   border-radius: 8px; /* Agrega un poco de redondeo a las esquinas */
 }
 
+.toast.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
 .toast-icon {
   width: 70px; /* Ajusta el tamaño de la imagen según sea necesario */
   height: auto;
@@ -91,11 +96,11 @@
     flex-direction: column;
     justify-content: center; // Centra verticalmente el contenido dentro del bloque
     align-items: center;
-    height: 70%; // Asegura que el bloque ocupe toda la altura de la tarjeta
+    height: 70%; 
   }
 
   .label, .select select {
-    margin: 0 auto; // Centra horizontalmente si es necesario
+    margin: 0 auto; 
   }
 
   .label {
@@ -112,13 +117,13 @@
     background-color: #dfe0e0;
     border: none;
     color: #727272;
-    padding: 3px 12px; // Asegura espacio interno suficiente
-    padding-right: 40px; // Añade espacio a la derecha para la flecha
+    padding: 3px 12px; 
+    padding-right: 40px; 
     border-radius: 4px;
     width: 500px;
     font-size: 1.2em;
     height: 40px;
-    line-height: 20px; // Alinea el texto verticalmente
+    line-height: 20px; 
     box-sizing: border-box;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -126,7 +131,7 @@
   }
 
   .select {
-    position: relative; // Necesario para posicionar la flecha con respecto al select
+    position: relative; 
     width: 100%;
   }
 
@@ -134,8 +139,8 @@
     content: '';
     position: absolute;
     right: 10px;
-    top: 50%; // Centra la flecha verticalmente
-    transform: translateY(-50%); // Asegura que la flecha esté centrada
+    top: 50%; 
+    transform: translateY(-50%);
     pointer-events: none;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
@@ -229,14 +234,13 @@
     }
 
     .button-block {
-        width: 65%; // Mantiene el tamaño del bloque de botones
+        width: 65%; 
         margin: auto;
         margin-left: 55px;
         flex-direction: column;
 
         .btn {
- // Reduce ligeramente el padding de los botones
-          font-size: 0.9em; // Reduce el tamaño de la fuente en los botones
+          font-size: 0.9em; 
         }
 
         .add-person {
@@ -306,6 +310,30 @@
       font-size: 1em; // Ajusta el tamaño de la fuente del select
       margin: auto;
       padding: 0px 15px; // Aumenta el padding para mejor usabilidad en pantallas pequeñas
+    }
+
+.toast-container {
+  position: fixed;
+  top: 30%; /* Ajusta este valor para mover hacia abajo el contenedor */
+  left: 48%;
+  transform: translate(-50%, -50%); /* Centra horizontalmente y ajusta la posición vertical */
+  width: 100%;
+  max-width: 600px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* Espacio entre toasts si ambos se muestran */
+}
+
+    .toast {
+      width: 90%; /* Aumenta el ancho del toast */
+      text-align: center;
+      opacity: 0.9;
+      color: white;
+      font-size: 1.55em; /* Aumenta el tamaño del texto */
+      padding: 15px; /* Aumenta el padding para un toast más grande */
+      border-radius: 8px; /* Agrega un poco de redondeo a las esquinas */
     }
   }
 

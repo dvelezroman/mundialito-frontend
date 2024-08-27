@@ -464,23 +464,36 @@ button.cancelar{
 }
 
 @media (max-width: 480px) {
+  :host {
+    padding: .5rem;
+  }
+
   .players-header {
-    flex-direction: column; 
-    align-items: center;
-  }
-  
-  .print-button {
-    margin-top: 10px; 
-    align-self: center; 
-  }
-  
-  .players-header .title {
-    font-size: 0.9rem; 
-  }
+    position: relative; /* Establece el contenedor como el contexto de posicionamiento relativo */
+}
+
+.players-header h3.title {
+    font-size: 1.4rem; /* Ajusta el tamaño del título si es necesario */
+    margin-bottom: 10px; /* Espacio inferior para evitar que el botón lo toque */
+}
+
+.players-header .print-button {
+    position: absolute; /* Posiciona el botón de manera absoluta */
+    top: 80%; /* Alinea el botón con la parte superior del contenedor */
+    right: 0%; /* Alinea el botón con la derecha del contenedor */
+    font-size: 0.6rem; /* Ajusta el tamaño del texto del botón */
+    padding: 4px 9px; /* Ajusta el tamaño del botón */
+}
   
   .team-logo {
-    max-width: 60px; 
-  }
+    width: 55px; /* Fija el ancho de la imagen */
+    height: 55px; /* Fija la altura de la imagen */
+    object-fit: cover; /* Asegura que la imagen se ajuste al contenedor y mantenga proporciones */
+    position: absolute;
+    top: 135%; 
+    right: 2%; 
+    border-radius: 50%; /* Si quieres que la imagen tenga forma circular, opcional */
+}
 
   .team-info p {
     color: #333; 
@@ -491,4 +504,20 @@ button.cancelar{
   .team-info p strong {
     color: black; 
   }
+
+  .players-container{
+    padding: 10px;
+  }
+
+  .players-table th, .players-table td {
+    font-size: 0.6rem; 
+    padding: 3px 2px;
+  }
+
+  .player-photo {
+    max-width: 30px; 
+    height: 30px;
+  }
+
+
 }
