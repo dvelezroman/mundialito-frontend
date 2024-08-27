@@ -3,6 +3,7 @@
 .hero {
   min-height: 100vh;
   display: flex;
+  padding: 2rem;
   align-items: center;
   justify-content: center;
   background: linear-gradient(360deg, #00c853 0%, #00b8d4 100%);
@@ -10,8 +11,8 @@
 
 .title.has-text-light {
   font-size: 5.5rem;
-  color: #f1f1f1; 
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+  color: #f1f1f1;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   margin-top: 2rem;
   margin-bottom: 1.3rem;
 }
@@ -19,24 +20,24 @@
 .subtitle.has-text-light {
   font-size: 1.4rem;
   text-align: center;
-  color: #e0e0e0; 
-  margin-bottom: 2rem; 
+  color: #e0e0e0;
+  margin-bottom: 2rem;
 }
 
 .buttons {
   margin-top: 20px;
-  display: flex; 
-  justify-content: center; 
-  gap: 1rem; 
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 
   .button {
-    font-size: 1.3rem; 
-    padding: .7rem 1.4rem; 
-    border-radius: 8px; 
+    font-size: 1.3rem;
+    padding: .7rem 1.4rem;
+    border-radius: 8px;
   }
 
   .button.is-info {
-    background-color: #0288d1; 
+    background-color: #0288d1;
     border-color: #0288d1;
     color: white;
     transition: background-color 0.3s ease;
@@ -49,38 +50,38 @@
    /* Botón de Login */
 
   .button.is-link {
-    background: linear-gradient(135deg, #05ae57, #10b629); 
+    background: linear-gradient(135deg, #05ae57, #10b629);
     border: none;
-    color: #ffffff; 
+    color: #ffffff;
     transition: background-color 0.3s ease;
 
     &:hover {
-      background: linear-gradient(135deg, #25b46a, #28b63d); 
-      color: #ffffff; 
+      background: linear-gradient(135deg, #25b46a, #28b63d);
+      color: #ffffff;
     }
 }
 
   .button.is-link {
-    background-color: #00c853; 
+    background-color: #00c853;
     border-color: #00c853;
     color: white;
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: #00bfa5; 
+      background-color: #00bfa5;
     }
   }
 }
 
 .logo-image {
-  max-width: 550px; 
-  max-height: 500px; 
-  width: auto; 
-  height: auto; 
-  margin-top: 6rem; 
+  max-width: 550px;
+  max-height: 500px;
+  width: auto;
+  height: auto;
+  margin-top: 6rem;
   margin-left: auto;
   margin-right: auto;
-  display: block; 
+  display: block;
 }
 
 
@@ -88,8 +89,8 @@
 
   .logo-image {
     margin-top: 6rem;
-    max-width: 450px;  
-    max-height: 400px; 
+    max-width: 450px;
+    max-height: 400px;
   }
 
   .title.has-text-light {
@@ -107,17 +108,17 @@
 
   .buttons {
     margin-top: 2rem;
-    display: block; 
-    text-align: center;  
-    gap: 1rem; 
+    display: block;
+    text-align: center;
+    gap: 1rem;
 
     .button {
-      display: inline-block; 
-      width: auto; 
-      max-width: 200px; 
-      font-size: 1.1rem; 
-      margin-right: 15px; 
-      margin-bottom: 15px; 
+      display: inline-block;
+      width: auto;
+      max-width: 200px;
+      font-size: 1.1rem;
+      margin-right: 15px;
+      margin-bottom: 15px;
     }
   }
 }
@@ -127,8 +128,8 @@
 
   .logo-image {
     margin-top: 7rem;
-    max-width: 400px;  
-    max-height: 350px; 
+    max-width: 400px;
+    max-height: 350px;
   }
 
   .title.has-text-light {
@@ -146,56 +147,56 @@
 
   .buttons {
     margin-top: 1.5rem;
-    display: block; 
-    text-align: left;  
-    gap: 0.75rem; 
+    display: block;
+    text-align: left;
+    gap: 0.75rem;
 
     .button {
-      display: inline-block; 
-      width: auto; 
-      max-width: 180px; 
-      font-size: 1rem; 
-      margin-right: 15px; 
-      margin-bottom: 10px; 
+      display: inline-block;
+      width: auto;
+      max-width: 180px;
+      font-size: 1rem;
+      margin-right: 15px;
+      margin-bottom: 10px;
     }
   }
 }
 
 @media (max-width: 490px) {
 
-  
+
   .title.has-text-light {
     font-size: 3.7rem;
     text-align: left;
     margin-top: 0rem;
     margin-bottom: 1rem;
   }
-  
+
   .subtitle.has-text-light {
     width: 75%;
     font-size: 1.2rem;
     text-align: left;
   }
-  
+
   .buttons {
     margin-top: 1rem;
-    display: block; 
-    text-align: left;  
-    gap: 0.5rem; 
+    display: block;
+    text-align: left;
+    gap: 0.5rem;
 
     .button {
-      display: inline-block; 
-      width: auto; 
-      max-width: 150px; 
-      font-size: 0.975rem; 
-      margin-right: 10px; 
-      margin-bottom: 10px; 
+      display: inline-block;
+      width: auto;
+      max-width: 150px;
+      font-size: 0.975rem;
+      margin-right: 10px;
+      margin-bottom: 10px;
     }
   }
 
   .logo-image{
     margin-top: 3.6rem;
-    max-width: 350px;  
-    max-height: 300px; 
+    max-width: 350px;
+    max-height: 300px;
   }
 }

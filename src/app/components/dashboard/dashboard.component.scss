@@ -4,11 +4,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 20px;
-  background: url('/assets/estadio fondo dashboard.png'); 
-  background-size: cover; 
-  background-position: center; 
-  background-repeat: no-repeat; 
+  padding: 5rem;
+  background: url('/assets/estadio fondo dashboard.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .toast-container {
@@ -46,7 +46,7 @@
 }
 
 
-  
+
   .title {
     color: #2f51b7;
     font-size: 3em;
@@ -55,13 +55,13 @@
     text-align: center;
     width: 100%;
   }
-  
+
   .dashboard-container {
     width: 100%;
     height: 600px;
     margin-top: 20px;
   }
-  
+
   .team-select-card {
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(10px);
@@ -69,7 +69,7 @@
     border: 1px solid rgba(255, 255, 255, 0.5);
     padding: 20px;
     width: 100%;
-    height: 200px; 
+    height: 200px;
     max-width: 1000px; // Aumenta el ancho máximo para la tarjeta
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     display: flex;
@@ -78,15 +78,15 @@
     margin-left: auto; // Centra la tarjeta horizontalmente
     margin-right: auto; // Centra la tarjeta horizontalmente
   }
-  
+
   .content {
     display: flex;
     width: 100%;
     flex-wrap: nowrap;
   }
-  
+
   .select-block {
-    width: 100%; 
+    width: 100%;
     padding-top: 10px;
     display: flex; // Utiliza Flexbox para organizar el contenido
     flex-direction: column;
@@ -94,7 +94,7 @@
     align-items: center;
     height: 70%; // Asegura que el bloque ocupe toda la altura de la tarjeta
   }
-  
+
   .label, .select select {
     margin: 0 auto; // Centra horizontalmente si es necesario
   }
@@ -144,7 +144,7 @@
     width: 0;
     height: 0;
   }
-  
+
   .button-block {
     width: 35%;
     display: flex;
@@ -155,7 +155,7 @@
     align-items: stretch; /* Asegura que los botones ocupen todo el ancho disponible */
     gap: 15px;
 }
-  
+
 .button-block .btn {
     padding: 12px 25px; /* Mantiene el padding */
     background-color: #1e6bbd;
@@ -187,30 +187,30 @@
   visibility: hidden;
 }
 
-  
+
   @media (max-width: 992px) {
 
-    
+
     .hero {
       padding: 15px; // Reduce el padding general
     }
-  
+
     .title {
       font-size: 2.2em; // Reduce el tamaño de la fuente del título
       margin-bottom: 15px; // Reduce el espacio inferior del título
     }
-  
+
     .dashboard-container {
       width: 100%;
       margin-top: 15px; // Reduce el espacio superior
     }
-  
+
     .team-select-card {
       height: 180px; // Reduce la altura de la tarjeta
       max-width: 90%; // Reduce el ancho máximo de la tarjeta
       padding: 15px; // Reduce el padding interno
     }
-  
+
     .select-block {
       width: 70%; // Reduce el ancho del bloque de selección
       height: 65%; // Ajusta la altura del bloque de selección
@@ -220,7 +220,7 @@
         width: 100%;
         margin: auto;
       }
-  
+
     .select select {
       width: 480px; // Reduce el ancho del select
       font-size: 1.1em; // Reduce el tamaño de la fuente del select
@@ -228,23 +228,23 @@
       padding: 5px 10px; // Ajusta el padding del select
       margin-left: 35px;
     }
-  
+
     .button-block {
         width: 65%; // Mantiene el tamaño del bloque de botones
         margin: auto;
         margin-left: 55px;
         flex-direction: column;
-      
+
         .btn {
  // Reduce ligeramente el padding de los botones
           font-size: 0.9em; // Reduce el tamaño de la fuente en los botones
         }
-      
+
         .add-person {
           padding: 10px 15px;
           font-size: .9em; // Ajusta el tamaño de la fuente del botón "Agregar Jugador"
         }
-        
+
         .view-players {
           padding: 10px 15px;
           font-size: 0.9em; // Mantiene el tamaño de la fuente en "Ver Jugadores"
@@ -252,7 +252,7 @@
         }
       }
 
-    
+
   }
 
   @media (max-width: 768px) {
@@ -268,7 +268,7 @@
         max-width: 90%; // Ajusta el ancho máximo de la tarjeta para pantallas pequeñas
         box-sizing: border-box; // Asegura que el padding se incluya en el ancho y la altura
       }
-    
+
     .content {
       display: flex;
       flex-direction: column; // Coloca el select y los botones en columna
@@ -280,14 +280,14 @@
         font-size: 1.2rem; // Mantiene el tamaño de la fuente
         margin-bottom: 15px;
       }
-  
+
     .select-block{
       width: 100%; // Ocupa todo el ancho disponible
       margin-bottom: 20px; // Añade margen inferior para separar los elementos
       padding: 7px;
 
     }
-  
+
     .button-block {
       display: flex;
       flex-direction: row; // Coloca los botones en columna
@@ -295,13 +295,13 @@
       margin-right: 0; // Elimina el margen derecho
       margin: auto;
     }
-  
+
     .button-block .btn {
-     
+
       width: 40%; // Ajusta el ancho de los botones para que no ocupen todo el ancho
       margin-bottom: 10px; // Añade un poco de espacio entre los botones
     }
-  
+
     .select select {
       width: 350px; // Ajusta el ancho del select para que no ocupe todo el ancho
       font-size: 1em; // Ajusta el tamaño de la fuente del select
@@ -309,56 +309,56 @@
       padding: 0px 15px; // Aumenta el padding para mejor usabilidad en pantallas pequeñas
     }
   }
-  
+
   @media (max-width: 490px) {
 
     .hero {
 
-      background: url('/assets/fondo dashboard movil.png'); 
-      background-size: cover; 
-      background-position: center; 
-      background-repeat: no-repeat; 
+      background: url('/assets/fondo dashboard movil.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
 
     }
-    
+
 
     .team-select-card {
-      height: auto; 
-      padding: 15px; 
-      max-width: 95%; 
-      box-sizing: border-box; 
+      height: auto;
+      padding: 15px;
+      max-width: 95%;
+      box-sizing: border-box;
     }
-    
+
     .content {
       display: flex;
       flex-direction: column; // Coloca el select y los botones en columna
       align-items: center; // Centra el contenido horizontalmente
     }
-  
+
     .label {
       font-size: 1rem; // Reduce el tamaño de la fuente para móviles
       margin-bottom: 15px; // Reduce el margen inferior
     }
-  
+
     .select-block, .button-block {
       width: 60%; // Ocupa todo el ancho disponible
       margin-bottom: 15px; // Reduce el margen inferior para ahorrar espacio
       padding: 10px; // Reduce el padding para ahorrar espacio
     }
-  
+
     .button-block {
       flex-direction: column; // Coloca los botones en columna
       align-items: center; // Centra los botones horizontalmente
       margin-right: 0; // Elimina el margen derecho
       margin: auto;
     }
-  
+
     .button-block .btn {
       width: 90%; // Ajusta el ancho de los botones para que se adapten al móvil
       font-size: 0.9em; // Reduce el tamaño de la fuente en los botones
       margin-bottom: 8px; // Reduce el espacio entre los botones
     }
-  
+
     .select select {
       width: 280px; // Reduce el ancho del select para que se adapte al móvil
       font-size: 0.9em; // Reduce el tamaño de la fuente del select
@@ -372,7 +372,7 @@
   .modal.is-active {
     display: block;
   }
-  
+
   .modal {
     display: none;
     position: fixed;
@@ -383,7 +383,7 @@
     overflow: auto;
     background-color: transparent; /* Aumenta la transparencia para ver más detrás */
     z-index: 1000;
-  
+
     .modal-card {
       max-width: 500px;
       margin: 50px auto;
@@ -396,15 +396,15 @@
     .modal-background{
       background-color: rgba(0, 0, 0, 0.512);
     }
-  
+
     .modal-card-head {
       display: flex;
       justify-content: space-between;
       align-items: center;
       background-color: white;
-      
+
     }
-  
+
     .delete {
       background: none;
       border: none;
@@ -413,49 +413,49 @@
     }
 
     .modal-card-title {
-      color: #616161; 
-      font-size: 1.7rem; 
-      font-weight: bold; 
-      text-align: center; 
-      width: 100%; 
-      margin-bottom: 0; 
-      letter-spacing: 0.5px; 
-      border-bottom: 1px solid #e0e0e0; 
-      background-color: #f5f5f5; 
+      color: #616161;
+      font-size: 1.7rem;
+      font-weight: bold;
+      text-align: center;
+      width: 100%;
+      margin-bottom: 0;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #e0e0e0;
+      background-color: #f5f5f5;
     }
 
     .modal-card-body {
-      background-color: #ffffff; 
-      padding: 20px; 
-      border-radius: 8px; 
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
     .modal-card-body .input {
-      background-color: #e0e0e0; 
-      border: 1px solid #d5d5d5; 
-      border-radius: 4px; 
-      padding: 10px; 
-      color: #424242; 
-      box-sizing: border-box; 
-      width: 100%; 
+      background-color: #e0e0e0;
+      border: 1px solid #d5d5d5;
+      border-radius: 4px;
+      padding: 10px;
+      color: #424242;
+      box-sizing: border-box;
+      width: 100%;
     }
-    
+
     .modal-card-body .input:focus {
-      border-color: #616161; 
-      outline: none; 
+      border-color: #616161;
+      outline: none;
     }
-  
+
     .label {
-      color: #6d6d6d; 
+      color: #6d6d6d;
       font-weight: bold;
       font-size: 1.2rem;
       margin-bottom: 5px;
       margin-left: 5px;
-      text-align: left; 
-      display: block; 
+      text-align: left;
+      display: block;
     }
-  
+
     .button.is-primary {
       background-color: #00b8d4;
       border: none;
@@ -465,9 +465,9 @@
       font-size: 1rem;
       cursor: pointer;
       transition: background-color 0.3s ease;
-  
+
       &:hover {
-        background-color: #0288d1; 
+        background-color: #0288d1;
       }
     }
   }
@@ -481,8 +481,8 @@
 
 .custom-file-input {
   opacity: 0;
-  width: 100%; 
-  height: 50px; 
+  width: 100%;
+  height: 50px;
   cursor: pointer;
 }
 
@@ -492,26 +492,26 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #e0e0e0; 
-  color: #424242; 
+  background-color: #e0e0e0;
+  color: #424242;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 4px;
-  pointer-events: none; 
-  border: 1px solid #d5d5d5; 
-  box-sizing: border-box; 
+  pointer-events: none;
+  border: 1px solid #d5d5d5;
+  box-sizing: border-box;
 }
 
 .image-preview {
   margin-top: 10px;
-  text-align: center; 
+  text-align: center;
 }
 
 .remove-button {
-  margin-top: 10px; 
+  margin-top: 10px;
   /* Espacio entre el input de archivo y el botón de eliminar */
-  background-color: #5b5555; 
+  background-color: #5b5555;
   /* Color de fondo rojo claro */
   border: none;
   border-radius: 4px;
@@ -521,20 +521,20 @@
 }
 
 .remove-button:hover {
-  background-color: #343232; 
+  background-color: #343232;
 }
 
 .buttons {
   display: flex;
-  justify-content: center; 
-  gap: 20px; 
-  margin-top: 50px; 
+  justify-content: center;
+  gap: 20px;
+  margin-top: 50px;
 }
 
 .button.is-light {
-  background-color: #c5c4c4; 
-  border: 1px solid #c2c0c0; 
-  color: #2c2c2c; 
+  background-color: #c5c4c4;
+  border: 1px solid #c2c0c0;
+  color: #2c2c2c;
   border-radius: 4px;
   padding: 10px 20px;
   cursor: pointer;
@@ -542,8 +542,8 @@
 }
 
 .button.is-light:hover {
-  background-color: #d5d5d5; 
-  border-color: #a0a0a0; 
+  background-color: #d5d5d5;
+  border-color: #a0a0a0;
 }
 
 
@@ -553,11 +553,11 @@
   .dashboard-container {
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
     gap: 20px;
-    
+
   }
-  
+
   .team-info-card {
     background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(15px);
@@ -579,59 +579,59 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  align-items: center; 
+  align-items: center;
   margin-top: 0px;
 
 }
-  
+
 .team-info-left {
   flex: 1;
   padding-right: 20px;
   text-align: left;
 }
-  
+
 .team-info-right {
-  flex: 0 0 150px; 
+  flex: 0 0 150px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-  
+
   .team-info-card h2 {
     font-size: 2.5rem;
     font-weight: bold;
     color: #1b1717;
     margin-bottom: 15px;
   }
-  
+
   .team-info-card p {
     margin: 5px 0;
     padding: 0;
     text-align: left;
     color: #000000;
-    font-size: 1.4rem; 
+    font-size: 1.4rem;
   }
-  
+
   .team-info-card p strong {
     font-size: 1.5rem;
     margin-right: 5px;
-    color: #36393c; 
-    font-weight: bold; 
+    color: #36393c;
+    font-weight: bold;
   }
-  
-  
+
+
   .team-logo {
-    width: 100%; 
-    max-width: 150px; 
-    height: auto; 
-    object-fit: contain; 
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    object-fit: contain;
   }
 
   .edit-button-container {
-    margin-top: 20px; 
+    margin-top: 20px;
     align-self: center;
   }
-  
+
   .button.is-primary {
     background-color: #007bff;
     color: white;
@@ -642,8 +642,8 @@
     font-size: 14px;
     transition: background-color 0.3s ease;
   }
-  
-  
+
+
   .button.is-primary:hover {
     background-color: #0056b3;
   }
@@ -659,7 +659,7 @@
     cursor: pointer;
     color: #333;
   }
-  
+
   .close-button:hover {
     color: #160c0c;
   }
@@ -673,22 +673,22 @@
 
   .team-info-content {
     flex-direction: column;
-    align-items: center; 
-    text-align: center; 
-    width: 100%; 
+    align-items: center;
+    text-align: center;
+    width: 100%;
   }
 
   .team-info-right {
-    margin-top: 10px; 
-    flex: 0 0 100px; 
+    margin-top: 10px;
+    flex: 0 0 100px;
   }
 
   .team-logo {
-    max-width: 100px; 
+    max-width: 100px;
   }
 
   .team-info-card h2 {
-    font-size: 2rem; 
+    font-size: 2rem;
   }
 
   .team-info-card p {
@@ -696,27 +696,27 @@
   }
 
   .team-info-card p strong {
-    font-size: 1.3rem; 
+    font-size: 1.3rem;
   }
 }
 
 
 @media screen and (max-width: 480px) {
   .team-info-card {
-    padding: 20px; 
-    max-width: 90%; 
-    min-height: 300px; 
+    padding: 20px;
+    max-width: 90%;
+    min-height: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
-    box-sizing: border-box; 
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
   }
 
   .team-info-content {
     flex-direction: column;
-    align-items: center; 
-    text-align: center; 
+    align-items: center;
+    text-align: center;
     width: 100%;
     margin-top: 0px;
   }
@@ -727,51 +727,50 @@
   }
 
   .team-info-right {
-    flex: 0 0 80px; 
+    flex: 0 0 80px;
     margin-top: 15px;
   }
 
   .team-logo {
-    max-width: 80px; 
+    max-width: 80px;
   }
 
   .team-info-card h2 {
-    font-size: 1.8rem; 
+    font-size: 1.8rem;
     margin-top: 0px;
     text-align: center;
     margin: auto;
   }
 
   .team-info-card p {
-    font-size: 1rem; 
+    font-size: 1rem;
   }
 
   .team-info-card p strong {
-    font-size: 1.2rem; 
+    font-size: 1.2rem;
     line-height: 2px;
   }
 
   .edit-button-container {
-    margin-top: 15px; 
-    width: 100%; 
+    margin-top: 15px;
+    width: 100%;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
 
   }
 
   .button.is-primary {
-    width: calc(100% - 60px); 
+    width: calc(100% - 60px);
     max-width: 230px;
     padding: 8px 12px;
     font-size: 14px;
-    box-sizing: border-box; 
+    box-sizing: border-box;
   }
 }
 
-  
-  
-  
-  
-  
-  
-  
+
+
+
+
+
+
