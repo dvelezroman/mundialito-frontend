@@ -98,7 +98,7 @@ export class DashboardComponent implements OnInit {
     this.personData.lastname = '';
     this.personData.personalId = '';
     this.personData.birthdate = '';
-    this.selectedTeamId = null;
+
 
     if (fileInput) {
       fileInput.value = '';
@@ -134,7 +134,7 @@ export class DashboardComponent implements OnInit {
 
 
   submitForm() {
-    console.log('hola');
+
     if (this.selectedTeamId === null) {
       console.error('No se ha seleccionado un equipo.');
       this.howErrorToast('No se ha seleccionado un equipo.')

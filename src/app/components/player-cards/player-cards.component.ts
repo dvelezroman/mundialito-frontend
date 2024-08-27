@@ -196,4 +196,8 @@ export class PlayerCardsComponent implements OnInit {
       this.showErrorToast = false;
     }, 2500);
   }
+
+  printPlayers() {
+    window.print();
+  }
 }

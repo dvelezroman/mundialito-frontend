@@ -1,0 +1,68 @@
+<div class="reportes-page-container">
+  
+
+    <div class="title-section">
+      <h1>Reportes de Equipos</h1>
+    </div>
+  
+    <div class="reportes-container">
+      <div class="button-section">
+        <button class="button is-primary" (click)="navigateToDashboard()">Ir a Dashboard</button>
+      </div>
+  
+      <div class="filter-section">
+        <h2>Buscar Equipo</h2>
+        <div class="field">
+          <label for="country-select">Seleccionar País</label>
+          <select id="country-select" [(ngModel)]="selectedCountry" (change)="onCountryChange()">
+            <option value="">Todos los Países</option>
+            <option *ngFor="let country of countriesList | keyvalue" [value]="country.key">{{ country.key }}</option>
+          </select>
+        </div>
+  
+        <div class="field">
+          <label for="category-select">Seleccionar Categoría</label>
+          <select id="category-select" [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
+            <option value="">Todas las Categorías</option>
+            <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+          </select>
+        </div>
+      </div>
+  
+      <!-- Lista de equipos filtrados -->
+      <div class="teams-list-section">
+        <div class="header-section">
+          <h3 class="title">Resultados de la búsqueda</h3>
+          <button *ngIf="filteredTeams.length > 0" class="button is-primary is-align-left" (click)="printTable()">
+            <i class="fa fa-print" style="margin-right: 8px;"></i> Imprimir
+
+          </button>
+        </div>
+        <table class="table is-fullwidth is-striped" *ngIf="filteredTeams.length > 0">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre del Equipo</th>
+              <th>País</th>
+              <th>Ciudad</th>
+              <th>Categoría</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let team of filteredTeams; let i = index" (click)="viewTeamPlayers(team.id)">
+              <td>{{ i + 1 }}</td>
+              <td>{{ team.name }}</td>
+              <td>{{ team.country }}</td>
+              <td>{{ team.city }}</td>
+              <td>{{ team.category }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="no-found" *ngIf="filteredTeams.length === 0">
+          <p>No se encontraron equipos que coincidan con los criterios seleccionados.</p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
