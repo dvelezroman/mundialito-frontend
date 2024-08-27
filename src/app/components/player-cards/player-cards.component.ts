@@ -19,7 +19,7 @@ import { TeamService } from '../../services/team.service';
   styleUrl: './player-cards.component.scss'
 })
 export class PlayerCardsComponent implements OnInit {
-  team: any = null;
+  team: any = {};
   teamId: number | null = null;
   toastMessage: string = '';
   showSuccessToast: boolean = false;
@@ -65,6 +65,7 @@ export class PlayerCardsComponent implements OnInit {
       this.teamService.getTeam(this.teamId).subscribe({
         next: (data) => {
           this.team = data; 
+          console.log('Team Data:', this.team);
         },
         error: (error) => {
           console.error('Error al cargar la información del equipo', error);
