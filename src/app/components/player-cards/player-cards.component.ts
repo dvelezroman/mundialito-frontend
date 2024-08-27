@@ -3,6 +3,7 @@ import {PersonService} from "../../services/person.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CommonModule, DatePipe, NgForOf, NgOptimizedImage} from "@angular/common";
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { TeamService } from '../../services/team.service';
 
 @Component({
   selector: 'app-player-cards',
@@ -18,7 +19,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './player-cards.component.scss'
 })
 export class PlayerCardsComponent implements OnInit {
-
+  team: any = null;
   teamId: number | null = null;
   toastMessage: string = '';
   showSuccessToast: boolean = false;
@@ -34,6 +35,7 @@ export class PlayerCardsComponent implements OnInit {
   editPlayerForm: FormGroup;
 
   constructor(private peopleService: PersonService,
+              private teamService: TeamService,
               private route: ActivatedRoute,
               private router: Router,
               private fb: FormBuilder) {
@@ -54,10 +56,22 @@ export class PlayerCardsComponent implements OnInit {
       this.teamId = id ? +id : null;
 
       this.loadPlayers();
-
+      this.loadTeamInfo();
     });
   }
 
+  loadTeamInfo() {
+    if (this.teamId !== null) {
+      this.teamService.getTeam(this.teamId).subscribe({
+        next: (data) => {
+          this.team = data; 
+        },
+        error: (error) => {
+          console.error('Error al cargar la información del equipo', error);
+        }
+      });
+    }
+  }
 
   loadPlayers() {
     if (this.teamId !== null) {

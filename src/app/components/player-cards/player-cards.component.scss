@@ -5,138 +5,137 @@
     background-repeat: no-repeat;
     display: block;
     min-height: 100vh;
+    padding: 2rem;
   }
 
-.container{
-  padding-top: 7rem;
+
+  .container {
+    margin-top: 50px; /* Añade un margen superior para bajar el contenedor */
+    padding: 25px;
+  }
+
+
+.team-info {
+  background: rgba(255, 255, 255, 0.6); /* Fondo blanco semitransparente */
+  backdrop-filter: blur(10px); /* Aplicar desenfoque para el efecto vidrio */
+  -webkit-backdrop-filter: blur(10px); /* Soporte para Safari */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 20px 30px; /* Espaciado interno */
+  margin-top: 30px; /* Margen superior para separación */
+  width: 100%;
+
 }
 
-.back-button {
-  margin-top: -1rem;
-  font-size: 1rem;
-  padding: 7px 8px;
+.title {
+  text-align: center;
+  color: black;
+  margin-top: .5rem;
+  font-size: 2rem;
 }
 
+/* Estilos para la cabecera de la información del equipo */
 
-.title-section {
+.team-info-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; 
   align-items: center;
-  margin-bottom: 20px;
+  position: relative; 
 }
 
-.title-section h2 {
-  margin: auto;
+.team-logo {
+  max-width: 200px; 
+  height: auto;
+  position: absolute;
+  top: 60%; 
+  right: 7%; 
+}
+
+/* Estilos para los datos del equipo */
+
+.team-info p {
+  color: #333; 
+  font-size: 1.3rem;
+  margin-bottom: .5rem;
+}
+
+.team-info p strong {
+  color: black; 
+}
+
+/* Estilos para la tabla */
+
+.players-container {
+  background: rgba(255, 255, 255, 0.6); 
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px); 
+  border-radius: 10px; 
+  padding: 20px; 
+  margin-top: 20px; 
+}
+
+.section-title {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 20px;
   color: black;
 }
 
-.title-section .button {
-  margin-left: 10px;
+/* Estilos para la cabecera de la tabla de jugadores */
+.players-header {
   display: flex;
+  justify-content: center; /* Centra el título "Jugadores Inscritos" */
   align-items: center;
+  margin-bottom: 20px;
+  position: relative; /* Posiciona el botón de imprimir de forma absoluta */
+}
+
+.print-button {
+  position: absolute;
+  right: 0;
 }
 
 
-  .columns {
-    display: flex;
-    flex-wrap: wrap;
-    margin: auto;
-    justify-content: center;
-  }
 
-  .card {
-    background: rgba(255, 255, 255, 0.75);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    height: auto;
-    min-width: 200px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
+.no-players-message {
+  text-align: center;
+  color: #ff3860; 
+  font-size: 1.2rem;
+  margin: 20px 0;
+}
+
+/* Estilos para la tabla */
+
+.players-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.players-table th {
+  background-color: #00b8d4; 
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+.players-table td {
+  background-color: white;
+  color: #333;
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  vertical-align: middle;
+}
+
+/* Estilos para la imagen del jugador en la tabla */
+.player-photo {
+  max-width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%; 
+}
 
 
-  .image-container {
-    flex: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-  }
-
-  .image-container img {
-    border-radius: 50%;
-    border: 2px solid #00b8d4;
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-  }
-
-  .card-content {
-    flex: 1;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 15px 10px 10px 10px;
-    margin-top: -1rem;
-  }
-
-  .media-content .title {
-    font-size: 1.5rem;
-    color: #333333;
-    margin-bottom: 5px;
-  }
-
-  .media-content .subtitle {
-    font-size: 1rem;
-    color: #555555;
-    margin-bottom: 5px;
-  }
-
-  .media-content .subtitle:last-child {
-    margin-bottom: 0;
-  }
-
-  .delete-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-    gap: 20px;
-  }
-
-  .delete-button,
-  .edit-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .delete-button i {
-    color: red;
-    font-size: 1.5em;
-  }
-
-  .edit-button i {
-    color: green;
-    font-size: 1.5em;
-  }
-
-  .delete-button:hover i {
-    color: darkred;
-  }
-
-  .edit-button:hover i {
-    color: rgb(1, 104, 1);
-  }
+/*Toast*/
 
   .toast-container {
     position: fixed;
@@ -153,7 +152,7 @@
 
   .toast {
     width: 90%;
-    background-color: #dcdada; /* Color gris claro para el fondo del toast */
+    background-color: #dcdada; 
     text-align: center;
     opacity: 0.95;
     padding: 20px;
@@ -200,8 +199,6 @@
     font-size: 1.25em;
     color: #333; /* Color del texto dentro del toast */
   }
-
-
 
   /* modal editar jugador */
   .modal-background {
@@ -402,153 +399,96 @@ button.cancelar{
 }
 
 
-@media screen and (max-width: 992px) {
 
-  .columns {
-    padding: 0 25px;
-    gap: 15px;
-  }
-
-  .back-button {
-    margin-top: -1rem;
-    font-size: 0.8rem;
-    padding: 7px 8px;
-    margin-left: 15px;
-  }
-
- .title {
-  padding-top: 3rem;
-  font-size: 3rem;
+/* Estilos responsivos */
+@media (max-width: 768px) {
+.back-button{
+  font-size: .9rem;
 }
 
-  .card {
-    padding: 15px;
-    gap: 0px;
+  .title {
+    font-size: 1.7rem;
+  }
+  
+  .team-logo {
+    max-width: 150px; 
+    height: auto;
+    position: absolute;
+    top: 80%; 
+    right: 7%; 
   }
 
-  .image-container img {
-    width: 100px;
-    height: 100px;
+  .team-info p {
+    color: #333; 
+    font-size: 1.05rem;
+    margin-bottom: .5rem;
   }
-
-  .media-content .title {
-    font-size: 1.2rem;
+  
+  .team-info p strong {
+    color: black; 
   }
-
-  .media-content .subtitle {
-    font-size: 0.9rem;
-  }
-
-  .delete-button i,
-  .edit-button i {
-    font-size: 1.2em;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .columns {
-    padding: 0 25px;
-  }
-
-  .back-button {
-    font-size: 0.75rem; /* Reduce un poco más el tamaño de la fuente en pantallas pequeñas */
-    padding: 6px 10px; /* Reduce aún más el padding interno del botón */
-  }
-
-  .card {
-    padding: 15px;
-    margin: 0 auto;
-  }
-
-  .image-container img {
-    width: 100px;
-    height: 100px;
-  }
-
-  .media-content .title {
-    font-size: 1.2rem;
-  }
-
-  .media-content .subtitle {
-    font-size: 0.9rem;
-  }
-
-  .delete-button i,
-  .edit-button i {
-    font-size: 1.2em;
-  }
-
-  .toast-container {
-    max-width: 90%; /* Reduce el ancho del toast en pantallas más pequeñas */
-  }
-
-  .toast {
-    padding: 15px;
-    border-radius: 6px;
-  }
-
-  .toast-message {
-    font-size: 1.1em; /* Reduce el tamaño del mensaje */
-  }
-
-  .buttons.is-centered {
-    flex-direction: column;
-    width: 100%; /* Hace que los botones ocupen todo el ancho disponible */
-  }
-
-  .button.is-success,
-  .button.is-info {
-    width: 50%; /* Los botones se expanden para ocupar todo el ancho */
-    padding: 10px; /* Ajusta el padding para pantallas más pequeñas */
-  }
-}
-
-
-@media screen and (max-width: 526px) {
-  .card {
-    max-width: 60%;
-    margin: 0 auto;
-    padding: 10px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-
- .title {
-    padding-top: 3rem;
-    font-size: 2.5rem;
-  }
-
-  .back-button {
-    margin-top: -1rem;
-    font-size: 0.8rem;
-    padding: 7px 8px;
-    margin-left: 5px;
-  }
-
-  .card {
-    max-width: 85%;
-    margin: 0 auto;
+  
+  .players-table th, .players-table td {
+    font-size: 0.9rem; 
     padding: 8px;
   }
-
-  .image-container img {
-    width: 90px;
-    height: 90px;
-  }
-
-  .media-content .title {
-    font-size: 1.1rem;
-  }
-
-  .media-content .subtitle {
-    font-size: 0.85rem;
-  }
-
-  .delete-button i,
-  .edit-button i {
-    font-size: 1.1em;
+  
+  .player-photo {
+    max-width: 40px; 
+    height: 40px;
   }
 }
 
+@media (max-width: 576px) {
+  .back-button{
+    font-size: .85rem;
+  }
+  
+    .title {
+      font-size: 1.6rem;
+    }
+  
+  .team-logo {
+    max-width: 80px; 
+  }
+  
+  .players-table th, .players-table td {
+    font-size: 0.8rem; 
+    padding: 6px;
+  }
+  
+  .player-photo {
+    max-width: 35px; 
+    height: 35px;
+  }
+}
 
+@media (max-width: 480px) {
+  .players-header {
+    flex-direction: column; 
+    align-items: center;
+  }
+  
+  .print-button {
+    margin-top: 10px; 
+    align-self: center; 
+  }
+  
+  .players-header .title {
+    font-size: 0.9rem; 
+  }
+  
+  .team-logo {
+    max-width: 60px; 
+  }
+
+  .team-info p {
+    color: #333; 
+    font-size: .8rem;
+    margin-bottom: .5rem;
+  }
+  
+  .team-info p strong {
+    color: black; 
+  }
+}
