@@ -6,13 +6,10 @@
     </div>
   
     <div class="reportes-container">
-  
-
       <div class="button-section">
         <button class="button is-primary" (click)="navigateToDashboard()">Ir a Dashboard</button>
       </div>
   
-
       <div class="filter-section">
         <h2>Buscar Equipo</h2>
         <div class="field">
@@ -23,7 +20,6 @@
           </select>
         </div>
   
-
         <div class="field">
           <label for="category-select">Seleccionar Categoría</label>
           <select id="category-select" [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
@@ -35,16 +31,38 @@
   
       <!-- Lista de equipos filtrados -->
       <div class="teams-list-section">
-        <h3>Resultados de la busqueda</h3>
-        <ul>
-          <li *ngFor="let team of filteredTeams">
-            {{ team.name }} - {{ team.category }} - {{ team.country }} - {{ team.city }}
-          </li>
-        </ul>
+        <div class="header-section">
+          <h3 class="title">Resultados de la búsqueda</h3>
+          <button *ngIf="filteredTeams.length > 0" class="button is-primary is-align-left" (click)="printTable()">
+            <i class="fa fa-print" style="margin-right: 8px;"></i> Imprimir
+
+          </button>
+        </div>
+        <table class="table is-fullwidth is-striped" *ngIf="filteredTeams.length > 0">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre del Equipo</th>
+              <th>País</th>
+              <th>Ciudad</th>
+              <th>Categoría</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let team of filteredTeams; let i = index" (click)="viewTeamPlayers(team.id)">
+              <td>{{ i + 1 }}</td>
+              <td>{{ team.name }}</td>
+              <td>{{ team.country }}</td>
+              <td>{{ team.city }}</td>
+              <td>{{ team.category }}</td>
+            </tr>
+          </tbody>
+        </table>
         <div class="no-found" *ngIf="filteredTeams.length === 0">
           <p>No se encontraron equipos que coincidan con los criterios seleccionados.</p>
         </div>
       </div>
+      
     </div>
   </div>
   

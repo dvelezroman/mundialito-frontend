@@ -1,281 +1,275 @@
+:host {
+  display: block;
+  width: 100%;
+  min-height: 100vh; 
+  background: linear-gradient(135deg, #2f51b7, #00c853);
+  box-sizing: border-box;
+  padding: 2rem 0rem;
+}
 
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; 
-  }
-  
+.full-screen-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+  padding: 3rem 2rem; 
+  box-sizing: border-box;
+}
 
-  .full-screen-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    background: linear-gradient(135deg, #2f51b7, #00c853); 
-    box-sizing: border-box; 
+.form-container {
+  width: 50%;
+  margin: 0 auto;
+  padding: 55px;
+  background: rgba(255, 255, 255, 0.7); /* Fondo semitransparente */
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px); /* Aplica el desenfoque */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Borde sutil */
+}
+
+.title {
+  text-align: center;
+  color: black; 
+  margin-bottom: 50px;
+}
+
+.label {
+  color: black; 
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  font-size: 1.1rem;
+}
+
+.input-section-row {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los campos se envuelvan cuando no haya suficiente espacio */
+  gap: 20px; /* Espacio entre los campos */
+}
+
+.field {
+  flex: 1;
+  min-width: 250px; /* Ancho mínimo para cada campo */
+  margin-bottom: 20px; /* Espaciado entre campos */
+}
+
+.field-name {
+  display: flex;
+  flex-direction: column; /* Coloca el label encima del input */
+  align-items: left; /* Centra el contenido dentro del campo */
+  width: 100%;
+}
+
+
+.field-name .control {
+  width: 100%; /* Reduce el ancho del input de nombre */
+}
+
+.field-name .input {
+  width: 100%; /* Asegura que el input ocupe todo el ancho del control */
+}
+
+.field-name .label {
+  text-align: left; /* Centra el label encima del input */
+  margin-bottom: 5px; /* Espacio entre el label y el input */
+}
+
+.field-center-label .label {
+  display: block;
+  text-align: left; /* Centra el texto del label */
+  margin-bottom: 5px; /* Espacio entre el label y el input */
+}
+
+.field-center-label .control {
+  display: flex;
+  justify-content: center; /* Centra el input dentro de su campo */
+  width: 100%;
+}
+
+
+.control {
+  display: flex;
+  flex-direction: column; /* Asegura que los elementos dentro de .control se coloquen en una columna, uno debajo del otro */
+  width: 100%;
+}
+
+.help.is-danger {
+  color: #ff3860; /* Color rojo para el texto de error */
+  font-size: 0.875rem; /* Tamaño de fuente más pequeño */
+  margin-top: 5px; /* Espacio entre el input y el mensaje de error */
+  text-align: left; /* Alineación del texto de error */
+}
+
+.input,
+.select select {
+  width: 100%; /* Asegura que el input ocupe todo el ancho disponible */
+  background-color: white; /* Fondo blanco para los inputs y selects */
+  border: 1px solid grey; /* Bordes de color gris */
+  padding: 5px 15px;
+  border-radius: 4px;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.select select {
+  max-width: 100%; /* Asegura que el select no se desborde en contenedores pequeños */
+  appearance: none; /* Elimina la apariencia predeterminada */
+}
+
+.select select option[value=""][disabled] {
+  color: grey; /* Asegura que el texto del placeholder en el select sea gris */
+}
+
+.input:focus,
+.select select:focus {
+  border-color: grey; /* Mantiene el color gris cuando se enfoca */
+  outline: none;
+}
+
+.custom-file-input-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 25px; /* Espacio entre los inputs de archivo */
+}
+
+.custom-file-input {
+  width: 100%;
+  height: 40px; /* Altura del botón */
+  opacity: 0; /* Oculta el input real */
+  position: absolute;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+}
+
+.custom-file-label {
+  display: inline-block;
+  width: 100%;
+  height: 40px;
+  background-color: #00b8d4; /* Color del botón */
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.custom-file-input-wrapper .custom-file-label::before {
+  content: 'Cargar Imagen';
+}
+
+.custom-file-input:focus + .custom-file-label {
+  outline: 2px solid #00b8d4; /* Borde al enfocar */
+  outline-offset: -2px;
+}
+
+.image-preview img {
+  max-width: 100%; /* Ajusta el tamaño de la imagen */
+  height: auto;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.button-section {
+  display: flex;
+  justify-content: center; /* Centra los botones */
+  gap: 20px; /* Espacio entre los botones */
+  margin-top: 30px; /* Añade espacio en la parte superior de la sección */
+}
+
+.button-section .button {
+  padding: 8px 15px; /* Aumenta el padding para hacer los botones más grandes */
+  font-size: 1.1rem; /* Incrementa el tamaño de la fuente */
+  border-radius: 6px; /* Puedes ajustar el border-radius si prefieres un estilo más redondeado */
+}
+
+.button.is-primary {
+  background-color: #0d8ee3;
+  color: white;
+  border: none;
+}
+
+.button.is-light {
+  background-color: #c3c2c2;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+@media (max-width: 992px) {
+.form-container{
+  width: 75%;
+}
+
+  .input-section-row {
+      flex-direction: column; /* Coloca los campos en columna en pantallas pequeñas */
   }
-  
+
+  .field {
+      width: 100%; /* Asegura que los campos ocupen todo el ancho del contenedor en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 768px) {
+.form-container{
+  width: 90%;
+}
+
+  .input-section-row {
+      flex-direction: column; /* Coloca los campos en columna en pantallas pequeñas */
+  }
+
+  .field {
+      width: 100%; /* Asegura que los campos ocupen todo el ancho del contenedor en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 576px) {
   .form-container {
-    width: 55%;
-    margin: 0 auto;
-    padding: 50px 50px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 30px; /* Reduce el padding del contenedor del formulario en pantallas pequeñas */
+    width: 90%; /* Aumenta el ancho del formulario para pantallas pequeñas */
   }
-  
+
   .title {
-    text-align: center;
-    color: #39393c;
-    margin-bottom: 50px;
-  }
-  
-  .form-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    font-size: 1.5rem; /* Reduce el tamaño del título en pantallas pequeñas */
+    margin-bottom: 30px; /* Reduce el margen inferior del título */
   }
 
   .label {
-    color: #757575; 
-    font-weight: bold; 
-    margin-bottom: 5px; 
-    margin-left: 5px;
-}
-  
-  .input-section {
-    width: 60%;
-    display: flex;
-    flex-direction: column;
+    font-size: 1rem; /* Reduce el tamaño de los labels en pantallas pequeñas */
+    margin-bottom: 3px; /* Reduce el margen inferior del label */
   }
-  
-  .logo-section {
-    width: 35%;
-    text-align: center;
-  
-    .input-wrapper {
-      position: relative;
-      width: 100%;
-      margin-bottom: 10px;
-  
-      .input {
-        width: 100%;
-        padding: 10px;
-        background-color: #e2e4e4; 
-        border: 1px solid #ccc; 
-        border-radius: 4px; 
-        color: #666; 
-        pointer-events: none; 
-      }
 
-      .input::placeholder {
-        color: #666; 
-        opacity: 1; 
-      }
-  
-      .file-input {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0; 
-        cursor: pointer;
-      }
-  
-      .file-label {
-        display: block;
-        margin-top: 10px;
-        padding: 10px;
-        background-color: #00b8d4;
-        color: white;
-        border-radius: 4px;
-        cursor: pointer;
-        text-align: center;
-      }
-    }
-  
-    .image-preview {
-
-        margin-top: 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-      img {
-        max-width: 95%;
-        max-height: 220px; 
-        width: auto;
-        height: auto;
-        object-fit: contain; 
-        border: 1px solid #ccc;
-        border-radius: 8px;
-      }
-    }
-  
-    .button.is-danger.is-small {
-      width: 30%;
-      margin: auto;
-      margin-top: 10px;
-      padding: 5px 10px;
-      font-size: 0.875rem;
-      background-color: #e74c3c; 
-      color: white;
-      border: none;
-      border-radius: 7px;
-      cursor: pointer;
-  
-      &:hover {
-        background-color: #c0392b; 
-      }
-    }
+  .field {
+    margin-bottom: 17px; /* Reduce el espacio entre los campos de input en pantallas pequeñas */
   }
-  
-  
 
-  .input {
-    background-color: #e2e4e4; 
-    border: 1px solid #aba9a9; 
-    padding: 10px;
-    border-radius: 4px;
-    color: #333; 
-    margin-bottom: 10px;
-    box-sizing: border-box; /* Incluye el padding y border en el tamaño total */
-}
-
-.input:focus {
-    border-color: #00b8d4; 
-    outline: none; 
-}
+  .field-city {
+    margin-top: -18px; /* Sube el input de Ciudad un poco */
+  }
 
   .input,
-.select select {
-    width: 100%; 
-    background-color: #e2e4e4;  
-    border: 1px solid #ccc; 
-    padding: 5px 10px;
-    border-radius: 4px; 
-    box-sizing: border-box; 
-    font-size: 1rem; /* Ajusta el tamaño de la fuente */
-}
-
-.select {
-    position: relative;
-    width: 100%;
-
-    select {
-        -webkit-appearance: none; /* Elimina la apariencia predeterminada del navegador en WebKit */
-        -moz-appearance: none; /* Elimina la apariencia predeterminada en Firefox */
-        appearance: none; /* Elimina la apariencia predeterminada en navegadores modernos */
-        background-color: #e2e4e4;  /* Fondo gris claro para el select */
-        color: #6c6c6c; /* Asegura que el texto del select sea visible */
-        border: 1px solid #ccc; 
-        padding: 5px 10px;
-        border-radius: 4px;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    select.ng-invalid.ng-touched {
-        border-color: #e74c3c; /* Rojo para indicar error */
-        background-color: #fce4e4; 
-
-    }
-
-    select option[value=""][disabled] {
-        color: #888; 
-    }
-}
-
-
-.field {
-    position: relative; 
-    margin-bottom: 20px; 
+  .select select {
+    padding: 8px 12px; /* Ajusta el padding de los inputs para pantallas pequeñas */
+    font-size: 0.9rem; /* Reduce el tamaño de la fuente de los inputs en pantallas pequeñas */
   }
-  
+
   .help.is-danger {
-    position: absolute; 
-    bottom: -10px; 
-    left: 5px;
-    font-size: 0.9rem; 
-    color: #ff3860; 
-    visibility: hidden; 
+    font-size: 0.75rem; /* Reduce el tamaño del texto de error en pantallas pequeñas */
+    margin-top: 3px; /* Reduce el margen superior del texto de error */
   }
-  
-  .input:invalid + .help.is-danger,
-  .input:focus:invalid + .help.is-danger,
-  .select select:invalid + .help.is-danger {
-    visibility: visible; 
+
+  .custom-file-label {
+    font-size: 0.9rem; /* Reduce el tamaño de la fuente en el botón de cargar imagen */
+    padding: 8px 0; /* Reduce el padding del botón de cargar imagen */
   }
-  
-  .button-section {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
+
   .button-section .button {
-    margin: 0 10px;
-    padding: 10px 20px;
-    border-radius: 4px;
-    font-size: 1rem;
+    padding: 8px 15px; /* Reduce el padding de los botones en pantallas pequeñas */
+    font-size: 1rem; /* Reduce el tamaño de la fuente de los botones */
   }
-  
-  .button.is-primary {
-    background-color: #0d8ee3;
-    color: white;
-    border: none;
-  }
-  
-  .button.is-light {
-    background-color: #c3c2c2;
-    color: #333;
-    border: 1px solid #ccc;
-  }
+}
 
-  .toast-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    max-width: 500px;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px; 
-  }
-  
-  .toast {
-    width: 90%;
-    text-align: center;
-    opacity: 0.9;
-    font-size: 1.25em; 
-    padding: 20px; 
-    border-radius: 8px; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .toast-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .toast-icon {
-    width: 50px; 
-    height: auto;
-    margin-bottom: 10px; 
-  }
-  
-  .toast-message {
-    margin-top: 10px;
-  }
-
-    
-  

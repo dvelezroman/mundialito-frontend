@@ -12,7 +12,7 @@
     }
   
     .reportes-container {
-        width: 90%;
+        width: 75%;
         margin: 0 auto;
         padding: 20px;
         background: rgba(255, 255, 255, 0.7); 
@@ -29,12 +29,14 @@
       }
   
       .filter-section {
-        margin-bottom: 30px;
+        margin-top: -2.5rem;
+        margin-bottom: 1rem;
 
         h2{
             color: black;
             font-size: 2rem;
-            margin-bottom: 1.5rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
         }
   
         .field {
@@ -45,18 +47,27 @@
             font-size: 1.1rem;
             font-weight: 500;
             margin-bottom: 5px;
-            margin-left: 5px;
+            margin-left: 10px;
             color: black;
+            text-align: left;
+            width: 100%;
+
+          }
+
+          .select-container {
+            text-align: left; /* Centra el contenido del contenedor */
           }
   
           select {
-            width: 40%;
-            padding: 8px;
+            display: block;
+            width: 45%; /* Ocupa todo el ancho del contenedor */
+            padding: 12px;
             font-size: 1rem;
             border: 1px solid #ccc;
             border-radius: 4px;
             background-color: #f2f2f2;
             color: #6e6e6e;
+            box-sizing: border-box;
           }
         }
       }
@@ -93,4 +104,80 @@
       }
     }
   }
+
+  .teams-list-section {
+    h3 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
   
+    .header-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .title {
+      flex-grow: 1;
+      text-align: center;
+    }
+    
+    .button.is-align-right {
+      margin-left: auto;
+
+    }
+    
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+  
+      thead {
+        background: linear-gradient(to right, #13d876, #48b6e5);
+  
+        th {
+          color: white;
+          padding: 10px;
+          text-align: left;
+          border-bottom: 2px solid #dddddd;
+        }
+      }
+  
+      tbody {
+        tr:nth-child(odd) {
+          background-color: #f9f9f9;
+        }
+  
+        tr:nth-child(even) {
+          background-color: #ffffff;
+        }
+  
+        tr {
+          cursor: pointer;
+  
+          &:hover {
+            background-color: #e2e2e2;
+          }
+  
+          td {
+            padding: 10px;
+            border-bottom: 1px solid #dddddd;
+            color: black;
+          }
+        }
+      }
+    }
+  
+    .no-found {
+      margin-top: 20px;
+      font-style: italic;
+      color: #ff0000;
+    }
+  }
+
+
+  
+  
+  
+

@@ -63,4 +63,13 @@ export class ReportesComponent implements OnInit {
   navigateToDashboard() {
     this.router.navigate(['/dashboard']);
   }
+
+  viewTeamPlayers(teamId: number) {
+    this.router.navigate(['/player-cards', teamId]);
+  }
+
+  printTable() {
+    window.print();
+  }
+  
 }
