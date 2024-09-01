@@ -114,27 +114,27 @@
             </div>
           </div>
 
-          <div class="field">
-            <label class="label" for="receiptImage">Recibo de Pago Inscripción</label>
-            <div class="control">
-              <div class="custom-file-input-wrapper">
-                <input
-                  class="custom-file-input"
-                  type="file"
-                  id="receiptImage"
-                  name="receiptImage"
-                  (change)="onReceiptSelected($event)"
-                  accept="image/*"
-                  required>
-                <label class="custom-file-label" for="receiptImage"></label>
-              </div>
-            </div>
-            <div class="image-preview" *ngIf="previewReceiptUrl">
-              <label>Preview:</label>
-              <img [src]="previewReceiptUrl" alt="Recibo Subido" />
-              <button type="button" class="button is-danger is-small" (click)="removeReceipt()">Eliminar Recibo</button>
-            </div>
-          </div>
+<!--          <div class="field">-->
+<!--            <label class="label" for="receiptImage">Recibo de Pago Inscripción</label>-->
+<!--            <div class="control">-->
+<!--              <div class="custom-file-input-wrapper">-->
+<!--                <input-->
+<!--                  class="custom-file-input"-->
+<!--                  type="file"-->
+<!--                  id="receiptImage"-->
+<!--                  name="receiptImage"-->
+<!--                  (change)="onReceiptSelected($event)"-->
+<!--                  accept="image/*"-->
+<!--                  required>-->
+<!--                <label class="custom-file-label" for="receiptImage"></label>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="image-preview" *ngIf="previewReceiptUrl">-->
+<!--              <label>Preview:</label>-->
+<!--              <img [src]="previewReceiptUrl" alt="Recibo Subido" />-->
+<!--              <button type="button" class="button is-danger is-small" (click)="removeReceipt()">Eliminar Recibo</button>-->
+<!--            </div>-->
+<!--          </div>-->
         </div>
       </div>
 
