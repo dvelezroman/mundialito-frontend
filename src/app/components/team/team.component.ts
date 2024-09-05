@@ -7,6 +7,7 @@ import {CommonModule, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {environment} from "../../../environments/environment";
 import {S3Service} from "../../services/s3.service";
 import {countries} from "./countries";
+import {resizeImage} from "../../utils/file.util";
 
 export interface Team {
   name: string;
@@ -83,7 +84,7 @@ export class TeamComponent implements OnInit {
 
     // Check file size
     if (file.size > this.maxFileSize) {
-      this.resizeImage(file, 200, 200).then(resizedFile => {
+      resizeImage(file, 200, 200).then(resizedFile => {
         this.handleFileUpload(resizedFile);
       }).catch(() => {
         alert('The image is too large and could not be resized.');
@@ -121,7 +122,7 @@ export class TeamComponent implements OnInit {
 
     // Check file size
     if (file.size > this.maxFileSize) {
-      this.resizeImage(file, 1024, 1024).then(resizedFile => {
+      resizeImage(file, 1024, 1024).then(resizedFile => {
         this.team.receiptImage = resizedFile;
       }).catch(() => {
         alert('The image is too large and could not be resized.');
@@ -213,45 +214,6 @@ export class TeamComponent implements OnInit {
         }
       });
     }
-  }
-
-  resizeImage(file: File, maxWidth: number, maxHeight: number): Promise<File> {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = event => {
-        const img = new Image();
-        img.src = event.target?.result as string;
-        img.onload = () => {
-          const canvas = document.createElement('canvas');
-          let width = img.width;
-          let height = img.height;
-
-          if (width > maxWidth || height > maxHeight) {
-            if (width > height) {
-              height = Math.round((height *= maxWidth / width));
-              width = maxWidth;
-            } else {
-              width = Math.round((width *= maxHeight / height));
-              height = maxHeight;
-            }
-          }
-
-          canvas.width = width;
-          canvas.height = height;
-          const ctx = canvas.getContext('2d');
-          ctx?.drawImage(img, 0, 0, width, height);
-
-          canvas.toBlob(blob => {
-            if (blob) {
-              resolve(new File([blob], file.name, { type: file.type }));
-            } else {
-              reject(new Error('Canvas is empty'));
-            }
-          }, file.type, 0.7);
-        };
-      };
-      reader.readAsDataURL(file);
-    });
   }
 
   onCancel() {

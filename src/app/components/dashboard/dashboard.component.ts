@@ -8,6 +8,7 @@ import {Router} from "@angular/router";
 import {environment} from "../../../environments/environment";
 import {S3Service} from "../../services/s3.service";
 import {countries} from "../team/countries";
+import {resizeImage} from "../../utils/file.util";
 
 @Component({
   selector: 'app-dashboard',
@@ -110,14 +111,17 @@ export class DashboardComponent implements OnInit {
 
   onFileSelected(event: any) {
     const file = event.target.files[0];
-    this.personData.profilePhoto = file;
-
     if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.previewImageUrl = reader.result;
-      };
-      reader.readAsDataURL(file);
+      resizeImage(file, 200, 200).then((resizedFile) => {
+        this.personData.profilePhoto = resizedFile;
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.previewImageUrl = reader.result;
+        };
+        reader.readAsDataURL(resizedFile);
+      }).catch((error: Error) => {
+        console.error('Error resizing image:', error);
+      });
     }
   }
 
