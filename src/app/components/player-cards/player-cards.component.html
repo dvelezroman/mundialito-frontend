@@ -1,53 +1,69 @@
 <div class="container">
-  <div class="back-button-container">
-    <button class="button is-primary back-button" (click)="navigateToDashboard()">
-      Ir a dashboard
-    </button>
-  </div>
+  
+  <!-- Botones -->
 
-
-  <div class="title-section">
-    <h2 class="title">Jugadores Inscritos</h2>
-    <button *ngIf="players.length > 0" class="button is-primary is-align-right" (click)="printPlayers()">
-      <i  class="fa fa-print" style="margin-right: 8px;"></i> Imprimir
-    </button>
-  </div>
-
-
-  <div class="columns is-multiline">
-    <div *ngFor="let player of players" class="column is-one-quarter">
-      <div class="card">
-
-        <div class="image-container">
-          <img [src]="player.profilePhoto ? player.profilePhoto : 'assets/imagen player2.png'" alt="Profile Photo">
-        </div>
-
-        <div class="card-content">
-          <div class="media-content">
-            <p class="title is-4">{{ player.firstname }} {{ player.lastname }}</p>
-            <p class="subtitle is-6">{{ player.country }}</p>
-            <p class="subtitle is-6">{{ player.personalId }}</p>
-            <p class="subtitle is-6">{{ player.birthdate | date }}</p>
-            <p class="subtitle is-6">{{ player.type }}</p>
-          </div>
-
-          <!--botones para editar o eliminar jugador-->
-
-          <div class="delete-container">
-            <button class="edit-button" (click)="openEditModal(player)">
-              <i class="fas fa-edit"></i>
-            </button>
-            <button class="delete-button" (click)="confirmDeletePlayer(player.id)">
-              <i class="fas fa-trash"></i>
-            </button>
-          </div>
-        </div>
-
-      </div>
+  <div class="header-section">
+    <div class="back-button-container">
+      <button class="button is-primary back-button" (click)="navigateToDashboard()">
+        Ir a dashboard
+      </button>
     </div>
   </div>
 
+  <!-- Encabezado -->
 
+  <div class="team-info">
+    <div class="team-info-header">
+      <h2 class="title">Información del Equipo</h2>
+      <img [src]="team.logoImage ? team.logoImage : 'assets/imagen player2.png'" alt="Logo del Equipo" class="team-logo">
+    </div>
+    <p><strong>Nombre del Equipo:</strong> {{ team.name }}</p>
+    <p><strong>País:</strong> {{ team.country }}</p>
+    <p><strong>Ciudad:</strong> {{ team.city }}</p>
+    <p><strong>Categoría:</strong> {{ team.category }}</p>
+  </div>
+
+  <!-- Tabla -->
+
+  <div class="players-container">
+    
+    <div class="players-header">
+      <h3 class="title">Jugadores Inscritos</h3>
+      <button *ngIf="players.length > 0" class="button is-primary print-button" (click)="printPlayers()">
+        <i class="fa fa-print" style="margin-right: 8px;"></i> Imprimir
+      </button>
+    </div>
+    
+    <div *ngIf="players.length === 0" class="no-players-message">
+      <p>No hay jugadores registrados en este equipo.</p>
+    </div>
+
+    <div *ngIf="players.length > 0" class="players-table">
+      <table class="table is-fullwidth is-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Foto</th> 
+            <th>Nombre del Jugador</th>
+            <th>ID Personal</th>
+            <th>Fecha de Nacimiento</th>
+            <th>Tipo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let player of players; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td><img [src]="player.profilePhoto ? player.profilePhoto : '/assets/imagen player2.png'" alt="Foto del Jugador" class="player-photo"></td>
+            <td>{{ player.firstname }} {{ player.lastname }}</td>
+            <td>{{ player.personalId }}</td>
+            <td>{{ player.birthdate | date }}</td>
+            <td>{{ player.type }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
 
   <!-- modal para editar el jugador -->
 

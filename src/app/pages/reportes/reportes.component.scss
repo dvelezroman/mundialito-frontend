@@ -1,183 +1,256 @@
 .reportes-page-container {
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(to right, #00c853, #00b8d4); 
-  
-    .title-section {
-      text-align: center;
-      padding-top: 40px;
-      font-size: 3rem;
-      margin-bottom: 20px;
-      color: rgb(10, 10, 95);
-    }
-  
-    .reportes-container {
-        width: 75%;
-        margin: 0 auto;
-        padding: 20px;
-        background: rgba(255, 255, 255, 0.7); 
-        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        backdrop-filter: blur(10px); 
-        -webkit-backdrop-filter: blur(10px); 
-        border: 1px solid rgba(255, 255, 255, 0.3);
-  
-      .button-section {
-        display: flex;
-        justify-content: flex-start;
-        margin-bottom: 5rem;
-      }
-  
-      .filter-section {
-        margin-top: -2.5rem;
-        margin-bottom: 1rem;
+  width: 100%;
+  min-height: 100vh;
+  padding: 5rem .5rem;
+  background: linear-gradient(to right, #00c853, #00b8d4); 
+}
 
-        h2{
-            color: black;
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-  
-        .field {
-          margin-bottom: 25px;
-  
-          label {
-            display: block;
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 5px;
-            margin-left: 10px;
-            color: black;
-            text-align: left;
-            width: 100%;
+.title-section {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: rgb(10, 10, 95);
+}
 
-          }
+.reportes-container {
+  width: 75%;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.7); 
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px); 
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
 
-          .select-container {
-            text-align: left; /* Centra el contenido del contenedor */
-          }
-  
-          select {
-            display: block;
-            width: 45%; /* Ocupa todo el ancho del contenedor */
-            padding: 12px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background-color: #f2f2f2;
-            color: #6e6e6e;
-            box-sizing: border-box;
-          }
-        }
-      }
-  
-      .teams-list-section {
-        h3 {
-          margin-top: 3rem;
-          font-size: 2rem;
-          text-align: center;
-          margin-bottom: 1.6rem;
-          font-weight: bold;
-          color: black;
-        }
-  
-        ul {
-          text-align: left;
-          margin-left: 3rem;
-          list-style-type: decimal;
-          padding-left: 0;
-        }
-  
-        li {
-          padding: 5px;
-          color: black;
-          font-size: 1.2rem;
-          border-bottom: none;
-        }
+.button-section {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 5rem;
+}
 
-        .no-found{
-            color: black;
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-      }
-    }
+.filter-section {
+  margin-top: -2.5rem;
+  margin-bottom: 1rem;
+}
+
+.filter-section h2 {
+  color: black;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.field {
+  margin-bottom: 25px;
+}
+
+.field label {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  color: black;
+  text-align: left;
+  width: 100%;
+}
+
+.select-container {
+  text-align: left; /* Centra el contenido del contenedor */
+}
+
+.field select {
+  display: block;
+  width: 45%; /* Ocupa parte del ancho del contenedor */
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f2f2f2;
+  color: #6e6e6e;
+  box-sizing: border-box;
+}
+
+.teams-list-section h3 {
+  margin-top: 3rem;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1.6rem;
+  font-weight: bold;
+  color: black;
+}
+
+.teams-list-section ul {
+  text-align: left;
+  margin-left: 3rem;
+  list-style-type: decimal;
+  padding-left: 0;
+}
+
+.teams-list-section li {
+  padding: 5px;
+  color: black;
+  font-size: 1.2rem;
+  border-bottom: none;
+}
+
+.no-found {
+  color: black;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.title {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.button.is-align-right {
+  margin-left: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: linear-gradient(to right, #13d876, #48b6e5);
+}
+
+th {
+  color: white;
+  padding: 10px;
+  text-align: left;
+  border-bottom: 2px solid #dddddd;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f9f9f9; /* Color de fondo para filas impares (blanco) */
+  color: black; /* Asegura que el texto sea visible */
+}
+
+tbody tr:nth-child(even) {
+  background-color: #e0e0e0; /* Color de fondo gris claro para filas pares */
+  color: black; /* Asegura que el texto sea visible */
+}
+
+tbody tr {
+  cursor: pointer;
+}
+
+tbody tr:hover {
+  background-color: #e2e2e2;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #dddddd;
+  color: black;
+}
+
+.no-found {
+  margin-top: 20px;
+  font-style: italic;
+  color: #ff0000;
+}
+
+@media (max-width: 768px) {
+  .title-section {
+      font-size: 2rem; /* Reduce el tamaño de la fuente */
+  }
+  
+  .reportes-container {
+      width: 90%; /* Hacer más ancho el contenedor en pantallas pequeñas */
+      padding: 20px;
   }
 
-  .teams-list-section {
-    h3 {
-      margin-bottom: 20px;
-      text-align: center;
-    }
-  
-    .header-section {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 15px;
-    }
-    
-    .title {
-      flex-grow: 1;
-      text-align: center;
-    }
-    
-    .button.is-align-right {
-      margin-left: auto;
+  .filter-section h2 {
+      font-size: 1.5rem; /* Reduce el tamaño de la fuente */
+  }
 
-    }
-    
+  .field label {
+      font-size: 0.9rem; /* Reduce el tamaño de la fuente */
+  }
 
-    table {
+  .field select {
+      font-size: 0.9rem; /* Ajusta el tamaño de la fuente del select */
+      width: 100%; /* Ocupa todo el ancho del contenedor */
+  }
+
+  .header-section .title {
+    font-size: 1.2rem; /* Reduce el tamaño del título "Resultados de la búsqueda" */
+    text-align: center; /* Centra el texto */
+    width: 100%; /* Asegura que el título ocupe todo el ancho */
+}
+
+.header-section {
+    flex-direction: column;
+    align-items: center; /* Centra el contenido dentro de la cabecera */
+}
+
+.button.is-align-left {
+    margin-top: 10px;
+}
+
+.no-found p {
+  width: 80%;
+  margin: auto;
+  margin-top: -1rem;
+  font-size: 0.8rem; /* Reduce el tamaño de la fuente */
+  text-align: center; /* Centra el texto si es necesario */
+}
+
+
+
+  th, td {
+      font-size: 0.9rem; /* Reduce el tamaño de la fuente en la tabla */
+  }
+
+  .button.is-align-left {
       width: 100%;
-      border-collapse: collapse;
-  
-      thead {
-        background: linear-gradient(to right, #13d876, #48b6e5);
-  
-        th {
-          color: white;
-          padding: 10px;
-          text-align: left;
-          border-bottom: 2px solid #dddddd;
-        }
-      }
-  
-      tbody {
-        tr:nth-child(odd) {
-          background-color: #f9f9f9;
-        }
-  
-        tr:nth-child(even) {
-          background-color: #ffffff;
-        }
-  
-        tr {
-          cursor: pointer;
-  
-          &:hover {
-            background-color: #e2e2e2;
-          }
-  
-          td {
-            padding: 10px;
-            border-bottom: 1px solid #dddddd;
-            color: black;
-          }
-        }
-      }
-    }
-  
-    .no-found {
-      margin-top: 20px;
-      font-style: italic;
-      color: #ff0000;
-    }
+      margin-top: 10px;
   }
 
+  .header-section {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+  }
 
-  
-  
-  
+  .reportes-container .button {
+      font-size: .9rem;
+      font-weight: 400;
+  }
 
+  .teams-list-section ul {
+      margin-left: 0;
+  }
+}
+
+
+@media (max-width: 492px) {
+  .title-section {
+    font-size: 1.8rem; /* Reduce el tamaño de la fuente */
+}
+
+.header-section .title {
+  font-size: 1.25rem; /* Reduce el tamaño del título "Resultados de la búsqueda" */
+  text-align: center; /* Centra el texto */
+  width: 100%; /* Asegura que el título ocupe todo el ancho */
+}
+
+th, td {
+  font-size: 0.8rem; /* Reduce el tamaño de la fuente en la tabla */
+}
+}

@@ -99,11 +99,14 @@
     .header-buttons {
       gap: 12px;
       margin-right: 3px;
+      
 
       .button.is-primary,
-      .button.is-danger {
+      .button.is-danger,
+      .button.is-light,
+      .button.is-info {
         padding: 0.5rem 0.8rem;
-        font-size: 12px;
+        font-size: .8rem;
       }
     }
   }
