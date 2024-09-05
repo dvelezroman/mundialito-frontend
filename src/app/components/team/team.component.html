@@ -92,6 +92,39 @@
 
         <!-- Sección de Logo del Equipo y Recibo de Pago -->
         <div class="input-section-row">
+<!--          <div class="field">-->
+<!--            <label class="label" for="logoImage">Logo del Equipo</label>-->
+<!--            <div class="control">-->
+<!--              <div class="file has-name is-fullwidth">-->
+<!--                <label class="file-label">-->
+<!--                  <input-->
+<!--                    class="file-input"-->
+<!--                    type="file"-->
+<!--                    id="logoImage"-->
+<!--                    name="logoImage"-->
+<!--                    (change)="onLogoSelected($event)"-->
+<!--                    accept="image/*"-->
+<!--                    required>-->
+<!--                  <span class="file-cta">-->
+<!--                    <span class="file-icon">-->
+<!--                      <i class="fas fa-upload"></i>-->
+<!--                    </span>-->
+<!--                    <span class="file-label">-->
+<!--                      Seleccionar archivo…-->
+<!--                    </span>-->
+<!--                  </span>-->
+<!--&lt;!&ndash;                  <span class="file-name" *ngIf="previewLogoUrl">{{ previewLogoUrl }}</span>&ndash;&gt;-->
+<!--                </label>-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            <div class="image-preview mt-4" *ngIf="previewLogoUrl">-->
+<!--              <label class="label">Preview:</label>-->
+<!--              <img [src]="previewLogoUrl" alt="Logo Preview" />-->
+<!--              <button type="button" class="button is-danger is-small mt-2" (click)="removeLogo()">Eliminar Logo</button>-->
+<!--            </div>-->
+<!--          </div>-->
+
           <div class="field">
             <label class="label" for="logoImage">Logo del Equipo</label>
             <div class="control">
@@ -108,33 +141,42 @@
               </div>
             </div>
             <div class="image-preview" *ngIf="previewLogoUrl">
-              <label>Preview:</label>
-              <img [src]="previewLogoUrl" alt="Logo Preview" />
-              <button type="button" class="button is-danger is-small" (click)="removeLogo()">Eliminar Logo</button>
+              <div class="preview-row">
+                <img [src]="previewLogoUrl" alt="Logo Preview" class="logo-preview-image" />
+              </div>
+              <div class="button-row">
+                <button type="button" class="button is-danger is-small" (click)="removeLogo()">Eliminar Logo</button>
+              </div>
             </div>
           </div>
 
-          <div class="field">
-            <label class="label" for="receiptImage">Recibo de Pago Inscripción</label>
-            <div class="control">
-              <div class="custom-file-input-wrapper">
-                <input
-                  class="custom-file-input"
-                  type="file"
-                  id="receiptImage"
-                  name="receiptImage"
-                  (change)="onReceiptSelected($event)"
-                  accept="image/*"
-                  required>
-                <label class="custom-file-label" for="receiptImage"></label>
-              </div>
-            </div>
-            <div class="image-preview" *ngIf="previewReceiptUrl">
-              <label>Preview:</label>
-              <img [src]="previewReceiptUrl" alt="Recibo Subido" />
-              <button type="button" class="button is-danger is-small" (click)="removeReceipt()">Eliminar Recibo</button>
-            </div>
-          </div>
+<!--          <div class="image-preview" *ngIf="previewImageUrl">-->
+<!--            <label>Preview:</label>-->
+<!--            <img [src]="previewImageUrl" alt="Previsualización de la foto">-->
+<!--            <button type="button" class="button is-danger remove-button" (click)="removeSelectedImage()">Eliminar</button>-->
+<!--          </div>-->
+
+<!--          <div class="field">-->
+<!--            <label class="label" for="receiptImage">Recibo de Pago Inscripción</label>-->
+<!--            <div class="control">-->
+<!--              <div class="custom-file-input-wrapper">-->
+<!--                <input-->
+<!--                  class="custom-file-input"-->
+<!--                  type="file"-->
+<!--                  id="receiptImage"-->
+<!--                  name="receiptImage"-->
+<!--                  (change)="onReceiptSelected($event)"-->
+<!--                  accept="image/*"-->
+<!--                  required>-->
+<!--                <label class="custom-file-label" for="receiptImage"></label>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="image-preview" *ngIf="previewReceiptUrl">-->
+<!--              <label>Preview:</label>-->
+<!--              <img [src]="previewReceiptUrl" alt="Recibo Subido" />-->
+<!--              <button type="button" class="button is-danger is-small" (click)="removeReceipt()">Eliminar Recibo</button>-->
+<!--            </div>-->
+<!--          </div>-->
         </div>
       </div>
 
