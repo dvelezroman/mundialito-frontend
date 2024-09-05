@@ -3,7 +3,7 @@ import {FormsModule} from "@angular/forms";
 import {TeamService} from "../../services/team.service";
 import {Router} from "@angular/router";
 import {PersonService} from "../../services/person.service";
-import {CommonModule, NgForOf, NgIf} from "@angular/common";
+import {CommonModule, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {environment} from "../../../environments/environment";
 import {S3Service} from "../../services/s3.service";
 import {countries} from "./countries";
@@ -22,7 +22,8 @@ export interface Team {
   standalone: true,
   imports: [
     FormsModule,
-    CommonModule
+    CommonModule,
+    NgOptimizedImage
   ],
   templateUrl: './team.component.html',
   styleUrl: './team.component.scss'
@@ -82,13 +83,13 @@ export class TeamComponent implements OnInit {
 
     // Check file size
     if (file.size > this.maxFileSize) {
-      this.resizeImage(file, 1024, 1024).then(resizedFile => {
-        this.team.logoImage = resizedFile;
+      this.resizeImage(file, 200, 200).then(resizedFile => {
+        this.handleFileUpload(resizedFile);
       }).catch(() => {
         alert('The image is too large and could not be resized.');
       });
     } else {
-      this.team.logoImage = file;
+      this.handleFileUpload(file);
     }
 
     if (this.team.logoImage) {
@@ -98,6 +99,21 @@ export class TeamComponent implements OnInit {
       };
       reader.readAsDataURL(file);
     }
+  }
+
+  // Handle file upload and set preview
+  handleFileUpload(file: File) {
+    this.team.logoImage = file;
+    this.updateImagePreview(file);
+  }
+
+  // Helper method to update the image preview
+  updateImagePreview(imageFile: Blob) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.previewLogoUrl = reader.result;
+    };
+    reader.readAsDataURL(imageFile);
   }
 
   onReceiptSelected(event: any) {
@@ -123,9 +139,15 @@ export class TeamComponent implements OnInit {
     }
   }
 
-  removeLogo() {
+  removeLogo(): void {
     this.previewLogoUrl = null;
     this.team.logoImage = null;
+
+    // Reset the input field so a new file can be uploaded
+    const fileInput = document.getElementById('logoImage') as HTMLInputElement;
+    if (fileInput) {
+      fileInput.value = '';
+    }
   }
 
   removeReceipt() {
