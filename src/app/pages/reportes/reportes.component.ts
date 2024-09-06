@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { TeamService } from '../../services/team.service';
 import { countries } from '../../components/team/countries';
 import { FormsModule } from '@angular/forms';
@@ -25,6 +25,7 @@ export class ReportesComponent implements OnInit {
   selectedCategory: string = '';
   categories = ['INFANTO', 'PRE', 'JUVENIL'];
 
+  @ViewChild('printableTable', { static: false }) printableTable!: ElementRef;
 
   constructor(private teamService: TeamService,
               private router: Router
@@ -69,7 +70,11 @@ export class ReportesComponent implements OnInit {
   }
 
   printTable() {
+    const printContents = this.printableTable.nativeElement.innerHTML;
+    const originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContents;
     window.print();
+    document.body.innerHTML = originalContents;
   }
   
 }

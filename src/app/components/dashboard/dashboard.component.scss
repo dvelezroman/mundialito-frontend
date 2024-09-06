@@ -1,13 +1,26 @@
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1; /* Para que el video esté detrás de todos los elementos */
+}
+
+#background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .hero {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   padding: 5rem;
-  background: url('/assets/estadio fondo dashboard.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: none; /* Elimina la imagen de fondo */
 }
 
 .toast-container {
