@@ -38,26 +38,28 @@
 
           </button>
         </div>
-        <table class="table is-fullwidth" *ngIf="filteredTeams.length > 0">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Nombre del Equipo</th>
-              <th>País</th>
-              <th>Ciudad</th>
-              <th>Categoría</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let team of filteredTeams; let i = index" (click)="viewTeamPlayers(team.id)">
-              <td>{{ i + 1 }}</td>
-              <td>{{ team.name }}</td>
-              <td>{{ team.country }}</td>
-              <td>{{ team.city }}</td>
-              <td>{{ team.category }}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="printable-table"> 
+          <table class="table is-fullwidth" *ngIf="filteredTeams.length > 0">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nombre del Equipo</th>
+                <th>País</th>
+                <th>Ciudad</th>
+                <th>Categoría</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let team of filteredTeams; let i = index" (click)="viewTeamPlayers(team.id)">
+                <td>{{ i + 1 }}</td>
+                <td>{{ team.name }}</td>
+                <td>{{ team.country }}</td>
+                <td>{{ team.city }}</td>
+                <td>{{ team.category }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <div class="no-found" *ngIf="filteredTeams.length === 0">
           <p>No se encontraron equipos que coincidan con los criterios seleccionados.</p>
         </div>

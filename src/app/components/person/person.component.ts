@@ -54,6 +54,9 @@ export class PersonComponent {
       },
       error: (error) => {
         console.error('Error loading teams', error);
+        if (error.status === 401) {
+          this.router.navigate(['login']);
+        }
       }
     });
   }

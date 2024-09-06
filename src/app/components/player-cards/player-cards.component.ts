@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PersonService} from "../../services/person.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CommonModule, DatePipe, NgForOf, NgOptimizedImage} from "@angular/common";
@@ -64,11 +64,15 @@ export class PlayerCardsComponent implements OnInit {
     if (this.teamId !== null) {
       this.teamService.getTeam(this.teamId).subscribe({
         next: (data) => {
-          this.team = data; 
-          console.log('Team Data:', this.team);
+          this.team = data;
+          // console.log('Team Data:', this.team);
         },
         error: (error) => {
           console.error('Error al cargar la información del equipo', error);
+          if (error.status === 401) {
+            this.howErrorToast('Su sesion ha expirado.')
+            this.router.navigate(['login']);
+          }
         }
       });
     }
@@ -213,6 +217,66 @@ export class PlayerCardsComponent implements OnInit {
   }
 
   printPlayers() {
-    window.print();
+    const teamInfoElement = document.querySelector('.team-info');
+    const playersContainerElement = document.querySelector('.players-container');
+
+    if (teamInfoElement && playersContainerElement) {
+      const printContents = teamInfoElement.outerHTML + playersContainerElement.outerHTML;
+
+      const printWindow = window.open('', '', 'width=800,height=600');
+      printWindow?.document.write(`
+        <html>
+          <head>
+            <title>Imprimir Jugadores</title>
+            <style>
+              @media print {
+                body {
+                  font-family: Arial, sans-serif;
+                  margin: 20px;
+                }
+                h2, h3 {
+                  text-align: center;
+                  color: #333;
+                }
+                .team-info {
+                  margin-bottom: 20px;
+                }
+                .players-container {
+                  width: 100%;
+                  margin-top: 20px;
+                }
+                table {
+                  width: 100%;
+                  border-collapse: collapse;
+                }
+                th, td {
+                  padding: 5px;
+                  border: 1px solid black;
+                  text-align: left;
+                  font-size: 12px;
+                }
+                th {
+                  background-color: #f2f2f2;
+                }
+                .player-photo {
+                  width: 50px;
+                  height: auto;
+                  object-fit: contain;
+                }
+              }
+            </style>
+          </head>
+          <body>
+            ${printContents}
+          </body>
+        </html>
+      `);
+      printWindow?.document.close();
+      printWindow?.focus();
+      printWindow?.print();
+      printWindow?.close();
+    } else {
+      console.error('Error: No se encontraron elementos para imprimir.');
+    }
   }
 }

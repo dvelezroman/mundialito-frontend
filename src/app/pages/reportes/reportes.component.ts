@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { TeamService } from '../../services/team.service';
 import { countries } from '../../components/team/countries';
 import { FormsModule } from '@angular/forms';
@@ -25,6 +25,7 @@ export class ReportesComponent implements OnInit {
   selectedCategory: string = '';
   categories = ['INFANTO', 'PRE', 'JUVENIL'];
 
+  @ViewChild('printableTable', { static: false }) printableTable!: ElementRef;
 
   constructor(private teamService: TeamService,
               private router: Router
@@ -69,7 +70,45 @@ export class ReportesComponent implements OnInit {
   }
 
   printTable() {
-    window.print();
+    const tableElement = document.querySelector('.printable-table'); 
+
+  
+    if (tableElement) {
+      const printContents = tableElement.outerHTML;
+      
+
+      const printWindow = window.open('', '', 'width=800,height=600');
+      printWindow?.document.write(`
+        <html>
+          <head>
+            <title>Imprimir Reporte</title>
+            <style>
+              @media print {
+                .no-print { display: none; }
+                table {
+                  width: 100%;
+                  border-collapse: collapse;
+                }
+                th, td {
+                  padding: 8px;
+                  border: 1px solid black;
+                  text-align: left;
+                }
+              }
+            </style>
+          </head>
+          <body>
+            ${printContents}
+          </body>
+        </html>
+      `);
+      printWindow?.document.close();
+      printWindow?.focus();
+      printWindow?.print();
+      printWindow?.close();
+    } else {
+      console.error("No se encontró el elemento de la tabla para imprimir");
+    }
   }
   
 }

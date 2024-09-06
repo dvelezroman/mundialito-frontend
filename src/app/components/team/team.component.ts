@@ -3,7 +3,7 @@ import {FormsModule} from "@angular/forms";
 import {TeamService} from "../../services/team.service";
 import {Router} from "@angular/router";
 import {PersonService} from "../../services/person.service";
-import {CommonModule, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
+import {CommonModule, NgOptimizedImage} from "@angular/common";
 import {environment} from "../../../environments/environment";
 import {S3Service} from "../../services/s3.service";
 import {countries} from "./countries";
@@ -74,6 +74,9 @@ export class TeamComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error loading people', error);
+        if (error.status === 401) {
+          this.router.navigate(['login']);
+        }
       }
     });
   }
