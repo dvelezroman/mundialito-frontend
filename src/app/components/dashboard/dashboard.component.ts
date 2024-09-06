@@ -34,27 +34,28 @@ export class DashboardComponent implements OnInit {
     selectedTeamData: any = null;
     isModalOpen = false;
     personData = {
-    firstname: '',
-    personalId: '',
-    lastname: '',
-    birthdate: '',
+      firstname: '',
+      personalId: '',
+      lastname: '',
+      birthdate: '',
       country: null as string | null,
-    profilePhoto: null as File | null,
-    teamId: null as number | null,
-    type: 'PLAYER' as 'MANAGER' | 'PLAYER',
-  };
-  types = [
-    { value: 'PLAYER', label: 'Jugador' },
-    { value: 'MANAGER', label: 'Entrenador' }
-  ];
-  previewImageUrl: string | ArrayBuffer | null = null;
+      profilePhoto: null as File | null,
+      teamId: null as number | null,
+      type: 'PLAYER' as 'MANAGER' | 'PLAYER',
+    };
+    types = [
+      { value: 'PLAYER', label: 'Jugador' },
+      { value: 'MANAGER', label: 'Entrenador' }
+    ];
+    previewImageUrl: string | ArrayBuffer | null = null;
 
   constructor(
     private s3Service: S3Service,
     private teamService: TeamService,
     private personService: PersonService,
     private router: Router,
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.loadTeams();
