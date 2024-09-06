@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PersonService} from "../../services/person.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CommonModule, DatePipe, NgForOf, NgOptimizedImage} from "@angular/common";
@@ -64,11 +64,15 @@ export class PlayerCardsComponent implements OnInit {
     if (this.teamId !== null) {
       this.teamService.getTeam(this.teamId).subscribe({
         next: (data) => {
-          this.team = data; 
-          console.log('Team Data:', this.team);
+          this.team = data;
+          // console.log('Team Data:', this.team);
         },
         error: (error) => {
           console.error('Error al cargar la información del equipo', error);
+          if (error.status === 401) {
+            this.howErrorToast('Su sesion ha expirado.')
+            this.router.navigate(['login']);
+          }
         }
       });
     }
@@ -215,10 +219,10 @@ export class PlayerCardsComponent implements OnInit {
   printPlayers() {
     const teamInfoElement = document.querySelector('.team-info');
     const playersContainerElement = document.querySelector('.players-container');
-  
+
     if (teamInfoElement && playersContainerElement) {
       const printContents = teamInfoElement.outerHTML + playersContainerElement.outerHTML;
-  
+
       const printWindow = window.open('', '', 'width=800,height=600');
       printWindow?.document.write(`
         <html>
@@ -255,9 +259,9 @@ export class PlayerCardsComponent implements OnInit {
                   background-color: #f2f2f2;
                 }
                 .player-photo {
-                  width: 50px; 
+                  width: 50px;
                   height: auto;
-                  object-fit: contain; 
+                  object-fit: contain;
                 }
               }
             </style>

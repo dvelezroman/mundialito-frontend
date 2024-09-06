@@ -65,6 +65,10 @@ export class DashboardComponent implements OnInit {
         this.teams = data;
       },
       error: (error) => {
+        if (error.status === 401) {
+          this.howErrorToast('Su sesion ha expirado.')
+          this.router.navigate(['login']);
+        }
         console.error('Error loading teams', error);
         this.howErrorToast('Error al cargar información del equipo.')
       }
@@ -187,7 +191,7 @@ export class DashboardComponent implements OnInit {
     if (this.selectedTeamId !== null) {
       this.router.navigate(['/player-cards', this.selectedTeamId]);
     } else {
-      console.error('No team selected');
+      // console.error('No team selected');
       this.howErrorToast('No se ha seleccionado un equipo.');
 
     }
