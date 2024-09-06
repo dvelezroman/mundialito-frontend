@@ -5,7 +5,7 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  z-index: -1; /* Para que el video esté detrás de todos los elementos */
+  z-index: -1; 
 }
 
 #background-video {
@@ -20,12 +20,12 @@
   align-items: center;
   justify-content: flex-start;
   padding: 5rem;
-  background: none; /* Elimina la imagen de fondo */
+  background: none; 
 }
 
 .toast-container {
   position: fixed;
-  top: 30%; /* Ajusta este valor para mover hacia abajo el contenedor */
+  top: 30%; 
   left: 50%;
   transform: translate(-50%, -50%); /* Centra horizontalmente y ajusta la posición vertical */
   width: 100%;
@@ -65,9 +65,9 @@
 
 
   .title {
-    color: #2f51b7;
+    color: #e6e8ec;
     font-size: 3em;
-    margin-top: 1rem;
+    margin-top: 3rem;
     margin-bottom: 20px;
     text-align: center;
     width: 100%;
