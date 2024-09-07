@@ -17,6 +17,7 @@ import {Store} from "@ngrx/store";
 export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false;
   isAdmin: boolean = false;
+  showLogoutModal = false; 
 
   constructor(private router: Router,
               private userService: UserService,
@@ -44,15 +45,31 @@ export class HeaderComponent implements OnInit {
   }
 
   onRegister() {
-    this.router.navigate(['/register']); // Adjust the route as needed
+    this.router.navigate(['/register']); 
   }
 
   onLogin() {
-    this.router.navigate(['/login']); // Adjust the route as needed
+    this.router.navigate(['/login']); 
   }
 
   onLogout() {
-    this.userService.logout(); // Llamamos al método logout del UserService
+    this.userService.logout(); 
     this.router.navigate(['/home']);
   }
+
+
+    openLogoutModal() {
+      this.showLogoutModal = true;
+    }
+  
+
+    closeLogoutModal() {
+      this.showLogoutModal = false;
+    }
+  
+
+    confirmLogout() {
+      this.closeLogoutModal();
+      this.onLogout(); 
+    }
 }
