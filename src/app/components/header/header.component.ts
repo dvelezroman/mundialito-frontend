@@ -70,6 +70,7 @@ export class HeaderComponent implements OnInit {
 
     confirmLogout() {
       this.closeLogoutModal();
-      this.onLogout(); 
+      this.userService.logout(); 
+      this.router.navigate(['/home']);
     }
 }

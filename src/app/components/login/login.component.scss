@@ -4,37 +4,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #00c853 0%, #00b8d4 100%);
+  background: url('/assets/fondo login 2.png') no-repeat center center fixed;
+  background-size: cover;
   min-height: 100vh; 
   padding: 2rem; 
 }
 
-.arrow-container {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-}
-
-.arrow-back {
-  color: #20578f; 
-  font-size: 1.5rem; 
-  text-decoration: none;
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: #22436c; 
-  }
-}
-
 .box {
-  max-width: 460px; 
+  max-width: 440px; 
   width: 100%; 
-  padding: 3rem; 
+  padding: 3rem 2rem; 
   border-radius: 15px; 
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); 
-  background: rgba(255, 255, 255, 0.5); 
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
-  backdrop-filter: blur(10px); 
+  box-shadow: 0 10px 30px rgba(248, 245, 245, 0.408); 
+  background: rgba(155, 174, 188, 0.669); 
+  box-shadow: 0 4px 25px 10px inset rgba(255, 255, 255, 0.2); 
+  backdrop-filter: blur(20px); 
   border: 1px solid rgba(255, 255, 255, 0.3);
   margin: auto;
   margin-top: 3rem;
@@ -42,21 +26,21 @@
 }
 
 .title {
-  font-size: 3rem; 
+  font-size: 2.4rem; 
   font-weight: 700; 
-  color: #4b4f54; 
+  color: #fcfcfc; 
   text-align: center; 
-  margin-bottom: 3rem; 
+  margin-bottom: 2rem; 
 }
 
 .field {
-  margin-bottom: 2rem;
+  margin-bottom: 2.2rem;
   position: relative; 
 }
 
 .help.is-danger {
   font-size: 0.975rem;
-  color: #e74c3c;
+  color: #ec4432;
   position: absolute; 
   bottom: -1.5rem; 
   left: 10px;
@@ -69,28 +53,29 @@
 }
 
 .label {
-  font-size: 1.2rem; 
-  font-weight: 400; 
-  color: #333; 
-  margin-bottom: 0.5rem; 
+  font-size: 1.1rem; 
+  font-weight: bold; 
+  color: #ffffff; 
+  margin-bottom: 0.2rem; 
+  margin-left: 8px;
   display: block; 
 }
 
 .input {
-  background-color: #f9f9f9; 
+  background-color: #f9f9f9a7; 
   border: 1px solid #979595; 
   border-radius: 8px; 
-  font-size: 1.2rem; 
+  font-size: 1.1rem; 
   width: 100%; 
   color: #333; 
   padding-left: 0.5rem; 
   transition: border-color 0.3s, box-shadow 0.3s; 
 
   &:focus {
-    border-color: #007bff; 
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+    border-color: #c2c6ca; 
+    box-shadow: 0 0 5px rgba(185, 189, 194, 0.5); 
     outline: none; 
-    background-color: #fff; 
+    background-color: #e6e6e6; 
   }
 }
 
@@ -112,8 +97,12 @@
   pointer-events: none; 
 }
 
+.icon.is-left i:active {
+  color: #a3a1a1; 
+}
+
 .button.is-primary {
-  width: 50%; 
+  width: 100%; 
   padding: 0.6rem; 
   border-radius: 5px; 
   font-size: 1.2rem; 
