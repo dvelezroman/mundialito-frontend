@@ -32,45 +32,61 @@
       </div>
     </div>
 
-    <div class="toast-container">
-      <div *ngIf="showSuccessToast" class="notification is-success toast">
-        <div class="toast-content">
-          <img src="/assets/pulgar arriba1.png" alt="Éxito" class="toast-icon">
-          <div class="toast-message">{{ toastMessage }}</div>
-        </div>
-      </div>
-      <div *ngIf="showErrorToast" class="notification is-danger toast">
-        <div class="toast-content">
-          <img src="/assets/pulgar abajo.png" alt="Error" class="toast-icon">
-          <div class="toast-message">{{ toastMessage }}</div>
-        </div>
-      </div>
-    </div>
+   
 
-
-    <!-- Nueva tarjeta para la información del equipo -->
     <div class="team-info-card" *ngIf="selectedTeamData">
-      <button class="close-button" (click)="closeTeamCard()">×</button>
-      <div class="team-info-content">
-        <!-- Sección izquierda con nombre y datos -->
-        <div class="team-info-left">
+      <!-- Bloque Principal -->
+      <div class="team-content-block">
+    
+        <!-- Primer Bloque: Nombre del equipo -->
+        <div class="team-name-block">
           <h2>{{ selectedTeamData.name }}</h2>
-          <p><strong>País:</strong> {{ selectedTeamData.country }}</p>
-          <p><strong>Ciudad:</strong> {{ selectedTeamData.city }}</p>
         </div>
-        <!-- Sección derecha para el logo -->
-        <div class="team-info-right">
-          <!-- Aquí iría el logo del equipo -->
-          <img *ngIf="selectedTeamData.logoImage" [src]="selectedTeamData.logoImage" alt="Logo del equipo" class="team-logo">
+    
+        <!-- Segundo Bloque: Dos bloques en row -->
+        <div class="team-info-row">
+          <!-- Primer Sub-bloque: País y Ciudad en columna -->
+          <div class="team-location-block">
+            <div class="team-country-block">
+              <p><strong>País:</strong> {{ selectedTeamData.country }}</p>
+            </div>
+            <div class="team-city-block">
+              <p><strong>Ciudad:</strong> {{ selectedTeamData.city }}</p>
+            </div>
+          </div>
+          
+          <!-- Segundo Sub-bloque: Logo del equipo -->
+          <div class="team-logo-block">
+            <img *ngIf="selectedTeamData.logoImage" [src]="selectedTeamData.logoImage" alt="Logo del equipo" class="team-logo">
+          </div>
         </div>
-      </div>
-      <!-- Botón para editar información o cambiar la imagen -->
-      <div class="edit-button-container">
-        <button class="button is-primary">Editar Información</button>
+    
+        <!-- Tercer Bloque: Botón para editar información -->
+        <div class="button-row">
+          <button class="button is-primary">Editar Información</button>
+          <button class="close-button" (click)="closeTeamCard()">Cancelar</button>
+        </div>
+        
       </div>
     </div>
 
 
+  </div>
+</div>
+
+
+<div class="toast-container">
+  <div *ngIf="showSuccessToast" class="notification is-success toast is-visible">
+    <div class="toast-content">
+      <i class="fas fa-check-circle toast-icon"></i>
+      <div class="toast-message">{{ toastMessage }}</div>
+    </div>
+  </div>
+  <div *ngIf="showErrorToast" class="notification is-danger toast is-visible">
+    <div class="toast-content">
+      <i class="fas fa-exclamation-circle toast-icon"></i>
+      <div class="toast-message">{{ toastMessage }}</div>
+    </div>
   </div>
 </div>
 

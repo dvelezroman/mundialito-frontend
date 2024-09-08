@@ -1,36 +1,32 @@
 <div class="reportes-page-container">
   
-
-    <div class="title-section">
-      <h1>Reportes de Equipos</h1>
-    </div>
   
     <div class="reportes-container">
-      <div class="button-section">
-        <button class="button is-primary" (click)="navigateToDashboard()">Ir a Dashboard</button>
-      </div>
   
       <div class="filter-section">
-        <h2>Buscar Equipo</h2>
-        <div class="field">
-          <label for="country-select">Seleccionar País</label>
-          <select id="country-select" [(ngModel)]="selectedCountry" (change)="onCountryChange()">
-            <option value="">Todos los Países</option>
-            <option *ngFor="let country of countriesList | keyvalue" [value]="country.key">{{ country.key }}</option>
-          </select>
+        <div class="filter-title">
+          <h2>Buscar Equipo</h2>
         </div>
-  
-        <div class="field">
-          <label for="category-select">Seleccionar Categoría</label>
-          <select id="category-select" [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
-            <option value="">Todas las Categorías</option>
-            <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
-          </select>
+        <div class="selectors-row">
+          <div class="field">
+            <label for="country-select">Seleccionar País</label>
+            <select id="country-select" [(ngModel)]="selectedCountry" (change)="onCountryChange()">
+              <option value="">Todos los Países</option>
+              <option *ngFor="let country of countriesList | keyvalue" [value]="country.key">{{ country.key }}</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="category-select">Seleccionar Categoría</label>
+            <select id="category-select" [(ngModel)]="selectedCategory" (change)="onCategoryChange()">
+              <option value="">Todas las Categorías</option>
+              <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+            </select>
+          </div>
         </div>
       </div>
   
       <!-- Lista de equipos filtrados -->
-      <div class="teams-list-section">
+      <div *ngIf="filteredTeams.length > 0" class="teams-list-section">
         <div class="header-section">
           <h3 class="title">Resultados de la búsqueda</h3>
           <button *ngIf="filteredTeams.length > 0" class="button is-primary is-align-left" (click)="printTable()">
@@ -65,6 +61,12 @@
         </div>
       </div>
       
+    </div>
+    <div *ngIf="showNoTeamsToast" class="toast is-danger">
+      <i class="fa fa-exclamation-circle toast-icon"></i>
+      <div class="toast-message">
+        No se encontraron equipos 
+      </div>
     </div>
   </div>
   

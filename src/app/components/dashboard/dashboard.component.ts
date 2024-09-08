@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {PlayerCardsComponent} from "../player-cards/player-cards.component";
 import {TeamService} from "../../services/team.service";
 import {CommonModule, NgForOf, NgOptimizedImage} from "@angular/common";
@@ -23,6 +23,8 @@ import {countries} from "../team/countries";
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent implements OnInit {
+  @ViewChild('teamCard', { static: false }) teamCard!: ElementRef;
+
     protected  readonly  countriesList = countries;
     toastMessage: string = '';
     showSuccessToast: boolean = false;
@@ -37,7 +39,7 @@ export class DashboardComponent implements OnInit {
     personalId: '',
     lastname: '',
     birthdate: '',
-      country: null as string | null,
+    country: null as string | null,
     profilePhoto: null as File | null,
     teamId: null as number | null,
     type: 'PLAYER' as 'MANAGER' | 'PLAYER',
@@ -53,6 +55,7 @@ export class DashboardComponent implements OnInit {
     private teamService: TeamService,
     private personService: PersonService,
     private router: Router,
+    private renderer: Renderer2
   ) {}
 
   ngOnInit() {
@@ -91,6 +94,8 @@ export class DashboardComponent implements OnInit {
       });
     }
   }
+
+
 
   openModal() {
     this.isModalOpen = true;
@@ -169,7 +174,7 @@ export class DashboardComponent implements OnInit {
           formData.profilePhoto = fileUrl;
           this.personService.createPerson(formData).subscribe({
             next: () => {
-              this.howSuccessToast('Jugador agregado al equipo!!.');
+              this.howSuccessToast('Agregado al equipo exitosamente');
               this.isModalOpen = false;
               this.router.navigate(['/dashboard']);
             },
@@ -211,4 +216,6 @@ export class DashboardComponent implements OnInit {
       this.showErrorToast = false;
     }, 2000);
   }
+
+
 }

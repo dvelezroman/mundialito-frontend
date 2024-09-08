@@ -19,7 +19,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 10rem;
+  padding: 10rem 0rem;
   background: none; 
   height: 100%;
 }
@@ -28,24 +28,24 @@
   position: fixed;
   top: 30%; 
   left: 50%;
-  transform: translate(-50%, -50%); /* Centra horizontalmente y ajusta la posición vertical */
+  transform: translate(-50%, -50%); 
   width: 100%;
   max-width: 600px;
   z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px; /* Espacio entre toasts si ambos se muestran */
+  gap: 10px; 
 }
 
 .toast {
-  width: 90%; /* Aumenta el ancho del toast */
+  width: 90%; 
   text-align: center;
   opacity: 0.9;
   color: white;
-  font-size: 1.55em; /* Aumenta el tamaño del texto */
-  padding: 15px; /* Aumenta el padding para un toast más grande */
-  border-radius: 8px; /* Agrega un poco de redondeo a las esquinas */
+  font-size: 1.55em; 
+  padding: 15px; 
+  border-radius: 8px; 
 }
 
 .toast.is-hidden {
@@ -54,9 +54,9 @@
 }
 
 .toast-icon {
-  width: 70px; /* Ajusta el tamaño de la imagen según sea necesario */
+  width: 70px; 
   height: auto;
-  margin-bottom: 0px; /* Espacio entre la imagen y el texto */
+  margin-bottom: 0px;
 }
 
 .toast-message {
@@ -78,6 +78,7 @@
     width: 100%;
     height: 600px;
     margin-top: 20px;
+
   }
 
   .team-select-card {
@@ -88,13 +89,13 @@
     padding: 20px;
     width: 100%;
     height: 200px;
-    max-width: 1000px; // Aumenta el ancho máximo para la tarjeta
+    max-width: 1000px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-left: auto; // Centra la tarjeta horizontalmente
-    margin-right: auto; // Centra la tarjeta horizontalmente
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .content {
@@ -181,9 +182,10 @@
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    margin: 0; /* Elimina la separación entre los botones */
-    flex: 1; /* Hace que los botones se expandan uniformemente */
-    text-align: center; /* Asegura que el texto esté centrado */
+    margin: 0; 
+    flex: 1; 
+    text-align: center; 
+
 }
 
 .button-block .btn:hover {
@@ -205,18 +207,78 @@
 }
 
 
-.toast {
+.toast-container {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 600px;
   z-index: 1000;
-  opacity: 0.9;
-  transition: opacity 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; 
 }
 
-.toast.is-hidden {
-  opacity: 0;
-  visibility: hidden;
+.toast {
+  width: 90%; 
+  text-align: center;
+  opacity: 0; 
+  transform: scale(0.8); 
+  transition: opacity 0.3s ease, transform 0.3s ease; 
+  background-color: #f4f4f4; 
+  font-size: 1.55em;
+  padding: 2.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.toast.is-visible {
+  opacity: 1; 
+  transform: scale(1); 
+  animation: popAnimation 0.3s ease;
+}
+
+@keyframes popAnimation {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+.toast-icon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.toast-message {
+  margin-top: 10px;
+}
+
+.toast.is-success {
+  color: #28a745; 
+}
+
+.toast.is-success .toast-icon {
+  color: #28a745; 
+}
+
+.toast.is-danger {
+  color: #dc3545; 
+}
+
+.toast.is-danger .toast-icon {
+  color: #dc3545; 
 }
 
 
@@ -228,8 +290,8 @@
     }
 
     .title {
-      font-size: 2.2em; // Reduce el tamaño de la fuente del título
-      margin-bottom: 15px; // Reduce el espacio inferior del título
+      font-size: 2.2em; 
+      margin-bottom: 15px; 
     }
 
     .dashboard-container {
@@ -606,118 +668,145 @@
   /*estilos para la tarjeta del equipo*/
 
   .dashboard-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-
+    width: 100%;
+    margin-top: 20px;
+    position: relative; 
+    padding-bottom: 150px;
   }
 
   .team-info-card {
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(15px);
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    padding: 20px;
-    width: 100%;
-    max-width: 800px;
-    margin-top: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    min-height: 250px;
+    padding: 25px;
+    width: 100%;
+    margin: auto;
+    margin-top: 3rem;
+    max-width: 800px;
+    background: rgba(210, 214, 218, 0.926);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
-
-  .team-info-content {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  align-items: center;
-  margin-top: 0px;
-
-}
-
-.team-info-left {
-  flex: 1;
-  padding-right: 20px;
-  text-align: left;
-}
-
-.team-info-right {
-  flex: 0 0 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-  .team-info-card h2 {
+  
+  .team-content-block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; 
+  }
+  
+  .team-name-block {
+    text-align: center;
+    color: rgb(29, 76, 127);
     font-size: 2.5rem;
     font-weight: bold;
-    color: #1b1717;
-    margin-bottom: 15px;
   }
-
-  .team-info-card p {
-    margin: 5px 0;
-    padding: 0;
-    text-align: left;
-    color: #000000;
-    font-size: 1.4rem;
-  }
-
-  .team-info-card p strong {
-    font-size: 1.5rem;
-    margin-right: 5px;
-    color: #36393c;
-    font-weight: bold;
-  }
-
-
-  .team-logo {
+  
+  .team-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    max-width: 150px;
-    height: auto;
-    object-fit: contain;
   }
-
-  .edit-button-container {
-    margin-top: 20px;
-    align-self: center;
+  
+  .team-location-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-left: 2.7rem;
   }
-
-  .button.is-primary {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    border: none;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
+  
+  .team-country-block,
+  .team-city-block {
+    display: flex;
+    align-items: center;
+    white-space: nowrap; /* Evita que el texto salte a la siguiente línea */
+    overflow: hidden; /* Oculta el desbordamiento si el texto es demasiado largo */
+    text-overflow: ellipsis; /* Añade puntos suspensivos si el texto es demasiado largo */
+    font-size: 1.3rem;
   }
-
-
-  .button.is-primary:hover {
-    background-color: #0056b3;
+  
+  .team-country-block strong,
+  .team-city-block strong {
+    margin-right: 5px; /* Añade un pequeño margen entre el `strong` y el texto */
+    color: rgb(40, 72, 133);
   }
-
-  .close-button {
-    position: absolute;
-    top: 0px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
-    color: #333;
+  
+  p {
+    margin: 0; /* Elimina márgenes para que no haya saltos de línea innecesarios */
+    font-size: 1.5rem;
+    color: rgb(35, 83, 135);
   }
+  
+.team-logo-block {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin-right: 2rem;
+}
 
-  .close-button:hover {
-    color: #160c0c;
+.team-logo {
+  width: 150px; /* Establece un tamaño fijo */
+  height: 150px; /* Asegura que todas las imágenes sean cuadradas */
+  object-fit: contain; /* Asegura que la imagen mantenga sus proporciones */
+  margin-right: 10px; /* Ajusta el margen si es necesario */
+}
+  
+  .button-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; 
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
+  
+/* Estilos del botón de Editar */
+.button.is-primary {
+  background-color: #007bff; /* Color del botón Editar */
+  color: white;
+  padding: 12px 3rem; /* Aumenta el padding en los lados izquierdo y derecho */
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  text-align: center;
+  width: auto; /* Ajusta el ancho según el padding */
+  height: 50px; /* Mantiene la altura */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Hover para el botón de Editar */
+.button.is-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Botón Cerrar */
+.close-button {
+  background-color: transparent;
+  color: #282727;
+  padding: 12px 2rem; /* Mantén el padding actual */
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid grey;
+  font-size: 16px;
+  text-align: center;
+  width: 150px; /* Mantiene el ancho más pequeño */
+  height: 50px; /* Mantiene la misma altura */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Hover para el botón de Cerrar */
+.close-button:hover {
+  background-color: #4f514f;
+  color: white;
+}
 
 
 @media screen and (max-width: 768px) {
