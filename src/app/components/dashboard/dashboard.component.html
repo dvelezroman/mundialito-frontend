@@ -26,6 +26,7 @@
 
         <!-- Segundo bloque: Botones -->
         <div class="button-block">
+          <button class="btn register-team" [routerLink]="['/teams']">Registrar Equipo</button>
           <button class="btn add-person" [disabled]="!selectedTeamId" (click)="openModal()">Agregar Jugador</button>
           <button class="btn view-players" [disabled]="!selectedTeamId" (click)="cardsPlayers()">Ver Jugadores</button>
         </div>
@@ -35,17 +36,13 @@
    
 
     <div class="team-info-card" *ngIf="selectedTeamData">
-      <!-- Bloque Principal -->
       <div class="team-content-block">
     
-        <!-- Primer Bloque: Nombre del equipo -->
         <div class="team-name-block">
           <h2>{{ selectedTeamData.name }}</h2>
         </div>
     
-        <!-- Segundo Bloque: Dos bloques en row -->
         <div class="team-info-row">
-          <!-- Primer Sub-bloque: País y Ciudad en columna -->
           <div class="team-location-block">
             <div class="team-country-block">
               <p><strong>País:</strong> {{ selectedTeamData.country }}</p>
@@ -55,13 +52,11 @@
             </div>
           </div>
           
-          <!-- Segundo Sub-bloque: Logo del equipo -->
           <div class="team-logo-block">
             <img *ngIf="selectedTeamData.logoImage" [src]="selectedTeamData.logoImage" alt="Logo del equipo" class="team-logo">
           </div>
         </div>
     
-        <!-- Tercer Bloque: Botón para editar información -->
         <div class="button-row">
           <button class="button is-primary">Editar Información</button>
           <button class="close-button" (click)="closeTeamCard()">Cancelar</button>
@@ -125,7 +120,7 @@
 
         <div class="field">
           <label class="label">Fecha de Nacimiento</label>
-          <div class="control">
+          <div class="control has-icons-right">
             <input class="input" type="date" [(ngModel)]="personData.birthdate" name="birthdate" required>
           </div>
         </div>
@@ -160,8 +155,7 @@
                 name="type"
                 [(ngModel)]="personData.type"
                 required
-                #type="ngModel"
-              >
+                #type="ngModel">
                 <option *ngFor="let type of types" [value]="type.value">
                   {{ type.label }}
                 </option>

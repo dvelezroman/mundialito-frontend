@@ -1,35 +1,37 @@
-:host {
-  display: block;
-  width: 100%;
-  min-height: 100vh; 
-  background: linear-gradient(135deg, #2f51b7, #00c853);
-  box-sizing: border-box;
-  padding: 2rem 0rem;
-}
+
 
 .full-screen-container {
   display: flex;
   justify-content: center;
-  align-items: flex-start; 
-  padding: 3rem 2rem; 
+  align-items: flex-start;
+  padding: 9rem 2rem;
   box-sizing: border-box;
+  background-image: url('/assets/video poster dashboard.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  flex-grow: 1; 
 }
 
 .form-container {
   width: 50%;
   margin: 0 auto;
   padding: 55px;
-  background: rgba(255, 255, 255, 0.7); /* Fondo semitransparente */
+  background: rgba(255, 255, 255, 0.7); 
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px); /* Aplica el desenfoque */
-  border: 1px solid rgba(255, 255, 255, 0.3); /* Borde sutil */
+  backdrop-filter: blur(10px); 
+  border: 1px solid rgba(255, 255, 255, 0.3); 
+  min-height: 100%; 
+  overflow-y: auto; 
 }
 
 .title {
   text-align: center;
   color: black; 
-  margin-bottom: 50px;
+  font-weight: 400;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
 }
 
 .label {
@@ -42,86 +44,87 @@
 
 .input-section-row {
   display: flex;
-  flex-wrap: wrap; /* Permite que los campos se envuelvan cuando no haya suficiente espacio */
-  gap: 20px; /* Espacio entre los campos */
+  flex-wrap: wrap; 
+  gap: 20px; 
 }
 
 .field {
   flex: 1;
-  min-width: 250px; /* Ancho mínimo para cada campo */
-  margin-bottom: 20px; /* Espaciado entre campos */
+  min-width: 250px; 
+  margin-bottom: 20px; 
 }
 
 .field-name {
   display: flex;
-  flex-direction: column; /* Coloca el label encima del input */
-  align-items: left; /* Centra el contenido dentro del campo */
+  flex-direction: column; 
+  align-items: left; 
   width: 100%;
 }
 
 
 .field-name .control {
-  width: 100%; /* Reduce el ancho del input de nombre */
+  width: 100%; 
 }
 
 .field-name .input {
-  width: 100%; /* Asegura que el input ocupe todo el ancho del control */
+  width: 100%; 
 }
 
 .field-name .label {
-  text-align: left; /* Centra el label encima del input */
-  margin-bottom: 5px; /* Espacio entre el label y el input */
+  text-align: left; 
+  margin-bottom: 5px; 
 }
 
 .field-center-label .label {
   display: block;
-  text-align: left; /* Centra el texto del label */
-  margin-bottom: 5px; /* Espacio entre el label y el input */
+  text-align: left; 
+  margin-bottom: 5px;
 }
 
 .field-center-label .control {
   display: flex;
-  justify-content: center; /* Centra el input dentro de su campo */
+  justify-content: center; 
   width: 100%;
 }
 
 
 .control {
   display: flex;
-  flex-direction: column; /* Asegura que los elementos dentro de .control se coloquen en una columna, uno debajo del otro */
+  flex-direction: column; 
   width: 100%;
 }
 
 .help.is-danger {
-  color: #ff3860; /* Color rojo para el texto de error */
-  font-size: 0.875rem; /* Tamaño de fuente más pequeño */
-  margin-top: 5px; /* Espacio entre el input y el mensaje de error */
-  text-align: left; /* Alineación del texto de error */
+  color: #ff3860; 
+  font-size: 0.875rem;
+  margin-top: 5px; 
+  text-align: left; 
 }
 
 .input,
 .select select {
-  width: 100%; /* Asegura que el input ocupe todo el ancho disponible */
-  background-color: white; /* Fondo blanco para los inputs y selects */
-  border: 1px solid grey; /* Bordes de color gris */
+  width: 100%; 
+  background-color: white; 
+  border: 1px solid rgb(207, 207, 207);
   padding: 5px 15px;
+  font-size: 1.1rem;
   border-radius: 4px;
   color: #333;
   box-sizing: border-box;
 }
 
 .select select {
-  max-width: 100%; /* Asegura que el select no se desborde en contenedores pequeños */
-  appearance: none; /* Elimina la apariencia predeterminada */
+  max-width: 100%; 
+  appearance: none; 
 }
 
 .select select option[value=""][disabled] {
-  color: grey; /* Asegura que el texto del placeholder en el select sea gris */
+  color: grey; 
 }
 
 .input:focus,
 .select select:focus {
-  border-color: grey; /* Mantiene el color gris cuando se enfoca */
+  border-color: grey; 
   outline: none;
 }
 
@@ -129,13 +132,13 @@
   position: relative;
   display: inline-block;
   width: 100%;
-  margin-bottom: 25px; /* Espacio entre los inputs de archivo */
+  margin-bottom: 25px; 
 }
 
 .custom-file-input {
   width: 100%;
-  height: 40px; /* Altura del botón */
-  opacity: 0; /* Oculta el input real */
+  height: 40px; 
+  opacity: 0; 
   position: absolute;
   left: 0;
   top: 0;
@@ -146,7 +149,7 @@
   display: inline-block;
   width: 100%;
   height: 40px;
-  background-color: #00b8d4; /* Color del botón */
+  background-color: #00b8d4; 
   color: white;
   text-align: center;
   padding: 10px 0;
@@ -161,12 +164,22 @@
 }
 
 .custom-file-input:focus + .custom-file-label {
-  outline: 2px solid #00b8d4; /* Borde al enfocar */
+  outline: 2px solid #00b8d4; 
   outline-offset: -2px;
 }
 
+.image-preview {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  text-align: center;
+  width: 100%;
+}
+
 .image-preview img {
-  max-width: 100%; /* Ajusta el tamaño de la imagen */
+  max-width: 100%; 
   height: auto;
   object-fit: cover;
   border: 1px solid #ccc;
@@ -176,15 +189,15 @@
 
 .button-section {
   display: flex;
-  justify-content: center; /* Centra los botones */
-  gap: 20px; /* Espacio entre los botones */
-  margin-top: 30px; /* Añade espacio en la parte superior de la sección */
+  justify-content: center; 
+  gap: 20px; 
+  margin-top: 30px;
 }
 
 .button-section .button {
-  padding: 8px 15px; /* Aumenta el padding para hacer los botones más grandes */
-  font-size: 1.1rem; /* Incrementa el tamaño de la fuente */
-  border-radius: 6px; /* Puedes ajustar el border-radius si prefieres un estilo más redondeado */
+  padding: 8px 15px; 
+  font-size: 1.1rem; 
+  border-radius: 6px; 
 }
 
 .button.is-primary {
@@ -205,11 +218,11 @@
 }
 
   .input-section-row {
-      flex-direction: column; /* Coloca los campos en columna en pantallas pequeñas */
+      flex-direction: column; 
   }
 
   .field {
-      width: 100%; /* Asegura que los campos ocupen todo el ancho del contenedor en pantallas pequeñas */
+      width: 100%; 
   }
 }
 
@@ -219,57 +232,57 @@
 }
 
   .input-section-row {
-      flex-direction: column; /* Coloca los campos en columna en pantallas pequeñas */
+      flex-direction: column; 
   }
 
   .field {
-      width: 100%; /* Asegura que los campos ocupen todo el ancho del contenedor en pantallas pequeñas */
+      width: 100%; 
   }
 }
 
 @media (max-width: 576px) {
   .form-container {
-    padding: 30px; /* Reduce el padding del contenedor del formulario en pantallas pequeñas */
-    width: 90%; /* Aumenta el ancho del formulario para pantallas pequeñas */
+    padding: 30px; 
+    width: 90%; 
   }
 
   .title {
-    font-size: 1.5rem; /* Reduce el tamaño del título en pantallas pequeñas */
-    margin-bottom: 30px; /* Reduce el margen inferior del título */
+    font-size: 1.5rem; 
+    margin-bottom: 30px; 
   }
 
   .label {
-    font-size: 1rem; /* Reduce el tamaño de los labels en pantallas pequeñas */
-    margin-bottom: 3px; /* Reduce el margen inferior del label */
+    font-size: 1rem; 
+    margin-bottom: 3px; 
   }
 
   .field {
-    margin-bottom: 17px; /* Reduce el espacio entre los campos de input en pantallas pequeñas */
+    margin-bottom: 17px; 
   }
 
   .field-city {
-    margin-top: -18px; /* Sube el input de Ciudad un poco */
+    margin-top: -18px; 
   }
 
   .input,
   .select select {
-    padding: 8px 12px; /* Ajusta el padding de los inputs para pantallas pequeñas */
-    font-size: 0.9rem; /* Reduce el tamaño de la fuente de los inputs en pantallas pequeñas */
+    padding: 8px 12px; 
+    font-size: 0.9rem; 
   }
 
   .help.is-danger {
-    font-size: 0.75rem; /* Reduce el tamaño del texto de error en pantallas pequeñas */
-    margin-top: 3px; /* Reduce el margen superior del texto de error */
+    font-size: 0.75rem; 
+    margin-top: 3px; 
   }
 
   .custom-file-label {
-    font-size: 0.9rem; /* Reduce el tamaño de la fuente en el botón de cargar imagen */
-    padding: 8px 0; /* Reduce el padding del botón de cargar imagen */
+    font-size: 0.9rem; 
+    padding: 8px 0; 
   }
 
   .button-section .button {
-    padding: 8px 15px; /* Reduce el padding de los botones en pantallas pequeñas */
-    font-size: 1rem; /* Reduce el tamaño de la fuente de los botones */
+    padding: 8px 15px; 
+    font-size: 1rem; 
   }
 }
 

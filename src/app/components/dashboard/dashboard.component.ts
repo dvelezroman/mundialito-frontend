@@ -4,7 +4,7 @@ import {TeamService} from "../../services/team.service";
 import {CommonModule, NgForOf, NgOptimizedImage} from "@angular/common";
 import { PersonService } from '../../services/person.service';
 import { FormsModule } from '@angular/forms';
-import {Router} from "@angular/router";
+import {Router, RouterModule} from "@angular/router";
 import {environment} from "../../../environments/environment";
 import {S3Service} from "../../services/s3.service";
 import {countries} from "../team/countries";
@@ -17,7 +17,8 @@ import {countries} from "../team/countries";
     NgForOf,
     FormsModule,
     CommonModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    RouterModule
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
@@ -61,6 +62,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.loadTeams();
   }
+
 
   loadTeams() {
     this.teamService.getTeams().subscribe({
@@ -115,6 +117,8 @@ export class DashboardComponent implements OnInit {
     if (fileInput) {
       fileInput.value = '';
     }
+
+
   }
 
   onFileSelected(event: any) {

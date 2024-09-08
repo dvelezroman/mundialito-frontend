@@ -1,3 +1,5 @@
+
+
 .video-background {
   position: absolute;
   top: 0;
@@ -64,16 +66,6 @@
 }
 
 
-
-  .title {
-    color: #e6e8ec;
-    font-size: 3em;
-    margin-top: 3rem;
-    margin-bottom: 20px;
-    text-align: center;
-    width: 100%;
-  }
-
   .dashboard-container {
     width: 100%;
     height: 600px;
@@ -82,7 +74,7 @@
   }
 
   .team-select-card {
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.6);
     backdrop-filter: blur(40px);
     border-radius: 8px;
     border: 1px solid rgba(255, 255, 255, 0.5);
@@ -107,9 +99,9 @@
   .select-block {
     width: 100%;
     padding-top: 10px;
-    display: flex; // Utiliza Flexbox para organizar el contenido
+    display: flex;
     flex-direction: column;
-    justify-content: center; // Centra verticalmente el contenido dentro del bloque
+    justify-content: center; 
     align-items: center;
     height: 70%; 
   }
@@ -119,13 +111,13 @@
   }
 
   .label {
-    color: #ffffff; // Color negro para el texto del label
-    font-weight: 500; // Grosor del texto
-    font-size: 1.5rem; // Mantiene el tamaño de la fuente
+    color: #4b4949; 
+    font-weight: 500; 
+    font-size: 1.5rem; 
     margin-bottom: 10px;
-    text-align: center; // Centra el texto del label
-    display: block; // Asegura que el label se comporte como un bloque completo
-    width: 100%; // Asegura que ocupe todo el ancho de la tarjeta
+    text-align: center; 
+    display: block; 
+    width: 100%; 
   }
 
   .select select {
@@ -159,7 +151,7 @@
     pointer-events: none;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-top: 5px solid #ffffff; // Flecha blanca generada con CSS
+    border-top: 5px solid #ffffff; 
     width: 0;
     height: 0;
   }
@@ -168,9 +160,9 @@
     width: 30%;
     display: flex;
     margin-top: .5rem;
-    flex-direction: column; /* Mantiene la dirección en columna */
-    margin: auto; /* Centra el contenedor */
-    align-items: stretch; /* Asegura que los botones ocupen todo el ancho disponible */
+    flex-direction: column; 
+    margin: auto; 
+    align-items: stretch; 
     margin-right: 3rem;
     gap: 10px;
 }
@@ -296,18 +288,18 @@
 
     .dashboard-container {
       width: 100%;
-      margin-top: 15px; // Reduce el espacio superior
+      margin-top: 15px; 
     }
 
     .team-select-card {
-      height: 180px; // Reduce la altura de la tarjeta
-      max-width: 90%; // Reduce el ancho máximo de la tarjeta
-      padding: 15px; // Reduce el padding interno
+      height: 180px; 
+      max-width: 90%; 
+      padding: 15px; 
     }
 
     .select-block {
-      width: 70%; // Reduce el ancho del bloque de selección
-      height: 65%; // Ajusta la altura del bloque de selección
+      width: 70%; 
+      height: 65%; 
     }
 
     .select {
@@ -316,10 +308,10 @@
       }
 
     .select select {
-      width: 480px; // Reduce el ancho del select
-      font-size: 1.1em; // Reduce el tamaño de la fuente del select
-      height: 35px; // Reduce la altura del select
-      padding: 5px 10px; // Ajusta el padding del select
+      width: 480px; 
+      font-size: 1.1em; 
+      height: 35px; 
+      padding: 5px 10px; 
       margin-left: 35px;
     }
 
@@ -335,13 +327,13 @@
 
         .add-person {
           padding: 10px 15px;
-          font-size: .9em; // Ajusta el tamaño de la fuente del botón "Agregar Jugador"
+          font-size: .9em; 
         }
 
         .view-players {
           padding: 10px 15px;
-          font-size: 0.9em; // Mantiene el tamaño de la fuente en "Ver Jugadores"
-          margin-bottom: 0; // Elimina el margen inferior del último botón
+          font-size: 0.9em; 
+          margin-bottom: 0; 
         }
       }
 
@@ -352,78 +344,78 @@
 
     .dashboard-container {
         width: 100%;
-        margin-top: 30px; // Reduce el espacio superior
+        margin-top: 30px; 
       }
 
     .team-select-card {
-        height: auto; // Permite que la tarjeta ajuste su altura automáticamente
-        padding: 20px; // Aumenta el padding para que haya más espacio alrededor del contenido
-        max-width: 90%; // Ajusta el ancho máximo de la tarjeta para pantallas pequeñas
-        box-sizing: border-box; // Asegura que el padding se incluya en el ancho y la altura
+        height: auto; 
+        padding: 20px; 
+        max-width: 90%; 
+        box-sizing: border-box; 
       }
 
     .content {
       display: flex;
-      flex-direction: column; // Coloca el select y los botones en columna
-      align-items: center; // Centra el contenido horizontalmente
+      flex-direction: column; 
+      align-items: center; 
 
     }
 
     .label {
-        font-size: 1.2rem; // Mantiene el tamaño de la fuente
+        font-size: 1.2rem; 
         margin-bottom: 15px;
       }
 
     .select-block{
-      width: 100%; // Ocupa todo el ancho disponible
-      margin-bottom: 20px; // Añade margen inferior para separar los elementos
+      width: 100%; 
+      margin-bottom: 20px; 
       padding: 7px;
 
     }
 
     .button-block {
       display: flex;
-      flex-direction: row; // Coloca los botones en columna
-      align-items: center; // Centra los botones horizontalmente
-      margin-right: 0; // Elimina el margen derecho
+      flex-direction: row; 
+      align-items: center; 
+      margin-right: 0; 
       margin: auto;
     }
 
     .button-block .btn {
 
-      width: 40%; // Ajusta el ancho de los botones para que no ocupen todo el ancho
-      margin-bottom: 10px; // Añade un poco de espacio entre los botones
+      width: 40%; 
+      margin-bottom: 10px; 
     }
 
     .select select {
-      width: 350px; // Ajusta el ancho del select para que no ocupe todo el ancho
-      font-size: 1em; // Ajusta el tamaño de la fuente del select
+      width: 350px; 
+      font-size: 1em; 
       margin: auto;
-      padding: 0px 15px; // Aumenta el padding para mejor usabilidad en pantallas pequeñas
+      padding: 0px 15px; 
     }
 
 .toast-container {
   position: fixed;
-  top: 30%; /* Ajusta este valor para mover hacia abajo el contenedor */
+  top: 30%; 
   left: 48%;
-  transform: translate(-50%, -50%); /* Centra horizontalmente y ajusta la posición vertical */
+  transform: translate(-50%, -50%); 
   width: 100%;
   max-width: 600px;
   z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px; /* Espacio entre toasts si ambos se muestran */
+  gap: 10px; 
 }
 
     .toast {
-      width: 90%; /* Aumenta el ancho del toast */
+      width: 90%; 
       text-align: center;
       opacity: 0.9;
       color: white;
-      font-size: 1.55em; /* Aumenta el tamaño del texto */
-      padding: 15px; /* Aumenta el padding para un toast más grande */
-      border-radius: 8px; /* Agrega un poco de redondeo a las esquinas */
+      font-size: 1.55em; 
+      padding: 15px; 
+      border-radius: 8px; 
     }
   }
 
@@ -448,70 +440,83 @@
 
     .content {
       display: flex;
-      flex-direction: column; // Coloca el select y los botones en columna
-      align-items: center; // Centra el contenido horizontalmente
+      flex-direction: column; 
+      align-items: center; 
     }
 
     .label {
-      font-size: 1rem; // Reduce el tamaño de la fuente para móviles
-      margin-bottom: 15px; // Reduce el margen inferior
+      font-size: 1rem; 
+      margin-bottom: 15px; 
     }
 
     .select-block, .button-block {
-      width: 60%; // Ocupa todo el ancho disponible
-      margin-bottom: 15px; // Reduce el margen inferior para ahorrar espacio
-      padding: 10px; // Reduce el padding para ahorrar espacio
+      width: 60%; 
+      margin-bottom: 15px; 
+      padding: 10px; 
     }
 
     .button-block {
-      flex-direction: column; // Coloca los botones en columna
-      align-items: center; // Centra los botones horizontalmente
-      margin-right: 0; // Elimina el margen derecho
+      flex-direction: column; 
+      align-items: center;
+      margin-right: 0;
       margin: auto;
     }
 
     .button-block .btn {
-      width: 90%; // Ajusta el ancho de los botones para que se adapten al móvil
-      font-size: 0.9em; // Reduce el tamaño de la fuente en los botones
-      margin-bottom: 8px; // Reduce el espacio entre los botones
+      width: 90%; 
+      font-size: 0.9em; 
+      margin-bottom: 8px; 
     }
 
     .select select {
-      width: 280px; // Reduce el ancho del select para que se adapte al móvil
-      font-size: 0.9em; // Reduce el tamaño de la fuente del select
-      padding: 5px 10px; // Reduce el padding para mejor usabilidad en pantallas pequeñas
+      width: 280px; 
+      font-size: 0.9em; 
+      padding: 5px 10px; 
     }
   }
 
 
+  /* MODAL ESTILOS MODAL ESTILOS MODAL ESTILOS MODAL ESTILOS*/
 
-  /*MODAL STILOS*/
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
   .modal.is-active {
     display: block;
-  }
-
-  .modal {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 1000;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 0;
+    width: 100%;
+    height: 100%;
     overflow: auto;
-    background-color: transparent; /* Aumenta la transparencia para ver más detrás */
+    background-color: transparent; 
     z-index: 1000;
 
     .modal-card {
-      max-width: 500px;
+      max-width: 600px;
       margin: 50px auto;
-      background: #ffffff; /* Fondo blanco para la tarjeta del modal */
+      background: #ffffff; 
       border-radius: 8px;
       padding: 20px;
-      box-shadow: 0 4px 15px rgba(224, 224, 224, 0.2); /* Sombra sutil para darle profundidad */
+      box-shadow: 0 4px 15px rgba(224, 224, 224, 0.2); 
     }
 
     .modal-background{
-      background-color: rgba(0, 0, 0, 0.512);
+      background-color:rgba(29, 28, 28, 0.424);
     }
 
     .modal-card-head {
@@ -547,15 +552,82 @@
       border-radius: 8px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
+    .field {
+      position: relative;
+      margin-bottom: 1.2rem; 
+    }
+    
+
+    .field .select {
+      width: 100%;
+    }
+    
+    .field .select select {
+      width: 100%;
+      padding: 5px; 
+      background-color: #e0e0e0;
+      border: 1px solid #d5d5d5;
+      border-radius: 4px;
+      box-sizing: border-box;
+      color: #424242;
+    }
+    
+    .field .select select:focus {
+      border-color: #616161;
+      outline: none;
+    }
+
+
+    .field .help {
+      font-size: 0.85rem;
+      color: #dc3545;
+      position: absolute;
+      top: 100%; 
+      left: 5px;
+      margin-top: 0px;
+      visibility: hidden;
+    }
+    
+    .field .help.is-danger {
+      visibility: visible; 
+    }
+
+
+    /* Estilos para el input de fecha */
+
+    .date-input-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    input[type="date"] {
+      width: 100%;
+      padding-right: 2.5rem; 
+      position: relative;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      position: absolute;
+      right: 0px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      background-color: #eae8e8; 
+      padding: 12px 15px;
+      font-size: 1.2rem;
+      color: #0288d1;
+    }
 
     .modal-card-body .input {
       background-color: #e0e0e0;
       border: 1px solid #d5d5d5;
       border-radius: 4px;
-      padding: 10px;
+      padding: 5px 10px;
+      margin-bottom: 5px;
       color: #424242;
       box-sizing: border-box;
       width: 100%;
+      font-size: 1.1rem;
     }
 
     .modal-card-body .input:focus {
@@ -566,8 +638,8 @@
     .label {
       color: #6d6d6d;
       font-weight: bold;
-      font-size: 1.2rem;
-      margin-bottom: 5px;
+      font-size: 1rem;
+      margin-bottom: 1px;
       margin-left: 5px;
       text-align: left;
       display: block;
@@ -627,9 +699,7 @@
 
 .remove-button {
   margin-top: 10px;
-  /* Espacio entre el input de archivo y el botón de eliminar */
   background-color: #5b5555;
-  /* Color de fondo rojo claro */
   border: none;
   border-radius: 4px;
   color: white;
@@ -662,6 +732,7 @@
   background-color: #d5d5d5;
   border-color: #a0a0a0;
 }
+
 
 
 
