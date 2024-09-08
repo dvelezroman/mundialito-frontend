@@ -218,19 +218,19 @@ td {
   }
 
   .field select {
-      font-size: 0.9rem; /* Ajusta el tamaño de la fuente del select */
-      width: 100%; /* Ocupa todo el ancho del contenedor */
+      font-size: 0.9rem; 
+      width: 100%; 
   }
 
   .header-section .title {
-    font-size: 1.2rem; /* Reduce el tamaño del título "Resultados de la búsqueda" */
-    text-align: center; /* Centra el texto */
-    width: 100%; /* Asegura que el título ocupe todo el ancho */
+    font-size: 1.2rem; 
+    text-align: center; 
+    width: 100%; 
 }
 
 .header-section {
     flex-direction: column;
-    align-items: center; /* Centra el contenido dentro de la cabecera */
+    align-items: center; 
 }
 
 .button.is-align-left {
@@ -241,14 +241,14 @@ td {
   width: 80%;
   margin: auto;
   margin-top: -1rem;
-  font-size: 0.8rem; /* Reduce el tamaño de la fuente */
-  text-align: center; /* Centra el texto si es necesario */
+  font-size: 0.8rem; 
+  text-align: center; 
 }
 
 
 
   th, td {
-      font-size: 0.9rem; /* Reduce el tamaño de la fuente en la tabla */
+      font-size: 0.9rem; 
   }
 
   .button.is-align-left {
@@ -275,16 +275,16 @@ td {
 
 @media (max-width: 492px) {
   .title-section {
-    font-size: 1.8rem; /* Reduce el tamaño de la fuente */
+    font-size: 1.8rem; 
 }
 
 .header-section .title {
-  font-size: 1.25rem; /* Reduce el tamaño del título "Resultados de la búsqueda" */
-  text-align: center; /* Centra el texto */
-  width: 100%; /* Asegura que el título ocupe todo el ancho */
+  font-size: 1.25rem;
+  text-align: center; 
+  width: 100%; 
 }
 
 th, td {
-  font-size: 0.8rem; /* Reduce el tamaño de la fuente en la tabla */
+  font-size: 0.8rem; 
 }
 }

@@ -1,13 +1,13 @@
 .video-section {
   position: relative;
   width: 100%;
-  height: 100vh; /* El video ocupa el 100% del alto de la pantalla */
+  height: 100vh; 
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0; /* Elimina los márgenes */
-  padding: 0; /* Elimina los paddings */
-  overflow: hidden; /* Asegura que no haya desbordamiento */
+  margin: 0; 
+  padding: 0; 
+  overflow: hidden; 
 }
 
 
@@ -15,7 +15,43 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%; /* El video ocupa el 100% del ancho del contenedor */
-  height: 100%; /* El video ocupa el 100% del alto del contenedor */
-  object-fit: cover; /* Asegura que el video se ajuste sin distorsión */
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+}
+
+
+.button-login-container {
+  position: absolute;
+  top: 55%; 
+  left: 88%; 
+  transform: translate(-50%, -50%);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+
+  }
+  to {
+    opacity: 1;
+
+  }
+}
+
+.btn-login {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  animation: fadeIn 3.5s ease-in; 
+}
+
+.btn-login:hover {
+  background-color: white;
+  color: grey;
 }
