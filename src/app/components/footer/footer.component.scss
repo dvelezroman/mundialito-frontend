@@ -6,7 +6,16 @@
 
   .container {
     margin: 0 auto;
-    padding: 1rem 20px;
+    padding: 2rem 20px;
+  }
+
+  .footer-organizers {
+    text-align: left;
+    padding-left: 20px;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #2f5aa6;
   }
 
   .footer-logos-row,
@@ -19,7 +28,7 @@
   .footer-logo img,
   .footer-image-left img,
   .footer-image-right img {
-    max-width: 150px;
+    max-width: 200px;
     height: auto;
   }
 
@@ -36,5 +45,6 @@
   }
 
   .footer-rights {
-    font-size: 0.9rem;
+    margin-top: 2rem;
+    font-size: 1.1rem;
   }

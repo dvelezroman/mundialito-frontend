@@ -1,12 +1,11 @@
 <section class="video-background">
   <video autoplay muted playsinline poster="/assets/video poster dashboard.png" id="background-video">
     <source src="/assets/video dashboard.mp4" type="video/mp4">
-    Tu navegador no soporta videos HTML5.
+
   </video>
 </section>
 
 <div class="hero">
-  <h1 class="title">Equipos</h1>
   <div class="dashboard-container">
     <div class="team-select-card">
       <div class="content">
@@ -27,51 +26,68 @@
 
         <!-- Segundo bloque: Botones -->
         <div class="button-block">
-          <button class="btn add-person" [disabled]="!selectedTeamId" (click)="openModal()">Agregar Jugador</button>
-          <button class="btn view-players" [disabled]="!selectedTeamId" (click)="cardsPlayers()">Ver Jugadores</button>
+          <button class="btn register-team" [routerLink]="['/teams']">Registrar Equipo</button>
+        <!--<button class="btn add-person" [disabled]="!selectedTeamId" (click)="openModal()">Agregar Jugador</button>
+          <button class="btn view-players" [disabled]="!selectedTeamId" (click)="cardsPlayers()">Ver Jugadores</button>-->
         </div>
       </div>
     </div>
 
-    <div class="toast-container">
-      <div *ngIf="showSuccessToast" class="notification is-success toast">
-        <div class="toast-content">
-          <img src="/assets/pulgar arriba1.png" alt="Éxito" class="toast-icon">
-          <div class="toast-message">{{ toastMessage }}</div>
-        </div>
-      </div>
-      <div *ngIf="showErrorToast" class="notification is-danger toast">
-        <div class="toast-content">
-          <img src="/assets/pulgar abajo.png" alt="Error" class="toast-icon">
-          <div class="toast-message">{{ toastMessage }}</div>
-        </div>
-      </div>
-    </div>
+   
 
-
-    <!-- Nueva tarjeta para la información del equipo -->
     <div class="team-info-card" *ngIf="selectedTeamData">
-      <button class="close-button" (click)="closeTeamCard()">×</button>
-      <div class="team-info-content">
-        <!-- Sección izquierda con nombre y datos -->
-        <div class="team-info-left">
+      <div class="team-content-block">
+    
+        <div class="team-name-block">
           <h2>{{ selectedTeamData.name }}</h2>
-          <p><strong>País:</strong> {{ selectedTeamData.country }}</p>
-          <p><strong>Ciudad:</strong> {{ selectedTeamData.city }}</p>
         </div>
-        <!-- Sección derecha para el logo -->
-        <div class="team-info-right">
-          <!-- Aquí iría el logo del equipo -->
-          <img *ngIf="selectedTeamData.logoImage" [src]="selectedTeamData.logoImage" alt="Logo del equipo" class="team-logo">
+    
+        <div class="team-info-row">
+          <div class="team-location-block">
+            <div class="team-country-block">
+              <p><strong>País:</strong> {{ selectedTeamData.country }}</p>
+            </div>
+            <div class="team-city-block">
+              <p><strong>Ciudad:</strong> {{ selectedTeamData.city }}</p>
+            </div>
+          </div>
+          
+          <div class="team-logo-block">
+            <img *ngIf="selectedTeamData.logoImage" [src]="selectedTeamData.logoImage" alt="Logo del equipo" class="team-logo">
+          </div>
         </div>
-      </div>
-      <!-- Botón para editar información o cambiar la imagen -->
-      <div class="edit-button-container">
-        <button class="button is-primary">Editar Información</button>
+    
+        <div class="button-row">
+          <button class="btn edit-info"(click)="openOptionsModal()">Opciones</button>
+          <button class="btn cancel-button" (click)="closeTeamCard()">Cancelar</button>
+        </div>
+        
       </div>
     </div>
 
 
+    <div class="modal" [ngClass]="{'is-active': isOptionsModalOpen}">
+      <div class="modal-background2" (click)="closeOptionsModal()"></div>
+      <div class="modal-card">
+        <section class="modal-card-body">
+            <button class="button is-primary" (click)="openModal()">Agregar Jugador</button>
+            <button class="button is-light" (click)="cardsPlayers()">Ver Jugadores</button>
+        </section>
+      </div>
+    </div>
+
+<div class="toast-container">
+  <div *ngIf="showSuccessToast" class="notification is-success toast is-visible">
+    <div class="toast-content">
+      <i class="fas fa-check-circle toast-icon"></i>
+      <div class="toast-message">{{ toastMessage }}</div>
+    </div>
+  </div>
+  <div *ngIf="showErrorToast" class="notification is-danger toast is-visible">
+    <div class="toast-content">
+      <i class="fas fa-exclamation-circle toast-icon"></i>
+      <div class="toast-message">{{ toastMessage }}</div>
+    </div>
   </div>
 </div>
 
@@ -110,7 +126,7 @@
 
         <div class="field">
           <label class="label">Fecha de Nacimiento</label>
-          <div class="control">
+          <div class="control has-icons-right">
             <input class="input" type="date" [(ngModel)]="personData.birthdate" name="birthdate" required>
           </div>
         </div>
@@ -145,8 +161,7 @@
                 name="type"
                 [(ngModel)]="personData.type"
                 required
-                #type="ngModel"
-              >
+                #type="ngModel">
                 <option *ngFor="let type of types" [value]="type.value">
                   {{ type.label }}
                 </option>

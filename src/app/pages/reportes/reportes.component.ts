@@ -24,6 +24,8 @@ export class ReportesComponent implements OnInit {
   selectedCountry: string = '';
   selectedCategory: string = '';
   categories = ['INFANTO', 'PRE', 'JUVENIL'];
+  searchPerformed: boolean = false;
+  showNoTeamsToast: boolean = false;
 
   @ViewChild('printableTable', { static: false }) printableTable!: ElementRef;
 
@@ -38,7 +40,6 @@ export class ReportesComponent implements OnInit {
     this.teamService.getTeams().subscribe({
       next: (data) => {
         this.teams = data;
-        console.log('Teams cargados:', this.teams);
       },
       error: (error) => {
         console.error('Error', error);
@@ -47,10 +48,12 @@ export class ReportesComponent implements OnInit {
   }
 
   onCountryChange() {
+    this.searchPerformed = true;
     this.filterTeams();
   }
 
   onCategoryChange() {
+    this.searchPerformed = true;
     this.filterTeams();
   }
 
@@ -59,6 +62,12 @@ export class ReportesComponent implements OnInit {
       return (this.selectedCountry === '' || team.country === this.selectedCountry) &&
              (this.selectedCategory === '' || team.category === this.selectedCategory);
     });
+    if (this.filteredTeams.length === 0) {
+      this.showNoTeamsToast = true;
+      setTimeout(() => {
+        this.showNoTeamsToast = false; 
+      }, 3000);
+    }
   }
 
   navigateToDashboard() {

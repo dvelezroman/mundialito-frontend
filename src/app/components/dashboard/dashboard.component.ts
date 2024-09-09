@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {PlayerCardsComponent} from "../player-cards/player-cards.component";
 import {TeamService} from "../../services/team.service";
 import {CommonModule, NgForOf, NgOptimizedImage} from "@angular/common";
 import { PersonService } from '../../services/person.service';
 import { FormsModule } from '@angular/forms';
-import {Router} from "@angular/router";
+import {Router, RouterModule} from "@angular/router";
 import {environment} from "../../../environments/environment";
 import {S3Service} from "../../services/s3.service";
 import {countries} from "../team/countries";
@@ -18,16 +18,20 @@ import {resizeImage} from "../../utils/file.util";
     NgForOf,
     FormsModule,
     CommonModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    RouterModule
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent implements OnInit {
+  @ViewChild('teamCard', { static: false }) teamCard!: ElementRef;
+
     protected  readonly  countriesList = countries;
     toastMessage: string = '';
     showSuccessToast: boolean = false;
     showErrorToast: boolean = false;
+    isOptionsModalOpen = false;
     teams = [] as any[];
 
     selectedTeamId: number | null = null;
@@ -38,7 +42,7 @@ export class DashboardComponent implements OnInit {
       personalId: '',
       lastname: '',
       birthdate: '',
-      country: null as string | null,
+    country: null as string | null,
       profilePhoto: null as File | null,
       teamId: null as number | null,
       type: 'PLAYER' as 'MANAGER' | 'PLAYER',
@@ -54,12 +58,21 @@ export class DashboardComponent implements OnInit {
     private teamService: TeamService,
     private personService: PersonService,
     private router: Router,
-  ) {
-  }
+    private renderer: Renderer2
+  ) {}
 
   ngOnInit() {
     this.loadTeams();
   }
+
+  openOptionsModal() {
+    this.isOptionsModalOpen = true;
+  }
+
+  closeOptionsModal() {
+    this.isOptionsModalOpen = false;
+  }
+
 
   loadTeams() {
     this.teamService.getTeams().subscribe({

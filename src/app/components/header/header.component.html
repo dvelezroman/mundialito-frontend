@@ -1,14 +1,43 @@
 <header class="header fixed-header" role="banner">
   <div class="container">
     <div class="header-content" role="navigation" aria-label="Main navigation">
-      <img src="/assets/logo mango 2.png" [routerLink]="['/dashboard']" alt="Mundialito Logo" class="header-logo">
-      <div class="header-buttons">
-        <button *ngIf="isLoggedIn" class="button is-info" [routerLink]="['/reportes']">Ver Reportes</button>
-        <button *ngIf="isLoggedIn" class="button is-light" [routerLink]="['/teams']">Registrar Equipo</button>
-        <button *ngIf="!isLoggedIn" class="button is-primary" (click)="onLogin()">Iniciar Sesión</button>
-        <button *ngIf="!isLoggedIn" class="button is-primary" (click)="onRegister()">Registrar Usuario</button>
-        <button *ngIf="isLoggedIn" class="button is-danger" (click)="onLogout()">Salir</button>
+      
+      <!-- logo y botones de la izquierda -->
+      <div class="header-left">
+        <div class="header-logo-container">
+          <img src="/assets/mango-logo-1.png" alt="Mundialito Logo" class="header-logo">
+        </div>
+        <div class="header-left-buttons">
+          <button *ngIf="!isLoggedIn" class="button is-primary" [routerLink]="['/home']" routerLinkActive="active-link">Inicio</button>
+          <button *ngIf="isLoggedIn" class="button is-primary" [routerLink]="['/dashboard']" routerLinkActive="active-link">Home</button>
+          <button *ngIf="isLoggedIn" class="button is-info" [routerLink]="['/reportes']" routerLinkActive="active-link">Ver Reportes</button>
+          <button *ngIf="isLoggedIn" class="button is-light" [routerLink]="['/teams']" routerLinkActive="active-link">Registrar Equipo</button>
+          <button *ngIf="isLoggedIn" class="button is-primary" (click)="onRegister()" routerLinkActive="active-link">Registrar Usuario</button>
+        </div>
       </div>
+
+      <!-- botones de la derecha -->
+      <div class="header-right-buttons">
+        <button *ngIf="!isLoggedIn" class="button is-primary" [routerLink]="['/login']" routerLinkActive="active-link">Iniciar Sesión</button>
+        <button *ngIf="isLoggedIn" class="button is-danger" (click)="openLogoutModal()">Salir</button>
+      </div>
+
     </div>
   </div>
 </header>
+
+
+<!-- Modal para cerrar sesión -->
+<div class="modal" [ngClass]="{'is-active': showLogoutModal}">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="box">
+      <h1 class="title">¿Estás seguro de que quieres cerrar sesión?</h1>
+      <div class="buttons is-centered">
+        <button class="button is-danger" (click)="confirmLogout()">Sí, Cerrar Sesión</button>
+        <button class="button is-light" (click)="closeLogoutModal()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+  <button class="modal-close is-large" aria-label="close" (click)="closeLogoutModal()"></button>
+</div>
