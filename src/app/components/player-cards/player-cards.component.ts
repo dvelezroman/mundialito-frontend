@@ -60,6 +60,10 @@ export class PlayerCardsComponent implements OnInit {
     });
   }
 
+  convertToLocalDate(date: string): string {
+    return date.split('T')[0];
+  }
+
   loadTeamInfo() {
     if (this.teamId !== null) {
       this.teamService.getTeam(this.teamId).subscribe({

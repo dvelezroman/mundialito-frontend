@@ -8,6 +8,7 @@ import {Router, RouterModule} from "@angular/router";
 import {environment} from "../../../environments/environment";
 import {S3Service} from "../../services/s3.service";
 import {countries} from "../team/countries";
+import {resizeImage} from "../../utils/file.util";
 
 @Component({
   selector: 'app-dashboard',
@@ -37,20 +38,20 @@ export class DashboardComponent implements OnInit {
     selectedTeamData: any = null;
     isModalOpen = false;
     personData = {
-    firstname: '',
-    personalId: '',
-    lastname: '',
-    birthdate: '',
+      firstname: '',
+      personalId: '',
+      lastname: '',
+      birthdate: '',
     country: null as string | null,
-    profilePhoto: null as File | null,
-    teamId: null as number | null,
-    type: 'PLAYER' as 'MANAGER' | 'PLAYER',
-  };
-  types = [
-    { value: 'PLAYER', label: 'Jugador' },
-    { value: 'MANAGER', label: 'Entrenador' }
-  ];
-  previewImageUrl: string | ArrayBuffer | null = null;
+      profilePhoto: null as File | null,
+      teamId: null as number | null,
+      type: 'PLAYER' as 'MANAGER' | 'PLAYER',
+    };
+    types = [
+      { value: 'PLAYER', label: 'Jugador' },
+      { value: 'MANAGER', label: 'Entrenador' }
+    ];
+    previewImageUrl: string | ArrayBuffer | null = null;
 
   constructor(
     private s3Service: S3Service,
@@ -106,8 +107,6 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-
-
   openModal() {
     this.isModalOpen = true;
   }
@@ -126,20 +125,21 @@ export class DashboardComponent implements OnInit {
     if (fileInput) {
       fileInput.value = '';
     }
-
-
   }
 
   onFileSelected(event: any) {
     const file = event.target.files[0];
-    this.personData.profilePhoto = file;
-
     if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.previewImageUrl = reader.result;
-      };
-      reader.readAsDataURL(file);
+      resizeImage(file, 200, 200).then((resizedFile) => {
+        this.personData.profilePhoto = resizedFile;
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.previewImageUrl = reader.result;
+        };
+        reader.readAsDataURL(resizedFile);
+      }).catch((error: Error) => {
+        console.error('Error resizing image:', error);
+      });
     }
   }
 
@@ -187,7 +187,7 @@ export class DashboardComponent implements OnInit {
           formData.profilePhoto = fileUrl;
           this.personService.createPerson(formData).subscribe({
             next: () => {
-              this.howSuccessToast('Agregado al equipo exitosamente');
+              this.howSuccessToast('Jugador agregado al equipo!!.');
               this.isModalOpen = false;
               this.router.navigate(['/dashboard']);
             },
@@ -229,6 +229,4 @@ export class DashboardComponent implements OnInit {
       this.showErrorToast = false;
     }, 2000);
   }
-
-
 }
