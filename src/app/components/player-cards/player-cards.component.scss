@@ -35,31 +35,78 @@
 
 /* Estilos para la cabecera de la información del equipo */
 
-.team-info-header {
+.team-info-back {
+  margin-bottom: 0px; 
+}
+
+.back-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #218838; 
+}
+
+.team-info {
+  background: rgba(255, 255, 255, 0.6); 
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px); 
+  border-radius: 10px; 
+  padding: 30px 20px;
+  margin-top: 30px; 
+  width: 100%;
+}
+
+.team-info-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.team-info-title h2{
+  font-size: 2rem;
+}
+
+.team-info-content {
   display: flex;
-  justify-content: center; 
+  justify-content: space-between; 
   align-items: center;
-  position: relative; 
+}
+
+.team-info-details {
+  display: flex;
+  flex-direction: column; 
+  flex: 1; 
+  margin-left: 15px;
+}
+
+.team-info-details p {
+  font-size: 1.4rem;
+  color: black; 
+  margin-bottom: 10px; 
+}
+
+.team-info-details p strong {
+  color: black;
+  font-weight: bold; 
+}
+
+.team-info-logo {
+  flex-shrink: 0; 
+  margin-right: 20px;
 }
 
 .team-logo {
-  max-width: 150px; 
-  height: auto;
-  position: absolute;
-  top: 80%; 
-  right: 2%; 
-}
-
-/* Estilos para los datos del equipo */
-
-.team-info p {
-  color: #333; 
-  font-size: 1.3rem;
-  margin-bottom: .5rem;
-}
-
-.team-info p strong {
-  color: black; 
+  width: 150px; 
+  height: 150px;
+  object-fit: cover; 
+  border-radius: 50%; 
+  border: 2px solid #ddd;
 }
 
 /* Estilos para la tabla */
@@ -94,8 +141,6 @@
   right: 0;
 }
 
-
-
 .no-players-message {
   text-align: center;
   color: #ff3860; 
@@ -118,7 +163,6 @@
 }
 
 .players-table td {
-  background-color: white;
   color: #333;
   padding: 10px;
   text-align: center;
@@ -126,7 +170,17 @@
   vertical-align: middle;
 }
 
-/* Estilos para la imagen del jugador en la tabla */
+
+.players-table tr {
+  cursor: pointer; 
+  background-color: #f9f9f9; 
+  transition: background-color 0.2s ease; 
+}
+
+.players-table tr:hover {
+  background-color: #dfdcdc !important; 
+}
+
 .player-photo {
   max-width: 50px;
   height: 50px;
@@ -176,33 +230,33 @@
   }
 
   .button.is-success {
-    background-color: #28a745; /* Color verde para el botón de Aceptar */
+    background-color: #28a745; 
     color: white;
     border: none;
   }
 
   .button.is-success:hover {
-    background-color: #218838; /* Color verde más oscuro en hover */
+    background-color: #218838; 
   }
 
   .button.is-info {
-    background-color: #007bff; /* Color azul para el botón de Cancelar */
+    background-color: #007bff; 
     color: white;
     border: none;
   }
 
   .button.is-info:hover {
-    background-color: #0056b3; /* Color azul más oscuro en hover */
+    background-color: #0056b3; 
   }
 
   .toast-message {
     font-size: 1.25em;
-    color: #333; /* Color del texto dentro del toast */
+    color: #333; 
   }
 
   /* modal editar jugador */
   .modal-background {
-    background-color: rgba(33, 32, 32, 0.7); /* Blanco medio transparente */
+    background-color: rgba(33, 32, 32, 0.7); 
   }
 
   /* Estilo general para el modal */
@@ -313,14 +367,14 @@
 .input[type="date"]::-webkit-datetime-edit-month-field,
 .input[type="date"]::-webkit-datetime-edit-day-field,
 .input[type="date"]::-webkit-datetime-edit-year-field {
-  color: #656464; /* Mismo color gris para el texto de la fecha */
+  color: #656464; 
 }
 
 .input[type="date"]:focus::-webkit-datetime-edit-text,
 .input[type="date"]:focus::-webkit-datetime-edit-month-field,
 .input[type="date"]:focus::-webkit-datetime-edit-day-field,
 .input[type="date"]:focus::-webkit-datetime-edit-year-field {
-  color: #3d3e43; /* Color más oscuro cuando está en foco */
+  color: #3d3e43; 
 }
 
 /* Estilo para los botones */

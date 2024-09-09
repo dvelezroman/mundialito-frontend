@@ -79,17 +79,8 @@
   }
 }
 
-.input-icon {
-  color: #807f7f; 
-  position: absolute; 
-  left: 10px; 
-  top: 50%; 
-  transform: translateY(-50%); 
-  pointer-events: none; 
-}
-
 .icon.is-left {
-  color: #a3a1a1; 
+  color: #999292; 
   position: absolute;
   left: 10px;
   top: 51%; 
@@ -98,7 +89,7 @@
 }
 
 .icon.is-left i:active {
-  color: #a3a1a1; 
+  color: #6e6b6b; 
 }
 
 .button.is-primary {

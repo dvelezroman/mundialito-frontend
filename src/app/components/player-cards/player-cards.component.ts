@@ -41,13 +41,13 @@ export class PlayerCardsComponent implements OnInit {
               private fb: FormBuilder) {
 
     this.editPlayerForm = this.fb.group({
-       firstname: [''],
-       lastname: [''],
-       personalId: [''],
-       birthdate: [''],
-       type: [''],
-        teamId: null as number | null,
-     });
+      personalId: [{ value: '', disabled: true }],
+      firstname: [''],
+      lastname: [''],
+      birthdate: [''],
+      country: [{ value: '', disabled: true }], 
+      type: [{ value: '', disabled: true }] 
+                });
    }
 
   ngOnInit() {
@@ -64,17 +64,20 @@ export class PlayerCardsComponent implements OnInit {
     return date.split('T')[0];
   }
 
+  navigateBack(): void {
+    window.history.back();
+  }
+
   loadTeamInfo() {
     if (this.teamId !== null) {
       this.teamService.getTeam(this.teamId).subscribe({
         next: (data) => {
           this.team = data;
-          // console.log('Team Data:', this.team);
         },
         error: (error) => {
           console.error('Error al cargar la información del equipo', error);
           if (error.status === 401) {
-            this.howErrorToast('Su sesion ha expirado.')
+            this.howErrorToast('Su sesión ha expirado.')
             this.router.navigate(['login']);
           }
         }
@@ -96,22 +99,8 @@ export class PlayerCardsComponent implements OnInit {
     }
   }
 
-  setPlayerToEdit(playerId: number) {
-    const player = this.players.find(p => p.id === playerId);
-    if (player) {
-      this.playerToEdit = player;
-      this.editPlayerForm.patchValue({
-        firstname: player.firstname,
-        lastname: player.lastname,
-        personalId: player.personalId,
-        birthdate: new Date(player.birthdate).toISOString().split('T')[0],
-        type: player.type
-      });
-      this.showEditModal = true;
-    }
-  }
 
-
+// METODO PARA ELIMINAR JUGADOR //
 
   confirmDeletePlayer(playerId: number) {
     this.playerToDelete = playerId;
@@ -152,57 +141,61 @@ export class PlayerCardsComponent implements OnInit {
     }
   }
 
+  // METODO PARA EDITAR DATOS DEL JUGADOR //
 
-
-  navigateToDashboard() {
-    this.router.navigate(['/dashboard']);
-  }
-
-
-  openEditModal(player: any) {
-    if (this.showDeleteConfirmToast) {
-      return;
-    }
+  openEditModal(player: any): void {
     this.playerToEdit = player;
     this.editPlayerForm.patchValue({
+      personalId: player.personalId,
       firstname: player.firstname,
       lastname: player.lastname,
-      personalId: player.personalId,
-      birthdate: new Date(player.birthdate).toISOString().split('T')[0], // Formato de fecha
-      type: player.type
+      birthdate: player.birthdate ? new Date(player.birthdate).toISOString().split('T')[0] : '',
+      country: player.country, 
+      type: player.type 
     });
     this.showEditModal = true;
   }
+
 
   closeEditModal() {
     this.showEditModal = false;
     this.playerToEdit = null;
   }
 
-  submitEdit() {
-    if (this.playerToEdit) {
+
+  submitEdit(): void {
+    if (this.playerToEdit && this.editPlayerForm.valid) {
       const formData = {
+        personalId: this.editPlayerForm.get('personalId')?.value,
         firstname: this.editPlayerForm.get('firstname')?.value,
         lastname: this.editPlayerForm.get('lastname')?.value,
-        personalId: this.editPlayerForm.get('personalId')?.value,
-        birthdate: new Date(this.editPlayerForm.get('birthdate')?.value),
-        type: this.editPlayerForm.get('type')?.value,
-        teamId: this.teamId,
-      }
-
+        birthdate: this.editPlayerForm.get('birthdate')?.value
+          ? new Date(this.editPlayerForm.get('birthdate')?.value).toISOString()  
+          : null,
+        country: this.playerToEdit.country, 
+        type: this.playerToEdit.type 
+      };
+  
+      console.log('datos enviados:', formData);
+  
       this.peopleService.updatePerson(this.playerToEdit.id, formData).subscribe({
         next: () => {
-          this.howSuccessToast('Los datos se han actualizado');
+          this.howSuccessToast('Jugador actualizado exitosamente');
           this.closeEditModal();
-          this.loadPlayers();
+          this.loadPlayers(); 
         },
         error: (error) => {
+          this.howErrorToast('Error al actualizar el jugador');
           console.error('Error al actualizar el jugador', error);
-          this.howErrorToast('Hubo un error al momento de actualizar');
         }
       });
+    } else {
+      this.howErrorToast('Formulario no válido. Por favor, completa los campos correctamente.');
     }
   }
+
+
+// TOAST DE AVISOS //
 
   howSuccessToast(message: string) {
     this.toastMessage = message;
@@ -219,6 +212,9 @@ export class PlayerCardsComponent implements OnInit {
       this.showErrorToast = false;
     }, 2500);
   }
+
+
+  // METODO PARA IMPRIMIR TABLA DE JUGADORES //
 
   printPlayers() {
     const teamInfoElement = document.querySelector('.team-info');
