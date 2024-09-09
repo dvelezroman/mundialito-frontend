@@ -189,38 +189,8 @@
 }
 
 
-/*Toast*/
+/*Toast confirmacion delete*/
 
-  .toast-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    max-width: 500px;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .toast {
-    width: 90%;
-    background-color: #dcdada; 
-    text-align: center;
-    opacity: 0.95;
-    padding: 20px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .toast-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
 
   .buttons {
     margin-top: 15px;
@@ -240,7 +210,7 @@
   }
 
   .button.is-info {
-    background-color: #007bff; 
+    background-color: #6c7278; 
     color: white;
     border: none;
   }
@@ -250,16 +220,55 @@
   }
 
   .toast-message {
-    font-size: 1.25em;
+    font-size: 1.2em;
     color: #333; 
+    text-align: center;
   }
 
-  /* modal editar jugador */
   .modal-background {
-    background-color: rgba(33, 32, 32, 0.7); 
+    background-color: rgba(33, 32, 32, 0.5); 
   }
 
-  /* Estilo general para el modal */
+  /* Estilos para el modal de confirmaciónde eliminacion */
+
+.modal.is-active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-card {
+  max-width: 400px; 
+  width: 100%;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+.modal-card-head {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+.modal-card-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: black;
+}
+
+.modal-card-body {
+  text-align: left;
+}
+
+
+  /* Estilo general para el modal para editar jugador*/
+
+
 .modal.is-active {
   display: flex;
   align-items: center;
@@ -293,16 +302,22 @@
   color: black;
 }
 
-.modal-card-head .delete {
-  background: none;
+.delete-button {
+  position: absolute;
+  right: 15px; 
+  top: 50%;
+  transform: translateY(-50%); 
+  background-color: #ff3860; 
+  color: white;
   border: none;
-  font-size: 1.2rem;
+  padding: 8px 15px;
+  border-radius: 5px;
   cursor: pointer;
-  color: #333;
+  transition: background-color 0.3s ease;
 }
 
-.modal-card-head .delete:hover {
-  color: #e74c3c;
+.delete-button:hover {
+  background-color: #e74c3c; 
 }
 
 /* Estilo para el cuerpo del modal */
@@ -362,22 +377,33 @@
   opacity: 1;
 }
 
-/* Estilo específico para el input de fecha (birthdate) */
-.input[type="date"]::-webkit-datetime-edit-text,
-.input[type="date"]::-webkit-datetime-edit-month-field,
-.input[type="date"]::-webkit-datetime-edit-day-field,
-.input[type="date"]::-webkit-datetime-edit-year-field {
-  color: #656464; 
+/* ícono del calendario esté en el margen derecho */
+
+input[type="date"] {
+  padding-right: 2.5rem; 
+  position: relative;
+  -webkit-appearance: textfield; 
 }
 
-.input[type="date"]:focus::-webkit-datetime-edit-text,
-.input[type="date"]:focus::-webkit-datetime-edit-month-field,
-.input[type="date"]:focus::-webkit-datetime-edit-day-field,
-.input[type="date"]:focus::-webkit-datetime-edit-year-field {
-  color: #3d3e43; 
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer; 
+  position: absolute;
+  right: 10px;
+  z-index: 1;
 }
 
-/* Estilo para los botones */
+input[type="date"]::-moz-calendar-picker-indicator {
+  cursor: pointer; 
+  position: absolute;
+  right: 10px;
+  z-index: 1;
+}
+
+input[type="date"]::-ms-clear {
+  display: none; 
+}
+
+
 .button.is-success {
   background-color: #28a745;
   border-color: #28a745;
@@ -442,19 +468,46 @@ button.cancelar{
   align-items: center;
 }
 
-.toast-icon {
-  width: 50px;
-  height: auto;
-  margin-bottom: 10px;
+.success-icon {
+  color: #28a745; 
+  font-size: 2rem;
+}
+
+.error-icon {
+  color: #dc3545; 
+  font-size: 2rem;
 }
 
 .toast-message {
-  margin-top: 10px;
+  font-size: 1.25em;
+  color: #333;
+}
+
+.success-toast .success-icon {
+  color: #28a745; 
+}
+
+.error-toast .error-icon {
+  color: #dc3545; 
+}
+
+.toast-message {
+  font-size: 1.25em;
+  margin-top: 1.5rem;
+}
+
+.success-toast .toast-message {
+  color: #28a745; 
+}
+
+.error-toast .toast-message {
+  color: #dc3545; 
 }
 
 
 
 /* Estilos responsivos */
+
 @media (max-width: 768px) {
 .back-button{
   font-size: .9rem;
@@ -523,30 +576,30 @@ button.cancelar{
   }
 
   .players-header {
-    position: relative; /* Establece el contenedor como el contexto de posicionamiento relativo */
+    position: relative; 
 }
 
 .players-header h3.title {
-    font-size: 1.4rem; /* Ajusta el tamaño del título si es necesario */
-    margin-bottom: 10px; /* Espacio inferior para evitar que el botón lo toque */
+    font-size: 1.4rem; 
+    margin-bottom: 10px; 
 }
 
 .players-header .print-button {
-    position: absolute; /* Posiciona el botón de manera absoluta */
-    top: 80%; /* Alinea el botón con la parte superior del contenedor */
-    right: 0%; /* Alinea el botón con la derecha del contenedor */
-    font-size: 0.6rem; /* Ajusta el tamaño del texto del botón */
-    padding: 4px 9px; /* Ajusta el tamaño del botón */
+    position: absolute; 
+    top: 80%; 
+    right: 0%; 
+    font-size: 0.6rem; 
+    padding: 4px 9px; 
 }
   
   .team-logo {
-    width: 55px; /* Fija el ancho de la imagen */
-    height: 55px; /* Fija la altura de la imagen */
-    object-fit: cover; /* Asegura que la imagen se ajuste al contenedor y mantenga proporciones */
+    width: 55px; 
+    height: 55px; 
+    object-fit: cover; 
     position: absolute;
     top: 135%; 
     right: 2%; 
-    border-radius: 50%; /* Si quieres que la imagen tenga forma circular, opcional */
+    border-radius: 50%; 
 }
 
   .team-info p {

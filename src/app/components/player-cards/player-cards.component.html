@@ -80,6 +80,7 @@
     <div class="modal-card">
       <header class="modal-card-head">
         <p class="modal-card-title">Editar Jugador</p>
+        <button class="delete-button" (click)="confirmDeletePlayer(playerToEdit.id)">Eliminar</button>
       </header>
       <section class="modal-card-body">
         <form [formGroup]="editPlayerForm">
@@ -153,32 +154,35 @@
   </div>
 
 
-
-  <div class="toast-container" *ngIf="showDeleteConfirmToast">
-    <div class="notification is-grey toast">
-      <div class="toast-content">
+  <!--modal para eliminar jugador-->
+  <div class="modal is-active" *ngIf="showDeleteConfirmToast">
+    <div class="modal-background"></div> 
+    <div class="modal-card">
+      <section class="modal-card-body">
         <p class="toast-message">¿Deseas eliminar al jugador?</p>
         <div class="buttons is-centered">
           <button class="button is-success" (click)="confirmDeletion()">Aceptar</button>
           <button class="button is-info" (click)="cancelDelete()">Cancelar</button>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 
-   <!--Toast-->
-   <div class="toast-container">
-    <div *ngIf="showSuccessToast" class="notification is-success toast">
-      <div class="toast-content">
-        <img src="/assets/pulgar arriba1.png" alt="Éxito" class="toast-icon">
-        <div class="toast-message">{{ toastMessage }}</div>
-      </div>
-    </div>
-    <div *ngIf="showErrorToast" class="notification is-danger toast">
-      <div class="toast-content">
-        <img src="/assets/pulgar abajo.png" alt="Error" class="toast-icon">
-        <div class="toast-message">{{ toastMessage }}</div>
-      </div>
+
+   <!--Toast afirmativo y negativo-->
+ <div class="toast-container">
+  <div *ngIf="showSuccessToast" class="notification toast success-toast is-light">
+    <div class="toast-content">
+      <i class="fas fa-check-circle success-icon"></i> 
+      <div class="toast-message">{{ toastMessage }}</div>
     </div>
   </div>
+
+  <div *ngIf="showErrorToast" class="notification toast error-toast is-light">
+    <div class="toast-content">
+      <i class="fas fa-exclamation-circle error-icon"></i> 
+      <div class="toast-message">{{ toastMessage }}</div>
+    </div>
+  </div>
+</div>
 </div>
