@@ -1,27 +1,27 @@
 :host {
-    background-image: url('/assets/fondo tarjeta jugadores 1080.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: block;
-    min-height: 100vh;
-    padding: 2rem;
-  }
+  background-image: url('/assets/video poster dashboard.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  min-height: 100vh;
+  padding: 2rem;
+}
 
 
   .container {
-    margin-top: 50px; /* Añade un margen superior para bajar el contenedor */
+    margin-top: 50px; 
     padding: 25px;
   }
 
 
 .team-info {
-  background: rgba(255, 255, 255, 0.6); /* Fondo blanco semitransparente */
-  backdrop-filter: blur(10px); /* Aplicar desenfoque para el efecto vidrio */
-  -webkit-backdrop-filter: blur(10px); /* Soporte para Safari */
-  border-radius: 10px; /* Bordes redondeados */
-  padding: 20px 30px; /* Espaciado interno */
-  margin-top: 30px; /* Margen superior para separación */
+  background: rgba(255, 255, 255, 0.6); 
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px); 
+  border-radius: 10px; 
+  padding: 20px 30px; 
+  margin-top: 30px; 
   width: 100%;
 
 }
@@ -83,10 +83,10 @@
 /* Estilos para la cabecera de la tabla de jugadores */
 .players-header {
   display: flex;
-  justify-content: center; /* Centra el título "Jugadores Inscritos" */
+  justify-content: center; 
   align-items: center;
   margin-bottom: 20px;
-  position: relative; /* Posiciona el botón de imprimir de forma absoluta */
+  position: relative; 
 }
 
 .print-button {

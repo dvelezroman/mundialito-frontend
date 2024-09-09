@@ -30,6 +30,7 @@ export class DashboardComponent implements OnInit {
     toastMessage: string = '';
     showSuccessToast: boolean = false;
     showErrorToast: boolean = false;
+    isOptionsModalOpen = false;
     teams = [] as any[];
 
     selectedTeamId: number | null = null;
@@ -61,6 +62,14 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.loadTeams();
+  }
+
+  openOptionsModal() {
+    this.isOptionsModalOpen = true;
+  }
+
+  closeOptionsModal() {
+    this.isOptionsModalOpen = false;
   }
 
 

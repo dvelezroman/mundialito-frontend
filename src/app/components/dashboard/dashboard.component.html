@@ -27,8 +27,8 @@
         <!-- Segundo bloque: Botones -->
         <div class="button-block">
           <button class="btn register-team" [routerLink]="['/teams']">Registrar Equipo</button>
-          <button class="btn add-person" [disabled]="!selectedTeamId" (click)="openModal()">Agregar Jugador</button>
-          <button class="btn view-players" [disabled]="!selectedTeamId" (click)="cardsPlayers()">Ver Jugadores</button>
+        <!--<button class="btn add-person" [disabled]="!selectedTeamId" (click)="openModal()">Agregar Jugador</button>
+          <button class="btn view-players" [disabled]="!selectedTeamId" (click)="cardsPlayers()">Ver Jugadores</button>-->
         </div>
       </div>
     </div>
@@ -58,17 +58,23 @@
         </div>
     
         <div class="button-row">
-          <button class="button is-primary">Editar Información</button>
-          <button class="close-button" (click)="closeTeamCard()">Cancelar</button>
+          <button class="btn edit-info"(click)="openOptionsModal()">Opciones</button>
+          <button class="btn cancel-button" (click)="closeTeamCard()">Cancelar</button>
         </div>
         
       </div>
     </div>
 
 
-  </div>
-</div>
-
+    <div class="modal" [ngClass]="{'is-active': isOptionsModalOpen}">
+      <div class="modal-background2" (click)="closeOptionsModal()"></div>
+      <div class="modal-card">
+        <section class="modal-card-body">
+            <button class="button is-primary" (click)="openModal()">Agregar Jugador</button>
+            <button class="button is-light" (click)="cardsPlayers()">Ver Jugadores</button>
+        </section>
+      </div>
+    </div>
 
 <div class="toast-container">
   <div *ngIf="showSuccessToast" class="notification is-success toast is-visible">
