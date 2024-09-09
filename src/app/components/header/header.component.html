@@ -6,7 +6,7 @@
         <button *ngIf="isLoggedIn" class="button is-info" [routerLink]="['/reportes']">Ver Reportes</button>
         <button *ngIf="isLoggedIn" class="button is-light" [routerLink]="['/teams']">Registrar Equipo</button>
         <button *ngIf="!isLoggedIn" class="button is-primary" (click)="onLogin()">Iniciar Sesión</button>
-        <button *ngIf="!isLoggedIn" class="button is-primary" (click)="onRegister()">Registrar Usuario</button>
+        <button *ngIf="isLoggedIn && isAdmin" class="button is-primary" (click)="onRegister()">Registrar Usuario</button>
         <button *ngIf="isLoggedIn" class="button is-danger" (click)="onLogout()">Salir</button>
       </div>
     </div>
