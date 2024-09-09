@@ -45,9 +45,10 @@ export class PlayerCardsComponent implements OnInit {
       firstname: [''],
       lastname: [''],
       birthdate: [''],
-      country: [{ value: '', disabled: true }], 
-      type: [{ value: '', disabled: true }] 
-                });
+      country: [{ value: '', disabled: true }],
+      type: [{ value: '', disabled: true }],
+      teamId: this.teamId,
+    });
    }
 
   ngOnInit() {
@@ -150,8 +151,9 @@ export class PlayerCardsComponent implements OnInit {
       firstname: player.firstname,
       lastname: player.lastname,
       birthdate: player.birthdate ? new Date(player.birthdate).toISOString().split('T')[0] : '',
-      country: player.country, 
-      type: player.type 
+      country: player.country,
+      type: player.type,
+      profilePhoto: player.profilePhoto,
     });
     this.showEditModal = true;
   }
@@ -170,19 +172,19 @@ export class PlayerCardsComponent implements OnInit {
         firstname: this.editPlayerForm.get('firstname')?.value,
         lastname: this.editPlayerForm.get('lastname')?.value,
         birthdate: this.editPlayerForm.get('birthdate')?.value
-          ? new Date(this.editPlayerForm.get('birthdate')?.value).toISOString()  
+          ? new Date(this.editPlayerForm.get('birthdate')?.value).toISOString()
           : null,
-        country: this.playerToEdit.country, 
-        type: this.playerToEdit.type 
+        country: this.playerToEdit.country,
+        type: this.playerToEdit.type
       };
-  
+
       console.log('datos enviados:', formData);
-  
+
       this.peopleService.updatePerson(this.playerToEdit.id, formData).subscribe({
         next: () => {
           this.howSuccessToast('Jugador actualizado exitosamente');
           this.closeEditModal();
-          this.loadPlayers(); 
+          this.loadPlayers();
         },
         error: (error) => {
           this.howErrorToast('Error al actualizar el jugador');
