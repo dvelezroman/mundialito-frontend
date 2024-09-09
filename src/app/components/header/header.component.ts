@@ -3,6 +3,8 @@ import {Router, RouterModule} from "@angular/router";
 import {CommonModule} from "@angular/common";
 import { UserService } from '../../services/user.service';
 import {Store} from "@ngrx/store";
+import {Observable} from "rxjs";
+import {selectIsAdmin} from "../../store/user.selector";
 
 @Component({
   selector: 'app-header',

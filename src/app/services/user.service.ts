@@ -12,8 +12,9 @@ export class UserService {
   private apiUrl = `${environment.apiUrl}/users`;
 
   private isLoggedInSubject = new BehaviorSubject<boolean>(this.hasToken());
+  private isAdminSubject = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
-  isAdmin$ = new BehaviorSubject<boolean>(false);
+  isAdmin$ = this.isAdminSubject.asObservable();
 
   constructor(
     private http: HttpClient,
@@ -52,11 +53,11 @@ export class UserService {
         tap(response => {
           if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
             localStorage.setItem('authToken', response.token);
-            this.isLoggedInSubject.next(!!response.token);
-            this.isAdmin$.next(response.isAdmin);
-            this.store.dispatch(setAdminStatus({ isAdmin: response.isAdmin }));
-            this.store.dispatch(setLoggedInStatus({ isLoggedIn: !!response.token }));
           }
+          this.isLoggedInSubject.next(!!response.token);
+          this.isAdminSubject.next(response.isAdmin);
+          this.store.dispatch(setAdminStatus({ isAdmin: response.isAdmin }));
+          this.store.dispatch(setLoggedInStatus({ isLoggedIn: !!response.token }));
         })
       );
   }
@@ -64,11 +65,11 @@ export class UserService {
   logout(): void {
     if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
       localStorage.removeItem('authToken');
-      this.isLoggedInSubject.next(false);
-      this.isAdmin$.next(false);
-      this.store.dispatch(setLoggedInStatus({ isLoggedIn: false }));
-      this.store.dispatch(setAdminStatus({ isAdmin: false }));
     }
+    this.isLoggedInSubject.next(false);
+    this.isAdminSubject.next(false);
+    this.store.dispatch(setLoggedInStatus({ isLoggedIn: false }));
+    this.store.dispatch(setAdminStatus({ isAdmin: false }));
   }
 
   update(id: number, user: any): Observable<any> {
