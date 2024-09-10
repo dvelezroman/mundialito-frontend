@@ -2,22 +2,22 @@
   width: 100%;
   min-height: 100vh;
   padding: 10rem .5rem;
-  background: rgb(41, 85, 155); 
-  background-image: url('/assets/video poster dashboard.png'); 
-  background-size: cover; 
-  background-position: center center; 
-  background-repeat: no-repeat; 
+  background: rgb(41, 85, 155);
+  background-image: url('/assets/video poster dashboard.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 .reportes-container {
   width: 75%;
   margin: 0 auto;
   padding: 40px 15px  20px 15px;
-  background: rgba(255, 255, 255, 0.7); 
+  background: rgba(255, 255, 255, 0.7);
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  backdrop-filter: blur(10px); 
-  -webkit-backdrop-filter: blur(10px); 
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
@@ -29,21 +29,21 @@
 
 .filter-section {
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 2rem;
 }
 
 .filter-title {
   margin-bottom: 2rem;
   font-size: 2.5rem;
-  color: black; 
+  color: black;
 }
 
 .selectors-row {
   display: flex;
-  justify-content: space-between; 
-  gap: 20px; 
+  justify-content: space-between;
+  gap: 20px;
   width: 100%;
   align-items: flex-start;
 }
@@ -65,6 +65,18 @@
 
 
 .field select {
+  width: 80%;
+  margin: auto;
+  padding: 10px;
+  font-size: 1.1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f2f2f2;
+  color: #6e6e6e;
+  box-sizing: border-box;
+}
+
+.field input {
   width: 80%;
   margin: auto;
   padding: 10px;
@@ -139,12 +151,12 @@ th {
 
 tbody tr:nth-child(odd) {
   background-color: #f9f9f9;
-  color: black; 
+  color: black;
 }
 
 tbody tr:nth-child(even) {
-  background-color: #e0e0e0; 
-  color: black; 
+  background-color: #e0e0e0;
+  color: black;
 }
 
 tbody tr {
@@ -173,7 +185,7 @@ td {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.8); 
+  transform: translate(-50%, -50%) scale(0.8);
   background-color: #f4f4f4;
   padding: 55px 40px;
   border-radius: 8px;
@@ -201,36 +213,36 @@ td {
 
 @media (max-width: 768px) {
   .title-section {
-      font-size: 2rem; 
+      font-size: 2rem;
   }
-  
+
   .reportes-container {
-      width: 90%; 
+      width: 90%;
       padding: 20px;
   }
 
   .filter-section h2 {
-      font-size: 1.5rem; 
+      font-size: 1.5rem;
   }
 
   .field label {
-      font-size: 0.9rem; 
+      font-size: 0.9rem;
   }
 
   .field select {
-      font-size: 0.9rem; 
-      width: 100%; 
+      font-size: 0.9rem;
+      width: 100%;
   }
 
   .header-section .title {
-    font-size: 1.2rem; 
-    text-align: center; 
-    width: 100%; 
+    font-size: 1.2rem;
+    text-align: center;
+    width: 100%;
 }
 
 .header-section {
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
 }
 
 .button.is-align-left {
@@ -241,14 +253,14 @@ td {
   width: 80%;
   margin: auto;
   margin-top: -1rem;
-  font-size: 0.8rem; 
-  text-align: center; 
+  font-size: 0.8rem;
+  text-align: center;
 }
 
 
 
   th, td {
-      font-size: 0.9rem; 
+      font-size: 0.9rem;
   }
 
   .button.is-align-left {
@@ -275,16 +287,16 @@ td {
 
 @media (max-width: 492px) {
   .title-section {
-    font-size: 1.8rem; 
+    font-size: 1.8rem;
 }
 
 .header-section .title {
   font-size: 1.25rem;
-  text-align: center; 
-  width: 100%; 
+  text-align: center;
+  width: 100%;
 }
 
 th, td {
-  font-size: 0.8rem; 
+  font-size: 0.8rem;
 }
 }

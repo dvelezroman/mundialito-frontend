@@ -1,8 +1,8 @@
 <div class="reportes-page-container">
-  
-  
+
+
     <div class="reportes-container">
-  
+
       <div class="filter-section">
         <div class="filter-title">
           <h2>Buscar Equipo</h2>
@@ -23,8 +23,19 @@
             </select>
           </div>
         </div>
+        <!-- Search by Team Name -->
+        <div class="field">
+          <label for="team-search">Buscar por Nombre de Equipo</label>
+          <input
+            id="team-search"
+            type="text"
+            [(ngModel)]="teamSearchTerm"
+            (input)="onTeamSearch()"
+            placeholder="Buscar equipo..."
+          />
+        </div>
       </div>
-  
+
       <!-- Lista de equipos filtrados -->
       <div *ngIf="filteredTeams.length > 0" class="teams-list-section">
         <div class="header-section">
@@ -34,7 +45,7 @@
 
           </button>
         </div>
-        <div class="printable-table"> 
+        <div class="printable-table">
           <table class="table is-fullwidth" *ngIf="filteredTeams.length > 0">
             <thead>
               <tr>
@@ -60,13 +71,12 @@
           <p>No se encontraron equipos que coincidan con los criterios seleccionados.</p>
         </div>
       </div>
-      
+
     </div>
     <div *ngIf="showNoTeamsToast" class="toast is-danger">
       <i class="fa fa-exclamation-circle toast-icon"></i>
       <div class="toast-message">
-        No se encontraron equipos 
+        No se encontraron equipos
       </div>
     </div>
   </div>
-  

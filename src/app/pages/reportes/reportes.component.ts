@@ -26,6 +26,7 @@ export class ReportesComponent implements OnInit {
   categories = ['INFANTO', 'PRE', 'JUVENIL'];
   searchPerformed: boolean = false;
   showNoTeamsToast: boolean = false;
+  teamSearchTerm: string = '';
 
   @ViewChild('printableTable', { static: false }) printableTable!: ElementRef;
 
@@ -57,15 +58,19 @@ export class ReportesComponent implements OnInit {
     this.filterTeams();
   }
 
+  onTeamSearch() {
+    this.filterTeams();
+  }
+
   filterTeams() {
-    this.filteredTeams = this.teams.filter(team => {
-      return (this.selectedCountry === '' || team.country === this.selectedCountry) &&
-             (this.selectedCategory === '' || team.category === this.selectedCategory);
-    });
+    this.filteredTeams = this.teams
+      .filter(team => this.selectedCountry ? team.country === this.selectedCountry : true)
+      .filter(team => this.selectedCategory ? team.category === this.selectedCategory : true)
+      .filter(team => this.teamSearchTerm ? team.name.toLowerCase().includes(this.teamSearchTerm.toLowerCase()) : true);
     if (this.filteredTeams.length === 0) {
       this.showNoTeamsToast = true;
       setTimeout(() => {
-        this.showNoTeamsToast = false; 
+        this.showNoTeamsToast = false;
       }, 3000);
     }
   }
@@ -79,12 +84,12 @@ export class ReportesComponent implements OnInit {
   }
 
   printTable() {
-    const tableElement = document.querySelector('.printable-table'); 
+    const tableElement = document.querySelector('.printable-table');
 
-  
+
     if (tableElement) {
       const printContents = tableElement.outerHTML;
-      
+
 
       const printWindow = window.open('', '', 'width=800,height=600');
       printWindow?.document.write(`
@@ -119,5 +124,5 @@ export class ReportesComponent implements OnInit {
       console.error("No se encontró el elemento de la tabla para imprimir");
     }
   }
-  
+
 }
