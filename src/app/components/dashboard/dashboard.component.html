@@ -102,12 +102,12 @@
 
 <div class="modal" [ngClass]="{'is-active': isModalOpen}">
   <div class="modal-background"></div>
-  <div class="modal-card">
+  <div class="modal-card add-player-modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">Agregar Jugador</p>
       <button class="delete" aria-label="close" (click)="closeModal()"></button>
     </header>
-    <section class="modal-card-body">
+    <section class="modal-card-body add-player-modal-body">
       <form (submit)="submitForm()">
         <div class="field">
           <label class="label">Documento de Identificacion</label>
@@ -194,9 +194,9 @@
           </div>
         </div>
 
-        <div class="buttons">
-          <button class="button is-primary" type="submit">Agregar</button>
-          <button type="button" class="button is-light" (click)="closeModal()">Cancelar</button>
+        <div class="buttons agregar-jugador">
+          <button class="button is-primary boton-agregar" type="submit">Agregar</button>
+          <button type="button" class="button is-light boton-cancelar" (click)="closeModal()">Cancelar</button>
         </div>
       </form>
     </section>

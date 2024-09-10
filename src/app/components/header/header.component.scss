@@ -50,6 +50,10 @@
     margin-right: 40px;
   }
 
+  .home-icon {
+    display: none;
+  }
+
   /* estilos generales para los botones */
   .button {
     background: transparent;
@@ -74,20 +78,9 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
   @media (max-width: 768px) {
+
+
     .header-logo {
       max-height: 60px;
       margin-left: 0.1rem;
@@ -111,18 +104,25 @@
     .header-logo {
       display: none;
     }
+    .header-left-buttons{
+      margin-left: -25px;
+      gap: 15px;
+    }
 
-    .header-left-buttons {
-      display: none;
+    .header-left-buttons .button {
+      padding: 0.4rem 0.8rem; 
+      font-size: 0.9rem; 
+
+      margin-left: -10px;
     }
 
     .header-right-buttons {
       gap: 12px;
-      margin-right: 3px;
+      margin-right: -5px;
 
       .button {
         padding: 0.5rem 0.8rem;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
       }
     }
   }

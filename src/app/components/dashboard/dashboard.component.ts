@@ -81,11 +81,11 @@ export class DashboardComponent implements OnInit {
       },
       error: (error) => {
         if (error.status === 401) {
-          this.howErrorToast('Su sesion ha expirado.')
+          this.howErrorToast('Su sesión ha expirado.')
           this.router.navigate(['login']);
         }
         console.error('Error loading teams', error);
-        this.howErrorToast('Error al cargar información del equipo.')
+        this.howErrorToast('Error de carga.')
       }
     });
   }

@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
   isLoggedIn: boolean = false;
   isAdmin: boolean = false;
   showLogoutModal = false; 
+  menuOpen = false;
 
   constructor(private router: Router,
               private userService: UserService,
@@ -59,7 +60,6 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
-
     openLogoutModal() {
       this.showLogoutModal = true;
     }
@@ -74,5 +74,14 @@ export class HeaderComponent implements OnInit {
       this.closeLogoutModal();
       this.userService.logout(); 
       this.router.navigate(['/home']);
+    }
+
+    
+    toggleMenu() {
+      this.menuOpen = !this.menuOpen;
+    }
+  
+    closeMenu() {
+      this.menuOpen = false;
     }
 }

@@ -229,6 +229,20 @@ td {
       font-size: 0.9rem;
   }
 
+  .selectors-row {
+    flex-direction: column; 
+    gap: 10px; 
+  }
+
+  .field select {
+    width: 100%; 
+  }
+
+  .field label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+
   .field select {
       font-size: 0.9rem;
       width: 100%;
@@ -286,6 +300,36 @@ td {
 
 
 @media (max-width: 492px) {
+
+  .reportes-container {
+    width: 98%; 
+    padding: 20px;
+}
+
+  .selectors-row {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;
+  }
+
+  .field {
+    width: 100%;
+  }
+
+  .field select {
+    width: 100%; 
+    font-size: 1rem;
+    padding: 12px;
+  }
+
+  .field label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    margin-left: 13px;
+    display: block; 
+  }
+
+
   .title-section {
     font-size: 1.8rem;
 }

@@ -10,7 +10,7 @@
         <div class="header-left-buttons">
           <button *ngIf="isLoggedIn" class="button is-primary" [routerLink]="['/dashboard']" routerLinkActive="active-link">Home</button>
           <button *ngIf="isLoggedIn" class="button is-info" [routerLink]="['/reportes']" routerLinkActive="active-link">Ver Reportes</button>
-          <button *ngIf="isLoggedIn" class="button is-light" [routerLink]="['/teams']" routerLinkActive="active-link">Registrar Equipo</button>
+        <!-- <button *ngIf="!isLoggedIn" class="button is-light" [routerLink]="['/teams']" routerLinkActive="active-link">Registrar Equipo</button>-->
           <button *ngIf="isLoggedIn && isAdmin" class="button is-primary" (click)="onRegister()" routerLinkActive="active-link">Registrar Usuario</button>
         </div>
       </div>

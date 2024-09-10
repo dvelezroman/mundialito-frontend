@@ -238,22 +238,25 @@
   .field {
       width: 100%; 
   }
+
+  
 }
 
 @media (max-width: 576px) {
   .form-container {
-    padding: 30px; 
-    width: 90%; 
+    padding: 25px; 
+    width: 100%; 
   }
 
   .title {
-    font-size: 1.5rem; 
-    margin-bottom: 30px; 
+    font-size: 1.7rem; 
+    margin-bottom: 50px; 
   }
 
   .label {
     font-size: 1rem; 
-    margin-bottom: 3px; 
+    margin-bottom: 3px !important; 
+    font-weight: 400;
   }
 
   .field {
@@ -264,10 +267,18 @@
     margin-top: -18px; 
   }
 
+  .input {
+    height: 2.8rem; /* Ajusta la altura según sea necesario */
+    padding: 0.75rem; /* Puedes ajustar también el padding */
+    color: #4d4b4b;
+  }
+
   .input,
   .select select {
+    height: 2.8rem;
     padding: 8px 12px; 
-    font-size: 0.9rem; 
+    font-size: 1.1rem; 
+    color: #4d4b4b;
   }
 
   .help.is-danger {
@@ -281,8 +292,20 @@
   }
 
   .button-section .button {
+    width: 100%;
     padding: 8px 15px; 
-    font-size: 1rem; 
+    font-size: 1.1rem; 
+  }
+
+  .toast-container {
+
+    max-width: 350px;
+  }
+  .toast-message {
+    font-size: 1rem;
+  }
+  .toast-icon {
+    width: 30px;
   }
 }
 

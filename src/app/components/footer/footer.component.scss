@@ -1,50 +1,136 @@
 .footer-container {
-    background-color: #ffffff;
-    color: #444343;
+  background-color: #ffffff;
+  color: #444343;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 20px;
+  flex-wrap: wrap; /* Para que los bloques se acomoden en pantallas pequeñas */
+}
+
+/* Primer bloque: Título */
+.footer-title {
+  flex: 1 1 100%; /* Ocupa toda la fila en pantallas pequeñas */
+  text-align: left;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #2f5aa6;
+  margin-bottom: 1.5rem;
+}
+
+/* Segundo bloque: Logos */
+.footer-logos {
+  display: flex;
+  flex: 1 1 100%;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Para que se acomoden bien en pantallas pequeñas */
+}
+
+/* Primera columna: Logos a la izquierda (Portoviejo y FEF) */
+.footer-left-logos {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 40%; /* Ocupa 40% del ancho total */
+  justify-content: space-around;
+}
+
+/* Segunda columna: Tres logos a la derecha */
+.footer-right-logos {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 60%; /* Ocupa 60% del ancho total */
+  justify-content: space-around;
+}
+
+/* Estilos de cada logo */
+.footer-logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+.footer-logo {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Tercer bloque: Derechos reservados */
+.footer-rights {
+  flex: 1 1 100%;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+}
+
+
+@media (max-width: 768px) {
+  .footer-title {
     text-align: center;
   }
 
-  .container {
-    margin: 0 auto;
-    padding: 2rem 20px;
-  }
-
-  .footer-organizers {
-    text-align: left;
-    padding-left: 20px;
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
-    color: #2f5aa6;
-  }
-
-  .footer-logos-row,
-  .footer-images-row {
-    display: flex;
-    justify-content: space-around;
+  .footer-logos {
+    flex-direction: column;
     align-items: center;
   }
 
-  .footer-logo img,
-  .footer-image-left img,
-  .footer-image-right img {
-    max-width: 200px;
-    height: auto;
+  .footer-left-logos,
+  .footer-right-logos {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  .footer-images-row {
+  .footer-logo img {
+    max-width: 80px;
+  }
+}
+
+@media (max-width: 490px) {
+  .footer-logos {
     display: flex;
+    flex-direction: row;
+    gap: 20px; 
+  }
+
+
+  .footer-left-logos {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+
+  .footer-row {
+    display: flex;
+    flex-wrap: wrap; 
     justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
+    gap: 10px; 
   }
 
-  .footer-image-center img {
-    max-width: 200px;
+  .footer-logo {
+    flex: 1 1 50%; 
+    text-align: center;
+    font-size: 1rem !important;
+  }
+
+  .footer-logo img {
+    width: 70px; 
     height: auto;
+  }
+
+  .footer-title {
+    font-size: 2rem !important;
+    text-align: center;
   }
 
   .footer-rights {
+    flex: 1 1 100%;
     margin-top: 2rem;
-    font-size: 1.1rem;
+    font-size: .9rem;
   }
+}

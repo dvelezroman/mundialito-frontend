@@ -265,7 +265,7 @@ export class PlayerCardsComponent implements OnInit {
       printWindow?.document.write(`
         <html>
           <head>
-            <title>Imprimir Jugadores</title>
+            <title>Imprimir Equipo</title>
             <style>
               @media print {
                 body {
@@ -279,6 +279,13 @@ export class PlayerCardsComponent implements OnInit {
                 .team-info {
                   margin-bottom: 20px;
                 }
+                .team-logo {
+                  max-width: 100px;
+                  height: auto;
+                  object-fit: contain;
+                  margin-left: 20px;
+                }
+
                 .players-container {
                   width: 100%;
                   margin-top: 20px;

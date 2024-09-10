@@ -183,19 +183,6 @@
     background-color: #154da6;
 }
 
-.add-person {
-  background-color: #28a745 !important; 
-  color: #ffffff; 
-  border: none;
-  border-radius: 4px;
-  padding: 12px 25px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.add-person:hover {
-  background-color: #218838 !important; 
-}
 
 
 .toast-container {
@@ -373,6 +360,7 @@
     }
 
     .button-block {
+      width: 60%; 
       display: flex;
       flex-direction: row; 
       align-items: center; 
@@ -395,8 +383,8 @@
 
 .toast-container {
   position: fixed;
-  top: 30%; 
-  left: 48%;
+  top: 50%; 
+  left: 50%;
   transform: translate(-50%, -50%); 
   width: 100%;
   max-width: 600px;
@@ -408,14 +396,24 @@
 }
 
     .toast {
-      width: 90%; 
+      width: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
       opacity: 0.9;
       color: white;
-      font-size: 1.55em; 
+      font-size: 1.3em; 
       padding: 15px; 
       border-radius: 8px; 
+      height: 150px !important;
     }
+
+    .toast-icon {
+      font-size: 2.2rem;
+      margin-bottom: .3rem;
+   
+  }
   }
 
   @media (max-width: 490px) {
@@ -449,7 +447,7 @@
     }
 
     .select-block, .button-block {
-      width: 60%; 
+      width: 100%; 
       margin-bottom: 15px; 
       padding: 10px; 
     }
@@ -462,7 +460,7 @@
     }
 
     .button-block .btn {
-      width: 90%; 
+      width: 100%; 
       font-size: 0.9em; 
       margin-bottom: 8px; 
     }
@@ -551,7 +549,7 @@
 
     .modal-card-body {
       background-color: #ffffff;
-      padding: 20px;
+      padding: 0px;
       border-radius: 8px;
       max-height: none !important;
       height: auto;
@@ -573,7 +571,7 @@
     
     .modal-card {
       max-width: 600px;
-      margin: 50px auto;
+      margin: 0 auto;
       background: #ffffff; 
       border-radius: 8px;
       padding: 20px;
@@ -584,15 +582,36 @@
     .modal-card-body {
       height: auto; 
       overflow: visible; 
-      padding: 20px;
+      padding: 50px;
     }
+
+    /* Estilos específicos para el modal de agregar jugador */
+    .add-player-modal-body {
+      padding: 20px 30px !important;
+    }
+
+    /* Estilos para la tarjeta del modal de agregar jugador */
+    .add-player-modal-card {
+      max-width: 520px !important; 
+      padding: 0 !important; 
+    }
+
+    /* Estilos para el cuerpo del modal, eliminando el padding lateral */
+    .add-player-modal-body {
+      padding: 40px 10px !important; 
+    }
+
+    .add-player-modal-body .input {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
 
     .field {
       position: relative;
       margin-bottom: 1.2rem; 
     }
     
-
     .field .select {
       width: 100%;
     }
@@ -611,7 +630,6 @@
       border-color: #616161;
       outline: none;
     }
-
 
     .field .help {
       font-size: 0.85rem;
@@ -746,18 +764,23 @@
   background-color: #343232;
 }
 
-.buttons {
+.buttons.agregar-jugador {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 10px;
   margin-top: 50px;
 }
 
-.button.is-light {
+.button.is-primary.boton-agregar{
+  width: 100%;
+}
+
+.button.is-light.boton-cancelar {
   background-color: #c5c4c4;
   border: 1px solid #c2c0c0;
   color: #2c2c2c;
   border-radius: 4px;
+  width: 100%;
   padding: 10px 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -773,7 +796,6 @@
 
   /*estilos para la tarjeta del equipo*/
 
-  
 
   .dashboard-container {
     width: 100%;
@@ -901,7 +923,7 @@
 }
 
 .button {
-  padding: 10px 20px;  /* Asegura un buen tamaño de los botones */
+  padding: 10px 20px;  
   font-size: 1rem;
   border-radius: 4px;
 }
@@ -918,6 +940,7 @@
   z-index: 1000;
   overflow: hidden; 
 }
+
 
 .modal-card-body {
   display: flex;
