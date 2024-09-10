@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {CommonModule, DatePipe, NgForOf, NgOptimizedImage} from "@angular/common";
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TeamService } from '../../services/team.service';
+import { environment } from '../../../environments/environment';
+import { S3Service } from '../../services/s3.service';
 
 @Component({
   selector: 'app-player-cards',
@@ -33,12 +35,14 @@ export class PlayerCardsComponent implements OnInit {
   showEditModal: boolean = false;
   playerToEdit: any = null;
   editPlayerForm: FormGroup;
+  selectedFile: File | null = null;
 
   constructor(private peopleService: PersonService,
               private teamService: TeamService,
               private route: ActivatedRoute,
               private router: Router,
-              private fb: FormBuilder) {
+              private fb: FormBuilder,
+              private s3Service: S3Service) {
 
     this.editPlayerForm = this.fb.group({
       personalId: [{ value: '', disabled: true }],
@@ -168,29 +172,56 @@ export class PlayerCardsComponent implements OnInit {
   submitEdit(): void {
     if (this.playerToEdit && this.editPlayerForm.valid) {
       const formData = {
-        personalId: this.editPlayerForm.get('personalId')?.value,
         firstname: this.editPlayerForm.get('firstname')?.value,
         lastname: this.editPlayerForm.get('lastname')?.value,
-        birthdate: this.editPlayerForm.get('birthdate')?.value
-          ? new Date(this.editPlayerForm.get('birthdate')?.value).toISOString()
-          : null,
-        country: this.playerToEdit.country,
-        type: this.playerToEdit.type
+        birthdate: new Date(this.editPlayerForm.get('birthdate')?.value),
+        teamId: this.playerToEdit.teamId,
+        type: this.playerToEdit.type, 
+        personalId: this.editPlayerForm.get('personalId')?.value,
+        profilePhoto: this.playerToEdit.profilePhoto, 
+        country: this.playerToEdit.country 
       };
+  
+      if (this.selectedFile) {
+        const bucketName = environment.s3BucketName;
+        const key = `players/${this.selectedFile.name}`;
+  
+        this.s3Service.uploadFile(this.selectedFile, bucketName, key).subscribe({
+          next: () => {
+            const fileUrl = `https://${bucketName}.s3.${environment.aws_region}.amazonaws.com/${key}`;
+            formData.profilePhoto = fileUrl; 
+  
+            this.peopleService.updatePerson(this.playerToEdit.id, formData).subscribe({
+              next: () => {
+                this.howSuccessToast('Jugador actualizado exitosamente');
+                this.closeEditModal();
+                this.loadPlayers(); 
+              },
+              error: (error) => {
+                this.howErrorToast('No se pudo actualizar al jugador.');
+                console.error('Error al actualizar al jugador', error);
+              }
+            });
+          },
+          error: (err) => {
+            console.error('Error al subir la imagen:', err);
+            this.howErrorToast('Error al actualizar la imagen del jugador.');
+          }
+        });
+      } else {
 
-      console.log('datos enviados:', formData);
-
-      this.peopleService.updatePerson(this.playerToEdit.id, formData).subscribe({
-        next: () => {
-          this.howSuccessToast('Jugador actualizado exitosamente');
-          this.closeEditModal();
-          this.loadPlayers();
-        },
-        error: (error) => {
-          this.howErrorToast('Error al actualizar el jugador');
-          console.error('Error al actualizar el jugador', error);
-        }
-      });
+        this.peopleService.updatePerson(this.playerToEdit.id, formData).subscribe({
+          next: () => {
+            this.howSuccessToast('Jugador actualizado exitosamente');
+            this.closeEditModal();
+            this.loadPlayers();
+          },
+          error: (error) => {
+            this.howErrorToast('No se pudo actualizar al jugador.');
+            console.error('Error al actualizar al jugador', error);
+          }
+        });
+      }
     } else {
       this.howErrorToast('Formulario no válido. Por favor, completa los campos correctamente.');
     }
