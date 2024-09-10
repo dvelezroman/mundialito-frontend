@@ -134,8 +134,12 @@ export class PlayerCardsComponent implements OnInit {
           this.players = this.players.filter(player => player.id !== idToDelete);
           this.showDeleteConfirmToast = false;
           this.playerToDelete = null;
+          this.loadTeamInfo();
+          this.loadPlayers();
+          this.closeEditModal();
           this.howSuccessToast('Jugador eliminado exitosamente');
           console.log('Jugador eliminado exitosamente');
+          
         },
         error: (error) => {
           console.error('Error al eliminar el jugador', error);
@@ -228,6 +232,7 @@ export class PlayerCardsComponent implements OnInit {
   }
 
 
+  
 // TOAST DE AVISOS //
 
   howSuccessToast(message: string) {
