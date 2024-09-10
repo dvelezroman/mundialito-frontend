@@ -243,6 +243,21 @@
 }
 
 @media (max-width: 576px) {
+
+  .full-screen-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 9rem 2rem;
+    box-sizing: border-box;
+    background-image: url('/assets/imagen fondo dashboard movil.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    flex-grow: 1; 
+  }
+
   .form-container {
     padding: 25px; 
     width: 100%; 

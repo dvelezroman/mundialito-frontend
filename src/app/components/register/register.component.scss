@@ -75,7 +75,7 @@
 
 .input {
   background-color: #f9f9f9; 
-  border: 1px solid #979595; 
+  border: 1px solid #c8c3c3; 
   border-radius: 8px; 
   font-size: 1.2rem; 
   width: 100%; 
@@ -187,18 +187,27 @@
 
 @media (max-width: 492px) {
   .section {
+    background-image: url('/assets/imagen fondo dashboard movil.png');
+    background-size: cover;
+    background-position: center 65px;
+    background-repeat: no-repeat;
+    min-height: 100vh; 
+  }
+
+
+  .section {
     padding: 1.2rem;
   }
 
   .box {
     max-width: 95%;
     padding: 2rem 1.5rem;
-    margin-top: 5rem;
+    margin-top: -1rem;
     margin-bottom: 3rem;
   }
 
   .title {
-    font-size: 2rem;
+    font-size: 1.7rem;
     margin-bottom: 2.7rem;
   }
 
@@ -207,7 +216,7 @@
   }
 
   .label {
-    font-size: 1.1rem; 
+    font-size: 1rem; 
     font-weight: 400; 
     margin-bottom: .2rem;
   }
@@ -224,7 +233,7 @@
   }
 
   .button.is-primary {
-    width: 50%;
+    width: 100%;
     font-size: 1.2rem;
   }
 

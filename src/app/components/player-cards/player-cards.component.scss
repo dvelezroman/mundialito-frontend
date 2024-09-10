@@ -28,7 +28,7 @@
 
 .title {
   text-align: center;
-  color: black;
+  color: rgb(58, 56, 56);
   margin-top: .5rem;
   font-size: 2rem;
 }
@@ -152,7 +152,7 @@
 }
 
 .players-table th {
-  background-color: #00b8d4; 
+  background-color: #216fa7; 
   color: white;
   padding: 10px;
   text-align: center;
@@ -270,14 +270,14 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  padding: 20px;
+  padding:10px;
 }
 
 /* Estilo para la tarjeta del modal */
 .modal-card {
   max-width: 600px;
   width: 100%;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.792);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -286,7 +286,7 @@
 
 /* Estilo para la cabeza del modal */
 .modal-card-head {
-  background-color: #f5f5f5;
+  background-color: rgba(255, 255, 255, 0.792);
   padding: 1rem;
   border-bottom: 1px solid #ddd;
 }
@@ -302,7 +302,7 @@
 /* Estilo para el cuerpo del modal */
 .modal-card-body {
   padding: 1.5rem;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.792);
 }
 
 .label {
@@ -391,7 +391,7 @@ input[type="date"]::-ms-clear {
 /* Estilo para el pie del modal */
 .modal-card-foot {
   padding: 1rem;
-  background-color: #f5f5f5;
+  background-color: rgba(255, 255, 255, 0.792);
   border-top: 1px solid #ddd;
   display: flex;
   justify-content: center;
@@ -571,16 +571,82 @@ input[type="date"]::-ms-clear {
 }
 
 @media (max-width: 576px) {
+
+  :host {
+    background-image: url('/assets/imagen fondo dashboard movil.png');
+    background-size: cover;
+    background-position: center 65px;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+
+  .container {
+    margin-top: 50px; 
+    padding: 5px;
+  }
+
   .back-button{
-    font-size: .85rem;
+    font-size: .75rem;
+    padding:7px 15px;
+    margin-bottom: 1.5rem;
   }
   
     .title {
       font-size: 1.6rem;
     }
+
+    .team-info-title h2{
+      font-size: 1.8rem;
+      margin-bottom: -.7rem;
+    }
+    
+    .team-info-content {
+      display: flex;
+      justify-content: space-between; 
+      align-items: center;
+    }
+    
+    .team-info-details {
+      display: flex;
+      flex-direction: column; 
+      flex: 1; 
+      margin-left: 10px;
+    }
+    
+    .team-info-details p {
+      font-size: 1.5rem;
+      color: black; 
+      margin-bottom: 10px; 
+    }
+    
+    .team-info-details p strong {
+      color: black;
+      font-weight: bold; 
+    }
+    
+    .team-info-logo {
+      flex-shrink: 0; 
+      margin-right: 20px;
+    }
   
   .team-logo {
-    max-width: 80px; 
+    max-width: 100px; 
+  }
+
+  .button.print-button {
+    position: absolute;
+    right: 0;
+    top: 40px;
+    color: rgb(63, 62, 62);
+    background-color: transparent;
+    font-size: 1.2rem;
+  }
+  
+  .fa-print{
+    margin-right: 10px;
+    color: rgb(67, 65, 65);
+    font-size: .9rem;
   }
   
   .players-table th, .players-table td {
@@ -617,18 +683,19 @@ input[type="date"]::-ms-clear {
 }
   
   .team-logo {
-    width: 55px; 
-    height: 55px; 
+    width: 100px; 
+    height: 100px; 
     object-fit: cover; 
     position: absolute;
-    top: 135%; 
-    right: 2%; 
+    top: 53%; 
+    right: 9%; 
+    border: none;
     border-radius: 50%; 
 }
 
   .team-info p {
     color: #333; 
-    font-size: .8rem;
+    font-size: 1rem;
     margin-bottom: .5rem;
   }
   
@@ -641,8 +708,8 @@ input[type="date"]::-ms-clear {
   }
 
   .players-table th, .players-table td {
-    font-size: 0.6rem; 
-    padding: 3px 2px;
+    font-size: 0.55rem; 
+    padding: 2.5px 2px;
   }
 
   .player-photo {
