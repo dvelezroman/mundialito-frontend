@@ -111,8 +111,7 @@ export class DashboardComponent implements OnInit {
     this.isModalOpen = true;
   }
 
-  closeModal(fileInput?: HTMLInputElement) {
-    this.isModalOpen = false;
+  resetForm() {
     this.previewImageUrl = null;
     this.personData.profilePhoto = null;
     this.personData.firstname = '';
@@ -120,8 +119,11 @@ export class DashboardComponent implements OnInit {
     this.personData.personalId = '';
     this.personData.birthdate = '';
     this.personData.country = null;
+  }
 
-
+  closeModal(fileInput?: HTMLInputElement) {
+    this.resetForm();
+    this.isModalOpen = false;
     if (fileInput) {
       fileInput.value = '';
     }
@@ -188,7 +190,8 @@ export class DashboardComponent implements OnInit {
           this.personService.createPerson(formData).subscribe({
             next: () => {
               this.howSuccessToast('Jugador agregado al equipo!!.');
-              this.isModalOpen = false;
+              this.resetForm();
+              this.closeModal()
               this.router.navigate(['/dashboard']);
             },
             error: (error) => {

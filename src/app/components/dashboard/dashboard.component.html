@@ -33,35 +33,41 @@
       </div>
     </div>
 
-   
+
 
     <div class="team-info-card" *ngIf="selectedTeamData">
       <div class="team-content-block">
-    
+
         <div class="team-name-block">
           <h2>{{ selectedTeamData.name }}</h2>
         </div>
-    
+
         <div class="team-info-row">
           <div class="team-location-block">
+            <div class="team-country-block">
+              <p><strong>Id:</strong> {{ selectedTeamData.id }}</p>
+            </div>
             <div class="team-country-block">
               <p><strong>País:</strong> {{ selectedTeamData.country }}</p>
             </div>
             <div class="team-city-block">
               <p><strong>Ciudad:</strong> {{ selectedTeamData.city }}</p>
             </div>
+            <div class="team-city-block">
+              <p><strong>Categoría:</strong> {{ selectedTeamData.category }}</p>
+            </div>
           </div>
-          
+
           <div class="team-logo-block">
             <img *ngIf="selectedTeamData.logoImage" [src]="selectedTeamData.logoImage" alt="Logo del equipo" class="team-logo">
           </div>
         </div>
-    
+
         <div class="button-row">
           <button class="btn edit-info"(click)="openOptionsModal()">Opciones</button>
           <button class="btn cancel-button" (click)="closeTeamCard()">Cancelar</button>
         </div>
-        
+
       </div>
     </div>
 
