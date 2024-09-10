@@ -14,10 +14,10 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'people', component: PersonComponent, canActivate: [AuthGuard] },
-  { path: 'teams', component: TeamComponent, canActivate: [AuthGuard] },
+  { path: 'teams', component: TeamComponent },
   { path: 'player-cards/:teamId', component: PlayerCardsComponent, canActivate: [AuthGuard] },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'reportes', component: ReportesComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'reportes', component: ReportesComponent },
   { path: '**', redirectTo: '/dashboard' }, // Handle unknown routes
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
 ];

@@ -10,6 +10,10 @@
   overflow: hidden; 
 }
 
+.mobile-video {
+  display: none; 
+}
+
 #background-video {
   position: absolute;
   top: 50%;
@@ -75,46 +79,27 @@
     min-height: 100%; 
     object-fit: cover;
   }
-
-  .button-login-container {
-    top: 83%; 
-    left: 72%; 
-    transform: translate(-50%, -50%);
-  }
-
-  .btn-login {
-    padding: 12px 24px; 
-    font-size: 1.2rem; 
-  }
 }
 
 @media (max-width: 882px) {
-  .button-login-container {
-    top: 85%; 
-    left: 78%; 
-    transform: translate(-50%, -50%);
-  }
 
-  .btn-login {
-    padding: 12px 20px; 
-    font-size: 1.1rem; 
-  }
 }
 
 @media (max-width: 768px) {
-  .button-login-container {
-    top: 85%; 
-    left: 65%; 
-    transform: translate(-50%, -50%);
-  }
 
-  .btn-login {
-    padding: 12px 20px; 
-    font-size: 1.1rem; 
-  }
 }
 
 @media (max-width: 525px) {
+
+  #background-video {
+    display: none; 
+  }
+
+  .mobile-video {
+    display: block; 
+    width: 100%;
+    height: auto;
+  }
   .button-login-container {
     top: 85%; 
     left: 50%; 

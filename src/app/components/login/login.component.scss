@@ -16,9 +16,9 @@
   padding: 3rem 2rem; 
   border-radius: 15px; 
   box-shadow: 0 10px 30px rgba(248, 245, 245, 0.408); 
-  background: rgba(155, 174, 188, 0.869); 
+  background: rgba(155, 174, 188, 0.769); 
   box-shadow: 0 4px 25px 10px inset rgba(255, 255, 255, 0.2); 
-  backdrop-filter: blur(20px); 
+  backdrop-filter: blur(12px); 
   border: 1px solid rgba(255, 255, 255, 0.3);
   margin: auto;
   margin-top: 3rem;
@@ -169,6 +169,13 @@
 
 
 /*MEDIA QUERIES*/
+
+@media (max-width: 526px) {
+  .section {
+    background: url('/assets/fondo login movil.png') no-repeat center center fixed;
+    background-size: cover;
+  }
+}
 
 @media (max-width: 492px) {
   .section {

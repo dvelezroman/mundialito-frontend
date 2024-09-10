@@ -298,6 +298,23 @@ td {
   }
 }
 
+@media (max-width: 525px){
+
+.reportes-page-container{
+    background-image: url('/assets/imagen fondo dashboard movil.png');
+    background-size: cover;
+    background-position: center 65px;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.reportes-container {
+  width: 98%; 
+  padding: 20px;
+  margin-top: -2rem;
+  background: rgba(255, 255, 255, 0.75);
+}
+}
 
 @media (max-width: 492px) {
 

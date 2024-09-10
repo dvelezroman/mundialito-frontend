@@ -416,15 +416,18 @@
   }
   }
 
-  @media (max-width: 490px) {
+  @media (max-width: 525px) {
 
-    .hero {
-
-      background: url('/assets/fondo dashboard movil.png');
+    .video-background {
+      background-image: url('/assets/imagen fondo dashboard movil.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-
+      min-height: 100vh;
+    }
+  
+    #background-video {
+      display: none;
     }
 
 
