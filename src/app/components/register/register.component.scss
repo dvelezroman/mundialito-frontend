@@ -187,28 +187,31 @@
 
 @media (max-width: 492px) {
   .section {
-    background-image: url('/assets/imagen fondo dashboard movil.png');
+    background-image: url('/assets/fondo general isloggedIn.png');
     background-size: cover;
     background-position: center 65px;
     background-repeat: no-repeat;
     min-height: 100vh; 
-  }
-
-
-  .section {
-    padding: 1.2rem;
+    padding: 0rem;
+    
   }
 
   .box {
-    max-width: 95%;
-    padding: 2rem 1.5rem;
-    margin-top: -1rem;
+    max-width: 90%;
+    padding: 2rem 2rem;
+    margin: auto;
+    margin-top: 2.5rem;
     margin-bottom: 3rem;
+    margin-left: 13px;
+    background: rgba(11, 82, 157, 0.169);
+    backdrop-filter: blur(40px);
+
   }
 
   .title {
     font-size: 1.7rem;
     margin-bottom: 2.7rem;
+    color: white;
   }
 
   .field {
@@ -219,6 +222,7 @@
     font-size: 1rem; 
     font-weight: 400; 
     margin-bottom: .2rem;
+    color: white;
   }
 
   .help.is-danger {
@@ -245,5 +249,12 @@
   .logo-image {
     max-width: 150px; /* Tamaño máximo de la imagen */
     height: auto;
+  }
+
+  .button.is-primary {
+    padding: 0.8rem; 
+    font-size: 1.3rem; 
+    margin-top: 3.2rem;
+    margin-bottom: -1rem;
   }
 }

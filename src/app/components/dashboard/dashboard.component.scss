@@ -419,7 +419,7 @@
   @media (max-width: 525px) {
 
     .video-background {
-      background-image: url('/assets/imagen fondo dashboard movil.png');
+      background-image: url('/assets/fondo general isloggedIn.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -437,6 +437,7 @@
       justify-content: flex-start;
       padding: 6rem 0rem;
       background: none;
+      margin-top: 2.5rem;
     }
 
 
