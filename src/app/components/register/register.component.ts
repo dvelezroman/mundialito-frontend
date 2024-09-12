@@ -18,6 +18,8 @@ import { CommonModule } from "@angular/common";
 })
 export class RegisterComponent {
 
+  passwordVisible: boolean = false;
+  passwordHasValue: boolean = false;
 
   registerForm: FormGroup;
 
@@ -35,6 +37,15 @@ export class RegisterComponent {
                   isAdmin: [false]
                 });
               }
+
+
+  togglePasswordVisibility() {
+    this.passwordVisible = !this.passwordVisible;
+  }
+
+  onPasswordInput(event: any) {
+    this.passwordHasValue = event.target.value.length > 0;
+  }
 
    register() {
      if (this.registerForm.invalid) {

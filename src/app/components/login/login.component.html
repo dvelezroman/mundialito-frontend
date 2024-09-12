@@ -20,17 +20,26 @@
         </div>
 
         <div class="field">
-          <label class="label">Contraseña</label>
-          <div class="control has-icons-left">
-            <input class="input" type="password" formControlName="password" required>
-            <span class="icon is-small is-left">
+          <label class="label">Password</label>
+          <div class="control has-icons-left has-icons-right">
+            <input 
+              [type]="passwordVisible ? 'text' : 'password'" 
+              class="input" 
+              formControlName="password" 
+              placeholder="Enter your password"
+              (input)="onPasswordInput($event)">
+            <div *ngIf="passwordHasValue" class="toggle-password" (click)="togglePasswordVisibility()">
+              <i [ngClass]="passwordVisible ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
+            </div>
+            <span class="icon is-left">
               <i class="fas fa-lock"></i>
             </span>
           </div>
-          <p *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
-          class="help is-danger active">
-         Contraseña es requerida.
-       </p>
+          <div 
+            *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" 
+            class="error-password active">
+            Password es requerida
+          </div>
         </div>
 
         <div class="field">
@@ -43,20 +52,20 @@
   </div>
 
 <!--Toast-->
-  <div class="toast-container">
-    <div *ngIf="showSuccessToast" class="notification is-success toast">
-      <div class="toast-content">
-        <img src="/assets/pulgar arriba1.png" alt="Éxito" class="toast-icon">
-        <div class="toast-message">{{ toastMessage }}</div>
-      </div>
-    </div>
-    <div *ngIf="showErrorToast" class="notification is-danger toast">
-      <div class="toast-content">
-        <img src="/assets/pulgar abajo.png" alt="Error" class="toast-icon">
-        <div class="toast-message">{{ toastMessage }}</div>
-      </div>
+<div class="toast-container">
+  <div *ngIf="showSuccessToast" class="notification is-success toast">
+    <div class="toast-content">
+      <i class="fas fa-check-circle toast-icon"></i> 
+      <div class="toast-message">{{ toastMessage }}</div>
     </div>
   </div>
+  <div *ngIf="showErrorToast" class="notification is-danger toast">
+    <div class="toast-content">
+      <i class="fas fa-exclamation-circle toast-icon"></i> 
+      <div class="toast-message">{{ toastMessage }}</div>
+    </div>
+  </div>
+</div>
 
 </section>
 

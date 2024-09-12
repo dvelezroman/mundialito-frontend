@@ -18,7 +18,8 @@ import { UserService } from '../../services/user.service';
 })
 export class LoginComponent {
   loginForm: FormGroup;
-  
+  passwordVisible: boolean = false;
+  passwordHasValue: boolean = false;
   toastMessage: string = '';
   showSuccessToast: boolean = false;
   showErrorToast: boolean = false;
@@ -34,21 +35,34 @@ export class LoginComponent {
     });
   }
 
+  togglePasswordVisibility() {
+    this.passwordVisible = !this.passwordVisible;
+  }
+
+  onPasswordInput(event: any) {
+    this.passwordHasValue = event.target.value.length > 0;
+  }
+
   login() {
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
+      this.howErrorToast('Completa todos los campos'); 
       return;
     }
+  
     this.userService.login(this.loginForm.value).subscribe({
       next: (response) => {
         const token = response.token; 
-        this.howSuccessToast(' Exito.');
         localStorage.setItem('authToken', token);
         this.router.navigate(['/dashboard']); 
       },
       error: (error) => {
-        console.error('Error logging in', error);
-        this.howErrorToast('Hubo un error al iniciar sesión')
+        if (error.status === 401) {
+          this.howErrorToast('Credenciales incorrectas');
+        } else {
+          this.howErrorToast('Hubo un error al iniciar sesión');
+        }
+        console.log('Error logging in', error);
       }
     });
   }

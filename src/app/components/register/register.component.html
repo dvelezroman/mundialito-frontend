@@ -23,18 +23,27 @@
        </p>
         </div>
 
-        <div class="field">
-          <label class="label">Contraseña</label>
-          <div class="control has-icons-left">
-            <input class="input" type="password" formControlName="password" required>
-            <span class="icon is-small is-left">
+       <div class="field">
+          <label class="label">Password</label>
+          <div class="control has-icons-left has-icons-right">
+            <input 
+              [type]="passwordVisible ? 'text' : 'password'" 
+              class="input" 
+              formControlName="password" 
+              placeholder="Enter your password"
+              (input)="onPasswordInput($event)">
+            <div *ngIf="passwordHasValue" class="toggle-password" (click)="togglePasswordVisibility()">
+              <i [ngClass]="passwordVisible ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
+            </div>
+            <span class="icon is-left">
               <i class="fas fa-lock"></i>
             </span>
           </div>
-          <p *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" 
-             class=" password-error">
-            Contraseña es requerida y debe tener al menos 6 caracteres.
-          </p>
+          <div 
+            *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" 
+            class="error-password active">
+            Password es requerida
+          </div>
         </div>
 
         <div class="field">
