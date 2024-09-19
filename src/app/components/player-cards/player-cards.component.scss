@@ -8,32 +8,24 @@
   padding: 2rem;
 }
 
-
-  .container {
-    margin-top: 50px; 
-    padding: 25px;
+ .container {
+    margin-top: 20px; 
+    padding: 3rem;
   }
 
+/* Estilos para la cabecera de la información del equipo */
 
 .team-info {
   background: rgba(255, 255, 255, 0.6); 
   backdrop-filter: blur(10px); 
   -webkit-backdrop-filter: blur(10px); 
   border-radius: 10px; 
-  padding: 20px 30px; 
+  padding: 30px 20px;
+  width: 75%;
+  max-width: 100%;
+  margin: auto;
   margin-top: 30px; 
-  width: 100%;
-
 }
-
-.title {
-  text-align: center;
-  color: rgb(58, 56, 56);
-  margin-top: .5rem;
-  font-size: 2rem;
-}
-
-/* Estilos para la cabecera de la información del equipo */
 
 .team-info-back {
   margin-bottom: 0px; 
@@ -43,7 +35,8 @@
   background-color: #28a745;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 9px 20px;
+  font-size: .75rem;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -53,23 +46,14 @@
   background-color: #218838; 
 }
 
-.team-info {
-  background: rgba(255, 255, 255, 0.6); 
-  backdrop-filter: blur(10px); 
-  -webkit-backdrop-filter: blur(10px); 
-  border-radius: 10px; 
-  padding: 30px 20px;
-  margin-top: 30px; 
-  width: 100%;
-}
-
 .team-info-title {
   text-align: center;
   margin-bottom: 30px;
 }
 
 .team-info-title h2{
-  font-size: 2rem;
+  font-size: 1.5rem;
+  color: rgb(59, 57, 57);
 }
 
 .team-info-content {
@@ -82,13 +66,13 @@
   display: flex;
   flex-direction: column; 
   flex: 1; 
-  margin-left: 15px;
+  margin-left: 8px;
 }
 
 .team-info-details p {
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   color: black; 
-  margin-bottom: 10px; 
+  margin-bottom: 7px; 
 }
 
 .team-info-details p strong {
@@ -98,98 +82,117 @@
 
 .team-info-logo {
   flex-shrink: 0; 
-  margin-right: 20px;
+  margin-right: 50px;
 }
 
 .team-logo {
-  width: 150px; 
-  height: 150px;
-  object-fit: cover; 
-  border-radius: 50%; 
-  border: 2px solid #ddd;
+  width: 130px; 
+  height: 130px;
+  object-fit: cover;  
 }
 
-/* Estilos para la tabla */
 
+/* Estilos para la cabecera de la tabla de jugadores */
 .players-container {
   background: rgba(255, 255, 255, 0.6); 
   backdrop-filter: blur(10px); 
   -webkit-backdrop-filter: blur(10px); 
   border-radius: 10px; 
   padding: 20px; 
-  margin-top: 20px; 
+  width: 75%;
+  max-width: 100%;
+  margin: auto;
+  margin-top: 2rem;
 }
 
-.section-title {
-  font-size: 1.8rem;
-  text-align: center;
+.players-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
-  color: black;
+  width: 100%;
 }
 
-/* Estilos para la cabecera de la tabla de jugadores */
-  
+.players-title { 
+  margin-left: 10px;
+  text-align: left;
+}
 
-  .players-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    width: 100%;
-  }
-  
-  .players-title { 
-    margin-left: 10px;
-    text-align: left;
-  }
+.players-title h3{
+  color: rgb(73, 71, 71);
+  font-size: 1.3rem;
+}
 
-  /* boton de imprimir tabla */
+  /* botón de imprimir tabla */
   
   .players-buttons {
     display: flex;
-    flex-direction: column; /* Alinea los botones en columna */
-    align-items: flex-end; /* Alinea los botones al margen derecho */
+    flex-direction: row; 
+    align-items: flex-end; 
+    gap: 10px;
   }
   
   .print-button {
-    margin-bottom: 10px; /* Espacio entre los botones */
-    width: 160px; /* Fija el mismo ancho para los botones */
+    margin-bottom: 10px; 
+    width: auto; 
+    font-size: .65rem;
+    background-color: #28a745 !important; 
+    border: none;
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+
+  .print-button:hover {
+    background-color: #218838 !important; 
   }
   
-  .fa-print {
-    margin-right: 8px;
+  .players-buttons .button {
+    font-size: 0.85rem; 
+    padding: 8px 12px; 
+  }
+  
+  .players-buttons .button .fa {
+    font-size: 5px; 
+    margin-right: 5px; 
   }
 
-
-.no-players-message {
-  text-align: center;
-  color: #ff3860; 
-  font-size: 1.2rem;
-  margin: 20px 0;
-}
+  .no-players-message {
+    text-align: center;
+    color: #4a4848; 
+    font-size: 1rem;
+    margin: 10px 0;
+  }
 
 /* Estilos para la tabla */
+
+.players-table {
+  border-radius: 10px; 
+  overflow: hidden; 
+  border: 1px solid #ddd; 
+}
 
 .players-table table {
   width: 100%;
   border-collapse: collapse;
 }
 
+.players-table th, .players-table td {
+  font-size: 0.9rem; 
+  padding: 5px; 
+}
+
 .players-table th {
   background-color: #216fa7; 
   color: white;
-  padding: 10px;
   text-align: center;
 }
 
 .players-table td {
   color: #333;
-  padding: 10px;
   text-align: center;
   border-bottom: 1px solid #ddd;
   vertical-align: middle;
 }
-
 
 .players-table tr {
   cursor: pointer; 
@@ -202,16 +205,14 @@
 }
 
 .player-photo {
-  max-width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   object-fit: cover;
-  border-radius: 50%; 
+  border-radius: 3px; 
 }
 
 
-/*Toast confirmacion delete*/
-
-
+/*Toast confirmación delete*/
   .buttons {
     margin-top: 15px;
     display: flex;
@@ -297,40 +298,67 @@
   padding:10px;
 }
 
+.modal-background {
+  background-color: rgba(0, 0, 0, 0.3); 
+  backdrop-filter: blur(10px); 
+  -webkit-backdrop-filter: blur(10px); 
+}
+
 /* Estilo para la tarjeta del modal */
 .modal-card {
-  max-width: 600px;
+  max-width: 500px; 
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.792);
-  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.8); 
+  border-radius: 12px; 
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  padding: 30px 20px 30px 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); 
+  padding: 20px; 
+  margin: 20px auto; 
+  backdrop-filter: blur(5px); 
 }
 
 /* Estilo para la cabeza del modal */
+
 .modal-card-head {
-  background-color: rgba(255, 255, 255, 0.792);
-  padding: 1rem;
-  border-bottom: 1px solid #ddd;
+  background-color: transparent; 
+  padding: 15px 20px;  
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  border-radius: 12px 12px 0 0; 
 }
 
 .modal-card-title {
-  font-size: 1.5rem;
-  font-weight: 500;
-  text-align: center;
-  color: black;
+  font-size: 1.4rem; 
+  font-weight: 600; 
+  color: #333; 
+  text-align: center; 
+  margin: 0; 
 }
 
+/* boton de cerrar modal editar jugador */
+
+.modal-close-btn {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  transition: transform 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.modal-close-btn:hover {
+  transform: scale(1.2); 
+  color: #ff3b3b; 
+}
 
 /* Estilo para el cuerpo del modal */
 .modal-card-body {
-  padding: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.792);
+  padding: 1.2rem .5rem;
+  background-color: transparent;
 }
 
 .label {
-  font-size: 1rem;
+  font-size: .85rem;
   font-weight: 500;
   color: #333;
   margin-bottom: 0.2rem;
@@ -341,15 +369,15 @@
 /* Estilo para los campos del formulario */
 
 .field {
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
 }
 
 .input {
-  background-color: #f0f0f0;
+  background-color: #f0f0f013;
   border: 1px solid #bcbbbb;
   border-radius: 4px;
   padding: 0.5rem;
-  font-size: 1.2rem;
+  font-size: .9rem;
   color: #000;
 }
 
@@ -403,20 +431,19 @@ input[type="date"]::-ms-clear {
 }
 
 .preview-image {
-  width: 150px; 
-  height: 150px; 
+  width: 100px; 
+  height: 100px; 
   object-fit: cover; 
   border-radius: 50%; 
   margin-top: 10px; 
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* botones del modal editar jugador y de confirmacion de eliminacion de jugador */
+/* botones del modal editar jugador y de confirmación de eliminación de jugador */
 /* Estilo para el pie del modal */
 .modal-card-foot {
   padding: 1rem;
-  background-color: rgba(255, 255, 255, 0.792);
-  border-top: 1px solid #ddd;
+  background-color: transparent;
   display: flex;
   justify-content: center;
   gap: 5px;
@@ -424,6 +451,8 @@ input[type="date"]::-ms-clear {
 
 .modal-card-foot .button {
   margin-left: 10px;
+  font-size: .9rem;
+  padding: 8px 15px;
 }
 
 .button.is-success {
@@ -454,15 +483,6 @@ input[type="date"]::-ms-clear {
 
 .button:hover {
   background-color: #e74c3c; 
-}
-
-
-/* boton de cerrar modal editar jugador */
-
-.modal-close-btn {
-  position: absolute;
-  top: -20px;
-  right: -8px;
 }
 
 
@@ -537,192 +557,324 @@ input[type="date"]::-ms-clear {
 }
 
 
-/* Estilos responsivos */
 
-@media (max-width: 768px) {
-.back-button{
-  font-size: .9rem;
-}
+/* ESTILOS RESPONSIVOS TARJETA DE INFORMACIÓN DE EQUIPO Y TARJETA DE LA TABLA DE JUGADORES */
+@media (max-width: 992px) {
 
-  .title {
-    font-size: 1.7rem;
-  }
-  
-  .team-logo {
-    max-width: 110px; 
-    height: auto;
-    position: absolute;
-    top: 110%; 
-    right: 2%; 
-  }
-
-  .team-info p {
-    color: #333; 
-    font-size: 1.05rem;
-    margin-bottom: .5rem;
-  }
-  
-  .team-info p strong {
-    color: black; 
-  }
-  
-  .players-table th, .players-table td {
-    font-size: 0.9rem; 
-    padding: 8px;
-  }
-  
-  .player-photo {
-    max-width: 40px; 
-    height: 40px;
-  }
-}
-
-@media (max-width: 576px) {
-
-  :host {
-    background-image: url('/assets/fondo general isloggedIn.png');
-    background-size: cover;
-    background-position: center 65px;
-    background-repeat: no-repeat;
-    min-height: 100vh;
+  .container {
+    margin-top: 20px; 
     padding: 2rem;
   }
 
-  .container {
-    margin-top: 50px; 
-    padding: 5px;
+  .team-info {
+    padding: 20px 20px;
+    width: 80%;
+    max-width: 100%;
   }
 
-  .back-button{
-    font-size: .75rem;
-    padding:7px 15px;
-    margin-bottom: 1.5rem;
+  .back-button {
+    padding: 5px 15px;
+    font-size: .65rem;
   }
+
+  .team-info-title {
+    margin-bottom: 25px;
+  }
+
+  .team-info-title h2{
+    font-size: 1.3rem;
+  }
+
+  .team-info-content {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+  }
+
+  .team-info-details p {
+    font-size: 1rem;
+    margin-bottom: 5px; 
+  }
+
+  .team-info-logo {
+    flex-shrink: 0; 
+    margin-right: 50px;
+  }
+
+  .team-logo {
+    width: 120px; 
+    height: 120px;
+    object-fit: cover;  
+  }
+
+    /* Estilos responsivos para la tarjeta de la tabla de los jugadores */
+    .players-container {
+      padding: 15px; 
+      width: 80%;
+    }
+    
+    .players-title h3{
+      color: rgb(73, 71, 71);
+      font-size: 1.2rem;
+    }
+    
+      /* botón de imprimir tabla */
+      
+      .players-buttons {
+        display: flex;
+        flex-direction: row; 
+        align-items: flex-end; 
+        margin-bottom: -15px;
+        gap: 10px;
+      }
+      
+      .print-button {
+        margin-bottom: 10px; 
+        width: auto; 
+        font-size: .65rem;
+      }
+      
+      .fa-print {
+        margin-right: 8px;
+      }
+    
+      .no-players-message {
+        text-align: center;
+        color: #4a4848; 
+        font-size: .9rem;
+        margin: 10px 0;
+      }
+    
+    /* Estilos para la tabla */
+    
+    .players-table th, .players-table td {
+      font-size: 0.75rem; 
+      padding: 5px; 
+    }
+    
+    .player-photo {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      margin-top: 20px; 
+      padding: 2rem 1rem;
+    }
   
-    .title {
-      font-size: 1.6rem;
+    .team-info {
+      padding: 15px 15px;
+      width: 100%;
     }
-
+  
+    .back-button {
+      padding: 5px 15px;
+      font-size: .65rem;
+    }
+  
+    .team-info-title {
+      margin-bottom: 20px;
+    }
+  
     .team-info-title h2{
-      font-size: 1.8rem;
-      margin-bottom: -.7rem;
+      font-size: 1.2rem;
     }
-    
-    .team-info-content {
-      display: flex;
-      justify-content: space-between; 
-      align-items: center;
-    }
-    
-    .team-info-details {
-      display: flex;
-      flex-direction: column; 
-      flex: 1; 
-      margin-left: 10px;
-    }
-    
+  
     .team-info-details p {
-      font-size: 1.5rem;
-      color: black; 
-      margin-bottom: 10px; 
+      font-size: .9rem;
+      margin-bottom: 4px; 
     }
-    
-    .team-info-details p strong {
-      color: black;
-      font-weight: bold; 
-    }
-    
+  
     .team-info-logo {
       flex-shrink: 0; 
-      margin-right: 20px;
+      margin-right: 30px;
     }
   
-  .team-logo {
-    max-width: 100px; 
+    .team-logo {
+      width: 100px; 
+      height: 100px; 
+    }
+  
+      /* Estilos responsivos para la tarjeta de la tabla de los jugadores */
+      .players-container {
+        padding: 13px; 
+        width: 100%;
+      }
+      
+      .players-title h3{
+        color: rgb(73, 71, 71);
+        font-size: 1rem;
+      }
+      
+        /* botón de imprimir tabla */
+        
+        .players-buttons {
+          display: flex;
+          flex-direction: column; 
+          align-items: flex-end; 
+          gap: 0px;
+        }
+        
+        .print-button {
+          margin-bottom: 10px; 
+          width: auto; 
+          font-size: .60rem;
+        }
+        
+        .players-buttons .button {
+          font-size: 0.70rem; 
+          padding: 5px 12px; 
+        }
+        
+        .players-buttons .button .fa {
+          font-size: 4px; 
+          margin-right: 5px; 
+        }
+      
+        .no-players-message {
+          font-size: .85rem;
+        }
+      
+      /* Estilos para la tabla */
+      
+      .players-table th, .players-table td {
+        font-size: 0.65rem; 
+        padding: 4px; 
+      }
+      
+      .player-photo {
+        width: 25px;
+        height: 25px;
+      }
+}
+
+  @media (max-width: 492px) {
+
+  :host {
+    background-image: url('/assets/fondo general isloggedIn.png');
+    padding: 2rem 1rem;
   }
 
-  .button.print-button {
-    position: absolute;
-    right: 0;
-    top: 40px;
-    color: rgb(63, 62, 62);
-    background-color: transparent;
+  .container {
+    margin-top: 20px; 
+    padding: 2rem 0rem;
+  }
+
+  .team-info {
+    padding: 15px 15px;
+    width: 100%;
+  }
+
+  .back-button {
+    padding: 8px 15px;
+    font-size: .75rem;
+  }
+
+  .team-info-title {
+    margin-bottom: 20px;
+  }
+
+  .team-info-title h2{
     font-size: 1.2rem;
   }
-  
-  .fa-print{
-    margin-right: 10px;
-    color: rgb(67, 65, 65);
+
+  .team-info-details p {
     font-size: .9rem;
-  }
-  
-  .players-table th, .players-table td {
-    font-size: 0.8rem; 
-    padding: 6px;
-  }
-  
-  .player-photo {
-    max-width: 35px; 
-    height: 35px;
-  }
-}
-
-@media (max-width: 480px) {
-  :host {
-    padding: .5rem;
+    margin-bottom: 4px; 
   }
 
-  .players-header {
-    position: relative; 
-}
+  .team-info-logo {
+    flex-shrink: 0; 
+    margin-right: 30px;
+  }
 
-.players-header h3.title {
-    font-size: 1.4rem; 
-    margin-bottom: 10px; 
-}
-
-.players-header .print-button {
-    position: absolute; 
-    top: 80%; 
-    right: 0%; 
-    font-size: 0.6rem; 
-    padding: 4px 9px; 
-}
-  
   .team-logo {
     width: 100px; 
     height: 100px; 
-    object-fit: cover; 
-    position: absolute;
-    top: 53%; 
-    right: 9%; 
-    border: none;
-    border-radius: 50%; 
+  }
+
+    /* Estilos responsivos para la tarjeta de la tabla de los jugadores */
+    .players-container {
+      padding: 13px; 
+      width: 100%;
+    }
+    
+    .players-title h3{
+      color: rgb(73, 71, 71);
+      font-size: 1.2rem;
+    }
+    
+      /* botón de imprimir tabla */
+      
+      .players-buttons {
+        display: flex;
+        flex-direction: column; 
+        align-items: flex-end; 
+        gap: 0px;
+      }
+      
+      .print-button {
+        margin-bottom: 10px; 
+        width: auto; 
+        font-size: .65rem;
+      }
+      
+      .players-buttons .button {
+        font-size: 0.70rem; 
+        padding: 7px 12px; 
+      }
+      
+      .players-buttons .button .fa {
+        font-size: 4px; 
+        margin-right: 5px; 
+      }
+    
+      .no-players-message {
+        font-size: .85rem;
+      }
+    
+    /* Estilos para la tabla */
+    
+    .players-table th, .players-table td {
+      font-size: 0.60rem; 
+      padding: 3.5px; 
+    }
+    
+    .player-photo {
+      width: 22px;
+      height: 22px;
+    }
+
 }
 
-  .team-info p {
-    color: #333; 
-    font-size: 1rem;
-    margin-bottom: .5rem;
-  }
-  
-  .team-info p strong {
-    color: black; 
-  }
 
-  .players-container{
-    padding: 10px;
-  }
+/* ESTILOS RESPONSIVOS DEL MODAL DE EDITAR JUGADOR */
 
-  .players-table th, .players-table td {
-    font-size: 0.55rem; 
-    padding: 2.5px 2px;
-  }
+ @media (max-width: 768px){
 
-  .player-photo {
-    max-width: 30px; 
-    height: 30px;
-  }
+ .modal.is-active {
+  padding:20px;
+}
+
+/* Estilo para la tarjeta del modal */
+.modal-card {
+  max-width: 500px; 
+  width: 90%;
+}
+}
+
+@media (max-width: 492px){
+/* Estilo para la cabeza del modal */
+.modal.is-active {
+  padding:20px;
+}
+
+/* Estilo para la tarjeta del modal */
+.modal-card {
+  width: 95%;
+}
 
 
 }

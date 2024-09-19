@@ -5,7 +5,6 @@
   <!-- Encabezado -->
 
   <div class="team-info">
-
     <div class="team-info-back">
       <button class="back-button" (click)="navigateBack()">
         <i class="fa fa-arrow-left" aria-hidden="true"></i> Atrás
@@ -88,7 +87,7 @@
     <div class="modal-card">
       <header class="modal-card-head">
         <p class="modal-card-title">Datos del Jugador</p>
-        <button class="delete modal-close-btn" aria-label="close" (click)="closeEditModal()" ></button>
+        <button (click)="closeEditModal()" class="delete modal-close-btn"  aria-label="close"></button>
       </header>
       <section class="modal-card-body">
         <form [formGroup]="editPlayerForm">
