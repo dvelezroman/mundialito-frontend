@@ -94,8 +94,10 @@ export class PlayerCardsComponent implements OnInit {
     if (this.teamId !== null) {
       this.peopleService.getPlayersByTeam(this.teamId).subscribe({
         next: (data) => {
-          this.players = data;
-
+          this.players = data.map(player => ({
+            ...player,
+            profilePhoto: `${player.profilePhoto}?t=${new Date().getTime()}`
+          }));
         },
         error: (error) => {
           console.error('Error loading players', error);
@@ -107,48 +109,67 @@ export class PlayerCardsComponent implements OnInit {
 
 // METODO PARA ELIMINAR JUGADOR //
 
+deletePlayer(playerId?: number) {
+  const idToDelete = playerId || this.playerToDelete;
+  if (idToDelete !== null) {
+    this.peopleService.deletePerson(idToDelete).subscribe({
+      next: () => {
+        this.players = this.players.filter(player => player.id !== idToDelete);
+        this.showDeleteConfirmToast = false;
+        this.playerToDelete = null;
+        this.loadTeamInfo();
+        this.loadPlayers();
+        this.closeEditModal();
+        this.howSuccessToast('Jugador eliminado exitosamente');
+        
+
+        setTimeout(() => {
+          this.forceImageReload();
+        }, 500);
+      },
+      error: (error) => {
+        console.error('Error al eliminar el jugador', error);
+        this.howErrorToast('Hubo un error al momento de eliminar al jugador');
+        this.showDeleteConfirmToast = false;
+      }
+    });
+  }
+}
+
+forceImageReload() {
+  const images = document.querySelectorAll('.player-photo');
+  images.forEach((img) => {
+    const imageElement = img as HTMLImageElement;
+    const src = imageElement.src;
+    imageElement.src = ''; // Limpia la fuente de la imagen
+    imageElement.src = src; // Vuelve a asignar la fuente para forzar la recarga
+  });
+
+  setTimeout(() => {
+    const incompleteImages = Array.from(images).filter((img: any) => !img.complete || img.naturalHeight === 0);
+    if (incompleteImages.length > 0) {
+      this.forceImageReload(); 
+    }
+  }, 1000);
+}
+
+
   confirmDeletePlayer(playerId: number) {
     this.playerToDelete = playerId;
     this.showDeleteConfirmToast = true;
   }
 
-
   confirmDeletion() {
     if (this.playerToDelete !== null) {
         this.deletePlayer(this.playerToDelete);
     }
-}
-
+  }
 
    cancelDelete() {
     this.showDeleteConfirmToast = false;
     this.playerToDelete = null;
   }
 
-
-  deletePlayer(playerId?: number) {
-    const idToDelete = playerId || this.playerToDelete;
-    if (idToDelete !== null) {
-      this.peopleService.deletePerson(idToDelete).subscribe({
-        next: () => {
-          this.players = this.players.filter(player => player.id !== idToDelete);
-          this.showDeleteConfirmToast = false;
-          this.playerToDelete = null;
-          this.loadTeamInfo();
-          this.loadPlayers();
-          this.closeEditModal();
-          this.howSuccessToast('Jugador eliminado exitosamente');
-          console.log('Jugador eliminado exitosamente');
-          
-        },
-        error: (error) => {
-          console.error('Error al eliminar el jugador', error);
-          this.howErrorToast('Hubo un error al momento de eliminar al jugador');
-          this.showDeleteConfirmToast = false;
-        }
-      });
-    }
-  }
 
   // METODO PARA EDITAR DATOS DEL JUGADOR //
 
@@ -316,10 +337,105 @@ export class PlayerCardsComponent implements OnInit {
           </body>
         </html>
       `);
-      printWindow?.document.close();
-      printWindow?.focus();
-      printWindow?.print();
-      printWindow?.close();
+      setTimeout(() => {
+        printWindow?.document.close();
+        printWindow?.focus();
+        printWindow?.print();
+        printWindow?.close();
+      }, 1000);
+    } else {
+      console.error('Error: No se encontraron elementos para imprimir.');
+    }
+  }
+  
+
+  // METODO PARA IMPRIMIR EQUIPOS CON SOLO FOTOS //
+  printPlayersWithPhotos() {
+    const teamInfoElement = document.querySelector('.team-info');
+    const playersContainer = document.createElement('div');
+    
+
+    this.players.forEach(player => {
+      const playerDiv = document.createElement('div');
+      playerDiv.style.marginBottom = '10px'; 
+      playerDiv.className = 'player-info'; 
+  
+      const playerName = document.createElement('p');
+      playerName.innerText = `${player.firstname} ${player.lastname}`;
+      playerName.style.marginBottom = '5px'; 
+      playerName.style.wordBreak = 'break-word'; 
+      playerDiv.appendChild(playerName);
+    
+      const playerPhoto = document.createElement('img');
+      playerPhoto.src = player.profilePhoto ? player.profilePhoto : '/assets/imagen player2.png';
+      playerPhoto.style.width = '70px'; 
+      playerPhoto.style.height = '70px'; 
+      playerPhoto.style.objectFit = 'cover';
+      playerDiv.appendChild(playerPhoto);
+    
+      playersContainer.appendChild(playerDiv);
+    });
+    
+    playersContainer.style.display = 'grid';
+    playersContainer.style.gridTemplateColumns = 'repeat(4, 1fr)';
+    playersContainer.style.gap = '10px'; 
+  
+    if (teamInfoElement) {
+      const teamInfoContent = teamInfoElement.querySelector('.team-info-details')?.outerHTML || ''; // Solo info del equipo, sin logo
+      const printContents = teamInfoContent + `<div style="margin-top: 50px;">${playersContainer.outerHTML}</div>`; // Mayor espacio entre equipo y fotos
+    
+      const printWindow = window.open('', '', 'width=800,height=600');
+      printWindow?.document.write(`
+             <html>
+        <head>
+          <title></title>
+          <style>
+            body {
+              font-family: Arial, sans-serif;
+              margin: 20px;
+            }
+            .team-info-details {
+              margin-top: 50px;
+              font-size: 18px; /* Aumenta el tamaño del texto de los datos del equipo */
+              text-align: center; /* Alinea los datos del equipo a la izquierda */
+              margin-bottom: 100px; /* Aumenta el espacio entre los datos del equipo y las fotos */
+            }
+            .player-photo {
+              width: 70px;
+              height: 70px;
+              object-fit: cover;
+            }
+            .player-info p {
+              text-align: center;
+              font-size: 12px;
+              margin-bottom: 10px; /* Reduce el margen debajo del nombre */
+              max-width: 125px; /* Limita el ancho del nombre para que haya quiebres */
+              word-break: break-word; /* Fuerza quiebre del texto largo */
+              margin: auto;
+            }
+            .players-grid {
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              gap: 20px; /* Espacio entre las fotos de los jugadores */
+            }
+            .player-info {
+              text-align: center;
+              margin-bottom: 20px;
+            }
+          </style>
+        </head>
+        <body>
+          ${printContents}
+        </body>
+      </html>
+      `);
+  
+      setTimeout(() => {
+        printWindow?.document.close();
+        printWindow?.focus();
+        printWindow?.print();
+        printWindow?.close();
+      }, 1000);
     } else {
       console.error('Error: No se encontraron elementos para imprimir.');
     }

@@ -34,7 +34,7 @@
     </div>
 
 
-
+   <!-- TARJETA DEL EQUIPO SELECCIONADO -->
     <div class="team-info-card" *ngIf="selectedTeamData">
       <div class="team-content-block">
 
@@ -71,17 +71,21 @@
       </div>
     </div>
 
-
+   <!-- MODAL ABRE LUEGO DE DAR CLICK EN OPCIONES -->
     <div class="modal" [ngClass]="{'is-active': isOptionsModalOpen}">
       <div class="modal-background2" (click)="closeOptionsModal()"></div>
-      <div class="modal-card">
+      <div class="modal-card custom-glass-modal">
         <section class="modal-card-body">
-            <button class="button is-primary" (click)="openModal()">Agregar Jugador</button>
-            <button class="button is-light" (click)="cardsPlayers()">Ver Jugadores</button>
+          <div class="modal-buttons-container">
+            <button class="button add-player-button" (click)="openModal()">Agregar Jugador</button>
+            <button class="button view-players-button" (click)="cardsPlayers()">Ver Jugadores</button>
+          </div>
         </section>
       </div>
     </div>
 
+
+    
 <div class="toast-container">
   <div *ngIf="showSuccessToast" class="notification is-success toast is-visible">
     <div class="toast-content">

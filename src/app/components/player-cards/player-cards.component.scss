@@ -128,13 +128,37 @@
 }
 
 /* Estilos para la cabecera de la tabla de jugadores */
-.players-header {
-  display: flex;
-  justify-content: center; 
-  align-items: center;
-  margin-bottom: 20px;
-  position: relative; 
-}
+  
+
+  .players-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .players-title { 
+    margin-left: 10px;
+    text-align: left;
+  }
+
+  /* boton de imprimir tabla */
+  
+  .players-buttons {
+    display: flex;
+    flex-direction: column; /* Alinea los botones en columna */
+    align-items: flex-end; /* Alinea los botones al margen derecho */
+  }
+  
+  .print-button {
+    margin-bottom: 10px; /* Espacio entre los botones */
+    width: 160px; /* Fija el mismo ancho para los botones */
+  }
+  
+  .fa-print {
+    margin-right: 8px;
+  }
 
 
 .no-players-message {
@@ -432,23 +456,6 @@ input[type="date"]::-ms-clear {
   background-color: #e74c3c; 
 }
 
-
-  /* boton de imprimir tabla */
-
-.button.print-button {
-  position: absolute;
-  right: 0;
-  top: 40px;
-  color: rgb(63, 62, 62);
-  background-color: transparent;
-  font-size: 1.2rem;
-}
-
-.fa-print{
-  margin-right: 10px;
-  color: rgb(67, 65, 65);
-  font-size: 1.2rem;
-}
 
 /* boton de cerrar modal editar jugador */
 
