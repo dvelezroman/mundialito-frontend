@@ -104,12 +104,11 @@
 
 <!-- Modal para agregar un jugador -->
 
-<div class="modal" [ngClass]="{'is-active': isModalOpen}">
+<div class="modal add" [ngClass]="{'is-active': isModalOpen}">
   <div class="modal-background"></div>
   <div class="modal-card add-player-modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">Agregar Jugador</p>
-      <button class="delete" aria-label="close" (click)="closeModal()"></button>
     </header>
     <section class="modal-card-body add-player-modal-body">
       <form (submit)="submitForm()">
@@ -142,10 +141,10 @@
         </div>
 
 
-        <div class="field field-center-label">
+        <div class="field add-player-select">
           <label class="label" for="country">País</label>
           <div class="control">
-            <div class="select">
+            <div class="select add-player-select">
               <select
                 id="country"
                 name="country"
@@ -162,10 +161,10 @@
           </div>
         </div>
 
-        <div class="field">
+        <div class="field add-player-select">
           <label class="label" for="type">Tipo</label>
           <div class="control">
-            <div class="select">
+            <div class="select add-player-select">
               <select
                 id="type"
                 name="type"
@@ -192,7 +191,7 @@
             </div>
           </div>
           <div class="image-preview" *ngIf="previewImageUrl">
-            <label>Preview:</label>
+            <label></label>
             <img [src]="previewImageUrl" alt="Previsualización de la foto">
             <button type="button" class="button is-danger remove-button" (click)="removeSelectedImage()">Eliminar</button>
           </div>

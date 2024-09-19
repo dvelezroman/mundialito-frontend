@@ -160,7 +160,7 @@
     margin-right: 3rem;
 }
 
-.button-block .btn {
+  .button-block .btn {
     padding: 10px 20px; 
     font-size: 12px;
     background-color: #1e6bbd;
@@ -175,7 +175,7 @@
 
 }
 
-.button-block .btn:hover {
+  .button-block .btn:hover {
     background-color: #154da6;
 }
 
@@ -444,13 +444,7 @@
  /*  MODAL AGREGAR JUGADOR */
   /* MODAL ESTILOS MODAL ESTILOS MODAL ESTILOS MODAL ESTILOS*/
 
-  html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-  
+
   .modal.is-active {
     display: block;
     position: fixed;
@@ -462,31 +456,33 @@
     overflow-y: auto;
   }
 
-  .modal {
+  .modal.add {
     display: none;
     position: fixed;
-    top: 10%;
+    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: transparent; 
+    overflow: auto; 
+    background-color: transparent;
     z-index: 1000;
+  }
 
-    .modal-card {
-      max-width: 600px;
-      margin: 50px auto;
+    .modal-card.add-player-modal-card {
+      max-width: 500px;
+      width: 450px;
       background: #ffffff; 
       border-radius: 8px;
-      padding: 20px;
-      max-height: none;
+      padding: 0px 25px;
       box-shadow: 0 4px 15px rgba(224, 224, 224, 0.2); 
       max-height: none;
+      margin: 50px auto;
     }
 
-
-    .modal-background{
-      background-color:rgba(29, 28, 28, 0.424);
+    .modal-background {
+      background-color: rgba(29, 28, 28, 0.324);
+      backdrop-filter: blur(8px); 
+      -webkit-backdrop-filter: blur(8px); 
     }
 
     .modal-card-head {
@@ -494,137 +490,104 @@
       justify-content: space-between;
       align-items: center;
       background-color: white;
-
-    }
-
-    .delete {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
     }
 
     .modal-card-title {
       color: #616161;
-      font-size: 1.7rem;
+      font-size: 1.4rem;
       font-weight: bold;
       text-align: center;
       width: 100%;
       margin-bottom: 0;
       letter-spacing: 0.5px;
-      border-bottom: 1px solid #e0e0e0;
-      background-color: #f5f5f5;
+      background-color: transparent;
     }
 
-    .modal-card-body {
+    .modal-card-body.add-player-modal-body {
       background-color: #ffffff;
       padding: 0px;
-      border-radius: 8px;
-      max-height: none !important;
+      border-radius: 0px;
       height: auto;
+      overflow: visible;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
-
-    /*stilos modifican el scroll de la tarjeta*/
-    .modal.is-active {
+    .label {
+      color: #515050;
+      font-weight: 500;
+      font-size: .85rem;
+      margin-bottom: 1px;
+      margin-left: 5px;
+      text-align: left;
       display: block;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1000;
-      overflow: auto; 
     }
-    
-    .modal-card {
-      max-width: 600px;
-      margin: 0 auto;
-      background: #ffffff; 
-      border-radius: 8px;
-      padding: 20px;
-      box-shadow: 0 4px 15px rgba(224, 224, 224, 0.2); 
-      max-height: none; 
-    }
-    
-    .modal-card-body {
-      height: auto; 
-      overflow: visible; 
-      padding: 50px;
-    }
-
-    /* Estilos específicos para el modal de agregar jugador */
-    .add-player-modal-body {
-      padding: 20px 30px !important;
-    }
-
-    /* Estilos para la tarjeta del modal de agregar jugador */
-    .add-player-modal-card {
-      max-width: 520px !important; 
-      padding: 0 !important; 
-    }
-
-    /* Estilos para el cuerpo del modal, eliminando el padding lateral */
-    .add-player-modal-body {
-      padding: 40px 10px !important; 
-    }
-
-    .add-player-modal-body .input {
-      width: 100% !important;
-      max-width: 100% !important;
-    }
-
 
     .field {
       position: relative;
-      margin-bottom: 1.2rem; 
+      margin-bottom: .85rem; 
+    }
+
+    .modal-card-body.add-player-modal-body .input {
+      background-color: #dedddd;
+      border: 1px solid #d5d5d5;
+      border-radius: 4px;
+      padding: 5px 10px;
+      margin-bottom: 0px;
+      color: #424242;
+      box-sizing: border-box;
+      width: 100%;
+      font-size: .88rem;
+    }
+
+    .modal-card-body .input:focus {
+      border-color: #616161;
+      outline: none;
     }
     
     .field .select {
       width: 100%;
     }
+
+    .add-player-modal-card .add-player-select {
+      margin-bottom: .35rem; 
+    }
     
-    .field .select select {
-      width: 100%;
-      padding: 5px; 
+    .add-player-modal-card .add-player-select select {
+      width: 100%; 
+      height: 34px;
+      padding: 5px;
+      font-size: .85rem;
       background-color: #e0e0e0;
       border: 1px solid #d5d5d5;
       border-radius: 4px;
       box-sizing: border-box;
-      color: #424242;
+      color: #424242; 
     }
     
-    .field .select select:focus {
-      border-color: #616161;
+    .add-player-modal-card .add-player-select select:focus {
+      border-color: #616161; 
       outline: none;
     }
 
-    .field .help {
-      font-size: 0.85rem;
+      .add-player-modal-card .field .help {
+      font-size: 0.75rem;
       color: #dc3545;
       position: absolute;
-      top: 100%; 
+      top: 80%; 
       left: 5px;
       margin-top: 0px;
       visibility: hidden;
     }
-    
-    .field .help.is-danger {
+
+    .add-player-modal-card .field .help.is-danger {
       visibility: visible; 
     }
 
-
-    /* Estilos para el input de fecha */
-
-    .date-input-wrapper {
-      position: relative;
-      width: 100%;
-    }
+    /* Estilos para el input de fecha del modal agregar jugador */
 
     input[type="date"] {
       width: 100%;
-      padding-right: 2.5rem; 
+      padding-right: 2rem; 
       position: relative;
     }
 
@@ -634,131 +597,144 @@
       top: 50%;
       transform: translateY(-50%);
       cursor: pointer;
-      background-color: #eae8e8; 
-      padding: 12px 15px;
-      font-size: 1.2rem;
+      background-color: transparent; 
+      padding: 10px 12px;
+      font-size: .9rem;
       color: #0288d1;
     }
+  
 
-    .modal-card-body .input {
-      background-color: #e0e0e0;
-      border: 1px solid #d5d5d5;
-      border-radius: 4px;
-      padding: 5px 10px;
-      margin-bottom: 5px;
-      color: #424242;
-      box-sizing: border-box;
-      width: 100%;
-      font-size: 1.1rem;
-    }
+  /* INPUT DE BOTÓN DE CARGAR FOTO DEL JUGADOR*/
 
-    .modal-card-body .input:focus {
-      border-color: #616161;
-      outline: none;
-    }
-
-    .label {
-      color: #6d6d6d;
-      font-weight: bold;
-      font-size: 1rem;
-      margin-bottom: 1px;
-      margin-left: 5px;
-      text-align: left;
-      display: block;
-    }
-
-    .button.is-primary {
-      background-color: #00b8d4;
-      border: none;
-      border-radius: 4px;
-      padding: 10px 20px;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-
-      &:hover {
-        background-color: #0288d1;
-      }
-    }
+  .custom-file-input-wrapper {
+    position: relative;
+    width: 100%;
   }
 
-  /* estilos para el contenedor personalizado del input de archivo */
-
-.custom-file-input-wrapper {
-  position: relative;
-  width: 100%;
+  .custom-file-input {
+    opacity: 0;
+    width: 100%;
+    height: 35px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    cursor: pointer;
 }
 
-.custom-file-input {
-  opacity: 0;
-  width: 100%;
-  height: 50px;
-  cursor: pointer;
+  .overlay-text {
+    position: relative;
+    font-size: .9rem;
+    padding: 7px 12px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff; 
+    color: #ec5b13; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    border: 1px solid #ec5b13;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease; 
+    z-index: 1; 
+  }
+
+  .custom-file-input-wrapper:hover .overlay-text {
+    background-color: #ec5b13; 
+    color: white ;
 }
 
-.overlay-text {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #e0e0e0;
-  color: #424242;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  pointer-events: none;
-  border: 1px solid #d5d5d5;
-  box-sizing: border-box;
+  .image-preview {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .button.is-danger.remove-button {
+    margin-top: 10px;
+    background-color: #f5f5f5;
+    border: 1px solid grey;
+    border-radius: 15px;
+    color: rgb(75, 72, 72);
+    cursor: pointer;
+    padding: 5px 15px;
+    font-size: .9rem;
+  }
+
+  .button.is-danger.remove-button:hover {
+    background-color: #585454;
+    color: white;
+  }
+
+    /* BOTONES INFERIORES DE LA TARJETA MODAL PARA AGREGAR JUGADOR O CANCELAR*/
+  .buttons.agregar-jugador {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 25px;
+    margin-bottom: 1.5rem;
+  }
+
+  .button.is-primary.boton-agregar {
+    width: 100%;
+    background-color: #007bff; 
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    color: white;
+    font-size: .9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.image-preview {
-  margin-top: 10px;
-  text-align: center;
+  .button.is-primary.boton-agregar:hover {
+    background-color: #0056b3; 
 }
 
-.remove-button {
-  margin-top: 10px;
-  background-color: #5b5555;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  cursor: pointer;
-  padding: 8px 15px;
-}
+  .button.is-light.boton-cancelar {
+    background-color: #28a745; 
+    border: 1px solid #28a745;
+    color: white;
+    border-radius: 4px;
+    width: 100%;
+    padding: 10px 20px;
+    font-size: .9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
 
-.remove-button:hover {
-  background-color: #343232;
-}
+  .button.is-light.boton-cancelar:hover {
+    background-color: #218838; 
+    border-color: #218838;
+  }
 
-.buttons.agregar-jugador {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 50px;
-}
+  /* RESPONSIVE PARA TARJETA MODAL PARA AGREGAR JUGADOR TAMAÑO MOVIL */
+  @media screen and (max-width: 492px){
 
-.button.is-primary.boton-agregar{
-  width: 100%;
-}
+      .modal-card.add-player-modal-card {
+        max-width: 375px;
+        width: 450px;
+    }
 
-.button.is-light.boton-cancelar {
-  background-color: #c5c4c4;
-  border: 1px solid #c2c0c0;
-  color: #2c2c2c;
-  border-radius: 4px;
-  width: 100%;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+    .button.is-danger.remove-button {
+      padding: 8px 15px;
+      font-size: .9rem;
+    }
 
-.button.is-light:hover {
-  background-color: #d5d5d5;
-  border-color: #a0a0a0;
-}
+    .button.is-primary.boton-agregar {
+      padding: 14px 20px;
+      font-size: .9rem;
+    }
+
+    .button.is-light.boton-cancelar {
+      padding: 14px 20px;
+      font-size: .9rem;
+    }
+
+  }
+
 
 
   /*ESTILOS PARA LA TARJETA DE EQUIPOS*/
