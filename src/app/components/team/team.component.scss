@@ -14,9 +14,9 @@
 }
 
 .form-container {
-  width: 50%;
+  width: 35%;
   margin: 0 auto;
-  padding: 55px;
+  padding: 25px;
   background: rgba(255, 255, 255, 0.7); 
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -30,16 +30,16 @@
   text-align: center;
   color: black; 
   font-weight: 400;
-  font-size: 2.5rem;
+  font-size: 1.6rem;
   margin-bottom: 30px;
 }
 
 .label {
   color: black; 
-  font-weight: bold;
+  font-weight: 500;
   margin-bottom: 5px;
   margin-left: 5px;
-  font-size: 1.1rem;
+  font-size: .9rem;
 }
 
 .input-section-row {
@@ -51,7 +51,11 @@
 .field {
   flex: 1;
   min-width: 250px; 
-  margin-bottom: 20px; 
+  margin-bottom: 18px; 
+}
+
+.field-center-label.field-city {
+  margin-top: -21px; 
 }
 
 .field-name {
@@ -60,7 +64,6 @@
   align-items: left; 
   width: 100%;
 }
-
 
 .field-name .control {
   width: 100%; 
@@ -87,7 +90,6 @@
   width: 100%;
 }
 
-
 .control {
   display: flex;
   flex-direction: column; 
@@ -96,8 +98,9 @@
 
 .help.is-danger {
   color: #ff3860; 
-  font-size: 0.875rem;
-  margin-top: 5px; 
+  margin-top: 2px; 
+  font-size: .8rem;
+  margin-left: 5px;
   text-align: left; 
 }
 
@@ -107,7 +110,7 @@
   background-color: white; 
   border: 1px solid rgb(207, 207, 207);
   padding: 5px 15px;
-  font-size: 1.1rem;
+  font-size: .9rem;
   border-radius: 4px;
   color: #333;
   box-sizing: border-box;
@@ -130,14 +133,12 @@
 
 .custom-file-input-wrapper {
   position: relative;
-  display: inline-block;
-  width: 100%;
-  margin-bottom: 25px; 
+  width: 100%; 
 }
 
 .custom-file-input {
   width: 100%;
-  height: 40px; 
+  height: 35px; 
   opacity: 0; 
   position: absolute;
   left: 0;
@@ -148,14 +149,17 @@
 .custom-file-label {
   display: inline-block;
   width: 100%;
-  height: 40px;
-  background-color: #00b8d4; 
-  color: white;
+  height: 35px;
+  line-height: 15px;
+  background-color: transparent;
+  color: #575654;
+  border: 1px solid #ff7f00;
   text-align: center;
   padding: 10px 0;
+  font-size: .9rem;
   border-radius: 4px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 500;
   box-sizing: border-box;
 }
 
@@ -166,6 +170,11 @@
 .custom-file-input:focus + .custom-file-label {
   outline: 2px solid #00b8d4; 
   outline-offset: -2px;
+}
+
+.custom-file-input-wrapper:hover .custom-file-label {
+  background-color: #f99a3a; 
+  color: white; 
 }
 
 .image-preview {
@@ -179,146 +188,157 @@
 }
 
 .image-preview img {
-  max-width: 100%; 
-  height: auto;
+  width: 150px; 
+  height: 150px;
   object-fit: cover;
-  border: 1px solid #ccc;
   border-radius: 8px;
   margin-top: 10px;
 }
 
+.button-row .button.is-danger {
+  background-color: transparent; 
+  color: rgb(61, 60, 60); 
+  border: 1px solid black; 
+  padding: 5px 15px;
+  margin-top: 15px;
+  border-radius: 15px;
+  font-size: .8rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+.button-row .button.is-danger:hover {
+  background-color: rgb(64, 63, 63); 
+  color: white; 
+  border: 1px solid transparent; 
+}
+
 .button-section {
+  margin-top: 15px;
   display: flex;
-  justify-content: center; 
-  gap: 20px; 
-  margin-top: 30px;
+  justify-content: space-between; 
+  gap: 10px; 
 }
 
 .button-section .button {
-  padding: 8px 15px; 
-  font-size: 1.1rem; 
-  border-radius: 6px; 
+  flex: 1; 
+  padding: 10px 20px;
+  font-size: .9rem;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.button.is-primary {
-  background-color: #0d8ee3;
-  color: white;
+.button-section .button.is-primary {
+  background-color: #007bff; 
   border: none;
+  color: white;
+  transition: background-color 0.3s ease;
 }
 
-.button.is-light {
-  background-color: #c3c2c2;
-  color: #333;
-  border: 1px solid #ccc;
+.button-section .button.is-primary:hover {
+  background-color: #0056b3; 
+}
+
+.button-section .button.is-light {
+  background-color: #28a745; 
+  border: none;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.button-section .button.is-light:hover {
+  background-color: #218838; 
 }
 
 @media (max-width: 992px) {
-.form-container{
-  width: 75%;
-}
-
-  .input-section-row {
-      flex-direction: column; 
+  .form-container {
+    width: 50%;
+    padding: 25px;
+  }
+  
+  .title {
+    font-size: 1.45rem;
+    margin-bottom: 20px;
+  }
+  
+  .label {
+    font-size: .8rem;
   }
 
-  .field {
-      width: 100%; 
+  .custom-file-label {
+    font-size: .85rem;
   }
 }
 
 @media (max-width: 768px) {
-.form-container{
-  width: 90%;
-}
-
-  .input-section-row {
-      flex-direction: column; 
-  }
-
-  .field {
-      width: 100%; 
-  }
-
-  
-}
-
-@media (max-width: 576px) {
-
-  .full-screen-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 9rem 2rem;
-    box-sizing: border-box;
-    background-image: url('/assets/fondo general isloggedIn.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    flex-grow: 1; 
-  }
-
   .form-container {
-    padding: 25px; 
-    width: 100%; 
+    width: 70%;
+    padding: 25px;
   }
-
+  
   .title {
-    font-size: 1.7rem; 
-    margin-bottom: 50px; 
+    font-size: 1.45rem;
+    margin-bottom: 20px;
   }
-
+  
   .label {
-    font-size: 1rem; 
-    margin-bottom: 3px !important; 
-    font-weight: 400;
-  }
-
-  .field {
-    margin-bottom: 17px; 
-  }
-
-  .field-city {
-    margin-top: -18px; 
-  }
-
-  .input {
-    height: 2.8rem; /* Ajusta la altura según sea necesario */
-    padding: 0.75rem; /* Puedes ajustar también el padding */
-    color: #4d4b4b;
+    font-size: .8rem;
   }
 
   .input,
   .select select {
-    height: 2.8rem;
-    padding: 8px 12px; 
-    font-size: 1.1rem; 
-    color: #4d4b4b;
-  }
-
-  .help.is-danger {
-    font-size: 0.75rem; 
-    margin-top: 3px; 
+    font-size: .9rem;
   }
 
   .custom-file-label {
-    font-size: 0.9rem; 
-    padding: 8px 0; 
+    font-size: .85rem;
+  }
+
+}
+
+@media (max-width: 526px) {
+
+  .full-screen-container {
+    padding: 9rem 0rem;
+  }
+
+  .full-screen-container {
+    background-image: url('/assets/fondo general isloggedIn.png');
+  }
+
+  .form-container {
+    border-radius: 15px;
+    width: 90%;
+    padding: 20px;
+    margin-bottom: 80px;
+  }
+  
+  .title {
+    font-size: 1.45rem;
+    margin-bottom: 20px;
+  }
+  
+  .label {
+    font-size: .8rem;
+  }
+
+  .custom-file-label {
+    font-size: .75rem;
   }
 
   .button-section .button {
-    width: 100%;
-    padding: 8px 15px; 
-    font-size: 1.1rem; 
+    font-size: 1rem;
+    padding: 12px 15px;
   }
 
   .toast-container {
-
     max-width: 350px;
   }
+
   .toast-message {
     font-size: 1rem;
   }
+
   .toast-icon {
     width: 30px;
   }
