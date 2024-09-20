@@ -1,7 +1,7 @@
 .reportes-page-container {
   width: 100%;
   min-height: 100vh;
-  padding: 10rem 1rem;
+  padding: 9rem 1rem;
   background: rgb(41, 85, 155);
   background-image: url('/assets/video poster dashboard.png');
   background-size: cover;
@@ -10,9 +10,9 @@
 }
 
 .reportes-container {
-  width: 75%;
+  width: 70%;
   margin: 0 auto;
-  padding: 40px 30px  30px 30px;
+  padding: 5px 15px 15px 15px;
   background: rgba(255, 255, 255, 0.7);
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
@@ -21,24 +21,18 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.button-section {
-  display: flex;
-  justify-content: flex-start;
-  margin-bottom: 5rem;
-}
-
 .filter-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .filter-title {
-  margin-bottom: 3.5rem;
-  font-size: 2.5rem;
-  color: black;
+  margin-bottom: 2rem;
+  font-size: 1.7rem;
+  color: rgb(65, 65, 65);
 }
 
 .selectors-row {
@@ -46,11 +40,11 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  gap: 20px;
+  gap: 5px;
 }
 
 .field {
-  width: 80%;
+  width: 70%;
   display: flex;
   align-items: center; 
   justify-content: space-between;
@@ -59,29 +53,34 @@
 }
 
 .field label {
-  font-size: 1.1rem;
-  width: 30%; 
+  font-size: .9rem;
+  width: 50%; 
   text-align: left;
   color: black;
 }
 
+.selectors-row .field select {
+  font-size: 0.9rem; 
+  padding: 5px 10px; 
+}
+
+
 .field input, .field select {
+  margin-top: 0px;
   width: 80%; 
   padding: 10px;
-  font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #f2f2f2;
   color: #6e6e6e;
 }
 
-
-
 /* Estilos para el tercer input */
 
 #team-search-field {
-  margin-top: 2.1rem;
-  width: 80%;
+  margin-top: 1.05rem;
+  margin-bottom: 1rem;
+  width: 70%;
   display: flex;
   align-items: center; 
   justify-content: space-between;
@@ -89,15 +88,16 @@
 }
 
 #team-search-field label {
-  font-size: 1.05rem;
-  width: 30%; 
+  font-size: .9rem;
+  font-weight: 400;
+  width: 50%; 
   text-align: left;
 }
 
 #team-search-field input {
   width: 80%;
-  padding: 10px;
-  font-size: 1rem;
+  padding:  6px 15px;
+  font-size: .9rem;
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #f2f2f2;
@@ -106,10 +106,10 @@
 /* Estilos para la tabla de equipos luego de la búsqueda */
 
 .teams-list-section h3 {
-  margin-top: 3rem;
-  font-size: 1.8rem;
+  margin-top: 2rem;
+  font-size: 1.3rem;
   text-align: left;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
   margin-left: 1rem;
   font-weight: 500;
   color: black;
@@ -118,7 +118,7 @@
 .no-found {
   color: black;
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
 }
 
 .header-section {
@@ -136,14 +136,12 @@
 /* botón imprimir */ 
 
 .button.is-primary.is-align-left {
-  position: absolute;
-  top: 20px; 
-  right: 20px; 
   background-color: #3273dc;
   border-color: #3273dc;
   color: #ffffff;
-  padding: 10px 20px;
-  font-size: 1rem;
+  padding: 5px 15px;
+  margin-right: 10px;
+  font-size: .9rem;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -151,10 +149,13 @@
 
 .button.is-primary.is-align-left:hover {
   background-color: #275bb5; 
+  border-color: #1f4e8d;
+  transform: scale(1.05); 
+  transition: all 0.3s ease; 
 }
 
 .button.is-primary.is-align-left i {
-  margin-right: 8px;
+  margin-right: 10px;
 }
 
 /* tabla de equipos */
@@ -162,6 +163,8 @@
 table {
   width: 100%;
   border-collapse: collapse;
+  border-radius: 5px 5px 3px 3px; 
+  overflow: hidden;
 }
 
 thead {
@@ -171,6 +174,7 @@ thead {
 th {
   color: white;
   padding: 10px;
+  font-size: 0.85rem;
   text-align: left;
   border-bottom: 2px solid #dddddd;
 }
@@ -194,7 +198,8 @@ tbody tr:hover {
 }
 
 td {
-  padding: 10px;
+  padding: 8px;
+  font-size: 0.85rem;
   border-bottom: 1px solid #dddddd;
   color: black;
 }
@@ -223,7 +228,6 @@ td {
   z-index: 1000;
 }
 
-
 .toast-icon {
   font-size: 2.5rem;
   margin-bottom: 1rem;
@@ -234,39 +238,61 @@ td {
   color: #dc3545;
   font-size: 1.8rem;
 }
+
+
+/*RESPONSIVE TARJETA DE BUSCAR EQUIPOS*/ 
 @media (max-width: 992px){
   .reportes-container {
-    width: 85%;
-    margin: 0 auto;
-    padding: 30px 0px  30px 0px;
-    background: rgba(255, 255, 255, 0.7);
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    width: 70%;
+    padding: 5px 20px 15px 20px;
   }
-
-  .filter-section h2 {
-    font-size: 2rem;
-}
-
-.field label {
-  margin-bottom: 5px;
-  text-align: left;
-  width: 40%; 
-}
-
-#team-search-field {
-  margin-top: 2.1rem;
-  width: 80%;
-}
-
-#team-search-field label {
-  font-size: 1rem;
-  width: 40%; 
-}
-
+  
+  .filter-title {
+    margin-bottom: 2rem;
+    font-size: 1.7rem;
+    color: rgb(65, 65, 65);
+  }
+  
+  .field {
+    width: 100%;
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    gap: 10px; 
+  
+  }
+  
+  .field label {
+    font-size: .9rem;
+    width: 48%; 
+    text-align: left;
+    color: black;
+  }
+  
+  .selectors-row .field select {
+    font-size: 0.9rem; 
+  }
+  
+  .field input, .field select {
+    width: 70%; 
+  }
+  
+  /* Estilos para el tercer input */
+  
+  #team-search-field {
+    width: 100%;
+    gap: 0px;
+  }
+  
+  #team-search-field label {
+    font-size: .85rem;
+    width: 50%; 
+  }
+  
+  #team-search-field input {
+    width: 70%;
+    font-size: .9rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -321,22 +347,22 @@ td {
   }
 
   #team-search-field label {
-    width: 50%;
-    margin-bottom: -5px;
+    width: 100%;
+    margin-bottom: 5px;
     text-align: left;
-    font-size: 1.05rem;
-    margin-left: 10px;
+    font-size: .85rem;
+    margin-left: 4px;
   }
 
   #team-search-field input {
     width: 100%;
     font-size: 0.9rem;
-    padding: 10px;
+    padding: 6px 15px;
   }
 
   .search-label i {
-    font-size: 1rem;
-    margin-right: 5px;
+    font-size: .8rem;
+    margin-right: 0px;
   }
 
   .header-section {
@@ -344,9 +370,11 @@ td {
     align-items: center;
   }
 
+
   .header-section .title {
-    font-size: 1.2rem;
-    text-align: center;
+    font-size: 1.1rem;
+    text-align: left;
+    margin-top: 0rem;
     width: 100%;
   }
 
@@ -362,8 +390,32 @@ td {
     text-align: center;
   }
 
+  .button.is-primary.is-align-left {
+    background-color: #3273dc;
+    border-color: #3273dc;
+    color: #ffffff;
+    padding: 4px 15px;
+    margin-right: 10px;
+    font-size: .45rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button.is-primary.is-align-left:hover {
+    background-color: #275bb5; 
+    border-color: #1f4e8d;
+    transform: scale(1.05); 
+    transition: all 0.3s ease; 
+  }
+  
+  .button.is-primary.is-align-left i {
+    margin-right: 10px;
+  }
+
   th, td {
-      font-size: 0.9rem;
+      font-size: 0.7rem;
+      padding: 5px;
   }
 
   .button.is-align-left {
@@ -384,9 +436,9 @@ td {
 
 }
 
-@media (max-width: 525px){
 
-.reportes-page-container{
+@media (max-width: 492px) {
+  .reportes-page-container{
     background-image: url('/assets/fondo general isloggedIn.png');
     background-size: cover;
     background-position: center 65px;
@@ -394,88 +446,9 @@ td {
     min-height: 100vh;
 }
 
-.reportes-container {
-  width: 98%; 
-  padding: 20px;
-  margin-top: -4rem;
-  background: rgba(11, 82, 157, 0.169);
-  backdrop-filter: blur(40px);
-}
-
-.filter-title h2 {
-  color: white;
-  font-size: 1.9rem;
-  margin-bottom: 0rem;
-
-}
-
-.field label {
-  margin-bottom: 5px;
-  margin-left: 70px ;
-  color: rgb(252, 250, 250);
-  text-align: left;
-  font-size: 1.2rem;
-}
-
-
-.field select {
-  width: 100%;
-  margin: auto;
-  padding: 10px;
-  font-size: 1.1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #f2f2f2;
-  color: #6e6e6e;
-  box-sizing: border-box;
-  margin-bottom: 1rem;
-}
-
-.field#team-search-field {
-  margin-top: 19px;
-  width: 100%;
-  display: flex; 
-  flex-direction: column; 
-  align-items: center; 
-}
-
-#team-search-field label {
-  text-align: left;
-  margin-left: 25px;
-  margin-bottom: .2rem;
-  font-size: 1rem;
-  width: 100%; 
-}
-
-#team-search-field input {
-  width: 100%; 
-  height: 2.95rem;
-  font-size: 1rem;
-  max-width: 500px; 
-}
-
-
-.button.is-primary.is-align-left {
-  font-size: 0.85rem; 
-  padding: 8px 12px;  
-  width: auto; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  top: 410px;
-  right: 140px;
-}
-
-.button.is-primary.is-align-left i {
-  font-size: 0.8rem; 
-  margin-right: 5px; 
-}
-
-}
-
-@media (max-width: 492px) {
-
  .reportes-container {
+    background: rgba(11, 82, 157, 0.169);
+    backdrop-filter: blur(40px);
     width: 100%; 
     padding: 23px;
     margin-top: 1.5rem;
@@ -483,8 +456,8 @@ td {
 
 .filter-title h2 {
   color: white;
-  font-size: 1.9rem;
-  margin-bottom: -1.5rem;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
 
 }
 
@@ -498,27 +471,59 @@ td {
     width: 100%;
   }
 
+  .selectors-row .field select {
+    font-size: 1.1rem; 
+    padding: 8.5px 10px; 
+  }
+  
+  
+  .field input, .field select {
+    width: 80%; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f2f2f2;
+    color: #6e6e6e;
+  }
+
   .field select {
     width: 100%; 
-    font-size: .9rem;
+    font-size: 1.1rem;
     padding: 12px;
+    margin-bottom: 10px;
   }
 
   .field label {
     width: 100%;
-    font-size: 1.1rem;
-    margin-bottom: -5px;
+    font-size: 1.2rem;
+    color: rgb(252, 250, 250);
+    margin-bottom:0px;
     margin-left: 10px;
     display: block; 
   }
 
 
+  .field#team-search-field {
+    margin-top: 14px;
+    width: 100%;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+  }
+  
   #team-search-field label {
     text-align: left;
     margin-left: 25px;
-    margin-bottom: -5px;
-    font-size: 1.05rem;
+    margin-bottom: .9rem;
+    font-size: 1.15rem;
     width: 100%; 
+  }
+  
+  #team-search-field input {
+    width: 100%; 
+    height: 2.7rem;
+    font-size: 1.1rem;
+    max-width: 500px; 
   }
 
 
@@ -529,7 +534,7 @@ td {
 .header-section .title {
   font-size: 1.25rem;
   text-align: left;
-  margin-bottom: -.6rem;
+  margin-bottom: .6rem;
   width: 100%;
   color: white;
 }
@@ -539,18 +544,15 @@ th, td {
 }
 
 .button.is-primary.is-align-left {
-  font-size: 1rem; 
-  padding: 8px 25px;  
-  width: auto; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  top: 380px;
-  right: 127px;
-}
-
-.button.is-primary.is-align-left i {
-  font-size: 0.9rem; 
-  margin-right: 5px; 
+  background-color: #3273dc;
+  border-color: #3273dc;
+  color: #ffffff;
+  padding: 4px 15px;
+  margin-right: 10px;
+  font-size: .45rem;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 }
