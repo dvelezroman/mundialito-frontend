@@ -15,14 +15,13 @@
 }
 
 .box {
-  max-width: 460px; 
+  max-width: 330px; 
   width: 100%; 
-  padding: 2.7rem  2.2rem; 
-  border-radius: 15px; 
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); 
-  background: rgba(255, 255, 255, 0.7); 
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
-  backdrop-filter: blur(10px); 
+  padding: 2rem 1.5rem; 
+  border-radius: 10px; 
+  background: rgba(155, 174, 188, 0.969); 
+  box-shadow: 0 4px 25px 10px inset rgba(255, 255, 255, 0.2); 
+  backdrop-filter: blur(12px); 
   border: 1px solid rgba(255, 255, 255, 0.3);
   margin: auto;
   margin-top: 3rem;
@@ -30,34 +29,39 @@
 }
 
 .title {
-  font-size: 2.5rem; 
+  font-size: 1.7rem; 
   font-weight: 500; 
-  color: #4b4f54; 
+  color: #fcfcfc; 
   text-align: center; 
-  margin-bottom: 2.5rem; 
+  margin-bottom: 1.5rem; 
 }
 
 .field {
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.2rem;
   position: relative; 
 }
 
 .help.is-danger {
-  font-size: 0.975rem;
-  color: #e74c3c;
+  font-size: 0.65rem;
+  color: #ff0000;
   position: absolute; 
-  bottom: -1.5rem; 
+  bottom: -1.3rem; 
+  top: 93%;
   left: 10px;
   width: 100%;
   visibility: hidden; 
 }
 
+.help.is-danger.active {
+  visibility: visible; 
+}
+
 .error-password {
-  font-size: 0.9rem;
+  font-size: 0.65rem;
   color: #ff0000; 
   position: absolute; 
-  bottom: -1.5rem;
-  top: 105%; 
+  bottom: -1.3rem;
+  top: 100%; 
   left: 10px;
   width: 100%;
   visibility: hidden; 
@@ -67,41 +71,39 @@
   visibility: visible; 
 }
 
-
-.help.is-danger.active {
-  visibility: visible; 
-}
-
 .label {
-  font-size: 1.1rem; 
+  font-size: .9rem; 
   font-weight: 400; 
-  color: #333; 
-  margin-bottom: 0rem; 
+  color: #ffffff; 
+  margin-bottom: 0.2rem; 
+  margin-left: 8px;
   display: block; 
-  margin-left: 7px;
 }
 
 .input {
-  background-color: #f9f9f9; 
-  border: 1px solid #c8c3c3; 
+  position: relative;
+  background-color: #f9f9f9a7; 
+  border: 1px solid #979595; 
   border-radius: 8px; 
-  font-size: 1.2rem; 
+  font-size: 1rem; 
   width: 100%; 
   color: #333; 
   padding-left: 0.5rem; 
+  padding: 1rem;
   transition: border-color 0.3s, box-shadow 0.3s; 
 
   &:focus {
-    border-color: #007bff; 
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+    border-color: #c2c6ca; 
+    box-shadow: 0 0 5px rgba(185, 189, 194, 0.5); 
     outline: none; 
-    background-color: #fff; 
+    background-color: #e6e6e6; 
   }
 }
 
 .icon.is-left i {
   color: #a7a5a5; 
   transition: color 0.3s ease;
+  font-size: .75rem;
 }
 
 .input:focus ~ .icon.is-left i {
@@ -118,24 +120,38 @@
 
 .toggle-password i {
   color: #6f6d6d; 
+  font-size: .8rem;
 }
 
 .toggle-password i:hover {
   color: #000; 
 }
 
+.icon.is-left {
+  color: #787676; 
+  position: absolute;
+  left: 10px;
+  top: 51%; 
+  transform: translateY(-50%);
+  pointer-events: none; 
+}
+
+.icon.is-left i:active {
+  color: #343232; 
+}
+
 .button.is-primary {
   width: 100%; 
-  padding: 0.6rem; 
+  padding: .8rem; 
   border-radius: 5px; 
-  font-size: 1.2rem; 
+  font-size: 1rem; 
   background-color: #007bff;
   border-color: #007bff;
   color: white;
   transition: background-color 0.3s ease; 
   margin: auto;
-  margin-top: 3.5rem;
-  margin-bottom: -1rem;
+  margin-top: 2.5rem;
+  margin-bottom: -1.4rem;
 }
 
 .button.is-primary:hover {
@@ -163,7 +179,7 @@
   transform: translate(-50%, -50%);
   width: 100%;
   max-width: 500px;
-  z-index: 1000; 
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -171,105 +187,241 @@
 }
 
 .toast {
-  width: 90%;
+  width: 100%;
   text-align: center;
-  opacity: 0.9;
-  font-size: 1.25em; 
+  opacity: 0.9; 
   padding: 20px; 
   border-radius: 8px; 
+  background-color: #f2f2f2; 
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: shake 0.5s ease;
+}
+
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+    20%, 40%, 60%, 80% { transform: translateX(10px); }
+    100% { transform: translateX(0); }
 }
 
 .toast-content {
   display: flex;
+  padding: 1rem;
   flex-direction: column;
   align-items: center;
+
 }
 
 .toast-icon {
-  width: 50px; 
-  height: auto;
-  margin-bottom: 10px; 
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.toast.is-success .toast-icon {
+  color: #28a745; 
+}
+
+.toast.is-danger .toast-icon {
+  color: #dc3545; 
 }
 
 .toast-message {
-  margin-top: 10px;
+  font-size: 1.1rem;
+  color: #dc3545; 
 }
 
+
 /*MEDIA QUERIES*/
+
+@media (max-width: 768px){
+
+  .section {
+    padding: 1rem;
+  }
+
+  .box {
+    max-width: 310px;
+    padding: 1.5rem 1.5rem;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .field {
+    margin-bottom: 1.8rem;
+  }
+
+  .label {
+    font-size: .8rem; 
+    font-weight: 400; 
+    margin-bottom: .2rem;
+  }
+
+  .help.is-danger {
+    font-size: 0.875rem;
+  }
+
+  .button.is-primary {
+    width: 100%;
+    font-size: 1.1rem;
+  }
+  
+  .toast-container {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .toast {
+    font-size: 1.2rem; 
+  }
+  
+  .toast-icon {
+    font-size: 1.5rem;
+  }
+  
+  .toast-message {
+    font-size: 1rem; 
+  }
+}
+
 
 @media (max-width: 492px) {
   .section {
     background-image: url('/assets/fondo general isloggedIn.png');
     background-size: cover;
-    background-position: center 65px;
-    background-repeat: no-repeat;
-    min-height: 100vh; 
-    padding: 0rem;
-    
+    padding: 1.2rem;
   }
 
   .box {
-    max-width: 90%;
-    padding: 2rem 2rem;
-    margin: auto;
-    margin-top: 2.5rem;
+    max-width: 95%;
+    padding: 2rem 1.5rem;
+    margin-top: 5rem;
     margin-bottom: 3rem;
-    margin-left: 13px;
-    background: rgba(11, 82, 157, 0.169);
-    backdrop-filter: blur(40px);
-
   }
 
   .title {
-    font-size: 1.7rem;
-    margin-bottom: 2.2rem;
-    color: white;
+    font-size: 2rem;
+    margin-bottom: 2rem;
   }
 
   .field {
-    margin-bottom: 2rem;
+    margin-bottom: 1.8rem;
   }
 
   .label {
     font-size: 1rem; 
     font-weight: 400; 
     margin-bottom: .2rem;
+  }
+
+  .input {
+    position: relative;
+    background-color: #f9f9f9a7; 
+    border: 1px solid #979595; 
+    border-radius: 8px; 
+    font-size: 1.2rem; 
+    width: 100%; 
+    color: #333; 
+    padding-left: 0.5rem; 
+    padding: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s; 
+  
+    &:focus {
+      border-color: #c2c6ca; 
+      box-shadow: 0 0 5px rgba(185, 189, 194, 0.5); 
+      outline: none; 
+      background-color: #e6e6e6; 
+    }
+  }
+  
+  .icon.is-left i {
+    color: #a7a5a5; 
+    transition: color 0.3s ease;
+    font-size: .5rem;
+  }
+  
+  .input:focus ~ .icon.is-left i {
+    color: #666565; 
+  }
+  
+  .toggle-password {
+    cursor: pointer;
+    position: absolute;
+    right: 17px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .toggle-password i {
+    color: #6f6d6d; 
+    font-size: .8rem;
+  }
+  
+  .toggle-password i:hover {
+    color: #000; 
+  }
+  
+  .icon.is-left {
+    color: #787676; 
+    position: absolute;
+    left: 10px;
+    top: 51%; 
+    transform: translateY(-50%);
+    pointer-events: none; 
+  }
+  
+  .icon.is-left i:active {
+    color: #343232; 
+  }
+  
+  .button.is-primary {
+    width: 100%; 
+    padding: .7rem; 
+    border-radius: 5px; 
+    background-color: #007bff;
+    border-color: #007bff;
     color: white;
+    transition: background-color 0.3s ease; 
+    margin: auto;
+    margin-top: 2.7rem;
+    margin-bottom: -1.4rem;
+    font-size: 1rem; 
+  }
+  
+  .button.is-primary:hover {
+    background-color: #0056b3; 
+    border-color: #0056b3;
   }
 
   .help.is-danger {
     font-size: 0.875rem;
-    margin-top: 0.1rem;
-  }
-
-  .password-error {
-    font-size: 0.875rem;
-    margin-top: .3rem; 
-    line-height: 1.2;
   }
 
   .button.is-primary {
     width: 100%;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
-  .logo-container {
-    margin-top: 0rem; /* Espacio superior para separar de la tarjeta */
-    text-align: center; /* Centrar horizontalmente la imagen */
+  .toast-container {
+    width: 100%;
+    max-width: 350px;
   }
-
-  .logo-image {
-    max-width: 150px; /* Tamaño máximo de la imagen */
-    height: auto;
+  
+  .toast {
+    font-size: 1.2rem; 
   }
-
-  .button.is-primary {
-    padding: 0.8rem; 
-    font-size: 1.3rem; 
-    margin-top: 3.2rem;
-    margin-bottom: -1rem;
+  
+  .toast-icon {
+    font-size: 1.8rem;
+  }
+  
+  .toast-message {
+    font-size: 1rem; 
   }
 }
