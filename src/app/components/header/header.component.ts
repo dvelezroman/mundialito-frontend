@@ -39,6 +39,10 @@ export class HeaderComponent implements OnInit {
     this.checkLoginStatus();
   }
 
+  isLinkActive(link: string): boolean {
+    return this.router.url === link;
+  }
+
   checkLoginStatus() {
     const token = this.userService.getToken();
     this.userService.refreshLogin().subscribe((response: any) => {

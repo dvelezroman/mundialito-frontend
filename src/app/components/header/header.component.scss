@@ -4,7 +4,7 @@
   background-color: rgba(12, 108, 167, 0.509);
   backdrop-filter: blur(200px);
   z-index: 1000;
-  padding: 15px 0;
+  padding: 10px 0;
   box-shadow:  0 -2px 18px 5px rgba(255, 255, 255, 0.199);
 
   .container {
@@ -32,7 +32,7 @@
   }
 
   .header-logo {
-    max-height: 40px;
+    max-height: 50px;
     margin-left: 1rem;
     margin-bottom: 0rem;
     margin-top: 0rem;
@@ -58,11 +58,13 @@
   .button {
     background: transparent;
     border: none;
-    color: #e6dddd;
+    color: #c9c9c9;
     font-size: .9rem;
     font-weight: 400;
     padding: 0.55rem 1.2rem;
     text-decoration: none;
+    position: relative;
+    padding-left: 35px;
     transition: color 0.3s ease;
 
     &:hover {
@@ -72,10 +74,23 @@
 
   .active-link {
     color: #ffffff;
-    border-bottom: 2px solid #ffffff; 
+  }
+
+   /* BALON ICONO ROUTER LINK ACTIVATE  */
+
+  .icono-balon {
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    pointer-events: none; 
   }
 
 
+     /* RESPONSIVE HEADER  */
   @media (max-width: 768px) {
 
     .header-left {
@@ -104,6 +119,19 @@
     .button {
       font-size: .8rem;
       padding: 0.55rem 1rem;
+    }
+
+       /* BALON ICONO ROUTER LINK ACTIVATE  */
+
+    .icono-balon {
+      position: absolute;
+      left: -5px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 15px;
+      height: 15px;
+      vertical-align: middle;
+      pointer-events: none; 
     }
   }
 
