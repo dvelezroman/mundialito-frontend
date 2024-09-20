@@ -149,10 +149,12 @@
 }
 
 
-
+/* MODAL PARA CERRAR SESIÓN */
 
 .modal-background {
   background-color: rgba(52, 52, 52, 0.301);
+  backdrop-filter: blur(8px);  
+  -webkit-backdrop-filter: blur(8px);  
 }
 
 .modal.is-active {
@@ -166,8 +168,8 @@
   padding: .8rem;
   border-radius: 10px;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); 
-  max-width: 350px;
   width: 100%;
+  max-width: 450px;
   text-align: center;
   animation: popIn 0.3s ease-in-out;
   transform-origin: center;
@@ -190,14 +192,14 @@
 
 .box {
   background-color: transparent;
-  padding: 1rem;
+  padding: 1.5rem 1rem;
   border-radius: 10px;
 }
 
 .modal .title {
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   width: 100%;
-  font-weight: bold;
+  font-weight: 500;
   color: #333;
   margin-bottom: 1.5rem;
 }
@@ -205,22 +207,54 @@
 .modal .buttons {
   margin-top: 1.7rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
-  gap: 5px;
+  gap: 10px;
+  font-size: 1rem;
 }
 
 .modal .button.is-danger {
-  width: 100%;
   background-color: #297eee;
   color: white;
   border-radius: 8px;
   transition: background-color 0.3s ease;
+  padding: 10px 20px; 
+  flex: 1; 
+  font-size: 0.85rem;
 }
 
 .modal .button.is-light {
-  width: 100%;
   background-color: #d2d0d0;
   color: #333;
+  padding: 10px 20px; 
+  flex: 1; 
+  font-size: 0.85rem;
 }
+
+/* RESPONSIVE PARA MODAL DE CERRAR SESIÓN */
+@media (max-width: 768px) {
+  .modal-content {
+    background-color: rgba(245, 243, 243, 0.894); 
+    padding: 0rem;
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); 
+    width: 100%;
+    max-width: 330px;
+    text-align: center;
+    animation: popIn 0.3s ease-in-out;
+    transform-origin: center;
+  }
+
+  .modal .buttons {
+    flex-direction: column; 
+    gap: 5px; 
+  }
+
+  .modal .button.is-danger,
+  .modal .button.is-light {
+    width: 100%;
+    font-size: 1rem; 
+  }
+}
+
 
