@@ -8,16 +8,16 @@
   display: flex;
   justify-content: space-between;
   padding: 2rem 20px;
-  flex-wrap: wrap; /* Para que los bloques se acomoden en pantallas pequeñas */
+  flex-wrap: wrap; 
 }
 
 /* Primer bloque: Título */
 .footer-title {
-  flex: 1 1 100%; /* Ocupa toda la fila en pantallas pequeñas */
-  text-align: left;
-  font-size: 3rem;
+  flex: 1 1 100%; 
+  text-align: center;
+  font-size: 2rem;
   font-weight: bold;
-  color: #2f5aa6;
+  color: #3a3b3c;
   margin-bottom: 1.5rem;
 }
 
@@ -25,15 +25,15 @@
 .footer-logos {
   display: flex;
   flex: 1 1 100%;
-  justify-content: space-between;
-  flex-wrap: wrap; /* Para que se acomoden bien en pantallas pequeñas */
+  justify-content: center;
+  flex-wrap: wrap; 
 }
 
 /* Primera columna: Logos a la izquierda (Portoviejo y FEF) */
 .footer-left-logos {
   display: flex;
   flex-direction: row;
-  flex: 1 1 40%; /* Ocupa 40% del ancho total */
+  flex: 1 1 60%; 
   justify-content: space-around;
 }
 
@@ -41,7 +41,7 @@
 .footer-right-logos {
   display: flex;
   flex-direction: row;
-  flex: 1 1 60%; /* Ocupa 60% del ancho total */
+  flex: 1 1 60%; 
   justify-content: space-around;
 }
 
@@ -58,34 +58,54 @@
   align-items: center;
 }
 
+
 /* Tercer bloque: Derechos reservados */
 .footer-rights {
-  flex: 1 1 100%;
-  margin-top: 2rem;
-  font-size: 1.1rem;
+  width: 100%; 
+  background-color: #d6d6d6; 
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9rem;
+  color: #333;
 }
 
 
 @media (max-width: 768px) {
   .footer-title {
+    flex: 1 1 100%; 
     text-align: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #2f5aa6;
+    margin-bottom: 1.5rem;
   }
-
+  
+  /* Segundo bloque: Logos */
   .footer-logos {
-    flex-direction: column;
-    align-items: center;
+    display: flex;
+    flex: 1 1 100%;
+    justify-content: center;
+    flex-wrap: wrap; 
   }
-
-  .footer-left-logos,
+  
+  /* Primera columna: Logos a la izquierda (Portoviejo y FEF) */
+  .footer-left-logos {
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 60%; 
+    justify-content: space-around;
+  }
+  
+  /* Segunda columna: Tres logos a la derecha */
   .footer-right-logos {
     display: flex;
-    flex-direction: row !important;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: row;
+    flex: 1 1 60%; 
+    justify-content: space-around;
   }
 
   .footer-logo img {
-    max-width: 80px;
+    max-width: 78px;
   }
 }
 
@@ -119,18 +139,21 @@
   }
 
   .footer-logo img {
-    width: 70px; 
+    width: 50px; 
     height: auto;
   }
 
   .footer-title {
-    font-size: 2rem !important;
+    font-size: 1.6rem !important;
     text-align: center;
   }
 
   .footer-rights {
-    flex: 1 1 100%;
-    margin-top: 2rem;
-    font-size: .9rem;
+    width: 100%; 
+    background-color: #d6d6d6; 
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.8rem;
+    color: #333;
   }
 }
